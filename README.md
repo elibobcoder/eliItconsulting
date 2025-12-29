@@ -2,7 +2,7 @@
 
 A modern, fully responsive digital agency website built with cutting-edge technologies. Perfect for agencies, startups, and creative studios looking to establish a professional online presence.
 
-![Velox Digital Agency](./screenshots/app-screebshot.png)
+![Velox Digital Agency](./screenshots/app-screenshot.png)
 
 ## ✨ Features
 
