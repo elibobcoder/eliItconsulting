@@ -1,6 +1,6 @@
 export const AppConfig = {
-  appName: 'Velox',
+  appName: 'Eli IT Consulting',
   appDescription:
-    'A Digital Modern Agency specializing in Design, Development, Branding and Online Marketing to elevate your business.',
-  authorGithubUrl: 'https://github.com/o0asd0o',
+    'IT consulting and technology solutions to help your business plan, build, and scale with confidence.',
+  authorGithubUrl: 'https://github.com/elibobcoder',
 }

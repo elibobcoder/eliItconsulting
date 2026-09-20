@@ -284,7 +284,7 @@ const CareerPage = () => {
                 fontWeight: 800,
               }}
             >
-              Why Work at Velox?
+              Why Work at Eli IT Consulting?
             </Typography>
             <Typography
               sx={{
