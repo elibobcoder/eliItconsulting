@@ -282,7 +282,7 @@ const AboutPage = () => {
                   lineHeight: 1.8,
                 }}
               >
-                At Velox, we believe that exceptional digital experiences have
+                At Eli IT Consulting, we believe that exceptional digital experiences have
                 the power to transform businesses. Our mission is to partner
                 with forward-thinking organizations to create innovative
                 solutions that drive growth, engagement, and lasting impact.

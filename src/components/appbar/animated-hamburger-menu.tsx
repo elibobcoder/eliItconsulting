@@ -204,7 +204,7 @@ const AnimatedHamburgerMenu = () => {
             color='text.secondary'
             sx={{ textAlign: 'center' }}
           >
-            © {new Date().getFullYear()} Velox Agency
+            © {new Date().getFullYear()} Eli IT Consulting
           </Typography>
         </Box>
       </Drawer>
