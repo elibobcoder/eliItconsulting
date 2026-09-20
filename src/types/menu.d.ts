@@ -6,6 +6,23 @@ declare global {
     path: string
     icon?: ReactElement
   }
+
+  interface IMegaMenuLinkColumn {
+    heading: string
+    links: { label: string; path: string }[]
+  }
+
+  interface IMegaMenuTagColumn {
+    heading: string
+    tags: string[]
+  }
+
+  interface IMegaMenuIntro {
+    title: string
+    description: string
+    ctaLabel: string
+    ctaPath: string
+  }
 }
 
 export {}

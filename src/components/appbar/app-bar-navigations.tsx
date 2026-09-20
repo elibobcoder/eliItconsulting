@@ -7,15 +7,19 @@ import Link from 'next/link'
 import Box from '@mui/material/Box'
 import MuiLink from '@mui/material/Link'
 import Typography from '@mui/material/Typography'
+import NavDropdown from './nav-dropdown'
+import {
+  ServicesMegaPanel,
+  TechnologiesMegaPanel,
+  IndustriesMegaPanel,
+  AboutDropdownPanel,
+} from './mega-menu-panels'
 
 // interfaces
 import { Theme } from '@mui/material/styles'
 
 // hooks
 import { usePathname } from 'next/navigation'
-
-// constants
-import { companyMenus } from '@/constants/menus'
 
 interface LinkItemProps extends Props {
   label: string
@@ -92,24 +96,27 @@ interface Props {}
 
 const AppBarNavigation: FC<Props> = () => {
   return (
-    <Box sx={{ mx: 'auto' }}>
-      <Box
-        component='ul'
-        sx={{
-          m: 0,
-          lineHeight: 0,
-          pl: 0,
-        }}
-      >
-        {companyMenus.map((item, index) => (
-          <MemoizedLinkItem
-            key={String(index)}
-            label={item.label}
-            path={item.path}
-            icon={item.icon}
-          />
-        ))}
-      </Box>
+    <Box
+      sx={{
+        mx: 'auto',
+        display: 'flex',
+        alignItems: 'center',
+      }}
+    >
+      <NavDropdown label='Services' panelWidth={620}>
+        <ServicesMegaPanel />
+      </NavDropdown>
+      <NavDropdown label='Technologies' panelWidth={480}>
+        <TechnologiesMegaPanel />
+      </NavDropdown>
+      <NavDropdown label='Industries' panelWidth={440}>
+        <IndustriesMegaPanel />
+      </NavDropdown>
+      <NavDropdown label='About' panelWidth={200}>
+        <AboutDropdownPanel />
+      </NavDropdown>
+      <MemoizedLinkItem label='Our Work' path='/portfolio' />
+      <MemoizedLinkItem label='Contact' path='/contact' />
     </Box>
   )
 }

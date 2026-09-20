@@ -17,6 +17,7 @@ import {
 } from '@mui/material'
 import { companyMenus } from '@/constants/menus'
 import AppBarSwitchDarkMode from './switch-dark-mode'
+import { StyledButton } from '@/components/core'
 import Logo from '@/assets/logo.svg'
 
 const AnimatedHamburgerMenu = () => {
@@ -195,6 +196,14 @@ const AnimatedHamburgerMenu = () => {
               })}
             </AnimatePresence>
           </List>
+
+          <Box sx={{ mt: 3, textAlign: 'center' }}>
+            <Link href='/contact' passHref onClick={handleClose}>
+              <StyledButton variant='contained' color='dark' size='medium'>
+                Schedule a Call
+              </StyledButton>
+            </Link>
+          </Box>
 
           <Divider sx={{ my: 3 }} />
 
