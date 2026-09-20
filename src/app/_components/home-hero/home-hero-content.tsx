@@ -6,6 +6,8 @@ import React, { memo, useEffect, useState } from 'react'
 import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
+import NextLink from 'next/link'
+import { StyledButton } from '@/components/core'
 import { Link } from 'react-scroll'
 
 // assets
@@ -126,9 +128,9 @@ const HomeHeroContent = () => {
               fontWeight: '800',
             }}
           >
-            We are Global Digital Brand
+            Technology consulting that
             <br />
-            Tech Agency
+            ships and keeps working.
           </Typography>
           <Typography
             sx={{
@@ -142,11 +144,16 @@ const HomeHeroContent = () => {
               },
             }}
           >
-            A Digital Modern Agency specializing in <strong>Design </strong>,
-            <strong>Development </strong>, <strong>Branding </strong>,
+            We plan, build, and support the software your business runs on
             <br />
-            and <strong>Online Marketing </strong> to elevate your business.
+            &mdash; from <strong>strategy </strong>to <strong>launch </strong>
+            and beyond.
           </Typography>
+          <NextLink href='/contact' passHref>
+            <StyledButton variant='contained' color='primary' size='large'>
+              Schedule a Call
+            </StyledButton>
+          </NextLink>
         </Box>
         <motion.div
           initial={{
@@ -168,7 +175,7 @@ const HomeHeroContent = () => {
             })}
           >
             <Link
-              to='home-about'
+              to='home-trust'
               offset={0}
               spy={true}
               smooth={true}

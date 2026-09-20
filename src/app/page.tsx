@@ -8,7 +8,10 @@ import PageLoader from '@/components/section-loader'
 const HomeHero = dynamic(() => import('./_components/home-hero'), {
   loading: () => <PageLoader />,
 })
-const HomeAbout = dynamic(() => import('./_components/home-about'), {
+const HomeTrust = dynamic(() => import('./_components/home-trust'), {
+  loading: () => <PageLoader />,
+})
+const HomeServices = dynamic(() => import('./_components//home-services'), {
   loading: () => <PageLoader />,
 })
 const HomeMotivation = dynamic(
@@ -17,9 +20,18 @@ const HomeMotivation = dynamic(
     loading: () => <PageLoader />,
   }
 )
-const HomeServices = dynamic(() => import('./_components//home-services'), {
-  loading: () => <PageLoader />,
-})
+const HomeTestimonials = dynamic(
+  () => import('./_components/home-testimonials'),
+  {
+    loading: () => <PageLoader />,
+  }
+)
+const HomeValuePillars = dynamic(
+  () => import('./_components/home-value-pillars'),
+  {
+    loading: () => <PageLoader />,
+  }
+)
 const HomeCTA = dynamic(() => import('./_components/home-cta'), {
   loading: () => <PageLoader />,
 })
@@ -31,9 +43,11 @@ const HomePage = (): JSX.Element => {
   return (
     <Stack direction='column'>
       <HomeHero />
-      <HomeAbout />
-      <HomeMotivation />
+      <HomeTrust />
       <HomeServices />
+      <HomeMotivation />
+      <HomeTestimonials />
+      <HomeValuePillars />
       <HomeCTA />
       <HomeContact />
     </Stack>
