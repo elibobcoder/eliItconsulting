@@ -123,14 +123,17 @@ const HomeHeroContent = () => {
             component='h2'
             sx={{
               mb: 4,
-              fontSize: { xs: 32, md: 40, lg: 52 },
-              lineHeight: 1.5,
+              fontSize: { xs: 34, md: 54, lg: 68 },
+              lineHeight: 1.15,
+              letterSpacing: '-0.02em',
               fontWeight: '800',
             }}
           >
             Technology consulting that
             <br />
-            ships and keeps working.
+            <Box component='span' sx={{ color: 'primary.main' }}>
+              ships and keeps working.
+            </Box>
           </Typography>
           <Typography
             sx={{
