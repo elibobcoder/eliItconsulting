@@ -78,31 +78,6 @@ const ServiceCard = ({ service, index }: ServiceCardProps) => {
                     background: `linear-gradient(160deg, ${theme.palette.primary.main}66, transparent 60%)`,
                   }}
                 />
-                {service.image && (
-                  <Box
-                    sx={{
-                      position: 'absolute',
-                      bottom: 16,
-                      left: 16,
-                      width: 60,
-                      height: 60,
-                      borderRadius: 3,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      backgroundColor: 'background.paper',
-                      boxShadow: 2,
-                    }}
-                  >
-                    <Image
-                      src={service.image}
-                      alt=''
-                      width={32}
-                      height={32}
-                      style={{ objectFit: 'contain' }}
-                    />
-                  </Box>
-                )}
               </Box>
             </Reveal>
           </Grid>

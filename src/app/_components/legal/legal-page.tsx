@@ -4,8 +4,7 @@ import React from 'react'
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
-import { useTheme } from '@mui/material/styles'
-import { Reveal, DecorativeOrbs } from '@/components/core'
+import { Reveal, PageHero } from '@/components/core'
 
 interface LegalSection {
   heading: string
@@ -21,24 +20,13 @@ interface LegalPageProps {
 }
 
 const LegalPage = ({ eyebrow, title, titleAccent, updated, sections }: LegalPageProps) => {
-  const theme = useTheme()
-
   return (
     <Box component='main'>
-      <Box
-        sx={{
-          pt: { xs: 16, md: 20 },
-          pb: { xs: 6, md: 8 },
-          position: 'relative',
-          overflow: 'hidden',
-          backgroundColor: theme.palette.mode === 'dark' ? '#151733' : '#e8f3ff',
-        }}
-      >
-        <DecorativeOrbs />
+      <PageHero minHeight={{ xs: '70vh', md: '70vh' }}>
         <Container maxWidth='md' sx={{ textAlign: 'center', position: 'relative' }}>
           <Reveal>
             <Box
-              sx={{
+              sx={(theme) => ({
                 mb: 3,
                 borderRadius: 1,
                 display: 'inline-block',
@@ -46,7 +34,7 @@ const LegalPage = ({ eyebrow, title, titleAccent, updated, sections }: LegalPage
                 backgroundColor:
                   theme.palette.mode === 'dark' ? 'rgb(255,255,255,0.10)' : 'primary.light',
                 color: theme.palette.mode === 'dark' ? '#fbfbfb' : 'primary.main',
-              }}
+              })}
             >
               <Typography sx={{ fontSize: 12, letterSpacing: 1, textTransform: 'uppercase' }} variant='h5'>
                 {eyebrow}
@@ -65,7 +53,7 @@ const LegalPage = ({ eyebrow, title, titleAccent, updated, sections }: LegalPage
             <Typography sx={{ color: 'text.secondary', fontSize: 14 }}>{updated}</Typography>
           </Reveal>
         </Container>
-      </Box>
+      </PageHero>
 
       <Box sx={{ py: { xs: 6, md: 10 }, backgroundColor: 'background.paper' }}>
         <Container maxWidth='md'>

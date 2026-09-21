@@ -13,7 +13,7 @@ import {
   StyledButton,
   SectionTitle,
   Reveal,
-  DecorativeOrbs,
+  PageHero,
 } from '@/components/core'
 import VettingSteps from '@/app/_components/engagement/vetting-steps'
 import BenefitsGrid from '@/app/_components/engagement/benefits-grid'
@@ -106,16 +106,7 @@ const TopTalentPage = () => {
 
   return (
     <Box component='main'>
-      <Box
-        sx={{
-          pt: { xs: 16, md: 20 },
-          pb: { xs: 8, md: 12 },
-          position: 'relative',
-          overflow: 'hidden',
-          backgroundColor: theme.palette.mode === 'dark' ? '#151733' : '#e8f3ff',
-        }}
-      >
-        <DecorativeOrbs variant='reverse' />
+      <PageHero orbVariant='reverse'>
         <Container maxWidth='lg' sx={{ position: 'relative' }}>
           <Grid container spacing={{ xs: 6, md: 8 }} alignItems='center'>
             <Grid size={{ xs: 12, md: 6 }}>
@@ -182,7 +173,7 @@ const TopTalentPage = () => {
                     position: 'relative',
                     borderRadius: 5,
                     overflow: 'hidden',
-                    height: { xs: 260, md: 400 },
+                    height: { xs: 320, md: 520 },
                     boxShadow: 4,
                   }}
                 >
@@ -205,7 +196,7 @@ const TopTalentPage = () => {
             </Grid>
           </Grid>
         </Container>
-      </Box>
+      </PageHero>
 
       {/* Vetting process */}
       <Box sx={{ py: { xs: 8, md: 12 }, backgroundColor: 'background.paper' }}>

@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
 import { useTheme } from '@mui/material/styles'
 import { motion } from 'framer-motion'
-import { Reveal, DecorativeOrbs } from '@/components/core'
+import { Reveal, PageHero } from '@/components/core'
 import { ContactForm, ContactInfoCard } from '@/app/_components/contact'
 import { stockPhotos } from '@/constants/stock-photos'
 import EmailIcon from '@/assets/icons/eva--email-outline.svg'
@@ -45,17 +45,7 @@ const ContactPage = () => {
   return (
     <Box component='main'>
       {/* Hero Section */}
-      <Box
-        sx={{
-          pt: { xs: 16, md: 20 },
-          pb: { xs: 8, md: 12 },
-          backgroundColor:
-            theme.palette.mode === 'dark' ? '#151733' : '#e8f3ff',
-          position: 'relative',
-          overflow: 'hidden',
-        }}
-      >
-        <DecorativeOrbs />
+      <PageHero>
         <Container maxWidth='md' sx={{ position: 'relative', zIndex: 1 }}>
           <Reveal>
             <Box sx={{ textAlign: 'center' }}>
@@ -115,49 +105,13 @@ const ContactPage = () => {
             </Box>
           </Reveal>
         </Container>
-        {/* Decorative shapes */}
-        <Box
-          sx={{
-            position: 'absolute',
-            top: '10%',
-            left: '2%',
-            width: { xs: 80, md: 130 },
-            display: { xs: 'none', md: 'block' },
-          }}
-        >
-          <Image
-            src='/images/hero/papers.png'
-            alt='Papers decoration'
-            width={900}
-            height={1000}
-            style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
-          />
-        </Box>
-        <Box
-          sx={{
-            position: 'absolute',
-            bottom: '10%',
-            right: '3%',
-            width: { xs: 60, md: 100 },
-            display: { xs: 'none', md: 'block' },
-          }}
-        >
-          <Image
-            src='/images/hero/pen.png'
-            alt='Pen decoration'
-            width={200}
-            height={300}
-            style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
-          />
-        </Box>
-      </Box>
+      </PageHero>
 
       {/* Contact Info Cards */}
       <Box
         sx={{
           py: { xs: 6, md: 8 },
           backgroundColor: 'background.paper',
-          mt: { xs: -4, md: -6 },
           position: 'relative',
           zIndex: 10,
         }}

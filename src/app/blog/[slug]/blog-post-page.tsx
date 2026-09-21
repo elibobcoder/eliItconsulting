@@ -7,7 +7,7 @@ import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import { useTheme } from '@mui/material/styles'
-import { StyledButton, Reveal } from '@/components/core'
+import { StyledButton, Reveal, PageHero } from '@/components/core'
 
 const formatDate = (iso: string) =>
   new Date(iso).toLocaleDateString('en-US', {
@@ -21,13 +21,7 @@ const BlogPostPage = ({ post }: { post: IBlogPost }) => {
 
   return (
     <Box component='main'>
-      <Box
-        sx={{
-          pt: { xs: 16, md: 20 },
-          pb: { xs: 6, md: 8 },
-          backgroundColor: theme.palette.mode === 'dark' ? '#151733' : '#e8f3ff',
-        }}
-      >
+      <PageHero minHeight={{ xs: '55vh', md: '58vh' }}>
         <Container maxWidth='md'>
           <Reveal>
             <NextLink
@@ -80,7 +74,7 @@ const BlogPostPage = ({ post }: { post: IBlogPost }) => {
             </Typography>
           </Reveal>
         </Container>
-      </Box>
+      </PageHero>
 
       <Container maxWidth='md' sx={{ mt: { xs: -4, md: -6 }, position: 'relative' }}>
         <Reveal>

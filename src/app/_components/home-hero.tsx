@@ -19,7 +19,10 @@ const HomeHero = () => {
       sx={{
         width: '100%',
         position: 'relative',
-        backgroundColor: palette.mode === 'dark' ? '#1b2b3c' : '#e8f3ff',
+        background:
+          palette.mode === 'dark'
+            ? 'radial-gradient(circle at 15% 15%, #1c1f4d 0%, #12132c 45%, #0a0b1c 100%)'
+            : 'radial-gradient(circle at 15% 15%, #ffffff 0%, #e9f0ff 45%, #dbe6ff 100%)',
         minHeight: '100vh',
         overflow: 'hidden',
       }}
