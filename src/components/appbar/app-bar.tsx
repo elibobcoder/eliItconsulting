@@ -3,11 +3,13 @@
 import React, { FC, Fragment, useCallback, useMemo } from 'react'
 
 // components
+import NextLink from 'next/link'
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import AppBarNavigation from './app-bar-navigations'
 import AppBarSwitchDarkMode from './switch-dark-mode'
 import AnimatedHamburgerMenu from './animated-hamburger-menu'
+import { StyledButton } from '@/components/core'
 
 // hooks
 import { useWindowScroll } from 'react-use'
@@ -130,6 +132,13 @@ const AppBar: FC = () => {
               <>
                 <AppBarNavigation />
                 <AppBarSwitchDarkMode />
+                <Box sx={{ ml: 1.5 }}>
+                  <NextLink href='/contact' passHref>
+                    <StyledButton variant='contained' color='dark' size='medium'>
+                      Schedule a Call
+                    </StyledButton>
+                  </NextLink>
+                </Box>
               </>
             )}
           </Box>

@@ -31,8 +31,10 @@ const ServiceCard = ({ service, index }: ServiceCardProps) => {
 
   return (
     <Box
+      id={service.slug}
       sx={{
         py: { xs: 6, md: 10 },
+        scrollMarginTop: 96,
         backgroundColor: isEven ? 'background.default' : 'background.paper',
       }}
     >

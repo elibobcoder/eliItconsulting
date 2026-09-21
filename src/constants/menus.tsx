@@ -30,7 +30,7 @@ export const companyMenus: IMenu[] = [
     ),
   },
   {
-    label: 'Portfolio',
+    label: 'Our Work',
     path: '/portfolio',
     icon: (
       <Box component={FolderOutlinedIcon} sx={{ width: 18, height: 'auto' }} />
@@ -58,6 +58,112 @@ export const companyMenus: IMenu[] = [
     ),
   },
 ]
+
+export const aboutDropdownLinks: IMenu[] = [
+  {
+    label: 'About Us',
+    path: '/about',
+    icon: (
+      <Box component={InfoOutlinedIcon} sx={{ width: 18, height: 'auto' }} />
+    ),
+  },
+  {
+    label: 'Careers',
+    path: '/career',
+    icon: (
+      <Box component={WorkOutlinedIcon} sx={{ width: 18, height: 'auto' }} />
+    ),
+  },
+]
+
+export const servicesMegaMenu: {
+  intro: IMegaMenuIntro
+  columns: IMegaMenuLinkColumn[]
+} = {
+  intro: {
+    title: 'Services',
+    description:
+      'Get technology services built around your needs, from a single feature to a full product.',
+    ctaLabel: 'All Services',
+    ctaPath: '/services',
+  },
+  columns: [
+    {
+      heading: 'CORE SERVICES',
+      links: [
+        { label: 'Web Development', path: '/services#dev' },
+        { label: 'Digital Marketing', path: '/services#marketing' },
+        { label: 'E-commerce Solutions', path: '/services#e-commerce' },
+      ],
+    },
+    {
+      heading: 'SPECIALIZED',
+      links: [
+        { label: 'Branding & Graphic Design', path: '/services#branding' },
+        { label: 'Consulting & Strategy', path: '/services#consulting' },
+        { label: 'AI & Machine Learning', path: '/services#ai' },
+      ],
+    },
+    {
+      heading: 'MORE SERVICES',
+      links: [
+        { label: 'Cloud Solutions', path: '/services#cloud' },
+        { label: 'Mobile App Development', path: '/services#mobile' },
+        { label: 'SEO & Analytics', path: '/services#seo' },
+      ],
+    },
+  ],
+}
+
+export const technologiesMegaMenu: {
+  intro: IMegaMenuIntro
+  columns: IMegaMenuTagColumn[]
+} = {
+  intro: {
+    title: 'Technologies',
+    description:
+      'We work across a wide range of tools and frameworks so you can pick the right stack for the job.',
+    ctaLabel: 'Discuss Your Stack',
+    ctaPath: '/contact',
+  },
+  columns: [
+    {
+      heading: 'FRONT-END',
+      tags: ['React', 'Next.js', 'Angular', 'TypeScript'],
+    },
+    {
+      heading: 'BACK-END',
+      tags: ['Node.js', 'Python', 'Java', '.NET'],
+    },
+    {
+      heading: 'CLOUD & DATA',
+      tags: ['AWS', 'Azure', 'PostgreSQL', 'AI / ML'],
+    },
+  ],
+}
+
+export const industriesMegaMenu: {
+  intro: IMegaMenuIntro
+  columns: IMegaMenuTagColumn[]
+} = {
+  intro: {
+    title: 'Industries',
+    description:
+      "We've worked across many sectors. Experience in yours? We probably have it.",
+    ctaLabel: 'Get in Touch',
+    ctaPath: '/contact',
+  },
+  columns: [
+    {
+      heading: '',
+      tags: ['Startups', 'Fintech', 'Healthcare', 'Retail & E-commerce'],
+    },
+    {
+      heading: '',
+      tags: ['Logistics', 'Professional Services', 'Real Estate', 'Education'],
+    },
+  ],
+}
 
 export const supportLinks: IMenu[] = [
   {

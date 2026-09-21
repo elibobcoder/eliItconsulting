@@ -47,7 +47,7 @@ const HomeOurMotivation = () => {
         <Grid container spacing={6}>
           <Grid size={{ xs: 12, md: 4 }} sx={{ pr: 4 }}>
             <Box>
-              <SectionTitle>WE WORK HARD, WE PLAY HARD</SectionTitle>
+              <SectionTitle>BY THE NUMBERS</SectionTitle>
               <Typography
                 variant='h1'
                 sx={{
@@ -56,7 +56,7 @@ const HomeOurMotivation = () => {
                   lineHeight: 1.4,
                 }}
               >
-                We are motivated by a desire to achieve.
+                Results that speak for themselves.
               </Typography>
               <Typography
                 sx={{

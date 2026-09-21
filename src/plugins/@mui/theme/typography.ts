@@ -9,12 +9,12 @@ const typography: TypographyVariantsOptions = {
   fontWeightMedium: 500,
   fontWeightBold: 700,
   h1: {
-    fontWeight: 700,
+    fontWeight: 800,
     fontSize: 42,
     fontFamily,
   },
   h2: {
-    fontWeight: 700,
+    fontWeight: 800,
     fontSize: 34,
     fontFamily,
   },

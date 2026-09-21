@@ -179,7 +179,7 @@ const HomeContact = () => {
                     },
                   })}
                   component='a'
-                  href='mailto:hello@example.com'
+                  href='mailto:hello@eliitconsulting.com'
                 >
                   <>
                     <Box
@@ -194,7 +194,7 @@ const HomeContact = () => {
                         sx={{ mr: 1, width: 26, height: 26 }}
                       />
                       <Typography sx={{ mb: 0 }} variant='h5'>
-                        hello@example.com
+                        hello@eliitconsulting.com
                       </Typography>
                     </Box>
                     <Typography
@@ -217,9 +217,7 @@ const HomeContact = () => {
                     },
                   })}
                   component='a'
-                  href='#'
-                  target={'_blank'}
-                  rel='noreferrer'
+                  href='tel:+15551234567'
                 >
                   <>
                     <Box
@@ -234,7 +232,7 @@ const HomeContact = () => {
                         sx={{ mr: 1, width: 25, height: 25 }}
                       />
                       <Typography sx={{ mb: 0 }} variant='h5'>
-                        +62 8881212121212
+                        +1 (555) 123-4567
                       </Typography>
                     </Box>
                     <Typography

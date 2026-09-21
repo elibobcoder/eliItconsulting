@@ -6,6 +6,8 @@ declare global {
     description: string
     icon?: ReactElement
     image?: string
+    color?: string
+    tags?: string[]
   }
 }
 
