@@ -37,12 +37,21 @@ const IntroColumn: FC<{ intro: IMegaMenuIntro }> = ({ intro }) => (
         intro.description
       )}
     </Typography>
-    {intro.quickList && (
+    {intro.quickLinks && (
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.2, mb: 2.5 }}>
-        {intro.quickList.map((item) => (
-          <Typography key={item} sx={{ fontSize: 14, fontWeight: 600 }}>
-            {item}
-          </Typography>
+        {intro.quickLinks.map((item) => (
+          <Link
+            key={item.path}
+            href={item.path}
+            style={{
+              fontSize: 14,
+              fontWeight: 600,
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+            {item.label}
+          </Link>
         ))}
       </Box>
     )}

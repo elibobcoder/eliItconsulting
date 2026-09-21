@@ -24,7 +24,7 @@ declare global {
     descriptionLinkPath?: string
     ctaLabel: string
     ctaPath: string
-    quickList?: string[]
+    quickLinks?: { label: string; path: string }[]
   }
 }
 

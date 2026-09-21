@@ -87,11 +87,11 @@ export const servicesMegaMenu: {
     descriptionLinkPath: '/services',
     ctaLabel: 'All Services',
     ctaPath: '/services',
-    quickList: [
-      'Staff Augmentation',
-      'Dedicated Teams',
-      'Software Outsourcing',
-      'AI Transformation',
+    quickLinks: [
+      { label: 'Staff Augmentation', path: '/services/staff-augmentation' },
+      { label: 'Dedicated Teams', path: '/services/dedicated-teams' },
+      { label: 'Software Outsourcing', path: '/services/software-outsourcing' },
+      { label: 'AI Transformation', path: '/services/ai-transformation' },
     ],
   },
   columns: [
@@ -131,7 +131,10 @@ export const technologiesMegaMenu: {
     description: 'Get experts in 20+ technologies. Cover any tech stack.',
     ctaLabel: 'All Technologies',
     ctaPath: '/services',
-    quickList: ['Hire Software Developers', 'Top 1% Talent'],
+    quickLinks: [
+      { label: 'Hire Software Developers', path: '/hire-developers' },
+      { label: 'Top 1% Talent', path: '/top-talent' },
+    ],
   },
   columns: [
     {
