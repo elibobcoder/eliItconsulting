@@ -7,6 +7,7 @@ declare global {
     date: string
     readTime: string
     content: string[]
+    coverImage: string
   }
 }
 

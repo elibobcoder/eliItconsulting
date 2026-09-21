@@ -9,7 +9,7 @@ import Accordion from '@mui/material/Accordion'
 import AccordionSummary from '@mui/material/AccordionSummary'
 import AccordionDetails from '@mui/material/AccordionDetails'
 import { useTheme } from '@mui/material/styles'
-import { StyledButton } from '@/components/core'
+import { StyledButton, Reveal, DecorativeOrbs } from '@/components/core'
 
 const FAQS = [
   {
@@ -63,86 +63,92 @@ const FaqPage = () => {
         sx={{
           pt: { xs: 16, md: 20 },
           pb: { xs: 8, md: 12 },
+          position: 'relative',
+          overflow: 'hidden',
           backgroundColor: theme.palette.mode === 'dark' ? '#151733' : '#e8f3ff',
         }}
       >
-        <Container maxWidth='md' sx={{ textAlign: 'center' }}>
-          <Box
-            sx={{
-              mb: 3,
-              borderRadius: 1,
-              display: 'inline-block',
-              padding: '6px 14px',
-              backgroundColor:
-                theme.palette.mode === 'dark' ? 'rgb(255,255,255,0.10)' : 'primary.light',
-              color: theme.palette.mode === 'dark' ? '#fbfbfb' : 'primary.main',
-            }}
-          >
-            <Typography sx={{ fontSize: 12, letterSpacing: 1, textTransform: 'uppercase' }} variant='h5'>
-              FAQs
-            </Typography>
-          </Box>
-          <Typography
-            variant='h1'
-            sx={{ mb: 3, fontSize: { xs: 32, md: 48 }, fontWeight: 800, lineHeight: 1.2 }}
-          >
-            Questions,
-            <br />
-            <Box component='span' sx={{ color: 'primary.main' }}>
-              answered.
+        <DecorativeOrbs />
+        <Container maxWidth='md' sx={{ textAlign: 'center', position: 'relative' }}>
+          <Reveal>
+            <Box
+              sx={{
+                mb: 3,
+                borderRadius: 1,
+                display: 'inline-block',
+                padding: '6px 14px',
+                backgroundColor:
+                  theme.palette.mode === 'dark' ? 'rgb(255,255,255,0.10)' : 'primary.light',
+                color: theme.palette.mode === 'dark' ? '#fbfbfb' : 'primary.main',
+              }}
+            >
+              <Typography sx={{ fontSize: 12, letterSpacing: 1, textTransform: 'uppercase' }} variant='h5'>
+                FAQs
+              </Typography>
             </Box>
-          </Typography>
-          <Typography
-            sx={{ fontSize: { xs: 16, md: 20 }, color: 'text.secondary', maxWidth: 600, mx: 'auto' }}
-          >
-            The things people usually ask before working with us.
-          </Typography>
+            <Typography
+              variant='h1'
+              sx={{ mb: 3, fontSize: { xs: 32, md: 48 }, fontWeight: 800, lineHeight: 1.2 }}
+            >
+              Questions,
+              <br />
+              <Box component='span' sx={{ color: 'primary.main' }}>
+                answered.
+              </Box>
+            </Typography>
+            <Typography
+              sx={{ fontSize: { xs: 16, md: 20 }, color: 'text.secondary', maxWidth: 600, mx: 'auto' }}
+            >
+              The things people usually ask before working with us.
+            </Typography>
+          </Reveal>
         </Container>
       </Box>
 
       <Box sx={{ py: { xs: 8, md: 12 }, backgroundColor: 'background.paper' }}>
         <Container maxWidth='md'>
-          {FAQS.map((faq) => (
-            <Accordion
-              key={faq.question}
-              disableGutters
-              elevation={0}
-              sx={{
-                mb: 2,
-                borderRadius: '16px !important',
-                border: (t) => `1px solid ${t.palette.divider}`,
-                '&:before': { display: 'none' },
-              }}
-            >
-              <AccordionSummary
-                expandIcon={
-                  <Box
-                    component='svg'
-                    viewBox='0 0 24 24'
-                    sx={{ width: 16, height: 16 }}
-                  >
-                    <path
-                      d='M6 9l6 6 6-6'
-                      fill='none'
-                      stroke='currentColor'
-                      strokeWidth='2'
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                    />
-                  </Box>
-                }
-                sx={{ px: 3, py: 1 }}
+          {FAQS.map((faq, index) => (
+            <Reveal key={faq.question} index={index}>
+              <Accordion
+                disableGutters
+                elevation={0}
+                sx={{
+                  mb: 2,
+                  borderRadius: '16px !important',
+                  border: (t) => `1px solid ${t.palette.divider}`,
+                  '&:before': { display: 'none' },
+                }}
               >
-                <Typography sx={{ fontSize: 16, fontWeight: 700 }}>
-                  {faq.question}
-                </Typography>
-              </AccordionSummary>
-              <AccordionDetails sx={{ px: 3, pb: 3 }}>
-                <Typography sx={{ color: 'text.secondary', fontSize: 15, lineHeight: 1.8 }}>
-                  {faq.answer}
-                </Typography>
-              </AccordionDetails>
-            </Accordion>
+                <AccordionSummary
+                  expandIcon={
+                    <Box
+                      component='svg'
+                      viewBox='0 0 24 24'
+                      sx={{ width: 16, height: 16 }}
+                    >
+                      <path
+                        d='M6 9l6 6 6-6'
+                        fill='none'
+                        stroke='currentColor'
+                        strokeWidth='2'
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                      />
+                    </Box>
+                  }
+                  sx={{ px: 3, py: 1 }}
+                >
+                  <Typography sx={{ fontSize: 16, fontWeight: 700 }}>
+                    {faq.question}
+                  </Typography>
+                </AccordionSummary>
+                <AccordionDetails sx={{ px: 3, pb: 3 }}>
+                  <Typography sx={{ color: 'text.secondary', fontSize: 15, lineHeight: 1.8 }}>
+                    {faq.answer}
+                  </Typography>
+                </AccordionDetails>
+              </Accordion>
+            </Reveal>
           ))}
         </Container>
       </Box>
@@ -155,17 +161,19 @@ const FaqPage = () => {
         }}
       >
         <Container maxWidth='sm'>
-          <Typography variant='h2' sx={{ mb: 2, fontSize: { xs: 22, md: 30 }, fontWeight: 800 }}>
-            Still have questions?
-          </Typography>
-          <Typography sx={{ mb: 4, color: 'text.secondary', fontSize: { xs: 15, md: 17 } }}>
-            We&apos;re happy to talk through the specifics of your project.
-          </Typography>
-          <NextLink href='/contact' passHref>
-            <StyledButton variant='contained' size='large' color='primary'>
-              Contact Us
-            </StyledButton>
-          </NextLink>
+          <Reveal>
+            <Typography variant='h2' sx={{ mb: 2, fontSize: { xs: 22, md: 30 }, fontWeight: 800 }}>
+              Still have questions?
+            </Typography>
+            <Typography sx={{ mb: 4, color: 'text.secondary', fontSize: { xs: 15, md: 17 } }}>
+              We&apos;re happy to talk through the specifics of your project.
+            </Typography>
+            <NextLink href='/contact' passHref>
+              <StyledButton variant='contained' size='large' color='primary'>
+                Contact Us
+              </StyledButton>
+            </NextLink>
+          </Reveal>
         </Container>
       </Box>
     </Box>

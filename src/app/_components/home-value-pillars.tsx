@@ -5,6 +5,8 @@ import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
+import { motion } from 'framer-motion'
+import { Reveal } from '@/components/core'
 
 const PILLARS = [
   {
@@ -42,39 +44,45 @@ const HomeValuePillars = () => {
       }}
     >
       <Container maxWidth='lg'>
-        <Typography
-          variant='h1'
-          sx={{
-            mb: 6,
-            fontSize: { xs: 26, md: 36 },
-            fontWeight: 800,
-            textAlign: 'center',
-          }}
-        >
-          No need to wonder.
-          <br />
-          Working with us is easy.
-        </Typography>
+        <Reveal>
+          <Typography
+            variant='h1'
+            sx={{
+              mb: 6,
+              fontSize: { xs: 26, md: 36 },
+              fontWeight: 800,
+              textAlign: 'center',
+            }}
+          >
+            No need to wonder.
+            <br />
+            Working with us is easy.
+          </Typography>
+        </Reveal>
         <Grid container spacing={4}>
-          {PILLARS.map((pillar) => (
+          {PILLARS.map((pillar, index) => (
             <Grid key={pillar.title} size={{ xs: 12, sm: 6, md: 3 }}>
-              <Box
-                sx={{
-                  height: 4,
-                  width: 40,
-                  mb: 2,
-                  borderRadius: 2,
-                  backgroundColor: 'primary.main',
-                }}
-              />
-              <Typography
-                sx={{ fontSize: 18, fontWeight: 700, mb: 1 }}
-              >
-                {pillar.title}
-              </Typography>
-              <Typography sx={{ color: 'text.secondary', fontSize: 15 }}>
-                {pillar.description}
-              </Typography>
+              <Reveal index={index}>
+                <Box
+                  component={motion.div}
+                  initial={{ width: 0 }}
+                  whileInView={{ width: 40 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 + 0.2 }}
+                  sx={{
+                    height: 4,
+                    mb: 2,
+                    borderRadius: 2,
+                    backgroundColor: 'primary.main',
+                  }}
+                />
+                <Typography sx={{ fontSize: 18, fontWeight: 700, mb: 1 }}>
+                  {pillar.title}
+                </Typography>
+                <Typography sx={{ color: 'text.secondary', fontSize: 15 }}>
+                  {pillar.description}
+                </Typography>
+              </Reveal>
             </Grid>
           ))}
         </Grid>

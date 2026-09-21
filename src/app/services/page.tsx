@@ -7,8 +7,9 @@ import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import { useTheme } from '@mui/material/styles'
-import { StyledButton } from '@/components/core'
+import { StyledButton, Reveal, DecorativeOrbs } from '@/components/core'
 import { services } from '@/constants/service'
+import { stockPhotos } from '@/constants/stock-photos'
 import { ServiceCard, type ExtendedService } from '@/app/_components/services'
 import SendIcon from '@/assets/icons/picon--send.svg'
 
@@ -18,6 +19,18 @@ const defaultFeatures = [
   '24/7 Support',
   'Fast Delivery',
 ]
+
+const photoBySlug: Record<string, string> = {
+  dev: stockPhotos.codingCloseup,
+  marketing: stockPhotos.marketingMeeting,
+  'e-commerce': stockPhotos.ecommercePackages,
+  branding: stockPhotos.brandingDesign,
+  consulting: stockPhotos.consultingMeeting,
+  ai: stockPhotos.aiAbstract,
+  cloud: stockPhotos.cloudComputing,
+  mobile: stockPhotos.mobileApp,
+  seo: stockPhotos.seoDashboard,
+}
 
 const additionalServices: ExtendedService[] = [
   {
@@ -64,7 +77,7 @@ const extendedServices: ExtendedService[] = [
     (s): ExtendedService => ({ ...s, features: defaultFeatures })
   ),
   ...additionalServices,
-]
+].map((s) => ({ ...s, photo: photoBySlug[s.slug] }))
 
 const ServicesPage = () => {
   const theme = useTheme()
@@ -82,62 +95,65 @@ const ServicesPage = () => {
           overflow: 'hidden',
         }}
       >
+        <DecorativeOrbs />
         <Container maxWidth='md' sx={{ position: 'relative', zIndex: 1 }}>
-          <Box sx={{ textAlign: 'center' }}>
-            <Box
-              sx={{
-                mb: 3,
-                borderRadius: 1,
-                display: 'inline-block',
-                padding: '6px 14px',
-                backgroundColor:
-                  theme.palette.mode === 'dark'
-                    ? 'rgb(255,255,255,0.10)'
-                    : 'primary.light',
-                color:
-                  theme.palette.mode === 'dark' ? '#fbfbfb' : 'primary.main',
-              }}
-            >
+          <Reveal>
+            <Box sx={{ textAlign: 'center' }}>
+              <Box
+                sx={{
+                  mb: 3,
+                  borderRadius: 1,
+                  display: 'inline-block',
+                  padding: '6px 14px',
+                  backgroundColor:
+                    theme.palette.mode === 'dark'
+                      ? 'rgb(255,255,255,0.10)'
+                      : 'primary.light',
+                  color:
+                    theme.palette.mode === 'dark' ? '#fbfbfb' : 'primary.main',
+                }}
+              >
+                <Typography
+                  sx={{
+                    fontSize: 12,
+                    letterSpacing: 1,
+                    textTransform: 'uppercase',
+                  }}
+                  variant='h5'
+                >
+                  What We Offer
+                </Typography>
+              </Box>
+              <Typography
+                variant='h1'
+                sx={{
+                  mb: 3,
+                  fontSize: { xs: 32, md: 48 },
+                  fontWeight: 800,
+                  lineHeight: 1.2,
+                  color:
+                    theme.palette.mode === 'dark'
+                      ? 'primary.contrastText'
+                      : 'text.primary',
+                }}
+              >
+                Comprehensive Digital
+                <br />
+                Solutions for Your Business
+              </Typography>
               <Typography
                 sx={{
-                  fontSize: 12,
-                  letterSpacing: 1,
-                  textTransform: 'uppercase',
+                  fontSize: { xs: 16, md: 20 },
+                  color: 'text.secondary',
+                  maxWidth: 600,
+                  mx: 'auto',
                 }}
-                variant='h5'
               >
-                What We Offer
+                From strategy to execution, we provide end-to-end services to help
+                your business thrive in the digital landscape.
               </Typography>
             </Box>
-            <Typography
-              variant='h1'
-              sx={{
-                mb: 3,
-                fontSize: { xs: 32, md: 48 },
-                fontWeight: 800,
-                lineHeight: 1.2,
-                color:
-                  theme.palette.mode === 'dark'
-                    ? 'primary.contrastText'
-                    : 'text.primary',
-              }}
-            >
-              Comprehensive Digital
-              <br />
-              Solutions for Your Business
-            </Typography>
-            <Typography
-              sx={{
-                fontSize: { xs: 16, md: 20 },
-                color: 'text.secondary',
-                maxWidth: 600,
-                mx: 'auto',
-              }}
-            >
-              From strategy to execution, we provide end-to-end services to help
-              your business thrive in the digital landscape.
-            </Typography>
-          </Box>
+          </Reveal>
         </Container>
         {/* Decorative shapes */}
         <Box
@@ -191,38 +207,40 @@ const ServicesPage = () => {
         }}
       >
         <Container maxWidth='sm'>
-          <Typography
-            variant='h2'
-            sx={{
-              mb: 2,
-              fontSize: { xs: 24, md: 36 },
-              fontWeight: 800,
-            }}
-          >
-            Ready to Get Started?
-          </Typography>
-          <Typography
-            sx={{
-              mb: 4,
-              color: 'text.secondary',
-              fontSize: { xs: 15, md: 17 },
-            }}
-          >
-            Let&apos;s discuss how we can help transform your business with our
-            comprehensive digital solutions.
-          </Typography>
-          <Link href='/contact' passHref>
-            <StyledButton
-              variant='contained'
-              size='large'
-              color='primary'
-              endIcon={
-                <Box component={SendIcon} sx={{ width: 18, height: 18 }} />
-              }
+          <Reveal>
+            <Typography
+              variant='h2'
+              sx={{
+                mb: 2,
+                fontSize: { xs: 24, md: 36 },
+                fontWeight: 800,
+              }}
             >
-              Start a Project
-            </StyledButton>
-          </Link>
+              Ready to Get Started?
+            </Typography>
+            <Typography
+              sx={{
+                mb: 4,
+                color: 'text.secondary',
+                fontSize: { xs: 15, md: 17 },
+              }}
+            >
+              Let&apos;s discuss how we can help transform your business with our
+              comprehensive digital solutions.
+            </Typography>
+            <Link href='/contact' passHref>
+              <StyledButton
+                variant='contained'
+                size='large'
+                color='primary'
+                endIcon={
+                  <Box component={SendIcon} sx={{ width: 18, height: 18 }} />
+                }
+              >
+                Start a Project
+              </StyledButton>
+            </Link>
+          </Reveal>
         </Container>
       </Box>
     </Box>

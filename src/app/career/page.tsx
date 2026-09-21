@@ -8,8 +8,10 @@ import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
 import { useTheme } from '@mui/material/styles'
-import { StyledButton } from '@/components/core'
+import { motion, AnimatePresence } from 'framer-motion'
+import { StyledButton, Reveal, DecorativeOrbs } from '@/components/core'
 import { JobCard, type Job } from '@/app/_components/career'
+import { stockPhotos } from '@/constants/stock-photos'
 
 const departments = ['All', 'Engineering', 'Design', 'Marketing', 'Operations']
 
@@ -173,62 +175,65 @@ const CareerPage = () => {
           overflow: 'hidden',
         }}
       >
+        <DecorativeOrbs />
         <Container maxWidth='md' sx={{ position: 'relative', zIndex: 1 }}>
-          <Box sx={{ textAlign: 'center' }}>
-            <Box
-              sx={{
-                mb: 3,
-                borderRadius: 1,
-                display: 'inline-block',
-                padding: '6px 14px',
-                backgroundColor:
-                  theme.palette.mode === 'dark'
-                    ? 'rgb(255,255,255,0.10)'
-                    : 'primary.light',
-                color:
-                  theme.palette.mode === 'dark' ? '#fbfbfb' : 'primary.main',
-              }}
-            >
+          <Reveal>
+            <Box sx={{ textAlign: 'center' }}>
+              <Box
+                sx={{
+                  mb: 3,
+                  borderRadius: 1,
+                  display: 'inline-block',
+                  padding: '6px 14px',
+                  backgroundColor:
+                    theme.palette.mode === 'dark'
+                      ? 'rgb(255,255,255,0.10)'
+                      : 'primary.light',
+                  color:
+                    theme.palette.mode === 'dark' ? '#fbfbfb' : 'primary.main',
+                }}
+              >
+                <Typography
+                  sx={{
+                    fontSize: 12,
+                    letterSpacing: 1,
+                    textTransform: 'uppercase',
+                  }}
+                  variant='h5'
+                >
+                  Join Our Team
+                </Typography>
+              </Box>
+              <Typography
+                variant='h1'
+                sx={{
+                  mb: 3,
+                  fontSize: { xs: 32, md: 48 },
+                  fontWeight: 800,
+                  lineHeight: 1.2,
+                  color:
+                    theme.palette.mode === 'dark'
+                      ? 'primary.contrastText'
+                      : 'text.primary',
+                }}
+              >
+                Build the Future
+                <br />
+                With Us
+              </Typography>
               <Typography
                 sx={{
-                  fontSize: 12,
-                  letterSpacing: 1,
-                  textTransform: 'uppercase',
+                  fontSize: { xs: 16, md: 20 },
+                  color: 'text.secondary',
+                  maxWidth: 600,
+                  mx: 'auto',
                 }}
-                variant='h5'
               >
-                Join Our Team
+                Join a team of passionate creators, thinkers, and problem-solvers
+                dedicated to delivering exceptional digital experiences.
               </Typography>
             </Box>
-            <Typography
-              variant='h1'
-              sx={{
-                mb: 3,
-                fontSize: { xs: 32, md: 48 },
-                fontWeight: 800,
-                lineHeight: 1.2,
-                color:
-                  theme.palette.mode === 'dark'
-                    ? 'primary.contrastText'
-                    : 'text.primary',
-              }}
-            >
-              Build the Future
-              <br />
-              With Us
-            </Typography>
-            <Typography
-              sx={{
-                fontSize: { xs: 16, md: 20 },
-                color: 'text.secondary',
-                maxWidth: 600,
-                mx: 'auto',
-              }}
-            >
-              Join a team of passionate creators, thinkers, and problem-solvers
-              dedicated to delivering exceptional digital experiences.
-            </Typography>
-          </Box>
+          </Reveal>
         </Container>
         {/* Decorative elements */}
         <Box
@@ -267,6 +272,45 @@ const CareerPage = () => {
         </Box>
       </Box>
 
+      {/* Team photo banner */}
+      <Box sx={{ py: { xs: 6, md: 8 }, backgroundColor: 'background.default' }}>
+        <Container maxWidth='lg'>
+          <Grid container spacing={2}>
+            {[
+              { src: stockPhotos.officeHighFive, alt: 'Team celebrating' },
+              { src: stockPhotos.teamWorkshop, alt: 'Team workshop' },
+              { src: stockPhotos.modernOffice, alt: 'Modern office space' },
+              { src: stockPhotos.teamAroundTable, alt: 'Team around the table' },
+            ].map((photo, index) => (
+              <Grid key={photo.alt} size={{ xs: 6, md: 3 }}>
+                <Reveal index={index}>
+                  <Box
+                    component={motion.div}
+                    whileHover={{ scale: 1.04 }}
+                    transition={{ duration: 0.4 }}
+                    sx={{
+                      position: 'relative',
+                      height: { xs: 130, md: 180 },
+                      borderRadius: 3,
+                      overflow: 'hidden',
+                      boxShadow: 1,
+                    }}
+                  >
+                    <Image
+                      src={photo.src}
+                      alt={photo.alt}
+                      fill
+                      sizes='(max-width: 900px) 50vw, 25vw'
+                      style={{ objectFit: 'cover' }}
+                    />
+                  </Box>
+                </Reveal>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </Box>
+
       {/* Culture Section */}
       <Box
         sx={{
@@ -275,62 +319,66 @@ const CareerPage = () => {
         }}
       >
         <Container maxWidth='lg'>
-          <Box sx={{ textAlign: 'center', mb: 6 }}>
-            <Typography
-              variant='h2'
-              sx={{
-                mb: 2,
-                fontSize: { xs: 24, md: 36 },
-                fontWeight: 800,
-              }}
-            >
-              Why Work at Eli IT Consulting?
-            </Typography>
-            <Typography
-              sx={{
-                color: 'text.secondary',
-                maxWidth: 600,
-                mx: 'auto',
-                fontSize: { xs: 15, md: 17 },
-              }}
-            >
-              We believe in creating an environment where talented people can do
-              their best work.
-            </Typography>
-          </Box>
+          <Reveal>
+            <Box sx={{ textAlign: 'center', mb: 6 }}>
+              <Typography
+                variant='h2'
+                sx={{
+                  mb: 2,
+                  fontSize: { xs: 24, md: 36 },
+                  fontWeight: 800,
+                }}
+              >
+                Why Work at Eli IT Consulting?
+              </Typography>
+              <Typography
+                sx={{
+                  color: 'text.secondary',
+                  maxWidth: 600,
+                  mx: 'auto',
+                  fontSize: { xs: 15, md: 17 },
+                }}
+              >
+                We believe in creating an environment where talented people can do
+                their best work.
+              </Typography>
+            </Box>
+          </Reveal>
 
           <Grid container spacing={3}>
             {benefits.map((benefit, idx) => (
               <Grid size={{ xs: 12, sm: 6, md: 4 }} key={idx}>
-                <Box
-                  sx={{
-                    p: 4,
-                    borderRadius: 4,
-                    backgroundColor: 'background.default',
-                    height: '100%',
-                    transition: (t) => t.transitions.create(['transform']),
-                    '&:hover': {
-                      transform: 'translateY(-4px)',
-                    },
-                  }}
-                >
-                  <Typography sx={{ fontSize: 40, mb: 2 }}>
-                    {benefit.icon}
-                  </Typography>
-                  <Typography
-                    variant='h6'
+                <Reveal index={idx}>
+                  <Box
+                    component={motion.div}
+                    whileHover={{ y: -4 }}
+                    transition={{ duration: 0.3 }}
                     sx={{
-                      fontWeight: 700,
-                      mb: 1,
-                      fontSize: { xs: 16, md: 18 },
+                      p: 4,
+                      borderRadius: 4,
+                      backgroundColor: 'background.default',
+                      height: '100%',
+                      '&:hover': { boxShadow: 2 },
                     }}
                   >
-                    {benefit.title}
-                  </Typography>
-                  <Typography sx={{ color: 'text.secondary', fontSize: 14 }}>
-                    {benefit.description}
-                  </Typography>
-                </Box>
+                    <Typography sx={{ fontSize: 40, mb: 2 }}>
+                      {benefit.icon}
+                    </Typography>
+                    <Typography
+                      variant='h6'
+                      sx={{
+                        fontWeight: 700,
+                        mb: 1,
+                        fontSize: { xs: 16, md: 18 },
+                      }}
+                    >
+                      {benefit.title}
+                    </Typography>
+                    <Typography sx={{ color: 'text.secondary', fontSize: 14 }}>
+                      {benefit.description}
+                    </Typography>
+                  </Box>
+                </Reveal>
               </Grid>
             ))}
           </Grid>
@@ -381,6 +429,9 @@ const CareerPage = () => {
           >
             {departments.map((dept) => (
               <Box
+                component={motion.div}
+                whileHover={{ scale: 1.06 }}
+                whileTap={{ scale: 0.96 }}
                 key={dept}
                 onClick={() => setActiveCategory(dept)}
                 sx={{
@@ -419,9 +470,21 @@ const CareerPage = () => {
 
           {/* Jobs List */}
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-            {filteredJobs.map((job) => (
-              <JobCard key={job.id} job={job} />
-            ))}
+            <AnimatePresence mode='popLayout'>
+              {filteredJobs.map((job, index) => (
+                <Box
+                  key={job.id}
+                  component={motion.div}
+                  layout
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -16 }}
+                  transition={{ duration: 0.3, delay: index * 0.05 }}
+                >
+                  <JobCard job={job} />
+                </Box>
+              ))}
+            </AnimatePresence>
           </Box>
 
           {filteredJobs.length === 0 && (
@@ -443,31 +506,33 @@ const CareerPage = () => {
         }}
       >
         <Container maxWidth='sm'>
-          <Typography
-            variant='h3'
-            sx={{
-              mb: 2,
-              fontSize: { xs: 22, md: 28 },
-              fontWeight: 800,
-            }}
-          >
-            Don&apos;t See a Perfect Fit?
-          </Typography>
-          <Typography
-            sx={{
-              mb: 4,
-              color: 'text.secondary',
-              fontSize: { xs: 15, md: 17 },
-            }}
-          >
-            We&apos;re always looking for exceptional talent. Send us your
-            resume and we&apos;ll keep you in mind for future opportunities.
-          </Typography>
-          <Link href='/contact' passHref>
-            <StyledButton variant='outlined' size='large' color='primary'>
-              Send Your Resume
-            </StyledButton>
-          </Link>
+          <Reveal>
+            <Typography
+              variant='h3'
+              sx={{
+                mb: 2,
+                fontSize: { xs: 22, md: 28 },
+                fontWeight: 800,
+              }}
+            >
+              Don&apos;t See a Perfect Fit?
+            </Typography>
+            <Typography
+              sx={{
+                mb: 4,
+                color: 'text.secondary',
+                fontSize: { xs: 15, md: 17 },
+              }}
+            >
+              We&apos;re always looking for exceptional talent. Send us your
+              resume and we&apos;ll keep you in mind for future opportunities.
+            </Typography>
+            <Link href='/contact' passHref>
+              <StyledButton variant='outlined' size='large' color='primary'>
+                Send Your Resume
+              </StyledButton>
+            </Link>
+          </Reveal>
         </Container>
       </Box>
     </Box>

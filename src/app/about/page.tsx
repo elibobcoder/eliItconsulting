@@ -8,7 +8,7 @@ import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
 import { useTheme } from '@mui/material/styles'
-import { StyledButton } from '@/components/core'
+import { StyledButton, Reveal, CountUp } from '@/components/core'
 import {
   TeamMemberCard,
   ValueCard,
@@ -364,7 +364,9 @@ const AboutPage = () => {
           <Grid container spacing={3}>
             {values.map((value, idx) => (
               <Grid size={{ xs: 12, sm: 6, md: 4 }} key={idx}>
-                <ValueCard value={value} />
+                <Reveal index={idx}>
+                  <ValueCard value={value} />
+                </Reveal>
               </Grid>
             ))}
           </Grid>
@@ -458,7 +460,9 @@ const AboutPage = () => {
           <Grid container spacing={4}>
             {team.map((member, idx) => (
               <Grid size={{ xs: 12, sm: 6, md: 3 }} key={idx}>
-                <TeamMemberCard member={member} />
+                <Reveal index={idx}>
+                  <TeamMemberCard member={member} />
+                </Reveal>
               </Grid>
             ))}
           </Grid>
@@ -482,27 +486,29 @@ const AboutPage = () => {
               { value: '12', label: 'Countries' },
             ].map((stat, idx) => (
               <Grid size={{ xs: 6, md: 3 }} key={idx}>
-                <Box sx={{ textAlign: 'center' }}>
-                  <Typography
-                    sx={{
-                      fontSize: { xs: 36, md: 52 },
-                      fontWeight: 800,
-                      color: 'primary.main',
-                      lineHeight: 1,
-                    }}
-                  >
-                    {stat.value}
-                  </Typography>
-                  <Typography
-                    sx={{
-                      mt: 1,
-                      color: 'text.secondary',
-                      fontSize: { xs: 14, md: 16 },
-                    }}
-                  >
-                    {stat.label}
-                  </Typography>
-                </Box>
+                <Reveal index={idx}>
+                  <Box sx={{ textAlign: 'center' }}>
+                    <Typography
+                      sx={{
+                        fontSize: { xs: 36, md: 52 },
+                        fontWeight: 800,
+                        color: 'primary.main',
+                        lineHeight: 1,
+                      }}
+                    >
+                      <CountUp value={stat.value} />
+                    </Typography>
+                    <Typography
+                      sx={{
+                        mt: 1,
+                        color: 'text.secondary',
+                        fontSize: { xs: 14, md: 16 },
+                      }}
+                    >
+                      {stat.label}
+                    </Typography>
+                  </Box>
+                </Reveal>
               </Grid>
             ))}
           </Grid>

@@ -6,7 +6,7 @@ import React from 'react'
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
-import { StyledButton } from '@/components/core'
+import { StyledButton, Reveal } from '@/components/core'
 
 // configs
 import { AppConfig } from '@/configs'
@@ -55,21 +55,23 @@ const HomeCTA = () => {
               },
             }}
           >
-            <Typography
-              component='h4'
-              variant='h6'
-              sx={{ mb: 2, lineHeight: 1.4 }}
-            >
-              Ready to create something amazing ?
-            </Typography>
-            <Typography variant='h2' sx={{ mb: 5, lineHeight: 1.6 }}>
-              Start your business journey better with {AppConfig.appName}
-            </Typography>
-            <Link href='/contact'>
-              <StyledButton variant='contained' color='light' size='large'>
-                Work With Us
-              </StyledButton>
-            </Link>
+            <Reveal>
+              <Typography
+                component='h4'
+                variant='h6'
+                sx={{ mb: 2, lineHeight: 1.4 }}
+              >
+                Ready to create something amazing ?
+              </Typography>
+              <Typography variant='h2' sx={{ mb: 5, lineHeight: 1.6 }}>
+                Start your business journey better with {AppConfig.appName}
+              </Typography>
+              <Link href='/contact'>
+                <StyledButton variant='contained' color='light' size='large'>
+                  Work With Us
+                </StyledButton>
+              </Link>
+            </Reveal>
           </Box>
         </Box>
       </Container>

@@ -7,7 +7,10 @@ import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
 import { useTheme } from '@mui/material/styles'
+import { motion } from 'framer-motion'
+import { Reveal, DecorativeOrbs } from '@/components/core'
 import { ContactForm, ContactInfoCard } from '@/app/_components/contact'
+import { stockPhotos } from '@/constants/stock-photos'
 import EmailIcon from '@/assets/icons/eva--email-outline.svg'
 import PhoneIcon from '@/assets/icons/eva--phone-outline.svg'
 import LocationIcon from '@/assets/icons/tdesign--location.svg'
@@ -52,62 +55,65 @@ const ContactPage = () => {
           overflow: 'hidden',
         }}
       >
+        <DecorativeOrbs />
         <Container maxWidth='md' sx={{ position: 'relative', zIndex: 1 }}>
-          <Box sx={{ textAlign: 'center' }}>
-            <Box
-              sx={{
-                mb: 3,
-                borderRadius: 1,
-                display: 'inline-block',
-                padding: '6px 14px',
-                backgroundColor:
-                  theme.palette.mode === 'dark'
-                    ? 'rgb(255,255,255,0.10)'
-                    : 'primary.light',
-                color:
-                  theme.palette.mode === 'dark' ? '#fbfbfb' : 'primary.main',
-              }}
-            >
+          <Reveal>
+            <Box sx={{ textAlign: 'center' }}>
+              <Box
+                sx={{
+                  mb: 3,
+                  borderRadius: 1,
+                  display: 'inline-block',
+                  padding: '6px 14px',
+                  backgroundColor:
+                    theme.palette.mode === 'dark'
+                      ? 'rgb(255,255,255,0.10)'
+                      : 'primary.light',
+                  color:
+                    theme.palette.mode === 'dark' ? '#fbfbfb' : 'primary.main',
+                }}
+              >
+                <Typography
+                  sx={{
+                    fontSize: 12,
+                    letterSpacing: 1,
+                    textTransform: 'uppercase',
+                  }}
+                  variant='h5'
+                >
+                  Get In Touch
+                </Typography>
+              </Box>
+              <Typography
+                variant='h1'
+                sx={{
+                  mb: 3,
+                  fontSize: { xs: 32, md: 48 },
+                  fontWeight: 800,
+                  lineHeight: 1.2,
+                  color:
+                    theme.palette.mode === 'dark'
+                      ? 'primary.contrastText'
+                      : 'text.primary',
+                }}
+              >
+                Let&apos;s Start a
+                <br />
+                Conversation
+              </Typography>
               <Typography
                 sx={{
-                  fontSize: 12,
-                  letterSpacing: 1,
-                  textTransform: 'uppercase',
+                  fontSize: { xs: 16, md: 20 },
+                  color: 'text.secondary',
+                  maxWidth: 600,
+                  mx: 'auto',
                 }}
-                variant='h5'
               >
-                Get In Touch
+                Have a project in mind? We&apos;d love to hear from you. Send us a
+                message and we&apos;ll respond as soon as possible.
               </Typography>
             </Box>
-            <Typography
-              variant='h1'
-              sx={{
-                mb: 3,
-                fontSize: { xs: 32, md: 48 },
-                fontWeight: 800,
-                lineHeight: 1.2,
-                color:
-                  theme.palette.mode === 'dark'
-                    ? 'primary.contrastText'
-                    : 'text.primary',
-              }}
-            >
-              Let&apos;s Start a
-              <br />
-              Conversation
-            </Typography>
-            <Typography
-              sx={{
-                fontSize: { xs: 16, md: 20 },
-                color: 'text.secondary',
-                maxWidth: 600,
-                mx: 'auto',
-              }}
-            >
-              Have a project in mind? We&apos;d love to hear from you. Send us a
-              message and we&apos;ll respond as soon as possible.
-            </Typography>
-          </Box>
+          </Reveal>
         </Container>
         {/* Decorative shapes */}
         <Box
@@ -160,7 +166,9 @@ const ContactPage = () => {
           <Grid container spacing={3}>
             {contactInfo.map((info, idx) => (
               <Grid size={{ xs: 12, md: 4 }} key={idx}>
-                <ContactInfoCard info={info} />
+                <Reveal index={idx}>
+                  <ContactInfoCard info={info} />
+                </Reveal>
               </Grid>
             ))}
           </Grid>
@@ -178,94 +186,101 @@ const ContactPage = () => {
           <Grid container spacing={{ xs: 4, md: 8 }}>
             {/* Form */}
             <Grid size={{ xs: 12, md: 7 }}>
-              <ContactForm />
+              <Reveal>
+                <ContactForm />
+              </Reveal>
             </Grid>
 
-            {/* Map Placeholder & Additional Info */}
+            {/* Location photo & Additional Info */}
             <Grid size={{ xs: 12, md: 5 }}>
-              {/* Map Placeholder */}
-              <Box
-                sx={{
-                  height: { xs: 250, md: 300 },
-                  borderRadius: 4,
-                  overflow: 'hidden',
-                  mb: 4,
-                  backgroundColor:
-                    theme.palette.mode === 'dark' ? '#1e1e2f' : '#e8ecf0',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  position: 'relative',
-                }}
-              >
+              {/* Office photo */}
+              <Reveal index={1}>
                 <Box
+                  component={motion.div}
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.4 }}
                   sx={{
-                    textAlign: 'center',
-                    color: 'text.secondary',
+                    height: { xs: 220, md: 260 },
+                    borderRadius: 4,
+                    overflow: 'hidden',
+                    mb: 4,
+                    position: 'relative',
+                    boxShadow: 2,
                   }}
                 >
-                  <Box
-                    component={LocationIcon}
-                    sx={{ width: 48, height: 48, mb: 2, opacity: 0.5 }}
+                  <Image
+                    src={stockPhotos.modernOffice}
+                    alt='Our office'
+                    fill
+                    sizes='(max-width: 900px) 100vw, 40vw'
+                    style={{ objectFit: 'cover' }}
                   />
-                  <Typography variant='h6' sx={{ fontWeight: 600 }}>
-                    San Francisco, CA
-                  </Typography>
-                  <Typography variant='body2'>
-                    Interactive map coming soon
-                  </Typography>
-                </Box>
-                {/* Decorative grid pattern */}
-                <Box
-                  sx={{
-                    position: 'absolute',
-                    inset: 0,
-                    opacity: 0.1,
-                    backgroundImage:
-                      'linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)',
-                    backgroundSize: '30px 30px',
-                  }}
-                />
-              </Box>
-
-              {/* FAQ */}
-              <Box
-                sx={{
-                  p: 4,
-                  borderRadius: 4,
-                  backgroundColor: 'background.paper',
-                }}
-              >
-                <Typography
-                  variant='h5'
-                  sx={{ mb: 3, fontWeight: 700, fontSize: { xs: 18, md: 22 } }}
-                >
-                  Frequently Asked
-                </Typography>
-                {[
-                  {
-                    q: 'How long does a typical project take?',
-                    a: 'Project timelines vary based on scope. Most projects range from 4-12 weeks.',
-                  },
-                  {
-                    q: 'What is your pricing model?',
-                    a: 'We offer both fixed-price and hourly engagement models depending on project needs.',
-                  },
-                  {
-                    q: 'Do you offer ongoing support?',
-                    a: 'Yes! We provide maintenance and support packages for all completed projects.',
-                  },
-                ].map((faq, idx) => (
-                  <Box key={idx} sx={{ mb: idx < 2 ? 3 : 0 }}>
-                    <Typography sx={{ fontWeight: 600, mb: 0.5, fontSize: 15 }}>
-                      {faq.q}
-                    </Typography>
-                    <Typography sx={{ color: 'text.secondary', fontSize: 14 }}>
-                      {faq.a}
+                  <Box
+                    sx={{
+                      position: 'absolute',
+                      inset: 0,
+                      background: 'linear-gradient(0deg, rgba(0,0,0,0.55), transparent 55%)',
+                    }}
+                  />
+                  <Box
+                    sx={{
+                      position: 'absolute',
+                      bottom: 16,
+                      left: 16,
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 1,
+                      color: '#fff',
+                    }}
+                  >
+                    <Box component={LocationIcon} sx={{ width: 20, height: 20 }} />
+                    <Typography sx={{ fontWeight: 700, fontSize: 15 }}>
+                      San Francisco, CA
                     </Typography>
                   </Box>
-                ))}
-              </Box>
+                </Box>
+              </Reveal>
+
+              {/* FAQ */}
+              <Reveal index={2}>
+                <Box
+                  sx={{
+                    p: 4,
+                    borderRadius: 4,
+                    backgroundColor: 'background.paper',
+                  }}
+                >
+                  <Typography
+                    variant='h5'
+                    sx={{ mb: 3, fontWeight: 700, fontSize: { xs: 18, md: 22 } }}
+                  >
+                    Frequently Asked
+                  </Typography>
+                  {[
+                    {
+                      q: 'How long does a typical project take?',
+                      a: 'Project timelines vary based on scope. Most projects range from 4-12 weeks.',
+                    },
+                    {
+                      q: 'What is your pricing model?',
+                      a: 'We offer both fixed-price and hourly engagement models depending on project needs.',
+                    },
+                    {
+                      q: 'Do you offer ongoing support?',
+                      a: 'Yes! We provide maintenance and support packages for all completed projects.',
+                    },
+                  ].map((faq, idx) => (
+                    <Box key={idx} sx={{ mb: idx < 2 ? 3 : 0 }}>
+                      <Typography sx={{ fontWeight: 600, mb: 0.5, fontSize: 15 }}>
+                        {faq.q}
+                      </Typography>
+                      <Typography sx={{ color: 'text.secondary', fontSize: 14 }}>
+                        {faq.a}
+                      </Typography>
+                    </Box>
+                  ))}
+                </Box>
+              </Reveal>
             </Grid>
           </Grid>
         </Container>

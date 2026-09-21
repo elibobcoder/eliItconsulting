@@ -18,6 +18,7 @@ declare global {
     description: string
     highlights: [string, string]
     ctaLabel: string
+    photo: string
     whyEyebrow: string
     whyTitle: string
     whyIntro: string

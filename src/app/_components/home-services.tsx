@@ -10,17 +10,19 @@ import Grid from '@mui/material/Grid'
 import Chip from '@mui/material/Chip'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
-import { SectionTitle } from '@/components/core'
+import { SectionTitle, Reveal } from '@/components/core'
 
 // constants
 import { services } from '@/constants/service'
 
 type ServiceItemProps = {
   item: IService
+  index: number
 }
-const HomeServiceItem = ({ item }: ServiceItemProps) => {
+const HomeServiceItem = ({ item, index }: ServiceItemProps) => {
   return (
     <Grid size={{ xs: 12, md: 6 }}>
+      <Reveal index={index}>
       <Box
         sx={{
           height: '100%',
@@ -93,6 +95,7 @@ const HomeServiceItem = ({ item }: ServiceItemProps) => {
           </Box>
         )}
       </Box>
+      </Reveal>
     </Grid>
   )
 }
@@ -110,46 +113,48 @@ const HomeServices = () => {
       }}
     >
       <Container maxWidth='lg'>
-        <Box
-          sx={{
-            mb: 6,
-            display: 'flex',
-            flexDirection: { xs: 'column', md: 'row' },
-            alignItems: { xs: 'flex-start', md: 'flex-end' },
-            justifyContent: 'space-between',
-            gap: 3,
-          }}
-        >
-          <Box sx={{ maxWidth: 640 }}>
-            <SectionTitle>WHAT WE DO</SectionTitle>
-            <Typography
-              variant='h1'
-              sx={{
-                fontSize: { xs: 26, md: 36 },
-                fontWeight: 800,
-                lineHeight: 1.3,
-              }}
-            >
-              Every discipline you need, under one roof.
-            </Typography>
-          </Box>
-          <Link
-            href='/services'
-            style={{
-              textDecoration: 'none',
-              color: 'inherit',
-              fontWeight: 700,
-              borderBottom: '2px solid currentColor',
-              whiteSpace: 'nowrap',
+        <Reveal>
+          <Box
+            sx={{
+              mb: 6,
+              display: 'flex',
+              flexDirection: { xs: 'column', md: 'row' },
+              alignItems: { xs: 'flex-start', md: 'flex-end' },
+              justifyContent: 'space-between',
+              gap: 3,
             }}
           >
-            Everything we do &rarr;
-          </Link>
-        </Box>
+            <Box sx={{ maxWidth: 640 }}>
+              <SectionTitle>WHAT WE DO</SectionTitle>
+              <Typography
+                variant='h1'
+                sx={{
+                  fontSize: { xs: 26, md: 36 },
+                  fontWeight: 800,
+                  lineHeight: 1.3,
+                }}
+              >
+                Every discipline you need, under one roof.
+              </Typography>
+            </Box>
+            <Link
+              href='/services'
+              style={{
+                textDecoration: 'none',
+                color: 'inherit',
+                fontWeight: 700,
+                borderBottom: '2px solid currentColor',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              Everything we do &rarr;
+            </Link>
+          </Box>
+        </Reveal>
 
         <Grid container spacing={3}>
-          {services.map((item) => (
-            <HomeServiceItem item={item} key={item.title} />
+          {services.map((item, index) => (
+            <HomeServiceItem item={item} index={index} key={item.title} />
           ))}
         </Grid>
       </Container>
