@@ -48,7 +48,7 @@ export default async function RootLayout({
 }>): Promise<JSX.Element> {
   const cookieStore = await cookies()
   const storedMode = cookieStore.get(PREFERRED_MODE_KEY)?.value
-  const initialIsDark = storedMode ? storedMode === 'dark' : true
+  const initialIsDark = storedMode ? storedMode === 'dark' : false
 
   return (
     <html lang='en'>

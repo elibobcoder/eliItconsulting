@@ -37,6 +37,13 @@ export const companyMenus: IMenu[] = [
     ),
   },
   {
+    label: 'Blog',
+    path: '/blog',
+    icon: (
+      <Box component={PaperOutlinedIcon} sx={{ width: 18, height: 'auto' }} />
+    ),
+  },
+  {
     label: 'Contact',
     path: '/contact',
     icon: (
@@ -59,22 +66,42 @@ export const companyMenus: IMenu[] = [
   },
 ]
 
-export const aboutDropdownLinks: IMenu[] = [
-  {
-    label: 'About Us',
-    path: '/about',
-    icon: (
-      <Box component={InfoOutlinedIcon} sx={{ width: 18, height: 'auto' }} />
-    ),
+export const aboutMegaMenu: {
+  intro: IMegaMenuIntro
+  columns: IMegaMenuLinkColumn[]
+} = {
+  intro: {
+    title: 'About',
+    description:
+      'We’re a small, focused IT consulting team helping businesses plan, build, and scale their software.',
+    ctaLabel: 'Our Story',
+    ctaPath: '/about',
   },
-  {
-    label: 'Careers',
-    path: '/career',
-    icon: (
-      <Box component={WorkOutlinedIcon} sx={{ width: 18, height: 'auto' }} />
-    ),
-  },
-]
+  columns: [
+    {
+      heading: 'COMPANY',
+      links: [
+        { label: 'About Us', path: '/about' },
+        { label: 'Our Team', path: '/about#team' },
+        { label: 'Contact Us', path: '/contact' },
+      ],
+    },
+    {
+      heading: 'CAREERS',
+      links: [
+        { label: 'Careers', path: '/career' },
+        { label: 'Company Culture', path: '/culture' },
+      ],
+    },
+    {
+      heading: 'RESOURCES',
+      links: [
+        { label: 'Blog', path: '/blog' },
+        { label: 'FAQs', path: '/faq' },
+      ],
+    },
+  ],
+}
 
 export const servicesMegaMenu: {
   intro: IMegaMenuIntro
