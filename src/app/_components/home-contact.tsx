@@ -217,7 +217,7 @@ const HomeContact = () => {
                     },
                   })}
                   component='a'
-                  href='tel:+15551234567'
+                  href='tel:+13512134567'
                 >
                   <>
                     <Box
@@ -232,7 +232,7 @@ const HomeContact = () => {
                         sx={{ mr: 1, width: 25, height: 25 }}
                       />
                       <Typography sx={{ mb: 0 }} variant='h5'>
-                        +1 (555) 123-4567
+                        +1 (351) 213-4567
                       </Typography>
                     </Box>
                     <Typography

@@ -80,9 +80,9 @@ const FooterContactInfo: FC = () => {
         }
       />
       <ContactInfoItem
-        value='+1 (555) 123-4567'
+        value='+1 (351) 213-4567'
         label='Mon - Fri / 9am - 6pm EST'
-        link='tel:+15551234567'
+        link='tel:+13512134567'
         icon={
           <Box
             component={PhoneIcon}

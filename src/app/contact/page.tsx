@@ -23,9 +23,9 @@ const contactInfo = [
   {
     icon: PhoneIcon,
     title: 'Call Us',
-    value: '+1 (555) 123-4567',
+    value: '+1 (351) 213-4567',
     subtitle: 'Mon - Fri, 9am - 6pm EST',
-    href: 'tel:+15551234567',
+    href: 'tel:+13512134567',
   },
   {
     icon: LocationIcon,

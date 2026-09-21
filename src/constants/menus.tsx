@@ -12,7 +12,6 @@ import ContactSupportOutlinedIcon from '@/assets/icons/material-symbols--contact
 import PaperOutlinedIcon from '@/assets/icons/quill--paper.svg'
 import EmailOutlinedIcon from '@/assets/icons/eva--email-outline.svg'
 import ShieldOutlinedIcon from '@/assets/icons/hugeicons--shield-01.svg'
-import ConversationOutlinedIcon from '@/assets/icons/ci--chat-conversation.svg'
 
 export const companyMenus: IMenu[] = [
   {
@@ -219,7 +218,7 @@ export const industriesMegaMenu: {
 export const supportLinks: IMenu[] = [
   {
     label: 'Help Center',
-    path: '/help-center',
+    path: '/faq',
     icon: (
       <Box
         component={ContactSupportOutlinedIcon}
@@ -229,34 +228,23 @@ export const supportLinks: IMenu[] = [
   },
   {
     label: 'Contact Us',
-    path: '/contact-us',
+    path: '/contact',
     icon: (
       <Box component={EmailOutlinedIcon} sx={{ width: 18, height: 'auto' }} />
     ),
   },
-
   {
-    label: 'Terms of Services',
-    path: '/terms-of-services',
+    label: 'Terms of Service',
+    path: '/terms',
     icon: (
       <Box component={PaperOutlinedIcon} sx={{ width: 18, height: 'auto' }} />
     ),
   },
   {
     label: 'Privacy Policy',
-    path: '/privacy-policy',
+    path: '/privacy',
     icon: (
       <Box component={ShieldOutlinedIcon} sx={{ width: 18, height: 'auto' }} />
-    ),
-  },
-  {
-    label: 'Live Chat',
-    path: '/live-chat',
-    icon: (
-      <Box
-        component={ConversationOutlinedIcon}
-        sx={{ width: 18, height: 'auto' }}
-      />
     ),
   },
 ]
