@@ -22,8 +22,39 @@ const IntroColumn: FC<{ intro: IMegaMenuIntro }> = ({ intro }) => (
     <Typography
       sx={{ fontSize: 13, color: 'text.secondary', mb: 2, lineHeight: 1.6 }}
     >
-      {intro.description}
+      {intro.descriptionLinkLabel && intro.descriptionLinkPath ? (
+        <>
+          {intro.description}{' '}
+          <Link
+            href={intro.descriptionLinkPath}
+            style={{ color: 'inherit', textDecoration: 'underline' }}
+          >
+            {intro.descriptionLinkLabel}
+          </Link>
+          , built around your needs:
+        </>
+      ) : (
+        intro.description
+      )}
     </Typography>
+    {intro.quickLinks && (
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.2, mb: 2.5 }}>
+        {intro.quickLinks.map((item) => (
+          <Link
+            key={item.path}
+            href={item.path}
+            style={{
+              fontSize: 14,
+              fontWeight: 600,
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+            {item.label}
+          </Link>
+        ))}
+      </Box>
+    )}
     <Link
       href={intro.ctaPath}
       style={{

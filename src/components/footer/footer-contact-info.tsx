@@ -69,9 +69,9 @@ const FooterContactInfo: FC = () => {
     <Box sx={{ mb: { xs: 4, md: 0 } }}>
       <FooterSectionTitle title='Contact Info' />
       <ContactInfoItem
-        value='info@example.com'
-        label='Response within 24hrs'
-        link='mailto:info@example.com'
+        value='hello@eliitconsulting.com'
+        label='We reply within 24 hours'
+        link='mailto:hello@eliitconsulting.com'
         icon={
           <Box
             component={EmailIcon}
@@ -80,9 +80,9 @@ const FooterContactInfo: FC = () => {
         }
       />
       <ContactInfoItem
-        value='+62 812000xxxx'
-        label='Sen - Jum / 9am - 5:30pm'
-        link='https://wa.me/62812000xxxx'
+        value='+1 (555) 123-4567'
+        label='Mon - Fri / 9am - 6pm EST'
+        link='tel:+15551234567'
         icon={
           <Box
             component={PhoneIcon}
@@ -91,7 +91,7 @@ const FooterContactInfo: FC = () => {
         }
       />
       <ContactInfoItem
-        value='123 Business St., Suite 456, City, State, ZIP Code, Country'
+        value='123 Innovation Drive, San Francisco, CA 94105'
         label='Office'
         link='#'
         icon={

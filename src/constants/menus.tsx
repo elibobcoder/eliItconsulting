@@ -82,10 +82,17 @@ export const servicesMegaMenu: {
 } = {
   intro: {
     title: 'Services',
-    description:
-      'Get technology services built around your needs, from a single feature to a full product.',
+    description: 'Get',
+    descriptionLinkLabel: 'software development services',
+    descriptionLinkPath: '/services',
     ctaLabel: 'All Services',
     ctaPath: '/services',
+    quickLinks: [
+      { label: 'Staff Augmentation', path: '/services/staff-augmentation' },
+      { label: 'Dedicated Teams', path: '/services/dedicated-teams' },
+      { label: 'Software Outsourcing', path: '/services/software-outsourcing' },
+      { label: 'AI Transformation', path: '/services/ai-transformation' },
+    ],
   },
   columns: [
     {
@@ -121,23 +128,40 @@ export const technologiesMegaMenu: {
 } = {
   intro: {
     title: 'Technologies',
-    description:
-      'We work across a wide range of tools and frameworks so you can pick the right stack for the job.',
-    ctaLabel: 'Discuss Your Stack',
-    ctaPath: '/contact',
+    description: 'Get experts in 20+ technologies. Cover any tech stack.',
+    ctaLabel: 'All Technologies',
+    ctaPath: '/services',
+    quickLinks: [
+      { label: 'Hire Software Developers', path: '/hire-developers' },
+      { label: 'Top 1% Talent', path: '/top-talent' },
+    ],
   },
   columns: [
     {
       heading: 'FRONT-END',
-      tags: ['React', 'Next.js', 'Angular', 'TypeScript'],
+      tags: ['Angular', 'JavaScript', 'React', 'TypeScript', 'Vue.js'],
     },
     {
       heading: 'BACK-END',
-      tags: ['Node.js', 'Python', 'Java', '.NET'],
+      tags: [
+        '.NET',
+        'C#',
+        'Django',
+        'Golang',
+        'Java',
+        'Node.js',
+        'PHP',
+        'Python',
+        'Ruby',
+      ],
     },
     {
-      heading: 'CLOUD & DATA',
-      tags: ['AWS', 'Azure', 'PostgreSQL', 'AI / ML'],
+      heading: 'CLOUD & PLATFORMS',
+      tags: ['AWS', 'Google Cloud', 'Microsoft Azure', 'Power BI', 'Salesforce'],
+    },
+    {
+      heading: 'AI, DATA & MOBILE',
+      tags: ['AI', 'C++', 'Kotlin', 'Machine Learning', 'Xamarin'],
     },
   ],
 }
