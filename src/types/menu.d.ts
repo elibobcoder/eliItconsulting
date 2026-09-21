@@ -20,8 +20,11 @@ declare global {
   interface IMegaMenuIntro {
     title: string
     description: string
+    descriptionLinkLabel?: string
+    descriptionLinkPath?: string
     ctaLabel: string
     ctaPath: string
+    quickList?: string[]
   }
 }
 

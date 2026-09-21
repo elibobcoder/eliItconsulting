@@ -6,9 +6,6 @@ import React, { FC, useCallback } from 'react'
 import Box from '@mui/material/Box'
 import { StyledRoundedButton } from '@/components/core'
 
-// js cookie
-// import Cookie from 'js-cookie'
-
 // hooks
 import { useApp } from '@/hooks'
 
@@ -16,8 +13,7 @@ import { useApp } from '@/hooks'
 import { PREFERRED_MODE_KEY } from '@/constants'
 
 const saveCookies = (mode: string) => {
-  // Cookie.set('preferred_color_mode', mode)
-  window.localStorage.setItem(PREFERRED_MODE_KEY, mode)
+  document.cookie = `${PREFERRED_MODE_KEY}=${mode}; path=/; max-age=31536000; SameSite=Lax`
 }
 
 const SwitchDarkMode: FC = () => {

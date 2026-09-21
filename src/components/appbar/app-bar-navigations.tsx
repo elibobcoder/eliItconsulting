@@ -103,10 +103,10 @@ const AppBarNavigation: FC<Props> = () => {
         alignItems: 'center',
       }}
     >
-      <NavDropdown label='Services' panelWidth={620}>
+      <NavDropdown label='Services' panelWidth={660}>
         <ServicesMegaPanel />
       </NavDropdown>
-      <NavDropdown label='Technologies' panelWidth={480}>
+      <NavDropdown label='Technologies' panelWidth={720}>
         <TechnologiesMegaPanel />
       </NavDropdown>
       <NavDropdown label='Industries' panelWidth={440}>
