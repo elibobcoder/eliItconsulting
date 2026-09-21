@@ -5,7 +5,8 @@ import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
-import { SectionTitle } from '@/components/core'
+import { motion } from 'framer-motion'
+import { SectionTitle, Reveal } from '@/components/core'
 
 const TESTIMONIALS = [
   {
@@ -40,42 +41,49 @@ const HomeTestimonials = () => {
       }}
     >
       <Container maxWidth='lg'>
-        <Box sx={{ mb: 6, maxWidth: 640 }}>
-          <SectionTitle>WHAT CLIENTS SAY</SectionTitle>
-          <Typography
-            variant='h1'
-            sx={{ fontSize: { xs: 26, md: 36 }, fontWeight: 800 }}
-          >
-            No need to wonder. Working with us is straightforward.
-          </Typography>
-        </Box>
+        <Reveal>
+          <Box sx={{ mb: 6, maxWidth: 640 }}>
+            <SectionTitle>WHAT CLIENTS SAY</SectionTitle>
+            <Typography
+              variant='h1'
+              sx={{ fontSize: { xs: 26, md: 36 }, fontWeight: 800 }}
+            >
+              No need to wonder. Working with us is straightforward.
+            </Typography>
+          </Box>
+        </Reveal>
         <Grid container spacing={3}>
-          {TESTIMONIALS.map((t) => (
+          {TESTIMONIALS.map((t, index) => (
             <Grid key={t.name} size={{ xs: 12, md: 4 }}>
-              <Box
-                sx={{
-                  height: '100%',
-                  p: 4,
-                  borderRadius: 4,
-                  backgroundColor: (theme) =>
-                    theme.palette.mode === 'dark' ? '#101014' : '#f7f8fb',
-                }}
-              >
-                <Typography
+              <Reveal index={index}>
+                <Box
+                  component={motion.div}
+                  whileHover={{ y: -6 }}
+                  transition={{ duration: 0.3 }}
                   sx={{
-                    fontSize: 16,
-                    lineHeight: 1.7,
-                    color: 'text.primary',
-                    mb: 3,
+                    height: '100%',
+                    p: 4,
+                    borderRadius: 4,
+                    backgroundColor: (theme) =>
+                      theme.palette.mode === 'dark' ? '#101014' : '#f7f8fb',
                   }}
                 >
-                  &ldquo;{t.quote}&rdquo;
-                </Typography>
-                <Typography sx={{ fontWeight: 700 }}>{t.name}</Typography>
-                <Typography sx={{ color: 'text.secondary', fontSize: 14 }}>
-                  {t.role}
-                </Typography>
-              </Box>
+                  <Typography
+                    sx={{
+                      fontSize: 16,
+                      lineHeight: 1.7,
+                      color: 'text.primary',
+                      mb: 3,
+                    }}
+                  >
+                    &ldquo;{t.quote}&rdquo;
+                  </Typography>
+                  <Typography sx={{ fontWeight: 700 }}>{t.name}</Typography>
+                  <Typography sx={{ color: 'text.secondary', fontSize: 14 }}>
+                    {t.role}
+                  </Typography>
+                </Box>
+              </Reveal>
             </Grid>
           ))}
         </Grid>

@@ -9,7 +9,7 @@ import Grid from '@mui/material/Grid'
 import Divider from '@mui/material/Divider'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
-import { SectionTitle } from '@/components/core'
+import { SectionTitle, Reveal, CountUp } from '@/components/core'
 import { styled, useMediaQuery, useTheme } from '@mui/material'
 
 const CONTENT = [
@@ -46,28 +46,30 @@ const HomeOurMotivation = () => {
       <Container>
         <Grid container spacing={6}>
           <Grid size={{ xs: 12, md: 4 }} sx={{ pr: 4 }}>
-            <Box>
-              <SectionTitle>BY THE NUMBERS</SectionTitle>
-              <Typography
-                variant='h1'
-                sx={{
-                  fontSize: { xs: 20, md: 26, lg: 32 },
-                  mb: 3,
-                  lineHeight: 1.4,
-                }}
-              >
-                Results that speak for themselves.
-              </Typography>
-              <Typography
-                sx={{
-                  color: 'text.secondary',
-                  fontSize: { xs: 14, md: 17 },
-                  lineHeight: 1.8,
-                }}
-              >
-                We enjoy finding simple solutions for complex challenges.
-              </Typography>
-            </Box>
+            <Reveal>
+              <Box>
+                <SectionTitle>BY THE NUMBERS</SectionTitle>
+                <Typography
+                  variant='h1'
+                  sx={{
+                    fontSize: { xs: 20, md: 26, lg: 32 },
+                    mb: 3,
+                    lineHeight: 1.4,
+                  }}
+                >
+                  Results that speak for themselves.
+                </Typography>
+                <Typography
+                  sx={{
+                    color: 'text.secondary',
+                    fontSize: { xs: 14, md: 17 },
+                    lineHeight: 1.8,
+                  }}
+                >
+                  We enjoy finding simple solutions for complex challenges.
+                </Typography>
+              </Box>
+            </Reveal>
           </Grid>
           <Grid size={{ xs: 12, md: 8 }}>
             <Box
@@ -81,23 +83,25 @@ const HomeOurMotivation = () => {
               <Grid container spacing={matchMobile ? 2 : 3}>
                 {CONTENT.map((item, index) => (
                   <Grid key={String(index)} size={{ xs: 6, md: 4 }}>
-                    <StyledBox>
-                      <StyledTitle variant='h2' sx={{ fontWeight: '800' }}>
-                        {item.value}
-                      </StyledTitle>
-                      <StyledIcon>
-                        <Image
-                          src={item.image}
-                          width={80}
-                          height={80}
-                          alt={item.description}
-                        />
-                      </StyledIcon>
-                      <Divider sx={{ width: 36, my: 2 }} />
-                      <Box>
-                        <Typography>{item.description}</Typography>
-                      </Box>
-                    </StyledBox>
+                    <Reveal index={index}>
+                      <StyledBox>
+                        <StyledTitle variant='h2' sx={{ fontWeight: '800' }}>
+                          <CountUp value={item.value} />
+                        </StyledTitle>
+                        <StyledIcon>
+                          <Image
+                            src={item.image}
+                            width={80}
+                            height={80}
+                            alt={item.description}
+                          />
+                        </StyledIcon>
+                        <Divider sx={{ width: 36, my: 2 }} />
+                        <Box>
+                          <Typography>{item.description}</Typography>
+                        </Box>
+                      </StyledBox>
+                    </Reveal>
                   </Grid>
                 ))}
               </Grid>

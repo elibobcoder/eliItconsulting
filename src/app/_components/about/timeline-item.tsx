@@ -3,6 +3,7 @@
 import React from 'react'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
+import { motion } from 'framer-motion'
 
 export interface Milestone {
   year: string
@@ -16,8 +17,15 @@ interface TimelineItemProps {
 }
 
 const TimelineItem = ({ milestone, index }: TimelineItemProps) => {
+  const fromSide = index % 2 === 0 ? 40 : -40
+
   return (
     <Box
+      component={motion.div}
+      initial={{ opacity: 0, x: fromSide }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, amount: 0.4 }}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       sx={{
         position: 'relative',
         mb: 4,

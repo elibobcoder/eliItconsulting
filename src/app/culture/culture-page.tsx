@@ -2,11 +2,19 @@
 
 import React from 'react'
 import NextLink from 'next/link'
+import Image from 'next/image'
 import Box from '@mui/material/Box'
+import Grid from '@mui/material/Grid'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import { useTheme } from '@mui/material/styles'
-import { StyledButton, SectionTitle } from '@/components/core'
+import { motion } from 'framer-motion'
+import {
+  StyledButton,
+  SectionTitle,
+  Reveal,
+  DecorativeOrbs,
+} from '@/components/core'
 import BenefitsGrid from '@/app/_components/engagement/benefits-grid'
 import {
   RocketIcon,
@@ -15,6 +23,7 @@ import {
   LayersIcon,
   ClipboardCheckIcon,
 } from '@/app/_components/engagement/icons'
+import { stockPhotos } from '@/constants/stock-photos'
 
 const PILLARS = [
   {
@@ -49,6 +58,12 @@ const PILLARS = [
   },
 ]
 
+const GALLERY = [
+  { src: stockPhotos.remoteWork, alt: 'Remote work setup' },
+  { src: stockPhotos.officeCulture, alt: 'Team collaborating' },
+  { src: stockPhotos.teamDiscussion, alt: 'Team discussion' },
+]
+
 const CulturePage = () => {
   const theme = useTheme()
 
@@ -58,50 +73,91 @@ const CulturePage = () => {
         sx={{
           pt: { xs: 16, md: 20 },
           pb: { xs: 8, md: 12 },
+          position: 'relative',
+          overflow: 'hidden',
           backgroundColor: theme.palette.mode === 'dark' ? '#151733' : '#e8f3ff',
         }}
       >
-        <Container maxWidth='md' sx={{ textAlign: 'center' }}>
-          <Box
-            sx={{
-              mb: 3,
-              borderRadius: 1,
-              display: 'inline-block',
-              padding: '6px 14px',
-              backgroundColor:
-                theme.palette.mode === 'dark' ? 'rgb(255,255,255,0.10)' : 'primary.light',
-              color: theme.palette.mode === 'dark' ? '#fbfbfb' : 'primary.main',
-            }}
-          >
-            <Typography sx={{ fontSize: 12, letterSpacing: 1, textTransform: 'uppercase' }} variant='h5'>
-              Company Culture
-            </Typography>
-          </Box>
-          <Typography
-            variant='h1'
-            sx={{ mb: 3, fontSize: { xs: 32, md: 48 }, fontWeight: 800, lineHeight: 1.2 }}
-          >
-            How we
-            <br />
-            <Box component='span' sx={{ color: 'primary.main' }}>
-              actually work.
+        <DecorativeOrbs />
+        <Container maxWidth='md' sx={{ textAlign: 'center', position: 'relative' }}>
+          <Reveal>
+            <Box
+              sx={{
+                mb: 3,
+                borderRadius: 1,
+                display: 'inline-block',
+                padding: '6px 14px',
+                backgroundColor:
+                  theme.palette.mode === 'dark' ? 'rgb(255,255,255,0.10)' : 'primary.light',
+                color: theme.palette.mode === 'dark' ? '#fbfbfb' : 'primary.main',
+              }}
+            >
+              <Typography sx={{ fontSize: 12, letterSpacing: 1, textTransform: 'uppercase' }} variant='h5'>
+                Company Culture
+              </Typography>
             </Box>
-          </Typography>
-          <Typography
-            sx={{ fontSize: { xs: 16, md: 20 }, color: 'text.secondary', maxWidth: 640, mx: 'auto' }}
-          >
-            Culture isn&apos;t a poster on a wall. It&apos;s the habits that
-            hold up when nobody&apos;s watching.
-          </Typography>
+            <Typography
+              variant='h1'
+              sx={{ mb: 3, fontSize: { xs: 32, md: 48 }, fontWeight: 800, lineHeight: 1.2 }}
+            >
+              How we
+              <br />
+              <Box component='span' sx={{ color: 'primary.main' }}>
+                actually work.
+              </Box>
+            </Typography>
+            <Typography
+              sx={{ fontSize: { xs: 16, md: 20 }, color: 'text.secondary', maxWidth: 640, mx: 'auto' }}
+            >
+              Culture isn&apos;t a poster on a wall. It&apos;s the habits that
+              hold up when nobody&apos;s watching.
+            </Typography>
+          </Reveal>
         </Container>
       </Box>
 
-      <Box sx={{ py: { xs: 8, md: 12 }, backgroundColor: 'background.paper' }}>
+      {/* Photo gallery */}
+      <Box sx={{ py: { xs: 6, md: 8 }, backgroundColor: 'background.paper' }}>
         <Container maxWidth='lg'>
-          <SectionTitle>WHAT THIS LOOKS LIKE DAY TO DAY</SectionTitle>
-          <Typography variant='h2' sx={{ mb: 5, fontSize: { xs: 24, md: 32 }, fontWeight: 800 }}>
-            The habits behind the work.
-          </Typography>
+          <Grid container spacing={2}>
+            {GALLERY.map((photo, index) => (
+              <Grid key={photo.alt} size={{ xs: 12, sm: 4 }}>
+                <Reveal index={index}>
+                  <Box
+                    component={motion.div}
+                    whileHover={{ scale: 1.03 }}
+                    transition={{ duration: 0.4 }}
+                    sx={{
+                      position: 'relative',
+                      height: { xs: 200, md: 240 },
+                      borderRadius: 4,
+                      overflow: 'hidden',
+                      boxShadow: 2,
+                    }}
+                  >
+                    <Image
+                      src={photo.src}
+                      alt={photo.alt}
+                      fill
+                      sizes='(max-width: 900px) 100vw, 33vw'
+                      style={{ objectFit: 'cover' }}
+                    />
+                  </Box>
+                </Reveal>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </Box>
+
+      <Box sx={{ py: { xs: 8, md: 12 }, backgroundColor: (t) => t.palette.mode === 'dark' ? '#101014' : '#f7f8fb' }}>
+        <Container maxWidth='lg'>
+          <Reveal>
+            <SectionTitle>WHAT THIS LOOKS LIKE DAY TO DAY</SectionTitle>
+            <Typography variant='h2' sx={{ mb: 5, fontSize: { xs: 24, md: 32 }, fontWeight: 800 }}>
+              The habits behind the work.
+            </Typography>
+          </Reveal>
           <BenefitsGrid items={PILLARS} />
         </Container>
       </Box>
@@ -109,22 +165,24 @@ const CulturePage = () => {
       <Box
         sx={{
           py: { xs: 8, md: 10 },
-          backgroundColor: theme.palette.mode === 'dark' ? '#101014' : '#f7f8fb',
+          backgroundColor: 'background.paper',
           textAlign: 'center',
         }}
       >
         <Container maxWidth='sm'>
-          <Typography variant='h2' sx={{ mb: 2, fontSize: { xs: 22, md: 30 }, fontWeight: 800 }}>
-            Want to be part of it?
-          </Typography>
-          <Typography sx={{ mb: 4, color: 'text.secondary', fontSize: { xs: 15, md: 17 } }}>
-            We&apos;re always open to hearing from people who&apos;d be a good fit.
-          </Typography>
-          <NextLink href='/career' passHref>
-            <StyledButton variant='contained' size='large' color='primary'>
-              See Open Roles
-            </StyledButton>
-          </NextLink>
+          <Reveal>
+            <Typography variant='h2' sx={{ mb: 2, fontSize: { xs: 22, md: 30 }, fontWeight: 800 }}>
+              Want to be part of it?
+            </Typography>
+            <Typography sx={{ mb: 4, color: 'text.secondary', fontSize: { xs: 15, md: 17 } }}>
+              We&apos;re always open to hearing from people who&apos;d be a good fit.
+            </Typography>
+            <NextLink href='/career' passHref>
+              <StyledButton variant='contained' size='large' color='primary'>
+                See Open Roles
+              </StyledButton>
+            </NextLink>
+          </Reveal>
         </Container>
       </Box>
     </Box>

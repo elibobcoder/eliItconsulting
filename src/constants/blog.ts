@@ -1,3 +1,5 @@
+import { stockPhotos } from './stock-photos'
+
 export const blogPosts: IBlogPost[] = [
   {
     slug: 'staff-augmentation-vs-dedicated-teams-vs-outsourcing',
@@ -7,6 +9,7 @@ export const blogPosts: IBlogPost[] = [
     category: 'Engagement Models',
     date: '2026-08-04',
     readTime: '6 min read',
+    coverImage: stockPhotos.teamPlanning,
     content: [
       'Most teams reach for "we need more engineers" as the answer, without stopping to ask what kind of gap they actually have. That distinction matters more than headcount, because it determines which engagement model will actually solve the problem instead of just adding people to it.',
       'Staff augmentation fits when the gap is a skill, not a workstream. Your team has direction and process; it just needs an extra pair of senior hands who can plug into what already exists. The engineer works your hours, joins your standups, and reports to your leads. You keep full management control, which is exactly the point: you already know how to run the work, you just need more capacity to run it with.',
@@ -23,6 +26,7 @@ export const blogPosts: IBlogPost[] = [
     category: 'Team Strategy',
     date: '2026-07-18',
     readTime: '5 min read',
+    coverImage: stockPhotos.codeReview,
     content: [
       'Nobody schedules a meeting titled "we are now understaffed." The signals show up gradually, and each one has a reasonable-sounding explanation on its own. Here are five worth paying attention to together, not just individually.',
       'The roadmap keeps sliding, and the reason changes each time. One quarter it’s a hiring delay, the next it’s a dependency, the next it’s scope creep. When the excuse rotates but the outcome doesn’t, the real constraint is usually capacity, not any one of those specific reasons.',
@@ -40,6 +44,7 @@ export const blogPosts: IBlogPost[] = [
     category: 'AI & Automation',
     date: '2026-06-27',
     readTime: '7 min read',
+    coverImage: stockPhotos.aiAbstract,
     content: [
       'For a smaller business, the hardest part of AI adoption usually isn’t the technology — it’s deciding where to point it. Here’s a framework that avoids the two most common failure modes: chasing AI for its own sake, and never starting because the "right" use case never feels obvious enough.',
       'Start with the workflow, not the model. Before evaluating any tool, map out where your team spends time on repetitive, well-defined work: summarizing documents, triaging support tickets, drafting first-pass copy, reconciling data between systems. These are the workflows where AI tends to produce reliable value, because the task is bounded and the output is easy to check.',
@@ -57,6 +62,7 @@ export const blogPosts: IBlogPost[] = [
     category: 'Team Strategy',
     date: '2026-05-30',
     readTime: '5 min read',
+    coverImage: stockPhotos.remoteWork,
     content: [
       'Timezone alignment matters, but it’s table stakes, not the differentiator. Plenty of teams share working hours and still struggle to collaborate well. What separates the teams that genuinely work well together comes down to a few less obvious habits.',
       'Decisions live in writing, not in someone’s head. When a decision is only ever discussed verbally, it becomes invisible to anyone who wasn’t in the room, remote or not. Teams that collaborate well default to writing decisions down, even briefly, so context doesn’t depend on who happened to be online at the time.',
@@ -73,6 +79,7 @@ export const blogPosts: IBlogPost[] = [
     category: 'Our Process',
     date: '2026-05-09',
     readTime: '4 min read',
+    coverImage: stockPhotos.teamPresentation,
     content: [
       'Technical interviews get a bad reputation because so many of them test the wrong thing: trivia, whiteboard puzzles, or problems that have nothing to do with the work someone will actually do. A vetting process is only as good as how closely it resembles the real job.',
       'We look for three things, in this order. First, technical depth: can this person reason through a real, messy problem, not just recite a textbook algorithm. Second, communication: can they explain their thinking clearly enough that a remote teammate can follow it without extra back-and-forth. Third, fit: do they collaborate in a way that matches how the team actually works, not just how they say they work.',

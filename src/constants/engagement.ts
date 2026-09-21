@@ -1,3 +1,5 @@
+import { stockPhotos } from './stock-photos'
+
 export const engagementModels: Record<string, IEngagementModel> = {
   'staff-augmentation': {
     slug: 'staff-augmentation',
@@ -8,6 +10,7 @@ export const engagementModels: Record<string, IEngagementModel> = {
       'Slot experienced developers directly into your existing team to close skill gaps and keep delivery moving, without the time or cost of a full hiring cycle.',
     highlights: ['Senior engineers', 'Start in a matter of weeks'],
     ctaLabel: 'Talk About Staff Augmentation',
+    photo: stockPhotos.codeReview,
     whyEyebrow: 'Why Staff Augmentation',
     whyTitle: 'Close capacity gaps without changing how you work.',
     whyIntro:
@@ -66,6 +69,7 @@ export const engagementModels: Record<string, IEngagementModel> = {
       'Get a self-managing squad that owns a specific product or workstream end-to-end, coordinated by a dedicated lead so your team isn’t managing every task.',
     highlights: ['Self-managing squad', 'Built around your stack'],
     ctaLabel: 'Talk About Dedicated Teams',
+    photo: stockPhotos.standupMeeting,
     whyEyebrow: 'Why Dedicated Teams',
     whyTitle: 'Ship more software without more project management.',
     whyIntro:
@@ -124,6 +128,7 @@ export const engagementModels: Record<string, IEngagementModel> = {
       'Give us a defined project and we’ll own it end-to-end, from scoping through deployment, while keeping you informed at every stage.',
     highlights: ['Full project ownership', 'Clear milestones'],
     ctaLabel: 'Talk About Outsourcing',
+    photo: stockPhotos.teamWorkshop,
     whyEyebrow: 'Why Software Outsourcing',
     whyTitle: 'Ship a project without derailing your roadmap.',
     whyIntro:
@@ -182,6 +187,7 @@ export const engagementModels: Record<string, IEngagementModel> = {
       'From automating manual workflows to shipping AI-powered features, we help you find where AI creates real value and build it into your existing systems.',
     highlights: ['Practical, not experimental', 'Fits your existing stack'],
     ctaLabel: 'Talk About AI Transformation',
+    photo: stockPhotos.aiConcept,
     whyEyebrow: 'Why AI Transformation',
     whyTitle: 'AI that fits how your business actually works.',
     whyIntro:

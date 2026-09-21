@@ -4,6 +4,8 @@ import React from 'react'
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
+import { motion } from 'framer-motion'
+import { Reveal } from '@/components/core'
 
 const INDUSTRIES = [
   'Startups',
@@ -27,17 +29,19 @@ const HomeTrust = () => {
       }}
     >
       <Container maxWidth='lg'>
-        <Typography
-          sx={{
-            textAlign: 'center',
-            fontSize: { xs: 16, md: 20 },
-            fontWeight: 600,
-            color: 'text.secondary',
-            mb: 3,
-          }}
-        >
-          Trusted by teams who need software that ships and keeps working.
-        </Typography>
+        <Reveal>
+          <Typography
+            sx={{
+              textAlign: 'center',
+              fontSize: { xs: 16, md: 20 },
+              fontWeight: 600,
+              color: 'text.secondary',
+              mb: 3,
+            }}
+          >
+            Trusted by teams who need software that ships and keeps working.
+          </Typography>
+        </Reveal>
         <Box
           sx={{
             display: 'flex',
@@ -46,9 +50,19 @@ const HomeTrust = () => {
             gap: { xs: 1.5, md: 2 },
           }}
         >
-          {INDUSTRIES.map((industry) => (
+          {INDUSTRIES.map((industry, index) => (
             <Box
               key={industry}
+              component={motion.div}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.4 }}
+              whileHover={{ scale: 1.06 }}
+              transition={{
+                duration: 0.4,
+                delay: index * 0.06,
+                ease: 'easeOut',
+              }}
               sx={{
                 px: 2.5,
                 py: 1,
@@ -58,6 +72,7 @@ const HomeTrust = () => {
                 letterSpacing: 0.3,
                 color: 'primary.main',
                 backgroundColor: 'primary.light',
+                cursor: 'default',
               }}
             >
               {industry}

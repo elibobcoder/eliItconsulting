@@ -7,6 +7,8 @@ import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
 import { useTheme } from '@mui/material/styles'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Reveal, DecorativeOrbs, CountUp } from '@/components/core'
 import { ProjectCard, type Project } from '@/app/_components/portfolio'
 
 const categories = [
@@ -136,62 +138,65 @@ const PortfolioPage = () => {
           overflow: 'hidden',
         }}
       >
+        <DecorativeOrbs />
         <Container maxWidth='md' sx={{ position: 'relative', zIndex: 1 }}>
-          <Box sx={{ textAlign: 'center' }}>
-            <Box
-              sx={{
-                mb: 3,
-                borderRadius: 1,
-                display: 'inline-block',
-                padding: '6px 14px',
-                backgroundColor:
-                  theme.palette.mode === 'dark'
-                    ? 'rgb(255,255,255,0.10)'
-                    : 'primary.light',
-                color:
-                  theme.palette.mode === 'dark' ? '#fbfbfb' : 'primary.main',
-              }}
-            >
+          <Reveal>
+            <Box sx={{ textAlign: 'center' }}>
+              <Box
+                sx={{
+                  mb: 3,
+                  borderRadius: 1,
+                  display: 'inline-block',
+                  padding: '6px 14px',
+                  backgroundColor:
+                    theme.palette.mode === 'dark'
+                      ? 'rgb(255,255,255,0.10)'
+                      : 'primary.light',
+                  color:
+                    theme.palette.mode === 'dark' ? '#fbfbfb' : 'primary.main',
+                }}
+              >
+                <Typography
+                  sx={{
+                    fontSize: 12,
+                    letterSpacing: 1,
+                    textTransform: 'uppercase',
+                  }}
+                  variant='h5'
+                >
+                  Our Work
+                </Typography>
+              </Box>
+              <Typography
+                variant='h1'
+                sx={{
+                  mb: 3,
+                  fontSize: { xs: 32, md: 48 },
+                  fontWeight: 800,
+                  lineHeight: 1.2,
+                  color:
+                    theme.palette.mode === 'dark'
+                      ? 'primary.contrastText'
+                      : 'text.primary',
+                }}
+              >
+                Featured Projects &
+                <br />
+                Case Studies
+              </Typography>
               <Typography
                 sx={{
-                  fontSize: 12,
-                  letterSpacing: 1,
-                  textTransform: 'uppercase',
+                  fontSize: { xs: 16, md: 20 },
+                  color: 'text.secondary',
+                  maxWidth: 600,
+                  mx: 'auto',
                 }}
-                variant='h5'
               >
-                Our Work
+                Explore our portfolio of successful projects that have helped
+                businesses achieve their digital goals.
               </Typography>
             </Box>
-            <Typography
-              variant='h1'
-              sx={{
-                mb: 3,
-                fontSize: { xs: 32, md: 48 },
-                fontWeight: 800,
-                lineHeight: 1.2,
-                color:
-                  theme.palette.mode === 'dark'
-                    ? 'primary.contrastText'
-                    : 'text.primary',
-              }}
-            >
-              Featured Projects &
-              <br />
-              Case Studies
-            </Typography>
-            <Typography
-              sx={{
-                fontSize: { xs: 16, md: 20 },
-                color: 'text.secondary',
-                maxWidth: 600,
-                mx: 'auto',
-              }}
-            >
-              Explore our portfolio of successful projects that have helped
-              businesses achieve their digital goals.
-            </Typography>
-          </Box>
+          </Reveal>
         </Container>
         {/* Decorative elements */}
         <Box
@@ -252,6 +257,9 @@ const PortfolioPage = () => {
           >
             {categories.map((category) => (
               <Box
+                component={motion.div}
+                whileHover={{ scale: 1.06 }}
+                whileTap={{ scale: 0.96 }}
                 key={category}
                 onClick={() => setActiveCategory(category)}
                 sx={{
@@ -298,12 +306,23 @@ const PortfolioPage = () => {
         }}
       >
         <Container>
-          <Grid container spacing={4}>
-            {filteredProjects.map((project) => (
-              <Grid size={{ xs: 12, sm: 6, lg: 4 }} key={project.id}>
-                <ProjectCard project={project} />
-              </Grid>
-            ))}
+          <Grid container spacing={4} component={motion.div} layout>
+            <AnimatePresence mode='popLayout'>
+              {filteredProjects.map((project, index) => (
+                <Grid
+                  component={motion.div}
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.35, delay: index * 0.04 }}
+                  size={{ xs: 12, sm: 6, lg: 4 }}
+                  key={project.id}
+                >
+                  <ProjectCard project={project} />
+                </Grid>
+              ))}
+            </AnimatePresence>
           </Grid>
 
           {filteredProjects.length === 0 && (
@@ -332,27 +351,29 @@ const PortfolioPage = () => {
               { value: '98%', label: 'Client Satisfaction' },
             ].map((stat, idx) => (
               <Grid size={{ xs: 6, md: 3 }} key={idx}>
-                <Box sx={{ textAlign: 'center' }}>
-                  <Typography
-                    sx={{
-                      fontSize: { xs: 36, md: 48 },
-                      fontWeight: 800,
-                      color: 'primary.main',
-                      lineHeight: 1,
-                    }}
-                  >
-                    {stat.value}
-                  </Typography>
-                  <Typography
-                    sx={{
-                      mt: 1,
-                      color: 'text.secondary',
-                      fontSize: { xs: 14, md: 16 },
-                    }}
-                  >
-                    {stat.label}
-                  </Typography>
-                </Box>
+                <Reveal index={idx}>
+                  <Box sx={{ textAlign: 'center' }}>
+                    <Typography
+                      sx={{
+                        fontSize: { xs: 36, md: 48 },
+                        fontWeight: 800,
+                        color: 'primary.main',
+                        lineHeight: 1,
+                      }}
+                    >
+                      <CountUp value={stat.value} />
+                    </Typography>
+                    <Typography
+                      sx={{
+                        mt: 1,
+                        color: 'text.secondary',
+                        fontSize: { xs: 14, md: 16 },
+                      }}
+                    >
+                      {stat.label}
+                    </Typography>
+                  </Box>
+                </Reveal>
               </Grid>
             ))}
           </Grid>
