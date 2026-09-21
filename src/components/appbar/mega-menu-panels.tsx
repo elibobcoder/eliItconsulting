@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography'
 
 // constants
 import {
-  aboutDropdownLinks,
+  aboutMegaMenu,
   servicesMegaMenu,
   technologiesMegaMenu,
   industriesMegaMenu,
@@ -166,25 +166,15 @@ export const IndustriesMegaPanel = () => (
   </Grid>
 )
 
-export const AboutDropdownPanel = () => (
-  <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-    {aboutDropdownLinks.map((item) => (
-      <Link
-        key={item.path}
-        href={item.path}
-        style={{
-          fontSize: 14,
-          fontWeight: 600,
-          color: 'inherit',
-          textDecoration: 'none',
-          display: 'flex',
-          alignItems: 'center',
-          gap: 8,
-        }}
-      >
-        {item.icon}
-        {item.label}
-      </Link>
+export const AboutMegaPanel = () => (
+  <Grid container spacing={3}>
+    <Grid size={4}>
+      <IntroColumn intro={aboutMegaMenu.intro} />
+    </Grid>
+    {aboutMegaMenu.columns.map((column) => (
+      <Grid size={8 / aboutMegaMenu.columns.length} key={column.heading}>
+        <LinkColumn column={column} />
+      </Grid>
     ))}
-  </Box>
+  </Grid>
 )

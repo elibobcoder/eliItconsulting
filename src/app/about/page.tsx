@@ -423,9 +423,11 @@ const AboutPage = () => {
 
       {/* Team Section */}
       <Box
+        id='team'
         sx={{
           py: { xs: 8, md: 12 },
           backgroundColor: 'background.default',
+          scrollMarginTop: 96,
         }}
       >
         <Container maxWidth='lg'>

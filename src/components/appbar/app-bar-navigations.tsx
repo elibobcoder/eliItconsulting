@@ -12,7 +12,7 @@ import {
   ServicesMegaPanel,
   TechnologiesMegaPanel,
   IndustriesMegaPanel,
-  AboutDropdownPanel,
+  AboutMegaPanel,
 } from './mega-menu-panels'
 
 // interfaces
@@ -112,11 +112,11 @@ const AppBarNavigation: FC<Props> = () => {
       <NavDropdown label='Industries' panelWidth={440}>
         <IndustriesMegaPanel />
       </NavDropdown>
-      <NavDropdown label='About' panelWidth={200}>
-        <AboutDropdownPanel />
+      <NavDropdown label='About' panelWidth={520}>
+        <AboutMegaPanel />
       </NavDropdown>
       <MemoizedLinkItem label='Our Work' path='/portfolio' />
-      <MemoizedLinkItem label='Contact' path='/contact' />
+      <MemoizedLinkItem label='Blog' path='/blog' />
     </Box>
   )
 }
