@@ -59,7 +59,7 @@ const FaqPage = () => {
 
   return (
     <Box component='main'>
-      <PageHero minHeight={{ xs: '70vh', md: '70vh' }}>
+      <PageHero>
         <Container maxWidth='md' sx={{ textAlign: 'center', position: 'relative' }}>
           <Reveal>
             <Box

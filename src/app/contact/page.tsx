@@ -1,16 +1,13 @@
 'use client'
 
 import React from 'react'
-import Image from 'next/image'
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
 import { useTheme } from '@mui/material/styles'
-import { motion } from 'framer-motion'
 import { Reveal, PageHero } from '@/components/core'
 import { ContactForm, ContactInfoCard } from '@/app/_components/contact'
-import { stockPhotos } from '@/constants/stock-photos'
 import EmailIcon from '@/assets/icons/eva--email-outline.svg'
 import PhoneIcon from '@/assets/icons/eva--phone-outline.svg'
 import LocationIcon from '@/assets/icons/tdesign--location.svg'
@@ -112,6 +109,7 @@ const ContactPage = () => {
         sx={{
           py: { xs: 6, md: 8 },
           backgroundColor: 'background.paper',
+          mt: { xs: -4, md: -6 },
           position: 'relative',
           zIndex: 10,
         }}
@@ -147,12 +145,9 @@ const ContactPage = () => {
 
             {/* Location photo & Additional Info */}
             <Grid size={{ xs: 12, md: 5 }}>
-              {/* Office photo */}
+              {/* Office map */}
               <Reveal index={1}>
                 <Box
-                  component={motion.div}
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.4 }}
                   sx={{
                     height: { xs: 220, md: 260 },
                     borderRadius: 4,
@@ -162,18 +157,18 @@ const ContactPage = () => {
                     boxShadow: 2,
                   }}
                 >
-                  <Image
-                    src={stockPhotos.modernOffice}
-                    alt='Our office'
-                    fill
-                    sizes='(max-width: 900px) 100vw, 40vw'
-                    style={{ objectFit: 'cover' }}
-                  />
                   <Box
+                    component='iframe'
+                    title='Our office location'
+                    src='https://www.google.com/maps?q=123+Innovation+Drive,+San+Francisco,+CA+94105&output=embed'
+                    loading='lazy'
+                    referrerPolicy='no-referrer-when-downgrade'
                     sx={{
-                      position: 'absolute',
-                      inset: 0,
-                      background: 'linear-gradient(0deg, rgba(0,0,0,0.55), transparent 55%)',
+                      width: '100%',
+                      height: '100%',
+                      border: 0,
+                      filter: (theme) =>
+                        theme.palette.mode === 'dark' ? 'invert(0.9) hue-rotate(180deg)' : 'none',
                     }}
                   />
                   <Box
@@ -185,6 +180,11 @@ const ContactPage = () => {
                       alignItems: 'center',
                       gap: 1,
                       color: '#fff',
+                      px: 1.5,
+                      py: 0.75,
+                      borderRadius: 2,
+                      backgroundColor: 'rgba(0,0,0,0.6)',
+                      pointerEvents: 'none',
                     }}
                   >
                     <Box component={LocationIcon} sx={{ width: 20, height: 20 }} />

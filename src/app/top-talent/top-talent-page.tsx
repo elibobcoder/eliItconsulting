@@ -173,7 +173,7 @@ const TopTalentPage = () => {
                     position: 'relative',
                     borderRadius: 5,
                     overflow: 'hidden',
-                    height: { xs: 320, md: 520 },
+                    height: { xs: 260, md: 400 },
                     boxShadow: 4,
                   }}
                 >

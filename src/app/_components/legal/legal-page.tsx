@@ -22,7 +22,7 @@ interface LegalPageProps {
 const LegalPage = ({ eyebrow, title, titleAccent, updated, sections }: LegalPageProps) => {
   return (
     <Box component='main'>
-      <PageHero minHeight={{ xs: '70vh', md: '70vh' }}>
+      <PageHero pb={{ xs: 6, md: 8 }}>
         <Container maxWidth='md' sx={{ textAlign: 'center', position: 'relative' }}>
           <Reveal>
             <Box

@@ -21,7 +21,7 @@ const BlogPostPage = ({ post }: { post: IBlogPost }) => {
 
   return (
     <Box component='main'>
-      <PageHero minHeight={{ xs: '55vh', md: '58vh' }}>
+      <PageHero pb={{ xs: 6, md: 8 }}>
         <Container maxWidth='md'>
           <Reveal>
             <NextLink
