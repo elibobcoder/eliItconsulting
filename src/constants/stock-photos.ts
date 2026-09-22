@@ -1,5 +1,5 @@
-const unsplash = (id: string, w = 1200, h = 900) =>
-  `https://images.unsplash.com/photo-${id}?w=${w}&h=${h}&fit=crop&q=80`
+const unsplash = (id: string, w = 1600, h = 1200) =>
+  `https://images.unsplash.com/photo-${id}?w=${w}&h=${h}&fit=crop&q=85`
 
 export const stockPhotos = {
   coding: unsplash('1498050108023-c5249f4df085'),
@@ -46,5 +46,5 @@ export const stockPhotos = {
   officeHighFive: unsplash('1556761175-b413da4baf72'),
   teamPresentation: unsplash('1504384308090-c894fdcc538d'),
   modernOffice: unsplash('1571171637578-41bc2dd41cd2'),
-  codeReview: unsplash('1533750349088-cd871a92f312'),
+  codeReview: unsplash('1517694712202-14dd9538aa97'),
 } as const

@@ -9,7 +9,7 @@ import Accordion from '@mui/material/Accordion'
 import AccordionSummary from '@mui/material/AccordionSummary'
 import AccordionDetails from '@mui/material/AccordionDetails'
 import { useTheme } from '@mui/material/styles'
-import { StyledButton, Reveal, DecorativeOrbs } from '@/components/core'
+import { StyledButton, Reveal, PageHero } from '@/components/core'
 
 const FAQS = [
   {
@@ -59,16 +59,7 @@ const FaqPage = () => {
 
   return (
     <Box component='main'>
-      <Box
-        sx={{
-          pt: { xs: 16, md: 20 },
-          pb: { xs: 8, md: 12 },
-          position: 'relative',
-          overflow: 'hidden',
-          backgroundColor: theme.palette.mode === 'dark' ? '#151733' : '#e8f3ff',
-        }}
-      >
-        <DecorativeOrbs />
+      <PageHero>
         <Container maxWidth='md' sx={{ textAlign: 'center', position: 'relative' }}>
           <Reveal>
             <Box
@@ -103,7 +94,7 @@ const FaqPage = () => {
             </Typography>
           </Reveal>
         </Container>
-      </Box>
+      </PageHero>
 
       <Box sx={{ py: { xs: 8, md: 12 }, backgroundColor: 'background.paper' }}>
         <Container maxWidth='md'>

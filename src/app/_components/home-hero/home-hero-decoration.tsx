@@ -57,38 +57,6 @@ const HomeHeroDecoration = () => {
           opacity: 0.55,
         }}
       />
-      <Box
-        component={motion.div}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.2, ease: 'easeOut', delay: 0.3 }}
-        sx={{
-          position: 'absolute',
-          top: '18%',
-          left: '8%',
-          width: 10,
-          height: 10,
-          borderRadius: '50%',
-          backgroundColor: 'secondary.main',
-          display: { xs: 'none', md: 'block' },
-        }}
-      />
-      <Box
-        component={motion.div}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.2, ease: 'easeOut', delay: 0.4 }}
-        sx={{
-          position: 'absolute',
-          bottom: '22%',
-          right: '10%',
-          width: 14,
-          height: 14,
-          borderRadius: '50%',
-          backgroundColor: 'primary.main',
-          display: { xs: 'none', md: 'block' },
-        }}
-      />
     </Box>
   )
 }

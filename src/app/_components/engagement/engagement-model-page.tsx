@@ -13,7 +13,7 @@ import {
   StyledButton,
   SectionTitle,
   Reveal,
-  DecorativeOrbs,
+  PageHero,
 } from '@/components/core'
 import CheckIcon from './check-icon'
 import SendIcon from '@/assets/icons/picon--send.svg'
@@ -24,17 +24,7 @@ const EngagementModelPage = ({ content }: { content: IEngagementModel }) => {
   return (
     <Box component='main'>
       {/* Hero */}
-      <Box
-        sx={{
-          pt: { xs: 16, md: 20 },
-          pb: { xs: 8, md: 12 },
-          position: 'relative',
-          overflow: 'hidden',
-          backgroundColor:
-            theme.palette.mode === 'dark' ? '#151733' : '#e8f3ff',
-        }}
-      >
-        <DecorativeOrbs />
+      <PageHero>
         <Container maxWidth='lg' sx={{ position: 'relative' }}>
           <Grid container spacing={{ xs: 6, md: 8 }} alignItems='center'>
             <Grid size={{ xs: 12, md: 6 }}>
@@ -154,7 +144,7 @@ const EngagementModelPage = ({ content }: { content: IEngagementModel }) => {
             </Grid>
           </Grid>
         </Container>
-      </Box>
+      </PageHero>
 
       {/* Why section */}
       <Box sx={{ py: { xs: 8, md: 12 }, backgroundColor: 'background.paper' }}>

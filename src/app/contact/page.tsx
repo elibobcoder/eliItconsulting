@@ -1,16 +1,13 @@
 'use client'
 
 import React from 'react'
-import Image from 'next/image'
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
 import { useTheme } from '@mui/material/styles'
-import { motion } from 'framer-motion'
-import { Reveal, DecorativeOrbs } from '@/components/core'
+import { Reveal, PageHero } from '@/components/core'
 import { ContactForm, ContactInfoCard } from '@/app/_components/contact'
-import { stockPhotos } from '@/constants/stock-photos'
 import EmailIcon from '@/assets/icons/eva--email-outline.svg'
 import PhoneIcon from '@/assets/icons/eva--phone-outline.svg'
 import LocationIcon from '@/assets/icons/tdesign--location.svg'
@@ -45,17 +42,7 @@ const ContactPage = () => {
   return (
     <Box component='main'>
       {/* Hero Section */}
-      <Box
-        sx={{
-          pt: { xs: 16, md: 20 },
-          pb: { xs: 8, md: 12 },
-          backgroundColor:
-            theme.palette.mode === 'dark' ? '#151733' : '#e8f3ff',
-          position: 'relative',
-          overflow: 'hidden',
-        }}
-      >
-        <DecorativeOrbs />
+      <PageHero>
         <Container maxWidth='md' sx={{ position: 'relative', zIndex: 1 }}>
           <Reveal>
             <Box sx={{ textAlign: 'center' }}>
@@ -115,42 +102,7 @@ const ContactPage = () => {
             </Box>
           </Reveal>
         </Container>
-        {/* Decorative shapes */}
-        <Box
-          sx={{
-            position: 'absolute',
-            top: '10%',
-            left: '2%',
-            width: { xs: 80, md: 130 },
-            display: { xs: 'none', md: 'block' },
-          }}
-        >
-          <Image
-            src='/images/hero/papers.png'
-            alt='Papers decoration'
-            width={900}
-            height={1000}
-            style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
-          />
-        </Box>
-        <Box
-          sx={{
-            position: 'absolute',
-            bottom: '10%',
-            right: '3%',
-            width: { xs: 60, md: 100 },
-            display: { xs: 'none', md: 'block' },
-          }}
-        >
-          <Image
-            src='/images/hero/pen.png'
-            alt='Pen decoration'
-            width={200}
-            height={300}
-            style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
-          />
-        </Box>
-      </Box>
+      </PageHero>
 
       {/* Contact Info Cards */}
       <Box
@@ -193,12 +145,9 @@ const ContactPage = () => {
 
             {/* Location photo & Additional Info */}
             <Grid size={{ xs: 12, md: 5 }}>
-              {/* Office photo */}
+              {/* Office map */}
               <Reveal index={1}>
                 <Box
-                  component={motion.div}
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.4 }}
                   sx={{
                     height: { xs: 220, md: 260 },
                     borderRadius: 4,
@@ -208,18 +157,18 @@ const ContactPage = () => {
                     boxShadow: 2,
                   }}
                 >
-                  <Image
-                    src={stockPhotos.modernOffice}
-                    alt='Our office'
-                    fill
-                    sizes='(max-width: 900px) 100vw, 40vw'
-                    style={{ objectFit: 'cover' }}
-                  />
                   <Box
+                    component='iframe'
+                    title='Our office location'
+                    src='https://www.google.com/maps?q=123+Innovation+Drive,+San+Francisco,+CA+94105&output=embed'
+                    loading='lazy'
+                    referrerPolicy='no-referrer-when-downgrade'
                     sx={{
-                      position: 'absolute',
-                      inset: 0,
-                      background: 'linear-gradient(0deg, rgba(0,0,0,0.55), transparent 55%)',
+                      width: '100%',
+                      height: '100%',
+                      border: 0,
+                      filter: (theme) =>
+                        theme.palette.mode === 'dark' ? 'invert(0.9) hue-rotate(180deg)' : 'none',
                     }}
                   />
                   <Box
@@ -231,6 +180,11 @@ const ContactPage = () => {
                       alignItems: 'center',
                       gap: 1,
                       color: '#fff',
+                      px: 1.5,
+                      py: 0.75,
+                      borderRadius: 2,
+                      backgroundColor: 'rgba(0,0,0,0.6)',
+                      pointerEvents: 'none',
                     }}
                   >
                     <Box component={LocationIcon} sx={{ width: 20, height: 20 }} />

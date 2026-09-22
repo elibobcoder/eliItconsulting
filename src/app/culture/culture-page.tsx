@@ -13,7 +13,7 @@ import {
   StyledButton,
   SectionTitle,
   Reveal,
-  DecorativeOrbs,
+  PageHero,
 } from '@/components/core'
 import BenefitsGrid from '@/app/_components/engagement/benefits-grid'
 import {
@@ -69,16 +69,7 @@ const CulturePage = () => {
 
   return (
     <Box component='main'>
-      <Box
-        sx={{
-          pt: { xs: 16, md: 20 },
-          pb: { xs: 8, md: 12 },
-          position: 'relative',
-          overflow: 'hidden',
-          backgroundColor: theme.palette.mode === 'dark' ? '#151733' : '#e8f3ff',
-        }}
-      >
-        <DecorativeOrbs />
+      <PageHero>
         <Container maxWidth='md' sx={{ textAlign: 'center', position: 'relative' }}>
           <Reveal>
             <Box
@@ -114,7 +105,7 @@ const CulturePage = () => {
             </Typography>
           </Reveal>
         </Container>
-      </Box>
+      </PageHero>
 
       {/* Photo gallery */}
       <Box sx={{ py: { xs: 6, md: 8 }, backgroundColor: 'background.paper' }}>

@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
 import { useTheme } from '@mui/material/styles'
 import { motion, AnimatePresence } from 'framer-motion'
-import { StyledButton, Reveal, DecorativeOrbs } from '@/components/core'
+import { StyledButton, Reveal, PageHero } from '@/components/core'
 import { JobCard, type Job } from '@/app/_components/career'
 import { stockPhotos } from '@/constants/stock-photos'
 
@@ -165,17 +165,7 @@ const CareerPage = () => {
   return (
     <Box component='main'>
       {/* Hero Section */}
-      <Box
-        sx={{
-          pt: { xs: 16, md: 20 },
-          pb: { xs: 8, md: 12 },
-          backgroundColor:
-            theme.palette.mode === 'dark' ? '#151733' : '#e8f3ff',
-          position: 'relative',
-          overflow: 'hidden',
-        }}
-      >
-        <DecorativeOrbs />
+      <PageHero>
         <Container maxWidth='md' sx={{ position: 'relative', zIndex: 1 }}>
           <Reveal>
             <Box sx={{ textAlign: 'center' }}>
@@ -235,42 +225,7 @@ const CareerPage = () => {
             </Box>
           </Reveal>
         </Container>
-        {/* Decorative elements */}
-        <Box
-          sx={{
-            position: 'absolute',
-            top: '10%',
-            left: '2%',
-            width: { xs: 100, md: 150 },
-            display: { xs: 'none', md: 'block' },
-          }}
-        >
-          <Image
-            src='/images/hero/drawing-tablet.png'
-            alt='Drawing tablet decoration'
-            width={400}
-            height={400}
-            style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
-          />
-        </Box>
-        <Box
-          sx={{
-            position: 'absolute',
-            bottom: '10%',
-            right: '3%',
-            width: { xs: 80, md: 120 },
-            display: { xs: 'none', md: 'block' },
-          }}
-        >
-          <Image
-            src='/images/hero/pen.png'
-            alt='Pen decoration'
-            width={200}
-            height={300}
-            style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
-          />
-        </Box>
-      </Box>
+      </PageHero>
 
       {/* Team photo banner */}
       <Box sx={{ py: { xs: 6, md: 8 }, backgroundColor: 'background.default' }}>

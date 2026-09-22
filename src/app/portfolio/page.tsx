@@ -1,14 +1,13 @@
 'use client'
 
 import React, { useState } from 'react'
-import Image from 'next/image'
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
 import { useTheme } from '@mui/material/styles'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Reveal, DecorativeOrbs, CountUp } from '@/components/core'
+import { Reveal, PageHero, CountUp } from '@/components/core'
 import { ProjectCard, type Project } from '@/app/_components/portfolio'
 
 const categories = [
@@ -128,17 +127,7 @@ const PortfolioPage = () => {
   return (
     <Box component='main'>
       {/* Hero Section */}
-      <Box
-        sx={{
-          pt: { xs: 16, md: 20 },
-          pb: { xs: 8, md: 12 },
-          backgroundColor:
-            theme.palette.mode === 'dark' ? '#151733' : '#e8f3ff',
-          position: 'relative',
-          overflow: 'hidden',
-        }}
-      >
-        <DecorativeOrbs />
+      <PageHero>
         <Container maxWidth='md' sx={{ position: 'relative', zIndex: 1 }}>
           <Reveal>
             <Box sx={{ textAlign: 'center' }}>
@@ -198,42 +187,7 @@ const PortfolioPage = () => {
             </Box>
           </Reveal>
         </Container>
-        {/* Decorative elements */}
-        <Box
-          sx={{
-            position: 'absolute',
-            top: '5%',
-            right: '2%',
-            width: { xs: 120, md: 180 },
-            display: { xs: 'none', md: 'block' },
-          }}
-        >
-          <Image
-            src='/images/hero/mac.png'
-            alt='Mac decoration'
-            width={500}
-            height={400}
-            style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
-          />
-        </Box>
-        <Box
-          sx={{
-            position: 'absolute',
-            bottom: '8%',
-            left: '3%',
-            width: { xs: 80, md: 120 },
-            display: { xs: 'none', md: 'block' },
-          }}
-        >
-          <Image
-            src='/images/hero/smartphone.png'
-            alt='Smartphone decoration'
-            width={300}
-            height={400}
-            style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
-          />
-        </Box>
-      </Box>
+      </PageHero>
 
       {/* Filter Section */}
       <Box

@@ -7,30 +7,34 @@ interface Props {
   sx?: SxProps
 }
 
-const SectionTitle: FC<Props> = ({ children }: Props) => {
+const SectionTitle: FC<Props> = ({ children, sx }: Props) => {
   return (
     <Typography
       variant='h2'
       component='h2'
-      sx={{
-        fontSize: 14,
-        color: 'primary.main',
-        position: 'relative',
-        letterSpacing: '0.02rem',
-        pl: 4,
-        mb: 2,
-        '&:before': {
-          content: '""',
-          position: 'absolute',
+      sx={[
+        {
           display: 'inline-block',
-          top: '50%',
-          transform: 'translateY(-60%)',
-          left: '0',
-          width: 20,
-          height: '0.05rem',
-          backgroundColor: 'primary.main',
+          fontSize: 14,
+          color: 'primary.main',
+          position: 'relative',
+          letterSpacing: '0.02rem',
+          pl: 4,
+          mb: 2,
+          '&:before': {
+            content: '""',
+            position: 'absolute',
+            display: 'inline-block',
+            top: '50%',
+            transform: 'translateY(-60%)',
+            left: '0',
+            width: 20,
+            height: '0.05rem',
+            backgroundColor: 'primary.main',
+          },
         },
-      }}
+        ...(Array.isArray(sx) ? sx : [sx]),
+      ]}
     >
       {children}
     </Typography>

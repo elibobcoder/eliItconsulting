@@ -29,6 +29,19 @@ const TESTIMONIALS = [
   },
 ]
 
+const StarRow = () => (
+  <Box sx={{ display: 'flex', gap: 0.5, mb: 2, color: '#F59E0B' }}>
+    {Array.from({ length: 5 }).map((_, i) => (
+      <Box key={i} component='svg' viewBox='0 0 24 24' sx={{ width: 16, height: 16 }}>
+        <path
+          fill='currentColor'
+          d='M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z'
+        />
+      </Box>
+    ))}
+  </Box>
+)
+
 const HomeTestimonials = () => {
   return (
     <Box
@@ -37,18 +50,18 @@ const HomeTestimonials = () => {
       sx={{
         width: '100%',
         py: { xs: 8, md: 14 },
-        backgroundColor: 'background.paper',
+        backgroundColor: (theme) => (theme.palette.mode === 'dark' ? '#101014' : '#f7f8fb'),
       }}
     >
       <Container maxWidth='lg'>
         <Reveal>
           <Box sx={{ mb: 6, maxWidth: 640 }}>
-            <SectionTitle>WHAT CLIENTS SAY</SectionTitle>
+            <SectionTitle>CLIENT REVIEWS</SectionTitle>
             <Typography
               variant='h1'
               sx={{ fontSize: { xs: 26, md: 36 }, fontWeight: 800 }}
             >
-              No need to wonder. Working with us is straightforward.
+              Excellent reviews, from clients who trust us with real work.
             </Typography>
           </Box>
         </Reveal>
@@ -64,10 +77,11 @@ const HomeTestimonials = () => {
                     height: '100%',
                     p: 4,
                     borderRadius: 4,
-                    backgroundColor: (theme) =>
-                      theme.palette.mode === 'dark' ? '#101014' : '#f7f8fb',
+                    backgroundColor: 'background.paper',
+                    border: (theme) => `1px solid ${theme.palette.divider}`,
                   }}
                 >
+                  <StarRow />
                   <Typography
                     sx={{
                       fontSize: 16,

@@ -9,7 +9,7 @@ import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import { useTheme } from '@mui/material/styles'
 import { motion } from 'framer-motion'
-import { Reveal, DecorativeOrbs } from '@/components/core'
+import { Reveal, PageHero } from '@/components/core'
 import { blogPosts } from '@/constants/blog'
 
 const formatDate = (iso: string) =>
@@ -24,16 +24,7 @@ const BlogIndexPage = () => {
 
   return (
     <Box component='main'>
-      <Box
-        sx={{
-          pt: { xs: 16, md: 20 },
-          pb: { xs: 8, md: 12 },
-          position: 'relative',
-          overflow: 'hidden',
-          backgroundColor: theme.palette.mode === 'dark' ? '#151733' : '#e8f3ff',
-        }}
-      >
-        <DecorativeOrbs />
+      <PageHero>
         <Container maxWidth='md' sx={{ textAlign: 'center', position: 'relative' }}>
           <Reveal>
             <Box
@@ -69,7 +60,7 @@ const BlogIndexPage = () => {
             </Typography>
           </Reveal>
         </Container>
-      </Box>
+      </PageHero>
 
       <Box sx={{ py: { xs: 8, md: 12 }, backgroundColor: 'background.paper' }}>
         <Container maxWidth='lg'>

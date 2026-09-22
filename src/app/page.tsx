@@ -14,25 +14,28 @@ const HomeTrust = dynamic(() => import('./_components/home-trust'), {
 const HomeServices = dynamic(() => import('./_components//home-services'), {
   loading: () => <PageLoader />,
 })
-const HomeMotivation = dynamic(
-  () => import('./_components/home-our-motivation'),
+const HomeOutsourcing = dynamic(
+  () => import('./_components/home-outsourcing'),
   {
     loading: () => <PageLoader />,
   }
 )
+const HomePartnership = dynamic(
+  () => import('./_components/home-partnership'),
+  {
+    loading: () => <PageLoader />,
+  }
+)
+const HomeSupport = dynamic(() => import('./_components/home-support'), {
+  loading: () => <PageLoader />,
+})
 const HomeTestimonials = dynamic(
   () => import('./_components/home-testimonials'),
   {
     loading: () => <PageLoader />,
   }
 )
-const HomeValuePillars = dynamic(
-  () => import('./_components/home-value-pillars'),
-  {
-    loading: () => <PageLoader />,
-  }
-)
-const HomeCTA = dynamic(() => import('./_components/home-cta'), {
+const HomeHiring = dynamic(() => import('./_components/home-hiring'), {
   loading: () => <PageLoader />,
 })
 const HomeContact = dynamic(() => import('./_components/home-contact'), {
@@ -45,10 +48,11 @@ const HomePage = (): JSX.Element => {
       <HomeHero />
       <HomeTrust />
       <HomeServices />
-      <HomeMotivation />
+      <HomeOutsourcing />
+      <HomePartnership />
+      <HomeSupport />
       <HomeTestimonials />
-      <HomeValuePillars />
-      <HomeCTA />
+      <HomeHiring />
       <HomeContact />
     </Stack>
   )

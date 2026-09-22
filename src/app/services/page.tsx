@@ -1,13 +1,12 @@
 'use client'
 
 import React from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import { useTheme } from '@mui/material/styles'
-import { StyledButton, Reveal, DecorativeOrbs } from '@/components/core'
+import { StyledButton, Reveal, PageHero } from '@/components/core'
 import { services } from '@/constants/service'
 import { stockPhotos } from '@/constants/stock-photos'
 import { ServiceCard, type ExtendedService } from '@/app/_components/services'
@@ -85,17 +84,7 @@ const ServicesPage = () => {
   return (
     <Box component='main'>
       {/* Hero Section */}
-      <Box
-        sx={{
-          pt: { xs: 16, md: 20 },
-          pb: { xs: 8, md: 12 },
-          backgroundColor:
-            theme.palette.mode === 'dark' ? '#151733' : '#e8f3ff',
-          position: 'relative',
-          overflow: 'hidden',
-        }}
-      >
-        <DecorativeOrbs />
+      <PageHero>
         <Container maxWidth='md' sx={{ position: 'relative', zIndex: 1 }}>
           <Reveal>
             <Box sx={{ textAlign: 'center' }}>
@@ -155,42 +144,7 @@ const ServicesPage = () => {
             </Box>
           </Reveal>
         </Container>
-        {/* Decorative shapes */}
-        <Box
-          sx={{
-            position: 'absolute',
-            top: '5%',
-            left: '2%',
-            width: { xs: 100, md: 160 },
-            display: { xs: 'none', md: 'block' },
-          }}
-        >
-          <Image
-            src='/images/hero/edding.png'
-            alt='Marker decoration'
-            width={217}
-            height={320}
-            style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
-          />
-        </Box>
-        <Box
-          sx={{
-            position: 'absolute',
-            bottom: '5%',
-            right: '3%',
-            width: { xs: 100, md: 150 },
-            display: { xs: 'none', md: 'block' },
-          }}
-        >
-          <Image
-            src='/images/hero/marker.png'
-            alt='Marker decoration'
-            width={200}
-            height={300}
-            style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
-          />
-        </Box>
-      </Box>
+      </PageHero>
 
       {/* Services List */}
       {extendedServices.map((service, index) => (

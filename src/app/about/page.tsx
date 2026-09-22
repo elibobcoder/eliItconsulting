@@ -8,7 +8,7 @@ import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
 import { useTheme } from '@mui/material/styles'
-import { StyledButton, Reveal, CountUp } from '@/components/core'
+import { StyledButton, Reveal, CountUp, PageHero } from '@/components/core'
 import {
   TeamMemberCard,
   ValueCard,
@@ -128,17 +128,9 @@ const AboutPage = () => {
   return (
     <Box component='main'>
       {/* Hero Section */}
-      <Box
-        sx={{
-          pt: { xs: 16, md: 20 },
-          pb: { xs: 8, md: 12 },
-          backgroundColor:
-            theme.palette.mode === 'dark' ? '#151733' : '#e8f3ff',
-          position: 'relative',
-          overflow: 'hidden',
-        }}
-      >
+      <PageHero>
         <Container maxWidth='md' sx={{ position: 'relative', zIndex: 1 }}>
+          <Reveal>
           <Box sx={{ textAlign: 'center' }}>
             <Box
               sx={{
@@ -194,43 +186,9 @@ const AboutPage = () => {
               dedicated to helping businesses thrive in the digital age.
             </Typography>
           </Box>
+          </Reveal>
         </Container>
-        {/* Decorative elements */}
-        <Box
-          sx={{
-            position: 'absolute',
-            top: '-5%',
-            right: '3%',
-            width: { xs: 120, md: 200 },
-            display: { xs: 'none', md: 'block' },
-          }}
-        >
-          <Image
-            src='/images/hero/camera.png'
-            alt='Camera decoration'
-            width={458}
-            height={309}
-            style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
-          />
-        </Box>
-        <Box
-          sx={{
-            position: 'absolute',
-            bottom: '5%',
-            left: '2%',
-            width: { xs: 100, md: 160 },
-            display: { xs: 'none', md: 'block' },
-          }}
-        >
-          <Image
-            src='/images/hero/flowerpot.png'
-            alt='Flowerpot decoration'
-            width={550}
-            height={471}
-            style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
-          />
-        </Box>
-      </Box>
+      </PageHero>
 
       {/* Mission Section */}
       <Box
