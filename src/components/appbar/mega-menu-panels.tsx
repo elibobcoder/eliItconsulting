@@ -13,6 +13,7 @@ import {
   technologiesMegaMenu,
   industriesMegaMenu,
 } from '@/constants/menus'
+import TechFlowColumn from './tech-flow-column'
 
 const IntroColumn: FC<{ intro: IMegaMenuIntro }> = ({ intro }) => (
   <Box sx={{ pr: 3, minWidth: 180 }}>
@@ -147,7 +148,11 @@ export const TechnologiesMegaPanel = () => (
     </Grid>
     {technologiesMegaMenu.columns.map((column, index) => (
       <Grid size={8 / technologiesMegaMenu.columns.length} key={index}>
-        <TagColumn column={column} />
+        <TechFlowColumn
+          heading={column.heading}
+          tags={column.tags}
+          direction={index % 2 === 0 ? 'down' : 'up'}
+        />
       </Grid>
     ))}
   </Grid>
