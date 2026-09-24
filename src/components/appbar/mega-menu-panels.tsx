@@ -1,6 +1,6 @@
 'use client'
 
-import React, { FC } from 'react'
+import React, { FC, ReactNode } from 'react'
 import Link from 'next/link'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
@@ -70,19 +70,33 @@ const IntroColumn: FC<{ intro: IMegaMenuIntro }> = ({ intro }) => (
   </Box>
 )
 
+const ColumnHeading: FC<{ children: ReactNode }> = ({ children }) => (
+  <Typography
+    sx={{
+      display: 'flex',
+      alignItems: 'center',
+      gap: 1,
+      fontSize: 11,
+      fontWeight: 700,
+      letterSpacing: 0.5,
+      color: 'text.secondary',
+      mb: 1.5,
+      '&:before': {
+        content: '""',
+        display: 'inline-block',
+        width: 7,
+        height: 7,
+        backgroundColor: 'primary.main',
+      },
+    }}
+  >
+    {children}
+  </Typography>
+)
+
 const LinkColumn: FC<{ column: IMegaMenuLinkColumn }> = ({ column }) => (
   <Box>
-    <Typography
-      sx={{
-        fontSize: 11,
-        fontWeight: 700,
-        letterSpacing: 0.5,
-        color: 'text.secondary',
-        mb: 1.5,
-      }}
-    >
-      {column.heading}
-    </Typography>
+    <ColumnHeading>{column.heading}</ColumnHeading>
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.2 }}>
       {column.links.map((link) => (
         <Link
@@ -104,19 +118,7 @@ const LinkColumn: FC<{ column: IMegaMenuLinkColumn }> = ({ column }) => (
 
 const TagColumn: FC<{ column: IMegaMenuTagColumn }> = ({ column }) => (
   <Box>
-    {column.heading && (
-      <Typography
-        sx={{
-          fontSize: 11,
-          fontWeight: 700,
-          letterSpacing: 0.5,
-          color: 'text.secondary',
-          mb: 1.5,
-        }}
-      >
-        {column.heading}
-      </Typography>
-    )}
+    {column.heading && <ColumnHeading>{column.heading}</ColumnHeading>}
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.2 }}>
       {column.tags.map((tag) => (
         <Typography key={tag} sx={{ fontSize: 14, color: 'text.primary' }}>

@@ -105,16 +105,16 @@ const AppBarNavigation: FC<Props> = ({ headerRef }) => {
         alignItems: 'center',
       }}
     >
-      <NavDropdown label='Services' contentMaxWidth={660} headerRef={headerRef}>
+      <NavDropdown label='Services' headerRef={headerRef}>
         <ServicesMegaPanel />
       </NavDropdown>
-      <NavDropdown label='Technologies' contentMaxWidth={720} headerRef={headerRef}>
+      <NavDropdown label='Technologies' headerRef={headerRef}>
         <TechnologiesMegaPanel />
       </NavDropdown>
-      <NavDropdown label='Industries' contentMaxWidth={440} headerRef={headerRef}>
+      <NavDropdown label='Industries' headerRef={headerRef}>
         <IndustriesMegaPanel />
       </NavDropdown>
-      <NavDropdown label='About' contentMaxWidth={520} headerRef={headerRef}>
+      <NavDropdown label='About' headerRef={headerRef}>
         <AboutMegaPanel />
       </NavDropdown>
       <MemoizedLinkItem label='Our Work' path='/portfolio' />

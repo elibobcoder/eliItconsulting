@@ -9,13 +9,12 @@ import { AnimatePresence, motion } from 'framer-motion'
 interface Props {
   label: string
   children: ReactNode
-  contentMaxWidth?: number
   headerRef: RefObject<HTMLDivElement | null>
 }
 
 const CLOSE_DELAY = 150
 
-const NavDropdown: FC<Props> = ({ label, children, contentMaxWidth = 420, headerRef }) => {
+const NavDropdown: FC<Props> = ({ label, children, headerRef }) => {
   const [open, setOpen] = useState(false)
   const [top, setTop] = useState(0)
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -44,7 +43,7 @@ const NavDropdown: FC<Props> = ({ label, children, contentMaxWidth = 420, header
 
     const updateTop = () => {
       const rect = headerRef.current?.getBoundingClientRect()
-      if (rect) setTop(rect.bottom + 10)
+      if (rect) setTop(rect.bottom)
     }
 
     updateTop()
@@ -146,7 +145,7 @@ const NavDropdown: FC<Props> = ({ label, children, contentMaxWidth = 420, header
                 }}
                 onClick={() => setOpen(false)}
               >
-                <Container maxWidth={false} sx={{ maxWidth: contentMaxWidth, py: 4 }}>
+                <Container maxWidth='lg' sx={{ py: 4 }}>
                   {children}
                 </Container>
               </Box>
