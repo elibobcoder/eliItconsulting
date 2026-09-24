@@ -14,6 +14,9 @@ const HomeTrust = dynamic(() => import('./_components/home-trust'), {
 const HomeServices = dynamic(() => import('./_components//home-services'), {
   loading: () => <PageLoader />,
 })
+const HomeTechStack = dynamic(() => import('./_components/home-tech-stack'), {
+  loading: () => <PageLoader />,
+})
 const HomeOutsourcing = dynamic(
   () => import('./_components/home-outsourcing'),
   {
@@ -48,6 +51,7 @@ const HomePage = (): JSX.Element => {
       <HomeHero />
       <HomeTrust />
       <HomeServices />
+      <HomeTechStack />
       <HomeOutsourcing />
       <HomePartnership />
       <HomeSupport />
