@@ -1,6 +1,6 @@
 'use client'
 
-import React, { FC, memo, ReactElement } from 'react'
+import React, { FC, memo, ReactElement, RefObject } from 'react'
 
 // components
 import Link from 'next/link'
@@ -21,7 +21,7 @@ import { Theme } from '@mui/material/styles'
 // hooks
 import { usePathname } from 'next/navigation'
 
-interface LinkItemProps extends Props {
+interface LinkItemProps {
   label: string
   path: string
   icon?: ReactElement
@@ -92,9 +92,11 @@ const LinkItem: FC<LinkItemProps> = ({ label, path, icon }: LinkItemProps) => {
 }
 const MemoizedLinkItem = memo(LinkItem)
 
-interface Props {}
+interface Props {
+  headerRef: RefObject<HTMLDivElement | null>
+}
 
-const AppBarNavigation: FC<Props> = () => {
+const AppBarNavigation: FC<Props> = ({ headerRef }) => {
   return (
     <Box
       sx={{
@@ -103,16 +105,16 @@ const AppBarNavigation: FC<Props> = () => {
         alignItems: 'center',
       }}
     >
-      <NavDropdown label='Services' panelWidth={660}>
+      <NavDropdown label='Services' contentMaxWidth={660} headerRef={headerRef}>
         <ServicesMegaPanel />
       </NavDropdown>
-      <NavDropdown label='Technologies' panelWidth={720}>
+      <NavDropdown label='Technologies' contentMaxWidth={720} headerRef={headerRef}>
         <TechnologiesMegaPanel />
       </NavDropdown>
-      <NavDropdown label='Industries' panelWidth={440}>
+      <NavDropdown label='Industries' contentMaxWidth={440} headerRef={headerRef}>
         <IndustriesMegaPanel />
       </NavDropdown>
-      <NavDropdown label='About' panelWidth={520}>
+      <NavDropdown label='About' contentMaxWidth={520} headerRef={headerRef}>
         <AboutMegaPanel />
       </NavDropdown>
       <MemoizedLinkItem label='Our Work' path='/portfolio' />

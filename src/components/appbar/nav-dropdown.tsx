@@ -1,20 +1,23 @@
 'use client'
 
-import React, { FC, ReactNode, useRef, useState } from 'react'
+import React, { FC, ReactNode, RefObject, useEffect, useRef, useState } from 'react'
 import Box from '@mui/material/Box'
+import Container from '@mui/material/Container'
 import ClickAwayListener from '@mui/material/ClickAwayListener'
 import { AnimatePresence, motion } from 'framer-motion'
 
 interface Props {
   label: string
   children: ReactNode
-  panelWidth?: number
+  contentMaxWidth?: number
+  headerRef: RefObject<HTMLDivElement | null>
 }
 
 const CLOSE_DELAY = 150
 
-const NavDropdown: FC<Props> = ({ label, children, panelWidth = 420 }) => {
+const NavDropdown: FC<Props> = ({ label, children, contentMaxWidth = 420, headerRef }) => {
   const [open, setOpen] = useState(false)
+  const [top, setTop] = useState(0)
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const clearCloseTimer = () => {
@@ -33,6 +36,30 @@ const NavDropdown: FC<Props> = ({ label, children, panelWidth = 420 }) => {
     clearCloseTimer()
     setOpen(true)
   }
+
+  // Track the header bar's bottom edge so the full-width panel sits
+  // flush beneath it, whether floating or not.
+  useEffect(() => {
+    if (!open || !headerRef.current) return
+
+    const updateTop = () => {
+      const rect = headerRef.current?.getBoundingClientRect()
+      if (rect) setTop(rect.bottom + 10)
+    }
+
+    updateTop()
+
+    const observer = new ResizeObserver(updateTop)
+    observer.observe(headerRef.current)
+    window.addEventListener('scroll', updateTop)
+    window.addEventListener('resize', updateTop)
+
+    return () => {
+      observer.disconnect()
+      window.removeEventListener('scroll', updateTop)
+      window.removeEventListener('resize', updateTop)
+    }
+  }, [open, headerRef])
 
   return (
     <ClickAwayListener onClickAway={() => setOpen(false)}>
@@ -96,15 +123,15 @@ const NavDropdown: FC<Props> = ({ label, children, panelWidth = 420 }) => {
         <AnimatePresence>
           {open && (
             <motion.div
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 8 }}
-              transition={{ duration: 0.18 }}
+              initial={{ opacity: 0, clipPath: 'inset(0% 0% 100% 0%)' }}
+              animate={{ opacity: 1, clipPath: 'inset(0% 0% 0% 0%)' }}
+              exit={{ opacity: 0, clipPath: 'inset(0% 0% 100% 0%)' }}
+              transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
               style={{
-                position: 'absolute',
-                top: 'calc(100% + 14px)',
-                left: '50%',
-                transform: 'translateX(-50%)',
+                position: 'fixed',
+                top,
+                left: 0,
+                width: '100vw',
                 zIndex: 1200,
               }}
               onMouseEnter={handleOpen}
@@ -112,17 +139,16 @@ const NavDropdown: FC<Props> = ({ label, children, panelWidth = 420 }) => {
             >
               <Box
                 sx={{
-                  width: panelWidth,
-                  maxWidth: '80vw',
-                  borderRadius: 4,
+                  width: '100%',
                   boxShadow: 6,
                   backgroundColor: 'background.paper',
-                  border: (theme) => `1px solid ${theme.palette.divider}`,
-                  p: 3,
+                  borderBottom: (theme) => `1px solid ${theme.palette.divider}`,
                 }}
                 onClick={() => setOpen(false)}
               >
-                {children}
+                <Container maxWidth={false} sx={{ maxWidth: contentMaxWidth, py: 4 }}>
+                  {children}
+                </Container>
               </Box>
             </motion.div>
           )}

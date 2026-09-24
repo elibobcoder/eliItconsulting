@@ -1,6 +1,6 @@
 'use client'
 
-import React, { FC, Fragment, useCallback, useMemo } from 'react'
+import React, { FC, Fragment, useCallback, useMemo, useRef } from 'react'
 
 // components
 import NextLink from 'next/link'
@@ -22,6 +22,7 @@ import Logo from '@/assets/logo.svg'
 
 const AppBar: FC = () => {
   const theme = useTheme()
+  const headerBarRef = useRef<HTMLDivElement>(null)
   const { y: scrollY } = useWindowScroll()
   // const scrollY = 0
   const mobileMatches = useMediaQuery(theme.breakpoints.down('md'))
@@ -83,6 +84,7 @@ const AppBar: FC = () => {
           }}
         >
           <Box
+            ref={headerBarRef}
             className={shouldFloating ? 'floating' : 'fixed-top'}
             sx={{
               mt: {
@@ -130,7 +132,7 @@ const AppBar: FC = () => {
               </Box>
             ) : (
               <>
-                <AppBarNavigation />
+                <AppBarNavigation headerRef={headerBarRef} />
                 <AppBarSwitchDarkMode />
                 <Box sx={{ ml: 1.5 }}>
                   <NextLink href='/contact' passHref>
