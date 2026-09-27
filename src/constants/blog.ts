@@ -1,6 +1,7 @@
 import { stockPhotos } from './stock-photos'
+import { generatedBlogPosts } from './blog-posts-generated'
 
-export const blogPosts: IBlogPost[] = [
+const handwrittenBlogPosts: IBlogPost[] = [
   {
     slug: 'staff-augmentation-vs-dedicated-teams-vs-outsourcing',
     title: 'Staff Augmentation vs. Dedicated Teams vs. Outsourcing: How to Choose',
@@ -88,6 +89,10 @@ export const blogPosts: IBlogPost[] = [
     ],
   },
 ]
+
+export const blogPosts: IBlogPost[] = [...handwrittenBlogPosts, ...generatedBlogPosts].sort(
+  (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+)
 
 export const getBlogPost = (slug: string): IBlogPost | undefined =>
   blogPosts.find((post) => post.slug === slug)
