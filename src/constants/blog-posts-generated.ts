@@ -9,7 +9,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Cloud & DevOps',
     date: '2019-01-15',
     readTime: '4 min read',
-    coverImage: stockPhotos.cloudComputing,
+    coverImage: stockPhotos.cloudMigrationAbstract,
     content: [
       '"Lift and shift" sounds like the safe option: take what’s running on-prem, drop it onto a cloud instance, and call the migration done. It’s faster to execute and easier to get approved than a rearchitecture. It’s also the reason so many cloud migrations end up costing more than the servers they replaced.',
       'The problem is that a lifted-and-shifted application still behaves like it’s running in a data center you own. It doesn’t scale down when traffic is low, doesn’t take advantage of managed services that would cut operational work, and doesn’t distribute load the way cloud-native architecture assumes. You end up paying cloud prices for data-center behavior.',
@@ -25,7 +25,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Engagement Models',
     date: '2019-02-08',
     readTime: '4 min read',
-    coverImage: stockPhotos.consultingMeeting,
+    coverImage: stockPhotos.salaryCashBanknotes,
     content: [
       'Compare two rate sheets side by side and the hourly contractor almost always looks cheaper. That comparison is missing most of the actual cost, because rate is only one line in a much longer bill.',
       'A revolving cast of hourly contractors carries hidden costs: ramp-up time paid again with every new person, knowledge that walks out the door when a contract ends, and management overhead spent re-explaining context instead of building. Staff augmentation front-loads some of that cost by vetting for long-term fit, but it pays it back through continuity — the same engineer who understood your system in month one is still there in month six.',
@@ -89,7 +89,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Hiring & Careers',
     date: '2019-06-18',
     readTime: '3 min read',
-    coverImage: stockPhotos.teamPresentation,
+    coverImage: stockPhotos.resumePapersDesk,
     content: [
       'Post a junior role and you’ll get a stack of qualified applicants within days. Post a senior role that requires real ownership — someone who can design a system, not just implement a ticket — and the search stretches into months.',
       'The gap isn’t a lack of experienced people; it’s that experienced people are already employed, usually happily, and rarely browsing job boards. Reaching them takes a different approach than posting and waiting: referrals, direct outreach, and a role compelling enough to justify the risk of leaving a stable job.',
@@ -105,7 +105,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Cybersecurity',
     date: '2019-07-09',
     readTime: '3 min read',
-    coverImage: stockPhotos.serverRoom,
+    coverImage: stockPhotos.securityPadlockKeyboard,
     content: [
       'Technical debt gets tracked, prioritized, and occasionally paid down, because its cost shows up regularly: slower features, more bugs, frustrated engineers. Security debt accumulates the same way, but its cost is invisible right up until it isn’t.',
       'An unpatched dependency, an overly broad access permission, a service still using default credentials — none of these slow anyone down day to day, which is exactly why they get deprioritized in favor of visible work. The bill only comes due when something exploits them, and by then it’s an incident, not a backlog item.',
@@ -121,7 +121,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Data & Analytics',
     date: '2019-08-27',
     readTime: '3 min read',
-    coverImage: stockPhotos.analyticsDashboard,
+    coverImage: stockPhotos.spreadsheetGraphCloseup,
     content: [
       'A dashboard feels objective because it’s made of numbers, which makes it easy to trust without asking what those numbers actually measure. That’s usually where the trouble starts.',
       'A "conversion rate" that doesn’t exclude bot traffic, a "revenue" figure that includes refunded orders, an "active users" count that never defines what "active" means — none of these are lies exactly, but they’re answers to slightly different questions than the ones people think they’re looking at. Decisions made on top of them inherit the same quiet inaccuracy.',
@@ -153,7 +153,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Leadership & Culture',
     date: '2019-10-24',
     readTime: '3 min read',
-    coverImage: stockPhotos.officeCulture,
+    coverImage: stockPhotos.pairProgrammingMonitors,
     content: [
       'There’s a common career script where engineers stop writing code the moment they start managing people, on the theory that management is now the full-time job. It is a full-time job. That doesn’t mean stepping away from code entirely is free.',
       'A manager who hasn’t touched the codebase in a year starts making estimates and trade-off calls based on a stale mental model. The framework has moved on, the tooling has changed, the "quick fix" they remember isn’t quick anymore. None of that is visible from a status update — it only shows up when their judgment is wrong in ways the team can see but can’t easily correct.',
@@ -185,7 +185,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Cloud & DevOps',
     date: '2019-12-05',
     readTime: '4 min read',
-    coverImage: stockPhotos.serverRoom,
+    coverImage: stockPhotos.containerStack,
     content: [
       'Containers genuinely fixed the "it works on my machine" problem — package the environment with the code, and the environment mismatch disappears. That was a real, painful problem, and it’s worth acknowledging containers solved it well.',
       'What replaced it is less dramatic but still costly: image sprawl, unpatched base images nobody owns, orchestration complexity that a small team didn’t need but adopted anyway because everyone else was, and a new layer of infrastructure that itself needs monitoring and maintenance. None of this is a reason to avoid containers; it’s a reason to budget for what comes after adopting them.',
@@ -201,7 +201,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Team Strategy',
     date: '2019-12-19',
     readTime: '3 min read',
-    coverImage: stockPhotos.teamAroundTable,
+    coverImage: stockPhotos.contractSigningPen,
     content: [
       'Most companies only start looking for outside engineering help once they’re already behind — a deadline slipping, a key person leaving, a project that suddenly needs to move faster than the internal team can move it. Evaluating a partner under that pressure is a bad way to make the decision.',
       'A vendor bench is the alternative: relationships with one or two trusted partners established before there’s urgency, so when a need does show up, the conversation starts at "here’s the project" instead of "can we trust you at all." That head start is worth more than it sounds like, because trust takes time to build and no amount of urgency speeds it up.',
@@ -217,7 +217,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Web & Mobile Development',
     date: '2020-01-16',
     readTime: '3 min read',
-    coverImage: stockPhotos.mobileApp,
+    coverImage: stockPhotos.mobileAppDashboardHand,
     content: [
       'Progressive web apps offer a genuinely appealing pitch: offline support, home-screen installation, and push notifications, all without going through an app store review process or maintaining two separate codebases. For a lot of businesses, that pitch holds up.',
       'Where it doesn’t hold up as cleanly is anything that depends heavily on deep device integration — camera features beyond the basics, background processing, certain payment flows. iOS in particular has historically limited what a PWA can do compared to a native app, and that gap matters if your product depends on the features on the wrong side of it.',
@@ -233,7 +233,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Data & Analytics',
     date: '2020-02-11',
     readTime: '3 min read',
-    coverImage: stockPhotos.analyticsDashboard,
+    coverImage: stockPhotos.swampWater,
     content: [
       'Centralizing data sounds like an unambiguous win: pull everything into one place, and suddenly every question has an answer. What actually happens depends entirely on what goes into that central place, and how.',
       'A data warehouse has structure: consistent naming, documented meaning for each field, and clear ownership over what feeds it. A data swamp has neither — it’s the same volume of data, dumped in without agreement on what any of it means, which makes it functionally useless for anyone trying to actually answer a question with it.',
@@ -249,7 +249,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Team Strategy',
     date: '2020-03-23',
     readTime: '4 min read',
-    coverImage: stockPhotos.remoteWork,
+    coverImage: stockPhotos.videoCallLaptopGroup,
     content: [
       'Every plan we’d ever made for remote work assumed a gradual rollout — a pilot team, feedback, adjustments, then a wider move. None of that happened. Offices closed, and every team that could work remotely had to, effectively overnight.',
       'The first thing that broke wasn’t tooling — most of what we needed already existed. It was the informal information flow that in-office teams don’t realize they depend on: the quick "hey, is this normal" question across a desk, the context absorbed just by being nearby when something happened. None of that survives a sudden move to remote without someone deliberately rebuilding it.',
@@ -265,7 +265,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Leadership & Culture',
     date: '2020-04-14',
     readTime: '3 min read',
-    coverImage: stockPhotos.remoteWork,
+    coverImage: stockPhotos.oneOnOneCoffeeChat,
     content: [
       'A lot of management, especially the informal kind, happens by proximity: noticing someone looks stuck, catching a frustrated sigh, dropping by to check in without it feeling like a formal event. None of that transfers to remote work automatically, and pretending it does is how managers lose track of a struggling engineer until it’s a serious problem.',
       'What replaces it has to be more deliberate, which feels unnatural at first. Regular one-on-ones that aren’t just status updates, explicitly asking how someone’s doing instead of waiting to notice, and treating a sudden drop in communication as a signal worth checking on rather than assuming everything’s fine.',
@@ -281,7 +281,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Cloud & DevOps',
     date: '2020-05-19',
     readTime: '4 min read',
-    coverImage: stockPhotos.cloudComputing,
+    coverImage: stockPhotos.cloudBillingCalculator,
     content: [
       'Cloud pricing calculators are precise about the wrong thing. They’ll estimate a specific workload accurately, but they can’t account for how usage actually behaves once real traffic, real data growth, and real human habits get involved.',
       'The usual culprits: resources provisioned for peak load that never scale back down, storage that keeps growing because nobody set a retention policy, data transfer costs that looked negligible in a demo and aren’t negligible at production volume, and dev or staging environments left running around the clock out of habit.',
@@ -313,7 +313,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Hiring & Careers',
     date: '2020-07-22',
     readTime: '3 min read',
-    coverImage: stockPhotos.officeHighFive,
+    coverImage: stockPhotos.worldMapPins,
     content: [
       'Dropping the location requirement from a job posting is one of the fastest ways to increase the size of the applicant pool. It’s also one of the fastest ways to discover how competitive that larger pool actually is.',
       'When a role is only open to people within commuting distance, "good enough" candidates can look strong simply because the comparison set is small. Open the same role nationally or globally, and the bar rises automatically — you’re now comparing against everyone, not just everyone nearby.',
@@ -329,7 +329,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Cybersecurity',
     date: '2020-08-06',
     readTime: '4 min read',
-    coverImage: stockPhotos.codingScreen,
+    coverImage: stockPhotos.hackerSilhouetteMonitors,
     content: [
       'A lot of company security, even at teams that would call themselves security-conscious, quietly depended on the office network as a perimeter. Devices on the same network, physical access controlled by a badge, IT able to walk over and check a machine. Sending everyone home doesn’t weaken that model — it removes it.',
       'What replaces it has to be explicit instead of implicit: VPN or zero-trust access instead of "you’re on our network so you’re trusted," personal devices and home networks that were never audited, and a much wider surface of physical locations where a company laptop might get lost, stolen, or used on unsecured Wi-Fi.',
@@ -393,7 +393,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Digital Marketing',
     date: '2020-12-03',
     readTime: '4 min read',
-    coverImage: stockPhotos.ecommerceShopping,
+    coverImage: stockPhotos.ecommerceCheckoutCard,
     content: [
       'A sudden surge in online shopping should be a good problem to have. For plenty of stores this year, it turned into an actual outage, or a checkout so slow that customers abandoned carts they would have completed on a normal day.',
       'The common thread wasn’t bad code — it was infrastructure sized for typical traffic, not the traffic a store actually gets during its best week of the year. Auto-scaling that was configured but never tested at real load, database queries that were fine at normal volume and fell over at three times it, and third-party checkout integrations that turned out to have their own capacity limits nobody had checked.',
@@ -409,7 +409,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Leadership & Culture',
     date: '2020-12-17',
     readTime: '3 min read',
-    coverImage: stockPhotos.teamMeeting,
+    coverImage: stockPhotos.videoConferenceGridCall,
     content: [
       'Replacing in-person meetings with video calls felt like a like-for-like swap at first. It isn’t. A video call demands a kind of sustained, close-range attention — watching your own face, reading flattened body language, filling silences that would feel natural in person — that an in-person conversation doesn’t require nearly as much.',
       'Stack enough of those calls back to back and the cost shows up as a real drop in the focused work that happens between them, even though every individual meeting looked reasonable on the calendar. Teams that didn’t notice this were often the ones wondering why deep work output had quietly declined despite nobody actually being less busy.',
@@ -425,7 +425,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Hiring & Careers',
     date: '2021-01-14',
     readTime: '4 min read',
-    coverImage: stockPhotos.teamPresentation,
+    coverImage: stockPhotos.handshakeInterview,
     content: [
       'A hiring process built for a buyer’s market doesn’t work in a seller’s market, and right now, candidates have the leverage. Slow interview loops, lowball offers, and a "take it or leave it" attitude that used to be tolerated are now the fastest way to lose a strong candidate to a competitor who moves faster.',
       'The shift isn’t subtle. Good engineers are getting multiple offers, timelines are compressing, and flexibility — remote options, compensation, growth path — is doing more of the persuading than the brand name on the offer letter used to.',
@@ -441,7 +441,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Team Strategy',
     date: '2021-02-09',
     readTime: '4 min read',
-    coverImage: stockPhotos.officeCulture,
+    coverImage: stockPhotos.diverseTeamVideoCall,
     content: [
       'Fully remote work, for all its challenges, has one thing going for it: the rules are simple. Everyone is remote, every meeting is on video, nobody has an information advantage from being physically present. Hybrid gives that clarity up, and most teams underestimate how much they relied on it.',
       'The hard part of hybrid isn’t the policy on paper — it’s the dozens of small decisions it creates. Does a meeting default to video-first even when half the room is in person? Does the remote half of the team get the same visibility into hallway decisions as the people who happened to be in the office that day? Left unaddressed, these defaults tend to favor whoever’s physically present, quietly.',
@@ -457,7 +457,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'AI & Automation',
     date: '2021-03-18',
     readTime: '3 min read',
-    coverImage: stockPhotos.aiAbstract,
+    coverImage: stockPhotos.robotArmAutomation,
     content: [
       'Robotic process automation gets pitched as a fix for nearly any repetitive task, and the pitch oversells it. RPA is genuinely valuable for a specific kind of problem, and a poor fit for others that look similar on the surface.',
       'It works well on stable, rules-based processes: moving data between two systems that don’t talk to each other, form-filling from a consistent template, repetitive steps that never change shape. What it doesn’t handle well is anything with judgment calls or frequent process changes — the automation breaks constantly, and maintaining it costs more than the manual process ever did.',
@@ -473,7 +473,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Cloud & DevOps',
     date: '2021-04-08',
     readTime: '4 min read',
-    coverImage: stockPhotos.serverRoom,
+    coverImage: stockPhotos.multiCloudTangle,
     content: [
       'Multi-cloud strategies are usually justified with a real concern: avoiding dependency on a single vendor, protecting against an outage, keeping negotiating leverage on pricing. Those are legitimate concerns. They rarely justify what multi-cloud actually costs to run well.',
       'Running production workloads across multiple providers means duplicating expertise, tooling, and operational processes for each one — a team that’s deeply proficient in one cloud’s quirks and services now has to be proficient in two or three, or it isn’t actually getting the resilience benefit it’s paying for in complexity.',
@@ -521,7 +521,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Web & Mobile Development',
     date: '2021-07-07',
     readTime: '4 min read',
-    coverImage: stockPhotos.codingScreen,
+    coverImage: stockPhotos.apiPuzzlePiecesConnect,
     content: [
       'Building the UI first and letting the API evolve to fit whatever the frontend needs feels like the fast path. It often is, right up until a second client — a mobile app, a partner integration, an internal tool — needs to talk to the same backend and discovers the API was never designed to be used by anything but the one UI it grew up alongside.',
       'API-first design flips that order: define the contract, the data shapes, and the behavior before either the frontend or the implementation exists. It takes longer at the start, because you can’t start building the UI the moment inspiration strikes — you have to think through the interface first.',
@@ -537,7 +537,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Cybersecurity',
     date: '2021-08-19',
     readTime: '4 min read',
-    coverImage: stockPhotos.serverRoom,
+    coverImage: stockPhotos.systemOutageAlertPhone,
     content: [
       'Ransomware used to get filed under "IT problem" — annoying, contained, something the technical team handled. The scale and sophistication of recent attacks has made that framing outdated. A serious ransomware incident now means real operational shutdown, not a delayed ticket queue.',
       'What’s changed isn’t just the attackers’ ambition; it’s the blast radius. Modern ransomware spreads through a network fast, targets backups specifically to prevent easy recovery, and increasingly threatens to leak stolen data even if a ransom is paid — turning a technical incident into a reputational and legal one simultaneously.',
@@ -553,7 +553,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Engagement Models',
     date: '2021-09-10',
     readTime: '4 min read',
-    coverImage: stockPhotos.consultingMeeting,
+    coverImage: stockPhotos.salaryCashBanknotes,
     content: [
       'Compare a staff augmentation rate to a full-time salary and the salary usually looks like the better deal. That comparison leaves out most of what a full-time hire actually costs: recruiting time, benefits, equipment, onboarding ramp-up, and the ongoing management overhead of someone who’s now a permanent part of the org chart.',
       'It also leaves out timeline. A full-time search realistically takes months from posting to productive contributor. Staff augmentation can put a vetted, experienced engineer on a project within weeks, which has real value when the work is needed now, not in a quarter.',
@@ -569,7 +569,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Data & Analytics',
     date: '2021-10-21',
     readTime: '3 min read',
-    coverImage: stockPhotos.analyticsDashboard,
+    coverImage: stockPhotos.checklistEvaluation,
     content: [
       '"Data-driven" gets treated as a guarantee of good decisions, as if the presence of a number automatically makes a choice more sound. It doesn’t. Bad data, the wrong metric, or a metric measured over the wrong time window can point confidently in the wrong direction.',
       'A common failure is optimizing for a metric that’s easy to measure instead of the outcome that actually matters — click-through rate instead of actual customer value, short-term engagement instead of long-term retention. The decision looks data-driven and still leads somewhere the business didn’t want to go.',
@@ -601,7 +601,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Industry Trends',
     date: '2021-12-02',
     readTime: '4 min read',
-    coverImage: stockPhotos.strategyMeeting,
+    coverImage: stockPhotos.blockchainNetworkCubes,
     content: [
       'Web3 is showing up in a lot of strategy conversations right now, often framed as something businesses risk being left behind on if they don’t engage. That urgency is worth pushing back on before it drives real budget.',
       'Blockchain technology solves a specific problem well: coordination without a trusted central party. Most business use cases being pitched right now don’t actually have that problem — they have a database problem, a loyalty program problem, or a marketing problem, and forcing a blockchain into the solution adds cost and complexity without solving anything a traditional system couldn’t.',
@@ -617,7 +617,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Digital Marketing',
     date: '2021-12-16',
     readTime: '3 min read',
-    coverImage: stockPhotos.seoDashboard,
+    coverImage: stockPhotos.searchMagnifyingLaptop,
     content: [
       'Local SEO and local marketing playbooks were built around a simple assumption: customers and employees are near a physical location. For a growing number of remote-first businesses, that assumption no longer describes reality, and the old playbook stops being useful without someone noticing.',
       'A remote-first company still has a "local" story, but it’s distributed — customers clustered by industry or use case rather than geography, a talent brand that needs to resonate in multiple cities at once, and a website that has to work equally well for a visitor anywhere rather than assuming a regional context.',
@@ -633,7 +633,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Cloud & DevOps',
     date: '2022-01-13',
     readTime: '4 min read',
-    coverImage: stockPhotos.cloudComputing,
+    coverImage: stockPhotos.cloudBillingCalculator,
     content: [
       'Cloud spend has a strange organizational split: engineering makes nearly every decision that determines the bill — which services to use, how to scale them, how long to keep data — and finance is usually the one who finds out what those decisions cost, after the fact, on an invoice.',
       'FinOps closes that gap by treating cost as an engineering concern, visible during the decisions that create it rather than discovered afterward. That means cost estimates as part of design reviews, dashboards engineers actually look at rather than ones only finance sees, and accountability for spend attached to the team that owns the resource generating it.',
@@ -665,7 +665,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Team Strategy',
     date: '2022-03-22',
     readTime: '3 min read',
-    coverImage: stockPhotos.teamAroundTable,
+    coverImage: stockPhotos.resumePapersDesk,
     content: [
       'When a hiring funnel is losing candidates, the instinct is usually to speed it up — fewer rounds, faster scheduling, quicker offers. Speed helps, but only if the funnel’s actual problem is speed, and often it isn’t.',
       'A funnel that loses strong candidates because the interview process feels disorganized, the role was poorly described, or the compensation conversation happens too late doesn’t get fixed by moving through those same broken steps faster. It just delivers the same bad experience on a shorter timeline.',
@@ -681,7 +681,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Cybersecurity',
     date: '2022-04-12',
     readTime: '4 min read',
-    coverImage: stockPhotos.codingScreen,
+    coverImage: stockPhotos.cargoShipPort,
     content: [
       'A growing number of serious breaches aren’t breaking through a company’s own defenses at all — they’re coming in through a trusted vendor, a software dependency, or a piece of infrastructure the company doesn’t directly control but relies on completely.',
       'This changes what "secure" actually means. A company can do everything right internally and still be exposed through a library it imports, a SaaS tool with broad access to its systems, or a contractor with credentials that were never fully audited. The perimeter isn’t just your own systems anymore; it’s everything connected to them.',
@@ -697,7 +697,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Leadership & Culture',
     date: '2022-05-17',
     readTime: '3 min read',
-    coverImage: stockPhotos.teamDiscussion,
+    coverImage: stockPhotos.burnoutHeadInHands,
     content: [
       'Burnout on a struggling team is easy to spot: missed deadlines, visible frustration, obvious signs something is wrong. On a high-performing team, it hides better, because the same people who are burning out are often still delivering, right up until they aren’t.',
       'The tell isn’t output — it’s tone. Someone who used to volunteer ideas goes quiet. A reliably fast responder starts taking a day to reply. Enthusiasm flattens into just getting through the list. None of this shows up on a status report, because the work is still getting done.',
@@ -729,7 +729,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Industry Trends',
     date: '2022-07-20',
     readTime: '3 min read',
-    coverImage: stockPhotos.businessMeeting,
+    coverImage: stockPhotos.stockMarketChartDark,
     content: [
       'This year’s budget conversations have a common shape: costs are up, hiring budgets are tighter, and the amount of work that needs doing hasn’t shrunk to match. Companies are responding by changing how they buy engineering capacity, not just how much of it they buy.',
       'We’re seeing more interest in flexible engagement models that can scale down as easily as they scale up — staff augmentation over full-time hires for uncertain-duration work, shorter-term outsourced projects instead of expanding permanent headcount for work that might not be permanent.',
@@ -745,7 +745,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Data & Analytics',
     date: '2022-08-11',
     readTime: '3 min read',
-    coverImage: stockPhotos.analyticsDashboard,
+    coverImage: stockPhotos.marketingCTRDashboard,
     content: [
       'Nobody gets excited about event tracking. It’s the unglamorous work of deciding what actions to record, how to name them consistently, and what properties to attach — the kind of task that’s easy to rush through to get to the actual dashboard-building. That rush is exactly why so many analytics setups end up unreliable.',
       'A tracking plan with inconsistent naming, missing properties, or events that were defined differently by two different engineers doesn’t announce itself as broken. It just quietly produces numbers that don’t add up, discovered months later when someone tries to answer a question the tracking wasn’t actually built to answer.',
@@ -761,7 +761,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Hiring & Careers',
     date: '2022-09-06',
     readTime: '3 min read',
-    coverImage: stockPhotos.teamPresentation,
+    coverImage: stockPhotos.oneOnOneCoffeeChat,
     content: [
       'By the time a strong candidate reaches a final round, they’ve usually already decided the technical bar is acceptable — otherwise they wouldn’t still be in the process. What they’re actually probing for in those last conversations is different, and companies that don’t notice the shift tend to lose these candidates without understanding why.',
       'The questions cluster around a few themes: how decisions actually get made day to day, what happens when priorities conflict, how much autonomy they’ll genuinely have versus how much the job description implied. These aren’t compensation questions — they’re trying to find out what it’s actually like to work there, from someone who isn’t reading off a script.',
@@ -809,7 +809,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'AI & Automation',
     date: '2022-12-07',
     readTime: '4 min read',
-    coverImage: stockPhotos.aiAbstract,
+    coverImage: stockPhotos.chatbotAppPhone,
     content: [
       'ChatGPT launched a few weeks ago, and it’s already dominating conversations with clients who’ve never asked us about AI before. The demos are genuinely impressive — fluent, coherent, useful-looking output on almost any prompt. What we’re watching for now is what happens once the novelty of that wears off.',
       'The interesting question isn’t whether the model is impressive in a demo; it clearly is. It’s whether it’s reliable enough for tasks where being wrong carries a real cost, and how it handles the messy, specific, unglamorous work that makes up most business software, rather than the general-knowledge questions it currently shines at.',
@@ -841,7 +841,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'AI & Automation',
     date: '2023-01-12',
     readTime: '4 min read',
-    coverImage: stockPhotos.aiConcept,
+    coverImage: stockPhotos.githubWebsiteScreen,
     content: [
       'A few months into using AI coding assistants across real client projects, the time savings are real but narrower than the pitch suggests. Boilerplate, repetitive patterns, test scaffolding, and translating a clear intent into working syntax — these are where it consistently saves meaningful time.',
       'Where it doesn’t help as much: architecture decisions, understanding a large unfamiliar codebase’s actual constraints, and anything that requires knowing the business context behind a requirement. It can generate plausible-looking code for these just as confidently as for the things it’s actually good at, which is exactly the risk.',
@@ -857,7 +857,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Industry Trends',
     date: '2023-02-15',
     readTime: '3 min read',
-    coverImage: stockPhotos.growthChart,
+    coverImage: stockPhotos.layoffsEmptyOffice,
     content: [
       'A wave of layoffs across big tech has dominated headlines, and the natural assumption is that this is bad news across the board for the industry. For companies looking to staff a project right now, the practical effect has actually been the opposite.',
       'A larger pool of strong, recently available engineers means faster searches, more competitive candidates per opening, and less of the multi-month waiting game that defined hiring for the last couple of years. Engineers who would have been unreachable a year ago are actively looking now.',
@@ -873,7 +873,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'AI & Automation',
     date: '2023-03-09',
     readTime: '4 min read',
-    coverImage: stockPhotos.aiConcept,
+    coverImage: stockPhotos.aiCodeGenDarkScreen,
     content: [
       'The honest answer right now is: not unattended, and probably not for anything with real consequences if it’s wrong. Current models are impressively fluent and still confidently wrong often enough that unsupervised production changes are a genuine risk, not a hypothetical one.',
       'That doesn’t mean the answer is "never." It means the useful question isn’t whether to allow it, but what level of human review makes sense for what kind of change — a low-risk internal tool tolerates more autonomy than a payment flow does, and that distinction should drive the policy, not a blanket yes or no.',
@@ -889,7 +889,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Cybersecurity',
     date: '2023-04-20',
     readTime: '3 min read',
-    coverImage: stockPhotos.codingScreen,
+    coverImage: stockPhotos.hackerSilhouetteMonitors,
     content: [
       'The obvious worry about AI-generated code is quality — does it work, is it correct. A quieter, easier-to-miss risk is what the code brings in alongside it: subtly insecure patterns that look plausible, license-ambiguous snippets echoed from training data, or dependencies suggested without any real vetting behind the suggestion.',
       'These risks don’t announce themselves the way a broken build does. The code runs fine, the tests pass, and the vulnerability or license issue sits quietly until something specifically goes looking for it — often much later, when it’s harder to trace back to its origin.',
@@ -905,7 +905,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Data & Analytics',
     date: '2023-05-04',
     readTime: '4 min read',
-    coverImage: stockPhotos.analyticsDashboard,
+    coverImage: stockPhotos.databaseSchemaFlowchart,
     content: [
       'Every client conversation about AI eventually reaches the same question: can we point this at our own data? The answer is usually yes, but the excitement tends to skip past a short list of things worth checking first.',
       'Where does the data actually go, and does the vendor’s policy on training and retention match what your data sensitivity requires — this is the first question, and it’s surprising how often it gets asked last. Second: is the data itself clean and well-labeled enough to produce a trustworthy answer, because a model fed inconsistent or poorly structured data will confidently produce an inconsistent, poorly grounded answer.',
@@ -921,7 +921,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Leadership & Culture',
     date: '2023-06-14',
     readTime: '3 min read',
-    coverImage: stockPhotos.teamDiscussion,
+    coverImage: stockPhotos.techConferenceStage,
     content: [
       'The pace of AI announcements right now is genuinely disorienting, even for engineers who follow this closely. Every week brings a new tool claiming to change how software gets built, and managing a team through that noise without whiplash is turning into its own kind of skill.',
       'Two failure modes show up on teams handling this poorly: chasing every new tool and disrupting real work to evaluate things that turn out to be hype, or dismissing all of it out of fatigue and missing something that’s genuinely useful. Neither serves the team well.',
@@ -937,7 +937,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Engagement Models',
     date: '2023-07-26',
     readTime: '3 min read',
-    coverImage: stockPhotos.consultingMeeting,
+    coverImage: stockPhotos.twoPersonStartupDesk,
     content: [
       'Early-stage founders used to face a narrow choice: learn to build it themselves, or find a technical co-founder willing to bet their career on an unproven idea. A third path is increasingly common, and for good reason — staff augmentation or a small outsourced team to build the first version, while the founder focuses on validating the business.',
       'This isn’t a compromise choice anymore; it’s often the more rational one. Committing significant equity to a technical co-founder before the product or market is proven is a permanent, expensive decision made under maximum uncertainty. Bringing in vetted engineering help to build a first version keeps that decision open until there’s real evidence to base it on.',
@@ -953,7 +953,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Web & Mobile Development',
     date: '2023-08-08',
     readTime: '4 min read',
-    coverImage: stockPhotos.codingCloseup,
+    coverImage: stockPhotos.serverRacksDataCenter,
     content: [
       'For most of the last decade, the trend in web development pushed rendering and logic further onto the client — bigger JavaScript bundles, more client-side state, richer single-page apps. Server components mark a real reversal of that trend, and it’s worth understanding what problem it’s actually solving.',
       'Shipping less JavaScript to the browser and rendering more on the server directly improves load performance and reduces the client-side complexity that made large single-page apps hard to maintain. It’s not nostalgia for old server-rendered sites; it’s a genuinely new model that keeps some of the interactivity gains while shedding some of the client-side weight.',
@@ -969,7 +969,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Hiring & Careers',
     date: '2023-09-19',
     readTime: '3 min read',
-    coverImage: stockPhotos.teamPresentation,
+    coverImage: stockPhotos.mentorTeachingScreen,
     content: [
       'A lot of technical interviews still implicitly reward someone for writing every line themselves without assistance, on the theory that this tests real skill. That theory is starting to test the wrong thing, given how much of real day-to-day work now involves AI-assisted coding.',
       'What actually matters now is closer to judgment than typing speed: can a candidate evaluate AI-suggested code critically, catch when it’s subtly wrong, and know when to trust it versus when to write something from scratch themselves. That’s a different, and arguably more important, skill than pure unassisted output.',
@@ -985,7 +985,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Cloud & DevOps',
     date: '2023-10-03',
     readTime: '3 min read',
-    coverImage: stockPhotos.cloudComputing,
+    coverImage: stockPhotos.serverScalingRack,
     content: [
       'With budgets under more scrutiny this year, "reduce cloud spend" has become a standing line item in a lot of planning conversations. Across the projects we’re involved in, the actual savings are landing in a few consistent, unglamorous places.',
       'Rightsizing over-provisioned resources tends to be the single biggest lever — infrastructure sized for a peak that either never materialized or was overestimated to begin with. Reserved capacity for predictable, steady workloads is a close second, trading flexibility for a meaningful discount on the parts of the system that don’t actually need to scale dynamically.',
@@ -1001,7 +1001,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Our Process',
     date: '2023-11-15',
     readTime: '3 min read',
-    coverImage: stockPhotos.teamWorkshop,
+    coverImage: stockPhotos.checklistEvaluation,
     content: [
       'AI coding assistance is now a normal part of how we work, but it isn’t a blanket policy applied identically to every project. Some engagements get real value from it early; others benefit more from staying conservative for a while longer, and we try to be deliberate about which is which.',
       'The projects that benefit most tend to have well-established patterns, good test coverage, and low ambiguity in requirements — conditions where AI-generated suggestions are easy to verify quickly and unlikely to introduce subtle context the tool can’t know about.',
@@ -1017,7 +1017,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Digital Marketing',
     date: '2023-12-06',
     readTime: '3 min read',
-    coverImage: stockPhotos.seoDashboard,
+    coverImage: stockPhotos.writingNotebookPen,
     content: [
       'Generating content at scale got dramatically cheaper this year, and a lot of sites took advantage of it, publishing far more than they used to. Volume alone isn’t proving to be the advantage some expected — search engines are actively adjusting to surface genuinely useful content over generic, high-volume output.',
       'What’s still working is content with something an AI-generated volume strategy structurally can’t replicate on its own: specific experience, a real opinion, concrete detail that comes from having actually done the thing being written about. Generic, competently written but interchangeable content is exactly what’s getting squeezed out.',
@@ -1033,7 +1033,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Industry Trends',
     date: '2023-12-20',
     readTime: '4 min read',
-    coverImage: stockPhotos.aiAbstract,
+    coverImage: stockPhotos.robotHumanHandsReaching,
     content: [
       'It’s been just over a year since generative AI went mainstream, and it’s worth separating what actually shipped in real production use from what stayed a demo, a hot take, or a strategy deck slide. The list of durable, real changes is smaller than the volume of conversation about it, and that’s worth being honest about.',
       'What genuinely stuck: AI-assisted coding as a real productivity tool for a meaningful slice of engineering work, faster first drafts across writing and content tasks, and better tooling for summarizing and querying large volumes of internal documents. These are concrete, everyday changes to how a lot of work actually gets done.',
@@ -1049,7 +1049,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'AI & Automation',
     date: '2024-01-11',
     readTime: '4 min read',
-    coverImage: stockPhotos.aiConcept,
+    coverImage: stockPhotos.databaseSchemaFlowchart,
     content: [
       'Retrieval-augmented generation gets pitched as a way to make an AI system answer questions using your own data, and the concept is simple enough to fit in a slide: retrieve relevant documents, feed them to the model, get a grounded answer. What that slide leaves out is that almost all the real work is unglamorous data engineering, not model configuration.',
       'How documents get chunked, how relevance is actually scored, how stale or duplicate content gets excluded, how conflicting information across sources gets handled — these decisions determine whether the system is useful or whether it confidently retrieves the wrong thing and generates a fluent, wrong answer on top of it.',
@@ -1081,7 +1081,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Hiring & Careers',
     date: '2024-03-07',
     readTime: '3 min read',
-    coverImage: stockPhotos.officeHighFive,
+    coverImage: stockPhotos.resumePapersDesk,
     content: [
       'Entry-level engineering roles have gotten noticeably scarcer, and it’s not simply a symptom of broader tech layoffs. A specific dynamic is compounding the slowdown: AI coding tools now handle a meaningful share of the exact tasks that used to be a junior engineer’s on-ramp — small, well-defined, low-risk changes that build real skill while producing real value.',
       'That shrinks the traditional business case for hiring junior talent, since the tasks that used to justify the investment are partly automated now. It’s a shortsighted trade for companies making it, though, because those tasks were never just busywork — they were how junior engineers built the judgment that makes them senior engineers eventually.',
@@ -1113,7 +1113,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Cybersecurity',
     date: '2024-05-09',
     readTime: '4 min read',
-    coverImage: stockPhotos.codingScreen,
+    coverImage: stockPhotos.securityPadlockKeyboard,
     content: [
       'Prompt injection — feeding a model input specifically designed to override its instructions — is a genuinely new bug class, and it doesn’t map cleanly onto the security checklists most teams have been using for years. A traditional input-sanitization review looks for SQL injection and script tags. It’s not built to catch a cleverly worded paragraph that convinces a model to ignore its own system prompt.',
       'This matters more as AI features get more access — a chatbot that can only answer FAQ questions is a low-stakes surface; one connected to internal tools, customer data, or the ability to take real actions is a meaningfully higher-stakes one, and the injection risk scales right along with that access.',
@@ -1129,7 +1129,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Cloud & DevOps',
     date: '2024-06-20',
     readTime: '4 min read',
-    coverImage: stockPhotos.serverRoom,
+    coverImage: stockPhotos.cicdConveyor,
     content: [
       'The original DevOps promise — break down the wall between development and operations, let teams own their own infrastructure — solved a real problem and created a quieter one: every product engineer now needed to be at least a little bit of an infrastructure expert, on top of their actual job.',
       'Platform engineering is the practical correction. Instead of every team reinventing deployment pipelines, environment provisioning, and observability from scratch, a dedicated platform team builds shared, self-service tooling that product teams consume without needing to become infrastructure specialists themselves.',
@@ -1145,7 +1145,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Data & Analytics',
     date: '2024-07-12',
     readTime: '3 min read',
-    coverImage: stockPhotos.analyticsDashboard,
+    coverImage: stockPhotos.chatbotAppPhone,
     content: [
       'A lot of companies are building support or internal chatbots on top of existing documentation, expecting the model to smooth over whatever gaps exist in that documentation. It doesn’t. It inherits them, confidently, which is arguably worse than a human support agent inheriting the same gaps.',
       'Outdated pricing pages, contradictory policy documents from two different eras of the company, and half-finished internal wikis all get treated as equally authoritative source material by a retrieval system that has no way of knowing which one is current. The chatbot doesn’t know which document is stale — it just retrieves whatever’s closest to the question and answers from it.',
@@ -1161,7 +1161,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Engagement Models',
     date: '2024-08-01',
     readTime: '3 min read',
-    coverImage: stockPhotos.consultingMeeting,
+    coverImage: stockPhotos.checklistEvaluation,
     content: [
       '"AI-powered delivery" has become a standard line in outsourcing pitches, and it’s worth pushing past the phrase to find out what it actually means for the specific work being proposed. Vague claims of speed without specifics are usually marketing, not a real methodology.',
       'The useful questions are concrete: which parts of the process actually use AI assistance, what human review sits on top of AI-generated work before it ships, and how does the partner handle the cases where AI output was wrong. A vendor who can answer these specifically has probably actually integrated the tools thoughtfully; one who can’t is likely using the phrase as a differentiator without much behind it.',
@@ -1177,7 +1177,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Web & Mobile Development',
     date: '2024-09-13',
     readTime: '3 min read',
-    coverImage: stockPhotos.coding,
+    coverImage: stockPhotos.legacyMacintoshComputer,
     content: [
       'Clients occasionally ask us to build on whatever framework is generating the most excitement that quarter, on the assumption that newest means best. For most business software, that assumption doesn’t hold up as well as it sounds like it should.',
       'A mature, boring stack has years of production battle-testing, a deep hiring pool, and documented answers to the edge cases that inevitably show up. A brand-new framework has none of that yet — its edge cases are still being discovered in production by whoever adopts it early, and that discovery process has a real cost when it happens on your project instead of someone else’s.',
@@ -1225,7 +1225,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Our Process',
     date: '2024-12-05',
     readTime: '3 min read',
-    coverImage: stockPhotos.teamWorkshop,
+    coverImage: stockPhotos.robotArmAutomation,
     content: [
       'It’s tempting to describe our AI usage in the most impressive terms possible, but the honest, specific list is more useful to a client trying to evaluate us than a vague claim of "AI-powered everything" would be.',
       'What we actually automate: first-draft code for well-understood, low-risk patterns; test case generation reviewed by an engineer before merging; and documentation drafts that get edited, not published as-is. All of it sits inside a human review step before it ships — none of it goes straight to production unsupervised.',
@@ -1241,7 +1241,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Hiring & Careers',
     date: '2024-12-19',
     readTime: '3 min read',
-    coverImage: stockPhotos.teamPresentation,
+    coverImage: stockPhotos.mentorTeachingScreen,
     content: [
       'A year ago we wrote about entry-level hiring getting squeezed as AI tools absorbed some of the traditional on-ramp tasks for junior engineers. That trend hasn’t reversed — if anything, it’s become a more explicit part of hiring plans rather than a side effect nobody named directly.',
       'What has changed is that a clearer split is emerging between companies treating this as a reason to stop hiring juniors and companies treating it as a reason to redesign how juniors ramp up — giving them more code review and system understanding work earlier, since the purely mechanical tasks that used to teach those skills are now partly automated.',
@@ -1257,7 +1257,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'AI & Automation',
     date: '2025-01-16',
     readTime: '4 min read',
-    coverImage: stockPhotos.aiConcept,
+    coverImage: stockPhotos.aiCodeGenDarkScreen,
     content: [
       'Agentic coding tools — the kind that take a task, plan the steps, write the code, run the tests, and open a pull request largely on their own — have gotten genuinely capable over the past year. Hand one a well-scoped ticket with clear acceptance criteria, and it can deliver a working result faster than most of us expected this soon.',
       'The gap shows up the moment the task is ambiguous. A ticket that requires reading between the lines of a stakeholder’s intent, weighing a trade-off that isn’t written down anywhere, or recognizing that the requested change conflicts with an unstated constraint elsewhere in the system — this is where these tools still struggle, and where they tend to produce a technically complete but practically wrong result.',
@@ -1273,7 +1273,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Cybersecurity',
     date: '2025-02-11',
     readTime: '4 min read',
-    coverImage: stockPhotos.serverRoom,
+    coverImage: stockPhotos.hackerSilhouetteMonitors,
     content: [
       'As AI agents move from answering questions to actually taking actions — querying databases, sending communications, modifying records — the security conversation has to move with them. An agent with real system access isn’t just a feature; it’s a new category of attack surface that most existing threat models weren’t built to cover.',
       'The specific risk isn’t just the agent misbehaving on its own. It’s an agent being manipulated, through injected instructions in retrieved content or a cleverly crafted input, into taking an action it was never intended to take — and doing so with whatever legitimate access it was granted, which makes the resulting action look authorized even though it wasn’t.',
@@ -1289,7 +1289,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Hiring & Careers',
     date: '2025-03-25',
     readTime: '3 min read',
-    coverImage: stockPhotos.codingCloseup,
+    coverImage: stockPhotos.vibeCodingScreen,
     content: [
       '"Vibe coding" — describing what you want in plain language and accepting whatever an AI tool produces without closely reading it — has become a real, if informal, way some people build software now. It works surprisingly well for small, low-stakes projects, which is exactly why it’s tempting to extend the same habit to work where it matters more.',
       'The problem is that it works right up until the model produces something plausible-looking and subtly wrong, and by definition, nobody following this approach closely enough to catch it. On a personal project, that failure is a minor annoyance. On production business software, it’s a real incident waiting for the right conditions to trigger it.',
@@ -1305,7 +1305,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Cloud & DevOps',
     date: '2025-04-08',
     readTime: '4 min read',
-    coverImage: stockPhotos.serverRoom,
+    coverImage: stockPhotos.githubWebsiteScreen,
     content: [
       'CI/CD pipelines were designed around an implicit assumption: a human wrote this code, thought about it, and is submitting it in good faith with reasonable context about the change. Once agents start opening pull requests directly, some of that assumption stops holding, and pipelines built without accounting for it start showing gaps.',
       'Volume is the first obvious change — an agent can generate far more pull requests per day than a human contributor, which strains review capacity and can quietly pressure reviewers into rubber-stamping changes just to keep up. Pipelines and review norms built for human-scale volume need real adjustment, not just a faster reviewer.',
@@ -1321,7 +1321,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Leadership & Culture',
     date: '2025-05-20',
     readTime: '3 min read',
-    coverImage: stockPhotos.teamDiscussion,
+    coverImage: stockPhotos.robotHumanHandsReaching,
     content: [
       'Most engineering teams right now have a real split: some engineers have restructured their entire workflow around AI assistance, others use it sparingly or not at all, and both groups can point to reasonable justifications for their approach. Managing that split well has become a genuine, ongoing challenge rather than a settled question.',
       'The risk on one side is an engineer over-relying on AI output without developing the judgment to catch when it’s wrong, producing code that looks confident and occasionally isn’t. The risk on the other side is an engineer working at a real disadvantage in speed, without a correspondingly better output to justify the gap.',
@@ -1337,7 +1337,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Engagement Models',
     date: '2025-06-12',
     readTime: '3 min read',
-    coverImage: stockPhotos.consultingMeeting,
+    coverImage: stockPhotos.mentorTeachingScreen,
     content: [
       'Staff augmentation requests used to be straightforward: send someone senior. Increasingly, clients are adding a second, specific requirement alongside seniority — someone who works effectively with AI tools, not just someone with years of experience.',
       'This isn’t clients chasing a buzzword. It reflects a real shift in what a productive engineer looks like now: seniority without AI fluency means someone capable but slower than the current baseline, while AI fluency without real seniority means someone fast but not equipped to catch when the output is subtly wrong. Clients increasingly want both, because either alone is a real gap now.',
@@ -1353,7 +1353,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Data & Analytics',
     date: '2025-07-03',
     readTime: '4 min read',
-    coverImage: stockPhotos.analyticsDashboard,
+    coverImage: stockPhotos.checklistEvaluation,
     content: [
       'Traditional software has a well-established habit of testing: write the test, know what "correct" looks like, run it before every change. A lot of AI features skip the equivalent step, because "correct" feels fuzzier for a generative system, and it’s tempting to treat that fuzziness as a reason to skip measurement rather than a reason to be more disciplined about it.',
       'An evaluation set — a curated collection of real inputs with known-good expected outputs, scored consistently — is the AI equivalent of a test suite, and it’s still the part most teams underinvest in. Without one, "does this feature work well" gets answered by vibes and a handful of manual spot-checks, which doesn’t catch regressions when a prompt, model version, or retrieval pipeline changes.',
@@ -1369,7 +1369,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Industry Trends',
     date: '2025-08-14',
     readTime: '3 min read',
-    coverImage: stockPhotos.growthChart,
+    coverImage: stockPhotos.resumePapersDesk,
     content: [
       'The industry-wide slowdown in junior engineering hiring over the past couple of years is starting to produce a visible, predictable consequence: a thinner mid-level talent pool showing up right now, because the people who would have been mid-level today are the ones who weren’t hired as juniors when budgets tightened.',
       'This isn’t a problem confined to companies that cut junior hiring — it’s becoming an industry-wide supply issue, because the pipeline that produces experienced engineers a few years out runs through junior hiring decisions made industry-wide, not just at any one company.',
@@ -1401,7 +1401,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Web & Mobile Development',
     date: '2025-10-09',
     readTime: '4 min read',
-    coverImage: stockPhotos.coding,
+    coverImage: stockPhotos.robotHumanHandsReaching,
     content: [
       'A meaningful and growing share of traffic hitting a typical website now isn’t a human browsing — it’s an AI agent completing a task on someone’s behalf, or a crawler gathering information for a model to answer a question later. That shift is quiet, but it has real implications for how a site should be built.',
       'Sites designed purely around a human clicking through a visual interface don’t serve agents well — a form that requires precise visual interaction, content buried behind interaction patterns a human intuits but an agent has to guess at, and no structured, machine-readable way to expose the same information a human sees. None of this was a problem when the only visitors were people.',
@@ -1417,7 +1417,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Digital Marketing',
     date: '2025-11-17',
     readTime: '4 min read',
-    coverImage: stockPhotos.seoDashboard,
+    coverImage: stockPhotos.searchMagnifyingLaptop,
     content: [
       'Search results increasingly lead with an AI-generated summary that answers the question directly, before a user ever scrolls to a traditional result. Ranking first doesn’t mean what it used to when a growing share of searchers get their answer without clicking through to any site at all.',
       'This is a genuine structural shift, not a minor algorithm update. Traffic that used to be reliably earned by ranking well is now partially captured by the search engine’s own summary, and no amount of traditional SEO optimization brings that specific traffic back — it requires a different strategy, not a better version of the old one.',
@@ -1433,7 +1433,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Team Strategy',
     date: '2025-12-04',
     readTime: '3 min read',
-    coverImage: stockPhotos.teamCollaboration,
+    coverImage: stockPhotos.twoPersonStartupDesk,
     content: [
       'We’re increasingly seeing small teams — two or three engineers, heavily leaning on AI-assisted and agentic tooling — deliver scope that would have realistically required a much larger team a few years ago. It’s a real shift, and it’s worth understanding what actually makes it work, because the tools alone don’t explain it fully.',
       'The teams pulling this off successfully share a trait that has nothing to do with AI directly: extremely clear ownership and extremely tight scope. A small team can’t absorb ambiguity or coordination overhead the way a larger one can compensate for it with more hands, so the teams that work this way are unusually disciplined about what they take on and how clearly it’s defined before work starts.',
@@ -1465,7 +1465,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'AI & Automation',
     date: '2026-01-13',
     readTime: '4 min read',
-    coverImage: stockPhotos.aiConcept,
+    coverImage: stockPhotos.aiCodeGenDarkScreen,
     content: [
       'On a lot of the codebases we work in now, a majority of new code started as an AI suggestion, reviewed and accepted by an engineer rather than typed from scratch. That’s a genuine shift from even two years ago, and it raises a question that the shift itself doesn’t answer: who actually owns this code now?',
       'The honest answer has to stay the same as it’s always been — the human who reviewed and merged it owns it, fully, regardless of who or what drafted the first version. "The AI wrote it" isn’t an acceptable explanation when something breaks, any more than "I copied it from a forum" ever was, and teams that let that line blur are setting up a real accountability gap.',
@@ -1481,7 +1481,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Cybersecurity',
     date: '2026-02-10',
     readTime: '4 min read',
-    coverImage: stockPhotos.serverRoom,
+    coverImage: stockPhotos.securityPadlockKeyboard,
     content: [
       'A lot of security models are still built around a mental picture of a fixed roster of human employees, each with an identity, a badge, and access provisioned and revoked through HR events. That model doesn’t map cleanly onto an engineering org where autonomous agents are now routinely committing code, running tasks, and interacting with systems on their own initiative.',
       'The practical gaps show up fast once you look for them: agent credentials that never expire the way an offboarded employee’s would, unclear ownership when an agent’s action causes a problem, and access scoped generously for convenience rather than tightly for the specific task at hand, because tight scoping is more work to set up.',
@@ -1497,7 +1497,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Hiring & Careers',
     date: '2026-03-17',
     readTime: '3 min read',
-    coverImage: stockPhotos.teamPresentation,
+    coverImage: stockPhotos.mentorTeachingScreen,
     content: [
       'A couple of years ago, working effectively with AI tools was a genuine differentiator in a candidate. Now it’s close to universal, which means it’s stopped being useful as a way to tell strong candidates apart from average ones — everyone shows up knowing how to use the tools.',
       'What actually differentiates candidates now is what sits underneath that fluency: the judgment to know when a tool’s suggestion is wrong, the systems understanding to catch a plausible-looking mistake that a less experienced engineer would accept, and the ability to reason clearly about a problem the tools haven’t seen a close match for before.',
@@ -1513,7 +1513,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Cloud & DevOps',
     date: '2026-04-21',
     readTime: '4 min read',
-    coverImage: stockPhotos.cloudComputing,
+    coverImage: stockPhotos.serverRacksDataCenter,
     content: [
       'Internal developer platforms were built, reasonably, around a human using a dashboard or a CLI — clear visual feedback, interactive prompts, a person reading and reacting to output in real time. A growing share of what actually interacts with these platforms now is an agent, and that interface assumption doesn’t serve agents well.',
       'An agent doesn’t benefit from a polished visual dashboard the way a human does; it needs structured, predictable, machine-readable interfaces and clear, parseable error output instead of a friendly but loosely formatted message meant for a person to interpret. Platforms that only speak "human" force every agent interaction through an awkward, brittle translation layer.',
@@ -1545,7 +1545,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Leadership & Culture',
     date: '2026-06-09',
     readTime: '3 min read',
-    coverImage: stockPhotos.teamDiscussion,
+    coverImage: stockPhotos.robotHumanHandsReaching,
     content: [
       'At this point, most engineering teams have access to broadly similar AI tooling — the differences between platforms have narrowed, and the tools themselves are no longer the differentiator they were a couple of years ago. What still varies enormously is how much value different teams actually get out of the same tools, and the difference isn’t technical.',
       'It’s trust, in both directions. Engineers on high-performing teams trust that flagging a mistake, including their own mistake in accepting a bad AI suggestion, won’t be held against them — which means mistakes surface and get fixed quickly instead of being quietly buried. Teams without that trust see the same category of mistake hidden longer, because admitting it feels riskier than it should.',
@@ -1561,7 +1561,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Data & Analytics',
     date: '2026-07-15',
     readTime: '4 min read',
-    coverImage: stockPhotos.analyticsDashboard,
+    coverImage: stockPhotos.checklistEvaluation,
     content: [
       'As agents take on more autonomous responsibility — processing requests, making routing decisions, taking real actions — the question of how to audit what they actually did, after something goes wrong, has become a real operational requirement rather than a theoretical concern.',
       '"The model decided that" is not an acceptable answer to a customer, a regulator, or a postmortem, and treating it as one is how teams end up unable to explain their own systems’ behavior. A real audit requires logging not just the final action an agent took, but the reasoning trail and the inputs that led there — the same standard we’d expect if a human had made the same call.',
@@ -1577,7 +1577,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Engagement Models',
     date: '2026-08-06',
     readTime: '3 min read',
-    coverImage: stockPhotos.consultingMeeting,
+    coverImage: stockPhotos.aiCodeGenDarkScreen,
     content: [
       'When a client asks for a staff augmentation engineer today, the role they’re actually filling has shifted from what the same request meant a few years ago. A meaningful share of the routine implementation work that used to fill an engineer’s day is now handled with agentic assistance, and the engineer’s real job has moved toward directing, reviewing, and taking responsibility for that output.',
       'This changes what we vet for and how we frame the placement. An engineer joining an agent-assisted team needs to be comfortable directing and correcting AI-generated work as a core part of the job, not an occasional task layered on top of "real" engineering — because for a growing share of the work, that oversight is the real engineering now.',
@@ -1593,7 +1593,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     category: 'Our Process',
     date: '2026-09-14',
     readTime: '4 min read',
-    coverImage: stockPhotos.teamPresentation,
+    coverImage: stockPhotos.handshakeInterview,
     content: [
       'We started vetting engineers for client placements in 2019, and looking back at that original process next to what we run today, the core criteria have held up remarkably well: technical depth on real, messy problems, clear communication, and genuine fit with how a team actually works. What’s changed is almost everything about how we evaluate those three things.',
       'The technical evaluation moved from closed-book problem solving to open, tool-assisted work that mirrors how engineers actually build software now, because testing someone’s ability to work without any assistance stopped testing a skill the job actually requires. The communication evaluation shifted further toward async, written clarity, since that’s carried more of the real weight on distributed teams for years now.',

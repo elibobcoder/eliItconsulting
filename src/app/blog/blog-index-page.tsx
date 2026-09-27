@@ -5,11 +5,15 @@ import NextLink from 'next/link'
 import Image from 'next/image'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
+import Chip from '@mui/material/Chip'
 import Stack from '@mui/material/Stack'
+import Menu from '@mui/material/Menu'
+import MenuItem from '@mui/material/MenuItem'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
 import InputAdornment from '@mui/material/InputAdornment'
+import IconButton from '@mui/material/IconButton'
 import Pagination from '@mui/material/Pagination'
 import { useTheme } from '@mui/material/styles'
 import { motion } from 'framer-motion'
@@ -18,6 +22,7 @@ import { blogPosts } from '@/constants/blog'
 
 const POSTS_PER_PAGE = 9
 const TRENDING_COUNT = 6
+const SHORTLIST_COUNT = 5
 
 const formatDate = (iso: string) =>
   new Date(iso).toLocaleDateString('en-US', {
@@ -33,11 +38,25 @@ const SearchIcon = () => (
   </Box>
 )
 
+const ClearIcon = () => (
+  <Box component='svg' viewBox='0 0 24 24' sx={{ width: 16, height: 16 }}>
+    <line x1='6' y1='6' x2='18' y2='18' stroke='currentColor' strokeWidth='2' strokeLinecap='round' />
+    <line x1='18' y1='6' x2='6' y2='18' stroke='currentColor' strokeWidth='2' strokeLinecap='round' />
+  </Box>
+)
+
+const ChevronIcon = () => (
+  <Box component='svg' viewBox='0 0 24 24' sx={{ width: 14, height: 14 }}>
+    <path d='M6 9l6 6 6-6' fill='none' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' />
+  </Box>
+)
+
 const BlogIndexPage = () => {
   const theme = useTheme()
   const [search, setSearch] = useState('')
   const [activeFilter, setActiveFilter] = useState<string | null>(null)
   const [page, setPage] = useState(1)
+  const [moreAnchor, setMoreAnchor] = useState<HTMLElement | null>(null)
 
   const trendingSlugs = useMemo(() => {
     return new Set(
@@ -55,6 +74,10 @@ const BlogIndexPage = () => {
       .sort((a, b) => b[1] - a[1])
       .map(([name, count]) => ({ name, count }))
   }, [])
+
+  const shortlistCategories = categories.slice(0, SHORTLIST_COUNT)
+  const moreCategories = categories.slice(SHORTLIST_COUNT)
+  const activeIsInMore = moreCategories.some((c) => c.name === activeFilter)
 
   const sortedPosts = useMemo(
     () => [...blogPosts].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()),
@@ -137,7 +160,15 @@ const BlogIndexPage = () => {
         <Container maxWidth='lg'>
           {/* Toolbar */}
           <Reveal>
-            <Stack spacing={3} sx={{ mb: 6 }}>
+            <Box
+              sx={{
+                mb: 5,
+                p: { xs: 2.5, md: 3 },
+                borderRadius: 5,
+                border: (t) => `1px solid ${t.palette.divider}`,
+                backgroundColor: (t) => (t.palette.mode === 'dark' ? '#101014' : '#f7f8fb'),
+              }}
+            >
               <TextField
                 fullWidth
                 placeholder='Search articles by topic...'
@@ -150,73 +181,108 @@ const BlogIndexPage = () => {
                         <SearchIcon />
                       </InputAdornment>
                     ),
+                    endAdornment: search && (
+                      <InputAdornment position='end'>
+                        <IconButton
+                          size='small'
+                          aria-label='Clear search'
+                          onClick={() => handleSearchChange('')}
+                        >
+                          <ClearIcon />
+                        </IconButton>
+                      </InputAdornment>
+                    ),
                   },
                 }}
                 sx={{
-                  maxWidth: 480,
-                  '& .MuiOutlinedInput-root': { borderRadius: 3, backgroundColor: 'background.default' },
+                  mb: 2.5,
+                  '& .MuiOutlinedInput-root': {
+                    borderRadius: 3,
+                    backgroundColor: 'background.paper',
+                    fontSize: 15,
+                  },
                 }}
               />
-              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1.2 }}>
-                <Box
-                  component='button'
-                  onClick={() => handleFilterClick(null)}
-                  sx={{
-                    px: 2.2,
-                    py: 0.9,
-                    borderRadius: 10,
-                    fontSize: 13,
-                    fontWeight: 700,
-                    cursor: 'pointer',
-                    border: 'none',
-                    color: activeFilter === null ? '#fff' : 'text.secondary',
-                    backgroundColor: activeFilter === null ? 'primary.main' : 'background.default',
-                  }}
-                >
-                  All Articles
-                </Box>
-                <Box
-                  component='button'
-                  onClick={() => handleFilterClick('Trending')}
-                  sx={{
-                    px: 2.2,
-                    py: 0.9,
-                    borderRadius: 10,
-                    fontSize: 13,
-                    fontWeight: 700,
-                    cursor: 'pointer',
-                    border: 'none',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: 0.5,
-                    color: activeFilter === 'Trending' ? '#fff' : 'secondary.dark',
-                    backgroundColor: activeFilter === 'Trending' ? 'secondary.main' : 'secondary.light',
-                  }}
-                >
-                  🔥 Trending
-                </Box>
-                {categories.map(({ name, count }) => (
+
+              <Stack
+                direction={{ xs: 'column', sm: 'row' }}
+                spacing={{ xs: 1.5, sm: 2 }}
+                divider={
                   <Box
-                    key={name}
-                    component='button'
-                    onClick={() => handleFilterClick(name)}
                     sx={{
-                      px: 2.2,
-                      py: 0.9,
-                      borderRadius: 10,
-                      fontSize: 13,
-                      fontWeight: 700,
-                      cursor: 'pointer',
-                      border: 'none',
-                      color: activeFilter === name ? '#fff' : 'text.secondary',
-                      backgroundColor: activeFilter === name ? 'primary.main' : 'background.default',
+                      display: { xs: 'none', sm: 'block' },
+                      width: '1px',
+                      backgroundColor: 'divider',
+                      alignSelf: 'stretch',
                     }}
-                  >
-                    {name} ({count})
-                  </Box>
-                ))}
-              </Box>
-            </Stack>
+                  />
+                }
+              >
+                <Stack direction='row' spacing={1} sx={{ flexShrink: 0 }}>
+                  <Chip
+                    label='All'
+                    onClick={() => handleFilterClick(null)}
+                    color={activeFilter === null ? 'primary' : 'default'}
+                    variant={activeFilter === null ? 'filled' : 'outlined'}
+                    sx={{ fontWeight: 700, borderRadius: 2 }}
+                  />
+                  <Chip
+                    label='🔥 Trending'
+                    onClick={() => handleFilterClick('Trending')}
+                    color={activeFilter === 'Trending' ? 'secondary' : 'default'}
+                    variant={activeFilter === 'Trending' ? 'filled' : 'outlined'}
+                    sx={{ fontWeight: 700, borderRadius: 2 }}
+                  />
+                </Stack>
+
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, alignItems: 'center' }}>
+                  {shortlistCategories.map(({ name, count }) => (
+                    <Chip
+                      key={name}
+                      label={`${name} (${count})`}
+                      onClick={() => handleFilterClick(name)}
+                      color={activeFilter === name ? 'primary' : 'default'}
+                      variant={activeFilter === name ? 'filled' : 'outlined'}
+                      sx={{ fontWeight: 600, borderRadius: 2 }}
+                    />
+                  ))}
+                  {moreCategories.length > 0 && (
+                    <>
+                      <Chip
+                        label={
+                          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+                            {activeIsInMore ? activeFilter : 'More categories'}
+                            <ChevronIcon />
+                          </Box>
+                        }
+                        onClick={(e) => setMoreAnchor(e.currentTarget)}
+                        color={activeIsInMore ? 'primary' : 'default'}
+                        variant={activeIsInMore ? 'filled' : 'outlined'}
+                        sx={{ fontWeight: 600, borderRadius: 2 }}
+                      />
+                      <Menu
+                        anchorEl={moreAnchor}
+                        open={Boolean(moreAnchor)}
+                        onClose={() => setMoreAnchor(null)}
+                      >
+                        {moreCategories.map(({ name, count }) => (
+                          <MenuItem
+                            key={name}
+                            selected={activeFilter === name}
+                            onClick={() => {
+                              handleFilterClick(name)
+                              setMoreAnchor(null)
+                            }}
+                          >
+                            {name} ({count})
+                          </MenuItem>
+                        ))}
+                      </Menu>
+                    </>
+                  )}
+                </Box>
+              </Stack>
+            </Box>
           </Reveal>
 
           {/* Results count */}
