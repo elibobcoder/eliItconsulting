@@ -121,7 +121,7 @@ const CulturePage = () => {
                     sx={{
                       position: 'relative',
                       height: { xs: 200, md: 240 },
-                      borderRadius: 4,
+                      borderRadius: 0,
                       overflow: 'hidden',
                       boxShadow: 2,
                     }}

@@ -26,7 +26,7 @@ const HomeServiceItem = ({ item, index }: ServiceItemProps) => {
       <Box
         sx={{
           height: '100%',
-          borderRadius: 4,
+          borderRadius: 0,
           p: { xs: 3, md: 4 },
           backgroundColor: 'background.paper',
           border: (theme) => `1px solid ${theme.palette.divider}`,

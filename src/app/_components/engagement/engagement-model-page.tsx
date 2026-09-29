@@ -284,7 +284,7 @@ const EngagementModelPage = ({ content }: { content: IEngagementModel }) => {
                       sx={{
                         height: '100%',
                         p: 3.5,
-                        borderRadius: 4,
+                        borderRadius: 0,
                         border: (t) => `1px solid ${t.palette.divider}`,
                         '&:hover': { boxShadow: 3 },
                       }}

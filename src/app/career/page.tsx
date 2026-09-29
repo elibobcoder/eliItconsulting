@@ -246,7 +246,7 @@ const CareerPage = () => {
                     sx={{
                       position: 'relative',
                       height: { xs: 130, md: 180 },
-                      borderRadius: 3,
+                      borderRadius: 0,
                       overflow: 'hidden',
                       boxShadow: 1,
                     }}
@@ -310,7 +310,7 @@ const CareerPage = () => {
                     transition={{ duration: 0.3 }}
                     sx={{
                       p: 4,
-                      borderRadius: 4,
+                      borderRadius: 0,
                       backgroundColor: 'background.default',
                       height: '100%',
                       '&:hover': { boxShadow: 2 },

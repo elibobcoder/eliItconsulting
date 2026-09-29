@@ -72,7 +72,7 @@ const ContactForm = () => {
       <Box
         sx={{
           p: { xs: 3, md: 5 },
-          borderRadius: 4,
+          borderRadius: 0,
           backgroundColor: 'background.paper',
         }}
       >

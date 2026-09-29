@@ -26,7 +26,7 @@ const BenefitsGrid = ({ items }: { items: Benefit[] }) => (
             sx={{
               height: '100%',
               p: 3.5,
-              borderRadius: 4,
+              borderRadius: 0,
               backgroundColor: 'background.paper',
               border: (t) => `1px solid ${t.palette.divider}`,
               '&:hover': { boxShadow: 3 },

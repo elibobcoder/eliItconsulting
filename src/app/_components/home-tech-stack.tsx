@@ -21,7 +21,7 @@ const TechCard: FC<{ label: string }> = ({ label }) => (
       gap: 1.5,
       p: 2,
       mb: 1.5,
-      borderRadius: 3,
+      borderRadius: 0,
       border: (theme) => `1px solid ${theme.palette.divider}`,
       backgroundColor: 'background.paper',
     }}

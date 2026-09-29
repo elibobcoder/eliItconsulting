@@ -246,7 +246,7 @@ const TopTalentPage = () => {
                     sx={{
                       height: '100%',
                       p: 3,
-                      borderRadius: 4,
+                      borderRadius: 0,
                       border: (t) => `1px solid ${t.palette.divider}`,
                       '&:hover': { boxShadow: 2 },
                     }}

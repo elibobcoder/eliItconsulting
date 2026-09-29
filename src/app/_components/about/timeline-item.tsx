@@ -59,7 +59,7 @@ const TimelineItem = ({ milestone, index }: TimelineItemProps) => {
         sx={{
           width: { xs: '100%', md: 'calc(50% - 40px)' },
           p: 3,
-          borderRadius: 3,
+          borderRadius: 0,
           backgroundColor: 'background.default',
           ml: { xs: 0, md: index % 2 === 0 ? 0 : 'auto' },
           mr: { xs: 0, md: index % 2 === 0 ? 'auto' : 0 },

@@ -105,7 +105,7 @@ const FaqPage = () => {
                 elevation={0}
                 sx={{
                   mb: 2,
-                  borderRadius: '16px !important',
+                  borderRadius: '0px !important',
                   border: (t) => `1px solid ${t.palette.divider}`,
                   '&:before': { display: 'none' },
                 }}

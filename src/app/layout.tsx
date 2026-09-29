@@ -11,6 +11,7 @@ import { AppConfig } from '@/configs'
 // import AppBar from '@/components/appbar/app-bar'
 import Footer from '@/components/footer/footer'
 import AppBarSkeleton from '@/components/appbar/app-bar-skeleton'
+import { PageBreadcrumbs } from '@/components/core'
 
 // @mui provider
 import MuiThemeProvider from '@/plugins/@mui/components/@mui-theme.provider'
@@ -52,6 +53,7 @@ export default function RootLayout({
           <AppContextProvider initialIsDark={initialIsDark}>
             <MuiThemeProvider>
               <AppBar />
+              <PageBreadcrumbs />
               {children}
               <Footer />
             </MuiThemeProvider>

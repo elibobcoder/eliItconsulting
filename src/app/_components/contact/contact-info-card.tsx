@@ -24,7 +24,7 @@ const ContactInfoCard = ({ info }: ContactInfoCardProps) => {
       sx={{
         display: 'block',
         p: 4,
-        borderRadius: 4,
+        borderRadius: 0,
         backgroundColor: 'background.default',
         textDecoration: 'none',
         color: 'inherit',

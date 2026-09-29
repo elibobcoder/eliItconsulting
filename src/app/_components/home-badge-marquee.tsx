@@ -16,7 +16,7 @@ const BadgeTile = ({ label }: { label: string }) => (
       width: 148,
       height: 108,
       mx: 1.5,
-      borderRadius: 3,
+      borderRadius: 0,
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
