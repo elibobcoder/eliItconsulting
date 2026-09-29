@@ -106,7 +106,7 @@ const TopTalentPage = () => {
 
   return (
     <Box component='main'>
-      <PageHero orbVariant='reverse'>
+      <PageHero>
         <Container maxWidth='lg' sx={{ position: 'relative' }}>
           <Grid container spacing={{ xs: 6, md: 8 }} alignItems='center'>
             <Grid size={{ xs: 12, md: 6 }}>

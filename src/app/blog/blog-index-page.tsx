@@ -14,10 +14,10 @@ import TextField from '@mui/material/TextField'
 import InputAdornment from '@mui/material/InputAdornment'
 import IconButton from '@mui/material/IconButton'
 import Pagination from '@mui/material/Pagination'
-import { useTheme } from '@mui/material/styles'
 import { motion } from 'framer-motion'
-import { Reveal, PageHero } from '@/components/core'
+import { Reveal } from '@/components/core'
 import { blogPosts } from '@/constants/blog'
+import { calculateReadTime } from '@/utils/read-time'
 
 const POSTS_PER_PAGE = 9
 const TRENDING_COUNT = 6
@@ -78,7 +78,6 @@ const TabItem: FC<{ label: ReactNode; active: boolean; onClick: (e: React.MouseE
 )
 
 const BlogIndexPage = () => {
-  const theme = useTheme()
   const [search, setSearch] = useState('')
   const [activeFilter, setActiveFilter] = useState<string | null>(null)
   const [page, setPage] = useState(1)
@@ -144,45 +143,7 @@ const BlogIndexPage = () => {
 
   return (
     <Box component='main'>
-      <PageHero>
-        <Container maxWidth='md' sx={{ textAlign: 'center', position: 'relative' }}>
-          <Reveal>
-            <Box
-              sx={{
-                mb: 3,
-                borderRadius: 1,
-                display: 'inline-block',
-                padding: '6px 14px',
-                backgroundColor:
-                  theme.palette.mode === 'dark' ? 'rgb(255,255,255,0.10)' : 'primary.light',
-                color: theme.palette.mode === 'dark' ? '#fbfbfb' : 'primary.main',
-              }}
-            >
-              <Typography sx={{ fontSize: 12, letterSpacing: 1, textTransform: 'uppercase' }} variant='h5'>
-                Blog
-              </Typography>
-            </Box>
-            <Typography
-              variant='h1'
-              sx={{ mb: 3, fontSize: { xs: 32, md: 48 }, fontWeight: 800, lineHeight: 1.2 }}
-            >
-              Notes on building
-              <br />
-              <Box component='span' sx={{ color: 'primary.main' }}>
-                better engineering teams.
-              </Box>
-            </Typography>
-            <Typography
-              sx={{ fontSize: { xs: 16, md: 20 }, color: 'text.secondary', maxWidth: 640, mx: 'auto' }}
-            >
-              Practical writing on engagement models, team strategy, and AI
-              adoption, without the fluff.
-            </Typography>
-          </Reveal>
-        </Container>
-      </PageHero>
-
-      <Box sx={{ py: { xs: 8, md: 12 }, backgroundColor: 'background.paper' }}>
+      <Box sx={{ py: { xs: 6, md: 8 }, backgroundColor: 'background.paper' }}>
         <Container maxWidth='lg'>
           {/* Toolbar */}
           <Reveal>
@@ -376,7 +337,7 @@ const BlogIndexPage = () => {
                           >
                             <span>{formatDate(post.date)}</span>
                             <span>&middot;</span>
-                            <span>{post.readTime}</span>
+                            <span>{calculateReadTime(post.content)}</span>
                           </Box>
                           <Typography
                             sx={{

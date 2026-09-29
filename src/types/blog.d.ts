@@ -9,6 +9,13 @@ declare global {
     content: string[]
     coverImage: string
   }
+
+  interface IBlogPostSummary {
+    slug: string
+    title: string
+    category: string
+    readTime: string
+  }
 }
 
 export {}
