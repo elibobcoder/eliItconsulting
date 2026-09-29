@@ -36,7 +36,7 @@ const HomeHeroDecoration = () => {
           background: (theme) =>
             `radial-gradient(circle at 30% 30%, ${theme.palette.primary.light}, transparent 70%)`,
           filter: 'blur(10px)',
-          opacity: 0.6,
+          opacity: 0.18,
         }}
       />
       <Box
@@ -54,7 +54,7 @@ const HomeHeroDecoration = () => {
           background: (theme) =>
             `radial-gradient(circle at 60% 60%, ${theme.palette.secondary.light}, transparent 70%)`,
           filter: 'blur(10px)',
-          opacity: 0.55,
+          opacity: 0.15,
         }}
       />
     </Box>
