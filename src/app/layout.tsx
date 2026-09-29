@@ -1,15 +1,11 @@
 import { JSX } from 'react'
 import dynamic from 'next/dynamic'
 import type { Metadata } from 'next'
-import { cookies } from 'next/headers'
 import { Plus_Jakarta_Sans } from 'next/font/google'
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter'
 
 // configs
 import { AppConfig } from '@/configs'
-
-// constants
-import { PREFERRED_MODE_KEY } from '@/constants'
 
 // components
 // import AppBar from '@/components/appbar/app-bar'
@@ -41,14 +37,13 @@ export const metadata: Metadata = {
   description: AppConfig.appDescription,
 }
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
-}>): Promise<JSX.Element> {
-  const cookieStore = await cookies()
-  const storedMode = cookieStore.get(PREFERRED_MODE_KEY)?.value
-  const initialIsDark = storedMode ? storedMode === 'dark' : false
+}>): JSX.Element {
+  // Dark mode is disabled site-wide; the theme is always light.
+  const initialIsDark = false
 
   return (
     <html lang='en'>

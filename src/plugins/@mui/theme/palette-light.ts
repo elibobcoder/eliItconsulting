@@ -8,11 +8,11 @@ const palette: PaletteOptions = {
     paper: common.white,
   },
   text: {
-    primary: grey[800],
-    secondary: grey[600],
+    primary: '#151A23',
+    secondary: '#4B5563',
     disabled: grey[500],
   },
-  divider: alpha('#000', 0.07),
+  divider: alpha('#000', 0.1),
 }
 
 export default palette

@@ -7,7 +7,6 @@ import NextLink from 'next/link'
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import AppBarNavigation from './app-bar-navigations'
-import AppBarSwitchDarkMode from './switch-dark-mode'
 import AnimatedHamburgerMenu from './animated-hamburger-menu'
 import { StyledButton } from '@/components/core'
 
@@ -85,7 +84,6 @@ const AppBar: FC = () => {
             ) : (
               <>
                 <AppBarNavigation headerRef={headerBarRef} />
-                <AppBarSwitchDarkMode />
                 <Box sx={{ ml: 1.5 }}>
                   <NextLink href='/contact' passHref>
                     <StyledButton variant='contained' color='dark' size='medium'>

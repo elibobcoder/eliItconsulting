@@ -48,13 +48,13 @@ const BENEFITS = [
     icon: <ClipboardCheckIcon />,
     title: 'Deep technical experience',
     description: 'Engineers with a track record of shipping production software, not just tutorials.',
-    color: '#2B4FD9',
+    color: '#1E3FC4',
   },
   {
     icon: <GlobeIcon />,
     title: 'Timezone-aligned',
     description: 'Work synchronously with engineers who overlap with your working hours.',
-    color: '#06B6D4',
+    color: '#0891B2',
   },
   {
     icon: <LayersIcon />,

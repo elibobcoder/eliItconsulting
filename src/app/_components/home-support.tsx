@@ -14,13 +14,13 @@ const SUPPORT_ITEMS = [
     icon: <ClipboardCheckIcon />,
     title: 'Resume & Portfolio Review',
     description: 'Hands-on feedback to help your resume and portfolio reflect the work you can actually do.',
-    color: '#2B4FD9',
+    color: '#1E3FC4',
   },
   {
     icon: <UsersIcon />,
     title: 'Interview Coaching',
     description: 'Mock technical and behavioral interviews with real feedback, not generic tips.',
-    color: '#06B6D4',
+    color: '#0891B2',
   },
   {
     icon: <ShieldIcon />,

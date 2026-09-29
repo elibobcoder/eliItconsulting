@@ -16,7 +16,6 @@ import {
   useTheme,
 } from '@mui/material'
 import { companyMenus } from '@/constants/menus'
-import AppBarSwitchDarkMode from './switch-dark-mode'
 import { StyledButton } from '@/components/core'
 import Logo from '@/assets/logo.svg'
 
@@ -122,7 +121,6 @@ const AnimatedHamburgerMenu = () => {
             sx={{
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'space-between',
               mb: 2,
             }}
           >
@@ -133,7 +131,6 @@ const AnimatedHamburgerMenu = () => {
                 height: 32,
               }}
             />
-            <AppBarSwitchDarkMode />
           </Box>
 
           <Divider sx={{ mb: 2 }} />

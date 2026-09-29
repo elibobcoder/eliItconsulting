@@ -67,13 +67,13 @@ const BENEFITS = [
     icon: <RocketIcon />,
     title: 'Faster ramp-up',
     description: 'Engineers experienced in your stack start contributing from week one.',
-    color: '#2B4FD9',
+    color: '#1E3FC4',
   },
   {
     icon: <GlobeIcon />,
     title: 'Clear communication',
     description: 'English-fluent engineers who can work in a timezone close to yours.',
-    color: '#06B6D4',
+    color: '#0891B2',
   },
   {
     icon: <ShieldIcon />,
