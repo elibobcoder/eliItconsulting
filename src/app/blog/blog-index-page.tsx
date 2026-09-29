@@ -1,11 +1,10 @@
 'use client'
 
-import React, { useMemo, useState } from 'react'
+import React, { FC, ReactNode, useMemo, useState } from 'react'
 import NextLink from 'next/link'
 import Image from 'next/image'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
-import Chip from '@mui/material/Chip'
 import Stack from '@mui/material/Stack'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
@@ -48,6 +47,33 @@ const ClearIcon = () => (
 const ChevronIcon = () => (
   <Box component='svg' viewBox='0 0 24 24' sx={{ width: 14, height: 14 }}>
     <path d='M6 9l6 6 6-6' fill='none' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' />
+  </Box>
+)
+
+const TabItem: FC<{ label: ReactNode; active: boolean; onClick: (e: React.MouseEvent<HTMLElement>) => void }> = ({
+  label,
+  active,
+  onClick,
+}) => (
+  <Box
+    component='button'
+    onClick={onClick}
+    sx={{
+      px: 1.5,
+      py: 0.75,
+      borderRadius: 1.5,
+      border: 'none',
+      cursor: 'pointer',
+      fontSize: 14,
+      whiteSpace: 'nowrap',
+      fontWeight: active ? 700 : 500,
+      color: active ? 'text.primary' : 'text.secondary',
+      backgroundColor: active ? 'action.selected' : 'transparent',
+      transition: (t) => t.transitions.create(['background-color', 'color']),
+      '&:hover': { backgroundColor: active ? 'action.selected' : 'action.hover' },
+    }}
+  >
+    {label}
   </Box>
 )
 
@@ -160,22 +186,74 @@ const BlogIndexPage = () => {
         <Container maxWidth='lg'>
           {/* Toolbar */}
           <Reveal>
-            <Box
+            <Stack
+              direction={{ xs: 'column', md: 'row' }}
+              justifyContent='space-between'
+              alignItems={{ xs: 'flex-start', md: 'center' }}
+              spacing={2}
               sx={{
                 mb: 5,
-                p: { xs: 2.5, md: 3 },
-                borderRadius: 5,
-                border: (t) => `1px solid ${t.palette.divider}`,
-                backgroundColor: (t) => (t.palette.mode === 'dark' ? '#101014' : '#f7f8fb'),
+                pb: 2,
+                borderBottom: (t) => `1px solid ${t.palette.divider}`,
               }}
             >
+              <Stack direction='row' spacing={0.5} sx={{ flexWrap: 'wrap', rowGap: 0.5 }}>
+                <TabItem label='All' active={activeFilter === null} onClick={() => handleFilterClick(null)} />
+                <TabItem
+                  label='🔥 Trending'
+                  active={activeFilter === 'Trending'}
+                  onClick={() => handleFilterClick('Trending')}
+                />
+                {shortlistCategories.map(({ name }) => (
+                  <TabItem
+                    key={name}
+                    label={name}
+                    active={activeFilter === name}
+                    onClick={() => handleFilterClick(name)}
+                  />
+                ))}
+                {moreCategories.length > 0 && (
+                  <>
+                    <TabItem
+                      label={
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+                          {activeIsInMore ? activeFilter : 'More'}
+                          <ChevronIcon />
+                        </Box>
+                      }
+                      active={activeIsInMore}
+                      onClick={(e) => setMoreAnchor(e.currentTarget)}
+                    />
+                    <Menu
+                      anchorEl={moreAnchor}
+                      open={Boolean(moreAnchor)}
+                      onClose={() => setMoreAnchor(null)}
+                    >
+                      {moreCategories.map(({ name, count }) => (
+                        <MenuItem
+                          key={name}
+                          selected={activeFilter === name}
+                          onClick={() => {
+                            handleFilterClick(name)
+                            setMoreAnchor(null)
+                          }}
+                        >
+                          {name} ({count})
+                        </MenuItem>
+                      ))}
+                    </Menu>
+                  </>
+                )}
+              </Stack>
+
               <TextField
-                fullWidth
-                placeholder='Search articles by topic...'
+                placeholder='Search...'
+                variant='standard'
                 value={search}
                 onChange={(e) => handleSearchChange(e.target.value)}
                 slotProps={{
                   input: {
+                    disableUnderline: true,
                     startAdornment: (
                       <InputAdornment position='start' sx={{ color: 'text.secondary' }}>
                         <SearchIcon />
@@ -195,94 +273,16 @@ const BlogIndexPage = () => {
                   },
                 }}
                 sx={{
-                  mb: 2.5,
-                  '& .MuiOutlinedInput-root': {
-                    borderRadius: 3,
-                    backgroundColor: 'background.paper',
-                    fontSize: 15,
-                  },
+                  width: { xs: '100%', md: 200 },
+                  px: 1.5,
+                  py: 0.25,
+                  borderRadius: 1.5,
+                  border: (t) => `1px solid ${t.palette.divider}`,
+                  fontSize: 14,
+                  flexShrink: 0,
                 }}
               />
-
-              <Stack
-                direction={{ xs: 'column', sm: 'row' }}
-                spacing={{ xs: 1.5, sm: 2 }}
-                divider={
-                  <Box
-                    sx={{
-                      display: { xs: 'none', sm: 'block' },
-                      width: '1px',
-                      backgroundColor: 'divider',
-                      alignSelf: 'stretch',
-                    }}
-                  />
-                }
-              >
-                <Stack direction='row' spacing={1} sx={{ flexShrink: 0 }}>
-                  <Chip
-                    label='All'
-                    onClick={() => handleFilterClick(null)}
-                    color={activeFilter === null ? 'primary' : 'default'}
-                    variant={activeFilter === null ? 'filled' : 'outlined'}
-                    sx={{ fontWeight: 700, borderRadius: 2 }}
-                  />
-                  <Chip
-                    label='🔥 Trending'
-                    onClick={() => handleFilterClick('Trending')}
-                    color={activeFilter === 'Trending' ? 'secondary' : 'default'}
-                    variant={activeFilter === 'Trending' ? 'filled' : 'outlined'}
-                    sx={{ fontWeight: 700, borderRadius: 2 }}
-                  />
-                </Stack>
-
-                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, alignItems: 'center' }}>
-                  {shortlistCategories.map(({ name, count }) => (
-                    <Chip
-                      key={name}
-                      label={`${name} (${count})`}
-                      onClick={() => handleFilterClick(name)}
-                      color={activeFilter === name ? 'primary' : 'default'}
-                      variant={activeFilter === name ? 'filled' : 'outlined'}
-                      sx={{ fontWeight: 600, borderRadius: 2 }}
-                    />
-                  ))}
-                  {moreCategories.length > 0 && (
-                    <>
-                      <Chip
-                        label={
-                          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-                            {activeIsInMore ? activeFilter : 'More categories'}
-                            <ChevronIcon />
-                          </Box>
-                        }
-                        onClick={(e) => setMoreAnchor(e.currentTarget)}
-                        color={activeIsInMore ? 'primary' : 'default'}
-                        variant={activeIsInMore ? 'filled' : 'outlined'}
-                        sx={{ fontWeight: 600, borderRadius: 2 }}
-                      />
-                      <Menu
-                        anchorEl={moreAnchor}
-                        open={Boolean(moreAnchor)}
-                        onClose={() => setMoreAnchor(null)}
-                      >
-                        {moreCategories.map(({ name, count }) => (
-                          <MenuItem
-                            key={name}
-                            selected={activeFilter === name}
-                            onClick={() => {
-                              handleFilterClick(name)
-                              setMoreAnchor(null)
-                            }}
-                          >
-                            {name} ({count})
-                          </MenuItem>
-                        ))}
-                      </Menu>
-                    </>
-                  )}
-                </Box>
-              </Stack>
-            </Box>
+            </Stack>
           </Reveal>
 
           {/* Results count */}
@@ -300,13 +300,13 @@ const BlogIndexPage = () => {
               </Typography>
             </Box>
           ) : (
-            <Grid container spacing={4}>
+            <Grid container spacing={4} alignItems='stretch'>
               {paginatedPosts.map((post, index) => (
-                <Grid key={post.slug} size={{ xs: 12, md: 6, lg: 4 }}>
+                <Grid key={post.slug} size={{ xs: 12, md: 6, lg: 4 }} sx={{ display: 'flex' }}>
                   <Reveal index={index % 6}>
                     <NextLink
                       href={`/blog/${post.slug}`}
-                      style={{ textDecoration: 'none', color: 'inherit' }}
+                      style={{ textDecoration: 'none', color: 'inherit', display: 'block', height: '100%' }}
                     >
                       <Box
                         component={motion.div}
@@ -314,7 +314,9 @@ const BlogIndexPage = () => {
                         transition={{ duration: 0.3 }}
                         sx={{
                           height: '100%',
-                          borderRadius: 4,
+                          display: 'flex',
+                          flexDirection: 'column',
+                          borderRadius: 0,
                           overflow: 'hidden',
                           border: (t) => `1px solid ${t.palette.divider}`,
                           '&:hover': { boxShadow: 3 },
@@ -324,6 +326,7 @@ const BlogIndexPage = () => {
                           sx={{
                             position: 'relative',
                             height: 180,
+                            flexShrink: 0,
                             overflow: 'hidden',
                           }}
                         >
@@ -348,7 +351,7 @@ const BlogIndexPage = () => {
                               left: 12,
                               px: 1.5,
                               py: 0.4,
-                              borderRadius: 1,
+                              borderRadius: 0,
                               fontWeight: 700,
                               fontSize: 11,
                               letterSpacing: 0.5,
@@ -360,7 +363,7 @@ const BlogIndexPage = () => {
                             {post.category}
                           </Box>
                         </Box>
-                        <Box sx={{ p: 3.5 }}>
+                        <Box sx={{ p: 3.5, display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
                           <Box
                             sx={{
                               mb: 1.5,
@@ -375,13 +378,34 @@ const BlogIndexPage = () => {
                             <span>&middot;</span>
                             <span>{post.readTime}</span>
                           </Box>
-                          <Typography sx={{ fontSize: { xs: 19, md: 20 }, fontWeight: 700, mb: 1.5 }}>
+                          <Typography
+                            sx={{
+                              fontSize: { xs: 19, md: 20 },
+                              fontWeight: 700,
+                              mb: 1.5,
+                              display: '-webkit-box',
+                              WebkitLineClamp: 2,
+                              WebkitBoxOrient: 'vertical',
+                              overflow: 'hidden',
+                            }}
+                          >
                             {post.title}
                           </Typography>
-                          <Typography sx={{ color: 'text.secondary', fontSize: 14.5, lineHeight: 1.7, mb: 2 }}>
+                          <Typography
+                            sx={{
+                              color: 'text.secondary',
+                              fontSize: 14.5,
+                              lineHeight: 1.7,
+                              mb: 2,
+                              display: '-webkit-box',
+                              WebkitLineClamp: 2,
+                              WebkitBoxOrient: 'vertical',
+                              overflow: 'hidden',
+                            }}
+                          >
                             {post.excerpt}
                           </Typography>
-                          <Typography sx={{ fontSize: 13, fontWeight: 700, color: 'primary.main' }}>
+                          <Typography sx={{ fontSize: 13, fontWeight: 700, color: 'primary.main', mt: 'auto' }}>
                             Read the post &rarr;
                           </Typography>
                         </Box>
@@ -400,8 +424,8 @@ const BlogIndexPage = () => {
                 page={page}
                 onChange={handlePageChange}
                 color='primary'
-                shape='rounded'
                 size='large'
+                sx={{ '& .MuiPaginationItem-root': { borderRadius: 0 } }}
               />
             </Box>
           )}
