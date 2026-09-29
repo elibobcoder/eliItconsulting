@@ -13,7 +13,7 @@ interface Dot {
 const TEXT = 'ELI IT CONSULTING'
 const DOT_STEP = 6
 const DOT_RADIUS = 1.5
-const REPEL_RADIUS = 90
+const REPEL_RADIUS = 50
 const REPEL_STRENGTH = 14
 const EASE = 0.12
 
