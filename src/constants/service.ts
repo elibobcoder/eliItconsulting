@@ -6,7 +6,7 @@ export const services: IService[] = [
     description:
       'Custom web and mobile applications built for performance, security, and scale.',
     image: '/icons/mobile-app.png',
-    color: '#2B4FD9',
+    color: '#1E3FC4',
     tags: ['Front-End', 'Back-End', 'React', 'Next.js'],
   },
   {
@@ -16,7 +16,7 @@ export const services: IService[] = [
     description:
       'Data-driven campaigns that grow your audience and convert visitors into customers.',
     image: '/icons/content-strategy.png',
-    color: '#06B6D4',
+    color: '#0891B2',
     tags: ['SEO', 'Content', 'Paid Media'],
   },
   {

@@ -31,7 +31,7 @@ const JobCard = ({ job }: JobCardProps) => {
     <Box
       sx={{
         p: { xs: 3, md: 4 },
-        borderRadius: 4,
+        borderRadius: 0,
         backgroundColor: 'background.paper',
         border: (t) => `1px solid ${t.palette.divider}`,
         transition: (t) => t.transitions.create(['border-color', 'box-shadow']),

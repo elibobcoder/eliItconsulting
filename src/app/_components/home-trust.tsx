@@ -6,6 +6,7 @@ import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import { motion } from 'framer-motion'
 import { Reveal } from '@/components/core'
+import HomeBadgeMarquee from './home-badge-marquee'
 
 const INDUSTRIES = [
   'Startups',
@@ -30,8 +31,31 @@ const HomeTrust = () => {
         borderBottom: (theme) => `1px solid ${theme.palette.divider}`,
       }}
     >
-      <Container maxWidth='md'>
+      <Container maxWidth='lg'>
         <Reveal>
+          <Typography
+            sx={{
+              textAlign: 'center',
+              fontSize: { xs: 22, md: 32 },
+              fontWeight: 800,
+              lineHeight: 1.25,
+              textTransform: 'uppercase',
+              letterSpacing: 0.5,
+              mb: 4,
+            }}
+          >
+            Recognized on the platforms that matter
+          </Typography>
+        </Reveal>
+        <Reveal index={1}>
+          <Box sx={{ mb: 6 }}>
+            <HomeBadgeMarquee />
+          </Box>
+        </Reveal>
+      </Container>
+
+      <Container maxWidth='md'>
+        <Reveal index={2}>
           <Typography
             sx={{
               textAlign: 'center',

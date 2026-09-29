@@ -76,7 +76,7 @@ const HomeTestimonials = () => {
                   sx={{
                     height: '100%',
                     p: 4,
-                    borderRadius: 4,
+                    borderRadius: 0,
                     backgroundColor: 'background.paper',
                     border: (theme) => `1px solid ${theme.palette.divider}`,
                   }}

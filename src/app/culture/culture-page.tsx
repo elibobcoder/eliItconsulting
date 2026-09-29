@@ -30,13 +30,13 @@ const PILLARS = [
     icon: <GlobeIcon />,
     title: 'Remote-first, by design',
     description: 'We build our process around distributed work, not around forcing people into an office.',
-    color: '#2B4FD9',
+    color: '#1E3FC4',
   },
   {
     icon: <RocketIcon />,
     title: 'Ownership over oversight',
     description: 'We hire people we trust to make good decisions, then give them the room to make them.',
-    color: '#06B6D4',
+    color: '#0891B2',
   },
   {
     icon: <UsersIcon />,
@@ -121,7 +121,7 @@ const CulturePage = () => {
                     sx={{
                       position: 'relative',
                       height: { xs: 200, md: 240 },
-                      borderRadius: 4,
+                      borderRadius: 0,
                       overflow: 'hidden',
                       boxShadow: 2,
                     }}

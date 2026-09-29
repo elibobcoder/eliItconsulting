@@ -1,13 +1,12 @@
 'use client'
 
-import React, { FC, Fragment, useCallback, useMemo } from 'react'
+import React, { FC, Fragment, useCallback, useMemo, useRef } from 'react'
 
 // components
 import NextLink from 'next/link'
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import AppBarNavigation from './app-bar-navigations'
-import AppBarSwitchDarkMode from './switch-dark-mode'
 import AnimatedHamburgerMenu from './animated-hamburger-menu'
 import { StyledButton } from '@/components/core'
 
@@ -22,26 +21,14 @@ import Logo from '@/assets/logo.svg'
 
 const AppBar: FC = () => {
   const theme = useTheme()
+  const headerBarRef = useRef<HTMLDivElement>(null)
   const { y: scrollY } = useWindowScroll()
-  // const scrollY = 0
   const mobileMatches = useMediaQuery(theme.breakpoints.down('md'))
 
   const router = useRouter()
   const pathName = usePathname()
 
-  const shouldFloating = useMemo(() => {
-    return scrollY > 120
-  }, [scrollY])
-
-  const backgroundColor = useMemo(() => {
-    if (shouldFloating) {
-      return theme.palette.mode === 'light'
-        ? 'rgb(255 255 255 / 80%)'
-        : 'rgb(0 0 0 / 80%)'
-    } else {
-      return 'transparent'
-    }
-  }, [shouldFloating, theme])
+  const isScrolled = useMemo(() => scrollY > 20, [scrollY])
 
   const onClickLogo = useCallback(() => {
     if (typeof window !== 'undefined') {
@@ -56,60 +43,28 @@ const AppBar: FC = () => {
   return (
     <Fragment>
       <Box
+        ref={headerBarRef}
+        component='header'
         sx={{
           position: 'fixed',
-          boxSizing: 'border-box',
           top: 0,
-          left: '50%',
-          transform: 'translate(-50%, 0%)',
-          width: {
-            xs: '100%',
-            md: 1200,
-          },
+          left: 0,
+          width: '100%',
           zIndex: 1100, // zIndex @mui AppBar
-          textAlign: 'center',
+          backgroundColor: 'background.paper',
+          borderBottom: (theme: Theme) =>
+            isScrolled ? `1px solid ${theme.palette.divider}` : '1px solid transparent',
+          boxShadow: isScrolled ? 2 : 0,
+          transition: (theme: Theme) =>
+            theme.transitions.create(['box-shadow', 'border-color']),
         }}
       >
-        <Container
-          sx={{
-            px: {
-              xs: '16px !important',
-              md: '0 !important',
-            },
-            pt: {
-              xs: 1,
-              md: 0,
-            },
-          }}
-        >
+        <Container maxWidth='lg'>
           <Box
-            className={shouldFloating ? 'floating' : 'fixed-top'}
             sx={{
-              mt: {
-                xs: 1,
-                md: 2.4,
-              },
-              backgroundColor,
+              py: { xs: 1.5, md: 2 },
               display: 'flex',
               alignItems: 'center',
-              transition: (theme: Theme) =>
-                theme.transitions.create([
-                  'transform',
-                  'margin-top',
-                  'background-color',
-                  'padding',
-                ]),
-              backdropFilter: shouldFloating ? 'blur(8px)' : 'unset',
-              borderRadius: 10,
-              padding: 0,
-              '&.floating': {
-                mt: 1.4,
-                padding: {
-                  xs: '12px 16px',
-                  md: '14px 20px',
-                },
-                boxShadow: 3,
-              },
             }}
           >
             <Box
@@ -118,10 +73,8 @@ const AppBar: FC = () => {
               component={Logo}
               sx={{
                 width: 'auto',
+                height: 36,
                 cursor: 'pointer',
-                height: shouldFloating ? 32 : 40,
-                transition: (theme: Theme) =>
-                  theme.transitions.create(['transform', 'height']),
               }}
             />
             {mobileMatches ? (
@@ -130,8 +83,7 @@ const AppBar: FC = () => {
               </Box>
             ) : (
               <>
-                <AppBarNavigation />
-                <AppBarSwitchDarkMode />
+                <AppBarNavigation headerRef={headerBarRef} />
                 <Box sx={{ ml: 1.5 }}>
                   <NextLink href='/contact' passHref>
                     <StyledButton variant='contained' color='dark' size='medium'>

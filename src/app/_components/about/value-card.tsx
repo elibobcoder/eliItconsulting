@@ -19,7 +19,7 @@ const ValueCard = ({ value }: ValueCardProps) => {
     <Box
       sx={{
         p: 4,
-        borderRadius: 4,
+        borderRadius: 0,
         backgroundColor: 'background.paper',
         height: '100%',
         transition: (t) => t.transitions.create(['transform', 'box-shadow']),

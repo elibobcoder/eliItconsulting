@@ -32,7 +32,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
       onMouseLeave={() => setIsHovered(false)}
       sx={{
         position: 'relative',
-        borderRadius: 4,
+        borderRadius: 0,
         overflow: 'hidden',
         cursor: 'pointer',
         backgroundColor: 'background.paper',

@@ -14,13 +14,13 @@ const PARTNER_TYPES = [
     icon: <LayersIcon />,
     title: 'Technical Partners',
     description: 'Engineers, designers, and QA specialists who join our delivery network for client work.',
-    color: '#2B4FD9',
+    color: '#1E3FC4',
   },
   {
     icon: <UsersIcon />,
     title: 'Referral Partners',
     description: 'Non-technical partners who connect us with businesses that need software built.',
-    color: '#06B6D4',
+    color: '#0891B2',
   },
   {
     icon: <GlobeIcon />,

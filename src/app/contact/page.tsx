@@ -150,7 +150,7 @@ const ContactPage = () => {
                 <Box
                   sx={{
                     height: { xs: 220, md: 260 },
-                    borderRadius: 4,
+                    borderRadius: 0,
                     overflow: 'hidden',
                     mb: 4,
                     position: 'relative',
@@ -200,7 +200,7 @@ const ContactPage = () => {
                 <Box
                   sx={{
                     p: 4,
-                    borderRadius: 4,
+                    borderRadius: 0,
                     backgroundColor: 'background.paper',
                   }}
                 >

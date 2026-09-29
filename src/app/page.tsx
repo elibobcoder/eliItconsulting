@@ -8,10 +8,16 @@ import PageLoader from '@/components/section-loader'
 const HomeHero = dynamic(() => import('./_components/home-hero'), {
   loading: () => <PageLoader />,
 })
+const HomeDotText = dynamic(() => import('./_components/home-dot-text'), {
+  loading: () => <PageLoader />,
+})
 const HomeTrust = dynamic(() => import('./_components/home-trust'), {
   loading: () => <PageLoader />,
 })
 const HomeServices = dynamic(() => import('./_components//home-services'), {
+  loading: () => <PageLoader />,
+})
+const HomeTechStack = dynamic(() => import('./_components/home-tech-stack'), {
   loading: () => <PageLoader />,
 })
 const HomeOutsourcing = dynamic(
@@ -46,8 +52,10 @@ const HomePage = (): JSX.Element => {
   return (
     <Stack direction='column'>
       <HomeHero />
+      <HomeDotText />
       <HomeTrust />
       <HomeServices />
+      <HomeTechStack />
       <HomeOutsourcing />
       <HomePartnership />
       <HomeSupport />

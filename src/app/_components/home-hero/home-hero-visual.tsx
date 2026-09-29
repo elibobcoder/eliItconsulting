@@ -64,7 +64,7 @@ const HomeHeroVisual = () => {
         sx={{
           position: 'relative',
           zIndex: 1,
-          borderRadius: 4,
+          borderRadius: 0,
           overflow: 'hidden',
           backgroundColor: '#0d1220',
           border: '1px solid rgba(255,255,255,0.08)',
@@ -140,7 +140,7 @@ const HomeHeroVisual = () => {
           right: { xs: -12, md: -32 },
           width: { xs: 108, md: 140 },
           height: { xs: 78, md: 100 },
-          borderRadius: 3,
+          borderRadius: 0,
           overflow: 'hidden',
           border: '3px solid',
           borderColor: 'background.paper',
@@ -172,7 +172,7 @@ const HomeHeroVisual = () => {
           left: { xs: -8, md: -28 },
           px: 2.5,
           py: 1.75,
-          borderRadius: 3,
+          borderRadius: 0,
           backgroundColor: 'background.paper',
           boxShadow: 4,
         }}
