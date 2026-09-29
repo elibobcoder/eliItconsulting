@@ -17,6 +17,7 @@ import Pagination from '@mui/material/Pagination'
 import { motion } from 'framer-motion'
 import { Reveal } from '@/components/core'
 import { blogPosts } from '@/constants/blog'
+import { calculateReadTime } from '@/utils/read-time'
 
 const POSTS_PER_PAGE = 9
 const TRENDING_COUNT = 6
@@ -336,7 +337,7 @@ const BlogIndexPage = () => {
                           >
                             <span>{formatDate(post.date)}</span>
                             <span>&middot;</span>
-                            <span>{post.readTime}</span>
+                            <span>{calculateReadTime(post.content)}</span>
                           </Box>
                           <Typography
                             sx={{
