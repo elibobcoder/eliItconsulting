@@ -178,14 +178,116 @@ const SidebarList = ({ heading, posts }: { heading: string; posts: IBlogPostSumm
   )
 }
 
+const TableOfContents = ({ sections }: { sections: IBlogSection[] }) => (
+  <Box
+    sx={{
+      mb: { xs: 4, md: 6 },
+      p: { xs: 2.5, md: 3 },
+      border: (t) => `1px solid ${t.palette.divider}`,
+      backgroundColor: 'background.default',
+    }}
+  >
+    <Typography sx={{ fontSize: 13, fontWeight: 700, letterSpacing: 0.6, textTransform: 'uppercase', mb: 1.5 }}>
+      Article contents
+    </Typography>
+    <Box component='ol' sx={{ m: 0, pl: 2.5, display: 'flex', flexDirection: 'column', gap: 0.75 }}>
+      {sections.map((section, index) => (
+        <Box component='li' key={section.id} sx={{ fontSize: 14.5 }}>
+          <Box
+            component='a'
+            href={`#${section.id}`}
+            sx={{
+              color: 'text.secondary',
+              textDecoration: 'none',
+              '&:hover': { color: 'primary.main', textDecoration: 'underline' },
+            }}
+          >
+            {index + 1}. {section.heading}
+          </Box>
+        </Box>
+      ))}
+    </Box>
+  </Box>
+)
+
+const ArticleSections = ({ sections }: { sections: IBlogSection[] }) => (
+  <>
+    {sections.map((section) => (
+      <Box key={section.id} id={section.id} sx={{ scrollMarginTop: `${HEADER_OFFSET.md}px` }}>
+        <Typography variant='h2' sx={{ fontSize: { xs: 21, md: 25 }, fontWeight: 800, mt: { xs: 5, md: 6 }, mb: 2.5 }}>
+          {section.heading}
+        </Typography>
+        {section.paragraphs.map((paragraph, index) => (
+          <Typography
+            key={index}
+            sx={{ mb: 3, fontSize: { xs: 16, md: 17 }, lineHeight: 1.9, color: 'text.primary' }}
+          >
+            {paragraph}
+          </Typography>
+        ))}
+        {section.image && (
+          <Box sx={{ my: { xs: 4, md: 5 } }}>
+            <Box
+              sx={{
+                position: 'relative',
+                height: { xs: 200, md: 320 },
+                overflow: 'hidden',
+              }}
+            >
+              <Image
+                src={section.image.src}
+                alt={section.image.alt}
+                fill
+                sizes='(max-width: 900px) 100vw, 800px'
+                style={{ objectFit: 'cover' }}
+              />
+            </Box>
+            {section.image.caption && (
+              <Typography sx={{ mt: 1, fontSize: 13, color: 'text.secondary', fontStyle: 'italic' }}>
+                {section.image.caption}
+              </Typography>
+            )}
+          </Box>
+        )}
+      </Box>
+    ))}
+  </>
+)
+
+const PrevNextCard = ({ post, direction }: { post: IBlogPostSummary; direction: 'previous' | 'next' }) => (
+  <NextLink href={`/blog/${post.slug}`} style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
+    <Box
+      sx={{
+        position: 'relative',
+        height: { xs: 160, md: 200 },
+        overflow: 'hidden',
+        display: 'flex',
+        alignItems: 'flex-end',
+        color: '#fbfbfb',
+      }}
+    >
+      <Image src={post.coverImage} alt={post.title} fill sizes='(max-width: 900px) 100vw, 600px' style={{ objectFit: 'cover' }} />
+      <Box sx={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(11,18,32,0.15), rgba(11,18,32,0.85))' }} />
+      <Box sx={{ position: 'relative', p: { xs: 2.5, md: 3 } }}>
+        <Typography sx={{ fontSize: 12, fontWeight: 700, letterSpacing: 0.6, textTransform: 'uppercase', color: 'rgba(255,255,255,0.75)', mb: 0.75 }}>
+          {direction === 'previous' ? '← Previous article' : 'Next article →'}
+        </Typography>
+        <Typography sx={{ fontSize: { xs: 16, md: 18 }, fontWeight: 800, lineHeight: 1.3 }}>{post.title}</Typography>
+      </Box>
+    </Box>
+  </NextLink>
+)
+
 interface BlogPostPageProps {
   post: IBlogPost
   readTime: string
   trendingPosts: IBlogPostSummary[]
   relatedPosts: IBlogPostSummary[]
+  previousPost: IBlogPostSummary | null
+  nextPost: IBlogPostSummary | null
 }
 
-const BlogPostPage = ({ post, readTime, trendingPosts, relatedPosts }: BlogPostPageProps) => {
+const BlogPostPage = ({ post, readTime, trendingPosts, relatedPosts, previousPost, nextPost }: BlogPostPageProps) => {
   const theme = useTheme()
   const [pageUrl, setPageUrl] = useState('')
 
@@ -271,7 +373,6 @@ const BlogPostPage = ({ post, readTime, trendingPosts, relatedPosts }: BlogPostP
               display: 'grid',
               gridTemplateColumns: { xs: '1fr', md: '5fr 70fr 25fr' },
               columnGap: { md: '5%' },
-              overflow: 'hidden',
             }}
           >
             {/* Social share — left column */}
@@ -347,14 +448,19 @@ const BlogPostPage = ({ post, readTime, trendingPosts, relatedPosts }: BlogPostP
                 </Box>
               </Reveal>
               <Reveal index={1}>
-                {post.content.map((paragraph, index) => (
-                  <Typography
-                    key={index}
-                    sx={{ mb: 3, fontSize: { xs: 16, md: 17 }, lineHeight: 1.9, color: 'text.primary' }}
-                  >
-                    {paragraph}
-                  </Typography>
-                ))}
+                {post.sections && <TableOfContents sections={post.sections} />}
+                {post.sections ? (
+                  <ArticleSections sections={post.sections} />
+                ) : (
+                  post.content.map((paragraph, index) => (
+                    <Typography
+                      key={index}
+                      sx={{ mb: 3, fontSize: { xs: 16, md: 17 }, lineHeight: 1.9, color: 'text.primary' }}
+                    >
+                      {paragraph}
+                    </Typography>
+                  ))
+                )}
               </Reveal>
             </Box>
 
@@ -377,6 +483,23 @@ const BlogPostPage = ({ post, readTime, trendingPosts, relatedPosts }: BlogPostP
           </Box>
         </Container>
       </Box>
+
+      {(previousPost || nextPost) && (
+        <Box sx={{ backgroundColor: 'background.paper', pb: { xs: 6, md: 8 } }}>
+          <Container maxWidth='lg'>
+            <Box
+              sx={{
+                display: 'grid',
+                gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
+                gap: 3,
+              }}
+            >
+              {previousPost ? <PrevNextCard post={previousPost} direction='previous' /> : <Box />}
+              {nextPost ? <PrevNextCard post={nextPost} direction='next' /> : <Box />}
+            </Box>
+          </Container>
+        </Box>
+      )}
 
       <Box
         sx={{

@@ -1,4 +1,15 @@
 declare global {
+  interface IBlogSection {
+    id: string
+    heading: string
+    paragraphs: string[]
+    image?: {
+      src: string
+      alt: string
+      caption?: string
+    }
+  }
+
   interface IBlogPost {
     slug: string
     title: string
@@ -7,6 +18,7 @@ declare global {
     date: string
     readTime: string
     content: string[]
+    sections?: IBlogSection[]
     coverImage: string
   }
 
@@ -15,6 +27,7 @@ declare global {
     title: string
     category: string
     readTime: string
+    coverImage: string
   }
 }
 
