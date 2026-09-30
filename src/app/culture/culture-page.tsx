@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import NextLink from 'next/link'
 import Image from 'next/image'
 import Box from '@mui/material/Box'
@@ -8,7 +8,7 @@ import Grid from '@mui/material/Grid'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import { useTheme } from '@mui/material/styles'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import {
   StyledButton,
   SectionTitle,
@@ -33,6 +33,24 @@ const AvatarGlyph = () => (
     <path d='M4 20c0-4.4 3.6-8 8-8s8 3.6 8 8' fill='#fbfbfb' fillOpacity={0.9} />
   </svg>
 )
+
+const TEAM_TESTIMONIALS = [
+  {
+    quote:
+      'I’ve worked at places where every decision needed three approvals. Here, if I think something’s the right call, I make it — and that trust changes how you show up to work every day.',
+    role: 'Senior Backend Engineer',
+  },
+  {
+    quote:
+      'Being remote-first isn’t just a policy here — it’s how everything is actually built. Meetings are the exception, not the default, and that respect for focused time is rare.',
+    role: 'Project Manager',
+  },
+  {
+    quote:
+      'Feedback here is direct, not diplomatic-to-the-point-of-useless. It stung the first time, but it’s the fastest I’ve ever grown as an engineer.',
+    role: 'QA Engineer',
+  },
+]
 
 const DEI_PHOTOS = [
   { src: stockPhotos.teamAroundTable, alt: 'The team gathered around a table' },
@@ -81,6 +99,13 @@ const GALLERY = [
 
 const CulturePage = () => {
   const theme = useTheme()
+  const [testimonialIndex, setTestimonialIndex] = useState(0)
+  const activeTestimonial = TEAM_TESTIMONIALS[testimonialIndex]
+
+  const goToPrevTestimonial = () =>
+    setTestimonialIndex((i) => (i === 0 ? TEAM_TESTIMONIALS.length - 1 : i - 1))
+  const goToNextTestimonial = () =>
+    setTestimonialIndex((i) => (i === TEAM_TESTIMONIALS.length - 1 ? 0 : i + 1))
 
   return (
     <Box component='main'>
@@ -165,6 +190,120 @@ const CulturePage = () => {
             </Typography>
           </Reveal>
           <BenefitsGrid items={PILLARS} />
+        </Container>
+      </Box>
+
+      <Box sx={{ py: { xs: 8, md: 12 }, backgroundColor: 'background.paper', textAlign: 'center' }}>
+        <Container maxWidth='lg'>
+          <Reveal>
+            <Typography variant='h2' sx={{ mb: 2, fontSize: { xs: 26, md: 36 }, fontWeight: 800 }}>
+              Hear from our team
+              <Box component='span' sx={{ color: 'primary.main' }}>
+                .
+              </Box>
+            </Typography>
+            <Typography sx={{ mb: 6, color: 'text.secondary', fontSize: { xs: 15, md: 17 }, maxWidth: 560, mx: 'auto' }}>
+              We build the kind of place we&apos;d want to work at ourselves. Here&apos;s what that looks like from
+              the inside.
+            </Typography>
+          </Reveal>
+          <Reveal index={1}>
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: { xs: 'column', md: 'row' },
+                alignItems: 'stretch',
+                textAlign: 'left',
+                backgroundColor: '#0a0b1c',
+                overflow: 'hidden',
+                minHeight: { md: 280 },
+              }}
+            >
+              <Box
+                sx={{
+                  width: { xs: '100%', md: 280 },
+                  minHeight: { xs: 160, md: 'auto' },
+                  flexShrink: 0,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  backgroundColor: AVATAR_COLORS[testimonialIndex % AVATAR_COLORS.length],
+                }}
+              >
+                <Box sx={{ width: 72, height: 72 }}>
+                  <AvatarGlyph />
+                </Box>
+              </Box>
+              <Box sx={{ p: { xs: 4, md: 6 }, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <Typography sx={{ mb: 2, fontSize: 12, fontWeight: 700, letterSpacing: 1, textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)' }}>
+                  Employee testimonial
+                </Typography>
+                <AnimatePresence mode='wait'>
+                  <Box
+                    key={testimonialIndex}
+                    component={motion.div}
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <Typography sx={{ mb: 3, fontSize: { xs: 17, md: 20 }, lineHeight: 1.6, fontWeight: 700, color: '#fbfbfb' }}>
+                      &ldquo;{activeTestimonial.quote}&rdquo;
+                    </Typography>
+                    <Typography sx={{ color: 'rgba(255,255,255,0.7)', fontSize: 14, fontWeight: 700 }}>
+                      {activeTestimonial.role}
+                    </Typography>
+                  </Box>
+                </AnimatePresence>
+              </Box>
+            </Box>
+            <Box sx={{ display: 'flex', gap: 1.5, mt: 3 }}>
+              <Box
+                component='button'
+                onClick={goToPrevTestimonial}
+                aria-label='Previous testimonial'
+                sx={{
+                  width: 44,
+                  height: 44,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  border: (t) => `1px solid ${t.palette.divider}`,
+                  backgroundColor: 'transparent',
+                  color: 'text.primary',
+                  cursor: 'pointer',
+                  transition: (t) => t.transitions.create(['border-color', 'color']),
+                  '&:hover': { borderColor: 'primary.main', color: 'primary.main' },
+                }}
+              >
+                <Box component='svg' viewBox='0 0 24 24' sx={{ width: 20, height: 20 }}>
+                  <path d='M15 6l-6 6 6 6' fill='none' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' />
+                </Box>
+              </Box>
+              <Box
+                component='button'
+                onClick={goToNextTestimonial}
+                aria-label='Next testimonial'
+                sx={{
+                  width: 44,
+                  height: 44,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  border: (t) => `1px solid ${t.palette.primary.main}`,
+                  backgroundColor: 'transparent',
+                  color: 'primary.main',
+                  cursor: 'pointer',
+                  transition: (t) => t.transitions.create(['background-color', 'color']),
+                  '&:hover': { backgroundColor: 'primary.main', color: '#fbfbfb' },
+                }}
+              >
+                <Box component='svg' viewBox='0 0 24 24' sx={{ width: 20, height: 20 }}>
+                  <path d='M9 6l6 6-6 6' fill='none' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' />
+                </Box>
+              </Box>
+            </Box>
+          </Reveal>
         </Container>
       </Box>
 
