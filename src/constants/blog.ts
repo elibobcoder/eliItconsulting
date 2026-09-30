@@ -7,7 +7,7 @@ const handwrittenBlogPosts: IBlogPost[] = [
     title: 'Staff Augmentation vs. Dedicated Teams vs. Outsourcing: How to Choose',
     excerpt:
       'All three models get you more engineering capacity. The right one depends on how much you want to manage, not just how big the gap is.',
-    category: 'Engagement Models',
+    category: 'Our Process',
     date: '2026-08-04',
     readTime: '3 min read',
     coverImage: stockPhotos.contractSigningPen,
@@ -61,7 +61,7 @@ const handwrittenBlogPosts: IBlogPost[] = [
     title: '5 Signs Your Engineering Team Needs Outside Help',
     excerpt:
       'It rarely shows up as a single dramatic moment. It shows up as a slow accumulation of small signals that are easy to explain away individually.',
-    category: 'Team Strategy',
+    category: 'Team & Culture',
     date: '2026-07-18',
     readTime: '4 min read',
     coverImage: stockPhotos.burnoutHeadInHands,
@@ -254,7 +254,7 @@ const handwrittenBlogPosts: IBlogPost[] = [
     title: 'What Actually Makes Nearshore and Remote Teams Work',
     excerpt:
       'Timezone overlap gets all the attention. The teams that actually work well together are usually solving a different problem.',
-    category: 'Team Strategy',
+    category: 'Team & Culture',
     date: '2026-05-30',
     readTime: '4 min read',
     coverImage: stockPhotos.remoteWork,

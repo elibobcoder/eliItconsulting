@@ -6,7 +6,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Why "Lift and Shift" Cloud Migrations Usually Disappoint',
     excerpt:
       'Moving a server to the cloud isn’t the same as moving to the cloud, and the gap between those two shows up on the first bill.',
-    category: 'Cloud & DevOps',
+    category: 'Engineering & Technology',
     date: '2019-01-15',
     readTime: '4 min read',
     coverImage: stockPhotos.cloudMigrationAbstract,
@@ -62,7 +62,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'The Real Cost Difference Between Hourly Contractors and Staff Augmentation',
     excerpt:
       'The hourly rate on the invoice is the smallest part of what either option actually costs you.',
-    category: 'Engagement Models',
+    category: 'Our Process',
     date: '2019-02-08',
     readTime: '4 min read',
     coverImage: stockPhotos.salaryCashBanknotes,
@@ -143,7 +143,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Monolith to Microservices: When It’s Actually Worth the Disruption',
     excerpt:
       'Splitting a monolith fixes some problems and creates new ones. Whether that’s a good trade depends on a question most teams skip.',
-    category: 'Web & Mobile Development',
+    category: 'Engineering & Technology',
     date: '2019-03-21',
     readTime: '4 min read',
     coverImage: stockPhotos.codingCloseup,
@@ -199,7 +199,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Why Your First Outsourced Project Should Be Small',
     excerpt:
       'The instinct is to hand off the biggest, most painful project first. That’s exactly backwards.',
-    category: 'Team Strategy',
+    category: 'Team & Culture',
     date: '2019-04-11',
     readTime: '3 min read',
     coverImage: stockPhotos.teamAroundTable,
@@ -270,7 +270,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Digital Transformation Is Not a Technology Project',
     excerpt:
       'Most "digital transformation" initiatives fail for reasons that have nothing to do with the technology chosen.',
-    category: 'Industry Trends',
+    category: 'Business & Industry',
     date: '2019-05-06',
     readTime: '4 min read',
     coverImage: stockPhotos.strategyMeeting,
@@ -324,7 +324,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'The Senior Engineer Shortage Isn’t Going Away',
     excerpt:
       'Junior hiring has never been easier. Finding someone who can own a system end to end is a different problem entirely.',
-    category: 'Hiring & Careers',
+    category: 'Team & Culture',
     date: '2019-06-18',
     readTime: '3 min read',
     coverImage: stockPhotos.resumePapersDesk,
@@ -387,7 +387,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Security Debt: The Technical Debt Nobody Talks About',
     excerpt:
       'Teams track feature debt religiously and let security debt pile up silently until something forces the issue.',
-    category: 'Cybersecurity',
+    category: 'Engineering & Technology',
     date: '2019-07-09',
     readTime: '3 min read',
     coverImage: stockPhotos.securityPadlockKeyboard,
@@ -450,7 +450,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Your Dashboards Are Lying to You (Sort Of)',
     excerpt:
       'A dashboard doesn’t lie on purpose. It just answers a question nobody actually asked it.',
-    category: 'Data & Analytics',
+    category: 'Business & Industry',
     date: '2019-08-27',
     readTime: '3 min read',
     coverImage: stockPhotos.spreadsheetGraphCloseup,
@@ -551,7 +551,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Why Engineering Managers Should Still Write Code',
     excerpt:
       'Not a lot of it, and not on the critical path. But enough to keep their judgment calibrated to reality.',
-    category: 'Leadership & Culture',
+    category: 'Team & Culture',
     date: '2019-10-24',
     readTime: '3 min read',
     coverImage: stockPhotos.pairProgrammingMonitors,
@@ -599,7 +599,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'What Engineering Teams Get Wrong About Marketing Sites',
     excerpt:
       'A marketing site is not a smaller version of the product. Treating it like one is why so many of them underperform.',
-    category: 'Digital Marketing',
+    category: 'Business & Industry',
     date: '2019-11-14',
     readTime: '3 min read',
     coverImage: stockPhotos.marketingMeeting,
@@ -648,7 +648,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Containers Solved One Problem and Created Three Others',
     excerpt:
       '"It works on my machine" is mostly solved. What replaced it is a different, quieter set of problems.',
-    category: 'Cloud & DevOps',
+    category: 'Engineering & Technology',
     date: '2019-12-05',
     readTime: '4 min read',
     coverImage: stockPhotos.containerStack,
@@ -709,7 +709,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Building a Vendor Bench Before You Need One',
     excerpt:
       'The worst time to evaluate an outsourcing partner is during a crisis. Do it now, while nothing is on fire.',
-    category: 'Team Strategy',
+    category: 'Team & Culture',
     date: '2019-12-19',
     readTime: '3 min read',
     coverImage: stockPhotos.whiteboardPlanningSession,
@@ -778,7 +778,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Progressive Web Apps: Worth It for Most Businesses?',
     excerpt:
       'A PWA promises app-like experience without the app-store overhead. The promise is mostly true, with a few real caveats.',
-    category: 'Web & Mobile Development',
+    category: 'Engineering & Technology',
     date: '2020-01-16',
     readTime: '3 min read',
     coverImage: stockPhotos.mobileAppDashboardHand,
@@ -842,7 +842,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'The Difference Between a Data Warehouse and a Data Swamp',
     excerpt:
       'Every company with "we should centralize our data" as a goal ends up with one of these two things. The difference isn’t the tooling.',
-    category: 'Data & Analytics',
+    category: 'Business & Industry',
     date: '2020-02-11',
     readTime: '3 min read',
     coverImage: stockPhotos.swampWater,
@@ -913,7 +913,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Moving a Team Remote in a Week: What We Learned',
     excerpt:
       'We had a migration plan for going remote. It assumed we had months. We had days.',
-    category: 'Team Strategy',
+    category: 'Team & Culture',
     date: '2020-03-23',
     readTime: '4 min read',
     coverImage: stockPhotos.videoCallLaptopGroup,
@@ -965,7 +965,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Managing Engineers You Can’t See',
     excerpt:
       'Management built around walking past someone’s desk doesn’t survive the move to remote. Here’s what replaces it.',
-    category: 'Leadership & Culture',
+    category: 'Team & Culture',
     date: '2020-04-14',
     readTime: '3 min read',
     coverImage: stockPhotos.oneOnOneCoffeeChat,
@@ -1016,7 +1016,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Why Cloud Costs Spike After Migration (and How to Catch It)',
     excerpt:
       'The bill that arrives two months after a cloud migration rarely matches the estimate. Here’s where the gap usually comes from.',
-    category: 'Cloud & DevOps',
+    category: 'Engineering & Technology',
     date: '2020-05-19',
     readTime: '4 min read',
     coverImage: stockPhotos.cloudBillingCalculator,
@@ -1080,7 +1080,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Async Standups: A Bigger Change Than They Sound',
     excerpt:
       'Swapping a meeting for a written update sounds like a small change. It changes more than the calendar.',
-    category: 'Team Strategy',
+    category: 'Team & Culture',
     date: '2020-06-09',
     readTime: '3 min read',
     coverImage: stockPhotos.standupMeeting,
@@ -1132,7 +1132,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Remote Hiring Opened Our Talent Pool. It Also Raised the Bar.',
     excerpt:
       'Hiring without a location constraint sounds like it should make things easier. It mostly just changes what "competitive" means.',
-    category: 'Hiring & Careers',
+    category: 'Team & Culture',
     date: '2020-07-22',
     readTime: '3 min read',
     coverImage: stockPhotos.worldMapPins,
@@ -1202,7 +1202,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'The Security Gaps a Sudden Remote Shift Creates',
     excerpt:
       'A security model built around an office network doesn’t just weaken when everyone leaves — parts of it stop existing entirely.',
-    category: 'Cybersecurity',
+    category: 'Engineering & Technology',
     date: '2020-08-06',
     readTime: '4 min read',
     coverImage: stockPhotos.hackerSilhouetteMonitors,
@@ -1265,7 +1265,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'What Changes Permanently When "Temporary" Remote Work Isn’t',
     excerpt:
       'The plan was a few weeks. Months in, it’s clear some of this was never going back to how it was.',
-    category: 'Industry Trends',
+    category: 'Business & Industry',
     date: '2020-09-17',
     readTime: '3 min read',
     coverImage: stockPhotos.modernOffice,
@@ -1368,7 +1368,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Why More Clients Are Asking for Dedicated Teams This Year',
     excerpt:
       'The requests changed this year, and the shift tells you something about how companies are actually planning right now.',
-    category: 'Engagement Models',
+    category: 'Our Process',
     date: '2020-11-12',
     readTime: '3 min read',
     coverImage: stockPhotos.businessMeeting,
@@ -1430,7 +1430,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'E-Commerce Traffic Surged. Most Sites Weren’t Built for It.',
     excerpt:
       'A traffic spike is supposed to be good news. For a lot of stores this year, it exposed exactly how fragile the site was.',
-    category: 'Digital Marketing',
+    category: 'Business & Industry',
     date: '2020-12-03',
     readTime: '4 min read',
     coverImage: stockPhotos.ecommerceCheckoutCard,
@@ -1501,7 +1501,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Video-Call Fatigue Is a Real Productivity Problem',
     excerpt:
       'Back-to-back video calls feel productive in the moment and drain a team’s output for the rest of the day.',
-    category: 'Leadership & Culture',
+    category: 'Team & Culture',
     date: '2020-12-17',
     readTime: '3 min read',
     coverImage: stockPhotos.videoConferenceGridCall,
@@ -1549,7 +1549,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'The Tech Hiring Market Flipped. Here’s What It Means for You',
     excerpt:
       'Candidates have the leverage now, and companies still running last year’s hiring process are losing people they shouldn’t be losing.',
-    category: 'Hiring & Careers',
+    category: 'Team & Culture',
     date: '2021-01-14',
     readTime: '4 min read',
     coverImage: stockPhotos.candidateJobOffer,
@@ -1602,7 +1602,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Hybrid Work Policies Are Harder Than Remote-Only',
     excerpt:
       'Fully remote has clear rules. Hybrid has a hundred small ones nobody wrote down, and that’s where it usually breaks.',
-    category: 'Team Strategy',
+    category: 'Team & Culture',
     date: '2021-02-09',
     readTime: '4 min read',
     coverImage: stockPhotos.diverseTeamVideoCall,
@@ -1726,7 +1726,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Multi-Cloud Sounds Smart. It’s Usually Just Multi-Complexity.',
     excerpt:
       '"Avoid vendor lock-in" is a reasonable goal. Running production on three clouds to achieve it usually isn’t.',
-    category: 'Cloud & DevOps',
+    category: 'Engineering & Technology',
     date: '2021-04-08',
     readTime: '4 min read',
     coverImage: stockPhotos.multiCloudTangle,
@@ -1786,7 +1786,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Low-Code Platforms: Where They Help and Where They Hurt',
     excerpt:
       'Low-code isn’t a shortcut around engineering. It’s a different tool, with a different set of things it’s good at.',
-    category: 'Industry Trends',
+    category: 'Business & Industry',
     date: '2021-05-25',
     readTime: '4 min read',
     coverImage: stockPhotos.growthChart,
@@ -1840,7 +1840,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'The Great Resignation Is Really a Great Reprioritization',
     excerpt:
       'People aren’t leaving because they stopped wanting to work. They’re leaving because they stopped accepting terms they used to tolerate.',
-    category: 'Leadership & Culture',
+    category: 'Team & Culture',
     date: '2021-06-15',
     readTime: '3 min read',
     coverImage: stockPhotos.officeCulture,
@@ -1902,7 +1902,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'API-First Design: Why It’s Worth the Extra Upfront Work',
     excerpt:
       'Designing the API before the UI feels backwards until you’ve been burned by doing it the other way around.',
-    category: 'Web & Mobile Development',
+    category: 'Engineering & Technology',
     date: '2021-07-07',
     readTime: '4 min read',
     coverImage: stockPhotos.apiPuzzlePiecesConnect,
@@ -1959,7 +1959,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Ransomware Is Now a Business Risk, Not Just an IT Risk',
     excerpt:
       'This isn’t a technical inconvenience anymore. It’s an operational shutdown with a ransom note attached.',
-    category: 'Cybersecurity',
+    category: 'Engineering & Technology',
     date: '2021-08-19',
     readTime: '4 min read',
     coverImage: stockPhotos.systemOutageAlertPhone,
@@ -2012,7 +2012,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Staff Augmentation vs. Full-Time Hire: A Cost Comparison',
     excerpt:
       'The full-time hire looks cheaper on a spreadsheet that only has one line on it.',
-    category: 'Engagement Models',
+    category: 'Our Process',
     date: '2021-09-10',
     readTime: '4 min read',
     coverImage: stockPhotos.costCalculatorReceipt,
@@ -2068,7 +2068,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Why "Data-Driven" Decisions Still Fail',
     excerpt:
       'Having data isn’t the same as having the right data, and that gap is where a lot of confidently wrong decisions come from.',
-    category: 'Data & Analytics',
+    category: 'Business & Industry',
     date: '2021-10-21',
     readTime: '3 min read',
     coverImage: stockPhotos.checklistEvaluation,
@@ -2130,7 +2130,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'What We Tell Clients Skeptical of Nearshore Teams',
     excerpt:
       'The concerns are usually reasonable. They’re also usually solvable, and worth addressing directly instead of brushing past.',
-    category: 'Team Strategy',
+    category: 'Team & Culture',
     date: '2021-11-04',
     readTime: '3 min read',
     coverImage: stockPhotos.teamDiscussion,
@@ -2193,7 +2193,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Should Your Business Care About Web3? A Skeptic’s Take',
     excerpt:
       'A lot of "Web3 strategy" decks right now are solving problems that didn’t need blockchain to begin with.',
-    category: 'Industry Trends',
+    category: 'Business & Industry',
     date: '2021-12-02',
     readTime: '4 min read',
     coverImage: stockPhotos.blockchainNetworkCubes,
@@ -2250,7 +2250,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'What Local Marketing Means for a Remote-First Business',
     excerpt:
       '"Local" used to mean a city. For a lot of businesses now, it means something else entirely, and the marketing playbook hasn’t caught up.',
-    category: 'Digital Marketing',
+    category: 'Business & Industry',
     date: '2021-12-16',
     readTime: '3 min read',
     coverImage: stockPhotos.searchMagnifyingLaptop,
@@ -2307,7 +2307,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'FinOps: Treating Cloud Spend Like an Engineering Problem',
     excerpt:
       'Cloud costs keep landing on finance’s desk as a surprise, when the actual decisions that caused them were made by engineering months earlier.',
-    category: 'Cloud & DevOps',
+    category: 'Engineering & Technology',
     date: '2022-01-13',
     readTime: '4 min read',
     coverImage: stockPhotos.analyticsDashboard,
@@ -2365,7 +2365,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Native vs. Cross-Platform Mobile: Revisiting the Trade-Offs',
     excerpt:
       'The gap between native and cross-platform keeps narrowing. It hasn’t closed, and knowing where it hasn’t matters.',
-    category: 'Web & Mobile Development',
+    category: 'Engineering & Technology',
     date: '2022-02-10',
     readTime: '4 min read',
     coverImage: stockPhotos.mobileDesign,
@@ -2422,7 +2422,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Why "Just Hire Faster" Doesn’t Fix a Broken Hiring Funnel',
     excerpt:
       'Speeding up a process that’s losing good candidates for the wrong reasons just means losing them faster.',
-    category: 'Team Strategy',
+    category: 'Team & Culture',
     date: '2022-03-22',
     readTime: '3 min read',
     coverImage: stockPhotos.hiringFunnelChart,
@@ -2479,7 +2479,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Supply Chain Attacks and What They Mean for Your Vendors',
     excerpt:
       'Your security is only as strong as the weakest dependency in a chain of vendors you may not even know exists.',
-    category: 'Cybersecurity',
+    category: 'Engineering & Technology',
     date: '2022-04-12',
     readTime: '4 min read',
     coverImage: stockPhotos.cargoShipPort,
@@ -2534,7 +2534,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Burnout on High-Performing Teams Looks Different',
     excerpt:
       'It doesn’t show up as missed deadlines. On a strong team, it shows up as quiet disengagement from people still hitting every one.',
-    category: 'Leadership & Culture',
+    category: 'Team & Culture',
     date: '2022-05-17',
     readTime: '3 min read',
     coverImage: stockPhotos.exhaustedEngineerNight,
@@ -2590,7 +2590,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'When a Dedicated Team Outgrows Its Original Scope',
     excerpt:
       'The team that started as a stopgap for one project is now core to three. Here’s how to handle that transition well.',
-    category: 'Engagement Models',
+    category: 'Our Process',
     date: '2022-06-08',
     readTime: '3 min read',
     coverImage: stockPhotos.consultingMeeting,
@@ -2653,7 +2653,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Inflation Is Changing How Companies Buy Engineering Capacity',
     excerpt:
       'Budgets tightened this year without workloads shrinking to match. That gap is reshaping how companies staff projects.',
-    category: 'Industry Trends',
+    category: 'Business & Industry',
     date: '2022-07-20',
     readTime: '3 min read',
     coverImage: stockPhotos.stockMarketChartDark,
@@ -2709,7 +2709,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Event Tracking: The Unglamorous Foundation of Good Analytics',
     excerpt:
       'Every impressive dashboard sits on top of a boring decision made months earlier about what to actually track.',
-    category: 'Data & Analytics',
+    category: 'Business & Industry',
     date: '2022-08-11',
     readTime: '3 min read',
     coverImage: stockPhotos.marketingCTRDashboard,
@@ -2765,7 +2765,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'What Candidates Actually Ask About in Final-Round Interviews',
     excerpt:
       'By the final round, a strong candidate isn’t evaluating your codebase anymore. They’re evaluating something else entirely.',
-    category: 'Hiring & Careers',
+    category: 'Team & Culture',
     date: '2022-09-06',
     readTime: '3 min read',
     coverImage: stockPhotos.finalRoundInterview,
@@ -2879,7 +2879,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'SEO Fundamentals Engineering Teams Keep Skipping',
     excerpt:
       'None of these require a marketing background. They require an engineer who was told they matter and believed it.',
-    category: 'Digital Marketing',
+    category: 'Business & Industry',
     date: '2022-11-09',
     readTime: '3 min read',
     coverImage: stockPhotos.seoDashboard,
@@ -3100,7 +3100,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Tech Layoffs Are Making Outside Talent Easier to Find, Not Harder',
     excerpt:
       'The headlines make it sound like a downturn. For companies staffing projects right now, it’s closer to the opposite.',
-    category: 'Industry Trends',
+    category: 'Business & Industry',
     date: '2023-02-15',
     readTime: '3 min read',
     coverImage: stockPhotos.layoffsEmptyOffice,
@@ -3234,7 +3234,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'The New Risk Generative AI Tools Bring to Your Codebase',
     excerpt:
       'The risk isn’t that the AI writes bad code. It’s a quieter one that shows up after the code already shipped.',
-    category: 'Cybersecurity',
+    category: 'Engineering & Technology',
     date: '2023-04-20',
     readTime: '3 min read',
     coverImage: stockPhotos.robotAlertWarning,
@@ -3301,7 +3301,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Feeding Business Data Into an LLM: What to Check First',
     excerpt:
       'Before connecting a model to real business data, there’s a short list of questions worth answering, and skipping them is how mistakes happen.',
-    category: 'Data & Analytics',
+    category: 'Business & Industry',
     date: '2023-05-04',
     readTime: '4 min read',
     coverImage: stockPhotos.databaseSchemaFlowchart,
@@ -3368,7 +3368,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Managing a Team Through Constant AI Hype',
     excerpt:
       'Every week brings a new tool that supposedly changes everything. Managing a team through that noise is its own skill.',
-    category: 'Leadership & Culture',
+    category: 'Team & Culture',
     date: '2023-06-14',
     readTime: '3 min read',
     coverImage: stockPhotos.techConferenceStage,
@@ -3435,7 +3435,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Why More Startups Are Skipping Full-Time Hires for Their First Engineers',
     excerpt:
       'The traditional path was founder learns to code or founder hires a CTO. A third option is getting a lot more common.',
-    category: 'Engagement Models',
+    category: 'Our Process',
     date: '2023-07-26',
     readTime: '3 min read',
     coverImage: stockPhotos.startupDeskTwoScreens,
@@ -3502,7 +3502,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Server Components and the Return of the Server',
     excerpt:
       'After a decade of pushing everything to the client, the pendulum is swinging back, and it’s worth understanding why.',
-    category: 'Web & Mobile Development',
+    category: 'Engineering & Technology',
     date: '2023-08-08',
     readTime: '4 min read',
     coverImage: stockPhotos.serverRacksDataCenter,
@@ -3569,7 +3569,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Interviewing Engineers Who Use AI Tools Well',
     excerpt:
       'The old signal for a strong engineer was writing everything themselves. That signal doesn’t mean what it used to.',
-    category: 'Hiring & Careers',
+    category: 'Team & Culture',
     date: '2023-09-19',
     readTime: '3 min read',
     coverImage: stockPhotos.mentorTeachingScreen,
@@ -3636,7 +3636,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Cost-Cutting Season: Where Cloud Spend Is Actually Getting Trimmed',
     excerpt:
       'Every budget review this year has a line item labeled "reduce cloud costs." The real cuts are landing in a few consistent places.',
-    category: 'Cloud & DevOps',
+    category: 'Engineering & Technology',
     date: '2023-10-03',
     readTime: '3 min read',
     coverImage: stockPhotos.serverScalingRack,
@@ -3770,7 +3770,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'AI-Generated Content Is Flooding Search. Here’s What Still Ranks.',
     excerpt:
       'Volume got cheap. It didn’t get more useful, and search is starting to notice the difference.',
-    category: 'Digital Marketing',
+    category: 'Business & Industry',
     date: '2023-12-06',
     readTime: '3 min read',
     coverImage: stockPhotos.writingNotebookPen,
@@ -3837,7 +3837,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'A Year of Generative AI Hype: What Actually Shipped',
     excerpt:
       'Strip away the demos and the hot takes, and a smaller, more useful list remains of what actually made it to production.',
-    category: 'Industry Trends',
+    category: 'Business & Industry',
     date: '2023-12-20',
     readTime: '4 min read',
     coverImage: stockPhotos.robotHumanHandsReaching,
@@ -3963,7 +3963,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'The Return-to-Office Debate Isn’t About Productivity',
     excerpt:
       'Both sides cite productivity data. The actual disagreement underneath it is about something neither side says out loud.',
-    category: 'Leadership & Culture',
+    category: 'Team & Culture',
     date: '2024-02-14',
     readTime: '4 min read',
     coverImage: stockPhotos.teamPresentation,
@@ -4030,7 +4030,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Entry-Level Engineering Hiring Got Harder. Here’s Why.',
     excerpt:
       'Companies aren’t hiring fewer juniors because they need fewer engineers. They’re hiring fewer because the math on training them just changed.',
-    category: 'Hiring & Careers',
+    category: 'Team & Culture',
     date: '2024-03-07',
     readTime: '3 min read',
     coverImage: stockPhotos.officeHighFive,
@@ -4164,7 +4164,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Prompt Injection Is the Bug Class Nobody Budgeted For',
     excerpt:
       'Traditional security reviews weren’t built to catch this, and most teams shipping AI features haven’t updated the checklist yet.',
-    category: 'Cybersecurity',
+    category: 'Engineering & Technology',
     date: '2024-05-09',
     readTime: '4 min read',
     coverImage: stockPhotos.codeWarningScreen,
@@ -4223,7 +4223,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Platform Engineering: The Practical Version of DevOps We Wish We’d Had Sooner',
     excerpt:
       '"You build it, you run it" was a good idea that quietly overloaded every product engineer with infrastructure work.',
-    category: 'Cloud & DevOps',
+    category: 'Engineering & Technology',
     date: '2024-06-20',
     readTime: '4 min read',
     coverImage: stockPhotos.cicdConveyor,
@@ -4290,7 +4290,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Your AI Chatbot Is Only as Good as Your Worst Documentation',
     excerpt:
       'A support chatbot built on top of outdated, contradictory internal docs will answer questions confidently and wrong.',
-    category: 'Data & Analytics',
+    category: 'Business & Industry',
     date: '2024-07-12',
     readTime: '3 min read',
     coverImage: stockPhotos.writingDocsNotebook,
@@ -4357,7 +4357,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'How to Evaluate an Outsourcing Partner That Claims "AI-Powered" Delivery',
     excerpt:
       'Every vendor pitch has the phrase now. Few can explain specifically what it means for your project.',
-    category: 'Engagement Models',
+    category: 'Our Process',
     date: '2024-08-01',
     readTime: '3 min read',
     coverImage: stockPhotos.partnershipHandshakeMeeting,
@@ -4424,7 +4424,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Why We’re Still Recommending Boring Tech Stacks',
     excerpt:
       'The newest framework promises the most. It also has the smallest hiring pool and the least battle-tested edge cases.',
-    category: 'Web & Mobile Development',
+    category: 'Engineering & Technology',
     date: '2024-09-13',
     readTime: '3 min read',
     coverImage: stockPhotos.legacyMacintoshComputer,
@@ -4491,7 +4491,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'The ROI Conversation Around AI Finally Got Honest',
     excerpt:
       'Two years of hype gave way to a much more useful question: what did this actually save us, specifically?',
-    category: 'Industry Trends',
+    category: 'Business & Industry',
     date: '2024-11-07',
     readTime: '4 min read',
     coverImage: stockPhotos.dataOnScreen,
@@ -4625,7 +4625,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'The Job Market for Junior Developers, One Year Into the AI Hiring Shift',
     excerpt:
       'The pipeline problem we flagged a year ago hasn’t gotten better. Here’s what’s changed and what hasn’t.',
-    category: 'Hiring & Careers',
+    category: 'Team & Culture',
     date: '2024-12-19',
     readTime: '3 min read',
     coverImage: stockPhotos.jobMarketNewspaper,
@@ -4759,7 +4759,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'AI Agents With Access to Your Systems Need Their Own Threat Model',
     excerpt:
       'An agent that can read your database and send emails on your behalf is a new kind of attack surface, not just a new feature.',
-    category: 'Cybersecurity',
+    category: 'Engineering & Technology',
     date: '2025-02-11',
     readTime: '4 min read',
     coverImage: stockPhotos.serverTrafficAbstractGlow,
@@ -4826,7 +4826,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: '"Vibe Coding" Won’t Replace the Engineers Who Read the Diff',
     excerpt:
       'Describing what you want and accepting whatever the model produces works right up until it doesn’t, and the failure is expensive.',
-    category: 'Hiring & Careers',
+    category: 'Team & Culture',
     date: '2025-03-25',
     readTime: '3 min read',
     coverImage: stockPhotos.vibeCodingScreen,
@@ -4893,7 +4893,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'What Changes in Your CI/CD Pipeline Once Agents Open Pull Requests',
     excerpt:
       'A pipeline built around human contributors makes assumptions that stop being true the moment an agent starts submitting code.',
-    category: 'Cloud & DevOps',
+    category: 'Engineering & Technology',
     date: '2025-04-08',
     readTime: '4 min read',
     coverImage: stockPhotos.codingScreen,
@@ -4960,7 +4960,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Managing a Team Where Some Engineers Lean Hard on AI and Some Don’t',
     excerpt:
       'The gap between AI-heavy and AI-light workflows on the same team is now a real management problem, not a style preference.',
-    category: 'Leadership & Culture',
+    category: 'Team & Culture',
     date: '2025-05-20',
     readTime: '3 min read',
     coverImage: stockPhotos.teamTrustHandshakeCircle,
@@ -5027,7 +5027,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Why Clients Want AI-Literate Engineers Now, Not Just Senior Ones',
     excerpt:
       '"Senior" used to be the shorthand for what a client asked for. That shorthand has quietly picked up a second requirement.',
-    category: 'Engagement Models',
+    category: 'Our Process',
     date: '2025-06-12',
     readTime: '3 min read',
     coverImage: stockPhotos.engineerSkillLaptopFocus,
@@ -5094,7 +5094,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Evaluation Sets: The Part of AI Projects Teams Still Skip',
     excerpt:
       'Everyone will tell you their AI feature works well. Fewer can show you the test set they measured that claim against.',
-    category: 'Data & Analytics',
+    category: 'Business & Industry',
     date: '2025-07-03',
     readTime: '4 min read',
     coverImage: stockPhotos.qaTestingLaptop,
@@ -5161,7 +5161,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'The Junior Developer Pipeline Problem Is Now Everyone’s Problem',
     excerpt:
       'A few years of thin junior hiring across the industry is starting to show up as a real, visible mid-level talent gap.',
-    category: 'Industry Trends',
+    category: 'Business & Industry',
     date: '2025-08-14',
     readTime: '3 min read',
     coverImage: stockPhotos.csGraduatesCeremony,
@@ -5295,7 +5295,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Building for an Internet Where More Traffic Is Agents Than Humans',
     excerpt:
       'A growing share of requests hitting your site aren’t a person clicking around. That changes some real design decisions.',
-    category: 'Web & Mobile Development',
+    category: 'Engineering & Technology',
     date: '2025-10-09',
     readTime: '4 min read',
     coverImage: stockPhotos.fiberOpticNetworkGlow,
@@ -5362,7 +5362,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'What Happens to SEO When People Stop Clicking Search Results',
     excerpt:
       'An AI-generated answer at the top of the page means fewer clicks to your site, even at the same ranking position.',
-    category: 'Digital Marketing',
+    category: 'Business & Industry',
     date: '2025-11-17',
     readTime: '4 min read',
     coverImage: stockPhotos.searchResultsScreenGlow,
@@ -5429,7 +5429,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'The Two-Person Team Doing What Used to Take Six',
     excerpt:
       'It sounds like a productivity headline. In practice, it says as much about team design as it does about the tools.',
-    category: 'Team Strategy',
+    category: 'Team & Culture',
     date: '2025-12-04',
     readTime: '3 min read',
     coverImage: stockPhotos.twoPersonStartupDesk,
@@ -5622,7 +5622,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Securing an Engineering Org Where Agents Commit Code Daily',
     excerpt:
       'Access controls built for a fixed set of human employees don’t map cleanly onto a team that includes autonomous agents now.',
-    category: 'Cybersecurity',
+    category: 'Engineering & Technology',
     date: '2026-02-10',
     readTime: '4 min read',
     coverImage: stockPhotos.serverRoom,
@@ -5689,7 +5689,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'What We Look for in Engineers Now That Everyone Uses AI Tools',
     excerpt:
       'AI fluency stopped being a differentiator once it became the baseline. The bar moved to what’s underneath it.',
-    category: 'Hiring & Careers',
+    category: 'Team & Culture',
     date: '2026-03-17',
     readTime: '3 min read',
     coverImage: stockPhotos.mentorScreenSession,
@@ -5756,7 +5756,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Internal Platforms Built for Agents, Not Just Humans',
     excerpt:
       'The self-service tooling that worked well for human developers needs a second interface now, and most platform teams haven’t built it yet.',
-    category: 'Cloud & DevOps',
+    category: 'Engineering & Technology',
     date: '2026-04-21',
     readTime: '4 min read',
     coverImage: stockPhotos.cloudComputing,
@@ -5823,7 +5823,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'The Companies Still Struggling With AI Adoption Share One Problem',
     excerpt:
       'It’s rarely the technology at this point. It’s almost always the same organizational gap, repeated across very different companies.',
-    category: 'Industry Trends',
+    category: 'Business & Industry',
     date: '2026-05-12',
     readTime: '3 min read',
     coverImage: stockPhotos.teamMeeting,
@@ -5890,7 +5890,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Trust, Not Tooling, Is the Bottleneck on AI-Augmented Teams',
     excerpt:
       'Every team we work with has access to roughly the same tools now. The teams that get more out of them have something else in common.',
-    category: 'Leadership & Culture',
+    category: 'Team & Culture',
     date: '2026-06-09',
     readTime: '3 min read',
     coverImage: stockPhotos.engineersTrustDiscussion,
@@ -5957,7 +5957,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Auditing an AI Agent’s Decisions After the Fact',
     excerpt:
       'When something goes wrong and an agent was involved, "the model decided that" is not an acceptable stopping point.',
-    category: 'Data & Analytics',
+    category: 'Business & Industry',
     date: '2026-07-15',
     readTime: '4 min read',
     coverImage: stockPhotos.auditDocumentsReview,
@@ -6024,7 +6024,7 @@ export const generatedBlogPosts: IBlogPost[] = [
     title: 'Staff Augmentation for an Agent-Assisted Team Looks Different Now',
     excerpt:
       'The engineer we place on a team today does a genuinely different job than the same role did three years ago.',
-    category: 'Engagement Models',
+    category: 'Our Process',
     date: '2026-08-06',
     readTime: '3 min read',
     coverImage: stockPhotos.engineerRobotCollaboration,
