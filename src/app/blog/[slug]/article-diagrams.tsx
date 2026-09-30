@@ -1457,4 +1457,662 @@ export const articleDiagrams: Record<string, { Component: FC; caption: string }>
     Component: MicroservicesRegretDiagram,
     caption: 'These are directional industry-survey figures, not universal constants — but the direction they all point in is consistent, and it isn’t "split by default."',
   },
+  'layoffs-yoy-comparison': {
+    Component: () => (
+      <BarCompareDiagram
+        yMax={100}
+        unit="%"
+        groups={[
+          { label: '2024 tech layoffs (index)', bars: [{ value: 100, label: '152,922', color: SECONDARY }] },
+          { label: '2025 tech layoffs (index)', bars: [{ value: 80, label: '122,549', color: PRIMARY }] },
+        ]}
+      />
+    ),
+    caption: 'Indexed to 2024. Per layoffs.fyi-tracked data, 2025 still saw over 122,000 tech layoffs across 257 companies — about 20% fewer than 2024, but still a very large pool re-entering the market.',
+  },
+  'llm-autonomy-risk-matrix': {
+    Component: () => (
+      <Matrix2x2Diagram
+        xLabel="How reversible the change is →"
+        yLabel="What breaks if it’s wrong →"
+        xLowHigh={['Hard to undo', 'Easy to undo']}
+        yLowHigh={['Low stakes', 'High stakes']}
+        bottomLeft={{ label: 'Light review is enough', sub: 'low stakes, even if hard to reverse', fill: SECONDARY_LIGHT, textColor: '#0E7490' }}
+        bottomRight={{ label: 'Let it run', sub: 'low stakes and easy to roll back', fill: PRIMARY_LIGHT, textColor: PRIMARY }}
+        topLeft={{ label: 'Full human review required', sub: 'high stakes, hard to undo', fill: '#FEE2E2', textColor: '#991B1B' }}
+        topRight={{ label: 'Supervised autonomy OK', sub: 'high stakes, but easy to roll back', fill: '#FEF3C7', textColor: '#92400E' }}
+      />
+    ),
+    caption: 'The useful policy isn’t "allow AI-written changes or not" — it’s calibrating review to reversibility and stakes, which vary enormously from one change to the next.',
+  },
+  'silent-risk-path': {
+    Component: () => (
+      <StepFlowDiagram
+        accent={SECONDARY}
+        steps={[
+          { n: '1', title: 'A plausible suggestion', sub: 'Insecure pattern or unvetted dependency' },
+          { n: '2', title: 'Passes tests, ships clean', sub: 'Nothing about it looks broken' },
+          { n: '3', title: 'Surfaces later', sub: 'An audit, a breach, or a deal review' },
+        ]}
+      />
+    ),
+    caption: 'The risk doesn’t announce itself the way a broken build does — it sits quietly in the codebase until something specifically goes looking for it, often much later.',
+  },
+  'llm-data-checklist': {
+    Component: () => (
+      <StepFlowDiagram
+        steps={[
+          { n: '1', title: 'Where does it go?', sub: 'Training use and retention policy' },
+          { n: '2', title: 'Is the data clean?', sub: 'Consistent, labeled, not contradictory' },
+          { n: '3', title: 'Who reviews it first?', sub: 'Draft, not answer, until trust is earned' },
+        ]}
+      />
+    ),
+    caption: 'None of these checks are exotic or expensive — skipping them is how a genuinely good idea turns into an avoidable mistake a few weeks in.',
+  },
+  'hype-tool-evaluation-matrix': {
+    Component: () => (
+      <Matrix2x2Diagram
+        xLabel="Effort to properly evaluate it →"
+        yLabel="Plausible real value to the team →"
+        xLowHigh={['Quick to test', 'Time-consuming']}
+        yLowHigh={['Unclear', 'Specific & real']}
+        bottomLeft={{ label: 'Skip it', sub: 'unclear value, still costly to check', fill: '#F3F4F6', textColor: MUTED }}
+        bottomRight={{ label: 'Quick pass', sub: 'cheap to rule out either way', fill: SECONDARY_LIGHT, textColor: '#0E7490' }}
+        topLeft={{ label: 'Revisit later', sub: 'promising, but not worth it yet', fill: '#FEF3C7', textColor: '#92400E' }}
+        topRight={{ label: 'Real trial, on real work', sub: 'solves a problem the team actually has', fill: PRIMARY_LIGHT, textColor: PRIMARY }}
+      />
+    ),
+    caption: 'A bounded, scheduled evaluation window — not a reaction to every announcement — is what keeps this filter honest instead of driven by whichever tool got the most attention that week.',
+  },
+  'startup-headcount-shift': {
+    Component: () => (
+      <BarCompareDiagram
+        yMax={110}
+        unit=""
+        groups={[
+          { label: 'AI-first startups (Series A/B)', bars: [{ value: 73, label: '73 median', color: PRIMARY }] },
+          { label: 'Non-AI-first peers', bars: [{ value: 98, label: '98 median', color: SECONDARY }] },
+        ]}
+      />
+    ),
+    caption: 'Median headcount, per Ravio’s AI-native hiring research — AI-first startups run roughly 34% leaner, concentrated in non-engineering functions rather than engineering itself.',
+  },
+  'server-pendulum-timeline': {
+    Component: () => (
+      <TimelineDiagram
+        milestones={[
+          { label: 'Classic server rendering', sub: '2000s–early 2010s' },
+          { label: 'SPA era takes over', sub: 'Client state, heavy bundles' },
+          { label: 'Hybrid rendering matures', sub: 'Next.js and peers, mid-to-late 2010s' },
+          { label: 'Server components go mainstream', sub: 'Next.js App Router, 2023 onward' },
+        ]}
+      />
+    ),
+    caption: 'Each swing of this pendulum solved a real problem with the previous model — there’s no reason to assume this is the final resting point.',
+  },
+  'ai-interview-signal-steps': {
+    Component: () => (
+      <StepFlowDiagram
+        steps={[
+          { n: '1', title: 'Let them use their tools', sub: 'The same ones they’d use on the job' },
+          { n: '2', title: 'Plant a subtly wrong suggestion', sub: 'Watch whether — and how — they catch it' },
+          { n: '3', title: 'Ask them to explain why it works', sub: 'Not just that it runs' },
+        ]}
+      />
+    ),
+    caption: 'The interview isn’t grading whether a candidate used AI assistance — it’s watching what they do with what the tool gives them.',
+  },
+  'cloud-waste-before-after': {
+    Component: () => (
+      <BarCompareDiagram
+        yMax={35}
+        unit="%"
+        groups={[
+          { label: 'Before disciplined review', bars: [{ value: 29, label: '21–29%', color: SECONDARY }] },
+          { label: 'After disciplined review', bars: [{ value: 12, label: '8–15%', color: PRIMARY }] },
+        ]}
+      />
+    ),
+    caption: 'Share of enterprise cloud infrastructure spend lost to waste, per FinOps Foundation research — the gap is almost entirely rightsizing and reserved-capacity decisions nobody revisited.',
+  },
+  'ai-fit-decision-matrix': {
+    Component: () => (
+      <Matrix2x2Diagram
+        xLabel="Test coverage & pattern maturity →"
+        yLabel="Ambiguity in requirements →"
+        xLowHigh={['Thin', 'Strong']}
+        yLowHigh={['Low', 'High']}
+        bottomLeft={{ label: 'Stay conservative', sub: 'thin coverage, little ambiguity to hide behind', fill: '#FEE2E2', textColor: '#991B1B' }}
+        bottomRight={{ label: 'Good fit for AI assistance', sub: 'established patterns, easy to verify', fill: PRIMARY_LIGHT, textColor: PRIMARY }}
+        topLeft={{ label: 'Most conservative', sub: 'thin coverage and real ambiguity', fill: '#FEE2E2', textColor: '#991B1B' }}
+        topRight={{ label: 'Verify closely', sub: 'strong patterns, but real ambiguity remains', fill: SECONDARY_LIGHT, textColor: '#0E7490' }}
+      />
+    ),
+    caption: 'Well-established patterns and strong test coverage are what let a team verify AI suggestions quickly — the same conditions that make heavier AI assistance a good fit.',
+  },
+  'ai-content-search-share': {
+    Component: () => (
+      <BarCompareDiagram
+        yMax={22}
+        unit="%"
+        groups={[
+          { label: '2019', bars: [{ value: 2.27, label: '2.3%', color: SECONDARY }] },
+          { label: '2025 peak (July)', bars: [{ value: 19.56, label: '19.6%', color: PRIMARY }] },
+        ]}
+      />
+    ),
+    caption: 'Share of Google’s top 20 results containing AI-generated content, per Originality.ai’s ongoing tracking study — a nearly ninefold increase in five years.',
+  },
+  'year-one-ai-retro-timeline': {
+    Component: () => (
+      <TimelineDiagram
+        milestones={[
+          { label: 'AI-assisted coding sticks', sub: 'Real, measurable gains on bounded tasks' },
+          { label: 'Faster first drafts', sub: 'Writing and content work' },
+          { label: 'Document Q&A matures', sub: 'Summarizing internal knowledge' },
+          { label: 'Full autonomy: not yet', sub: 'Multi-step processes still need supervision' },
+        ]}
+      />
+    ),
+    caption: 'The durable wins clustered around bounded, easy-to-verify tasks — the more ambitious "replaces entire job functions" predictions mostly didn’t survive contact with production.',
+  },
+  'rto-belief-vs-data': {
+    Component: () => (
+      <RankedBarListDiagram
+        unit="%"
+        maxValue={76}
+        items={[
+          { label: 'Leaders: boosts engagement', value: 76, color: SECONDARY },
+          { label: 'Leaders: strengthens culture', value: 71, color: SECONDARY },
+          { label: 'Leaders: makes people more productive', value: 63, color: SECONDARY },
+          { label: 'Measured remote productivity gain (Bloom)', value: 13, color: PRIMARY },
+        ]}
+      />
+    ),
+    caption: 'What leadership believes about in-person work, per a WTW survey, against Stanford economist Nicholas Bloom’s measured productivity effect of remote work — a genuine gap between belief and data.',
+  },
+  'entry-level-hiring-decline': {
+    Component: () => (
+      <RankedBarListDiagram
+        unit="%"
+        maxValue={75}
+        items={[
+          { label: 'Entry-level hiring at startups (since 2019)', value: 75, color: SECONDARY },
+          { label: 'Entry-level hiring at big tech (since 2019)', value: 65, color: SECONDARY },
+          { label: 'Entry-level postings (2023–2024)', value: 67, color: PRIMARY },
+          { label: 'Tech internship postings (since 2023)', value: 30, color: PRIMARY },
+        ]}
+      />
+    ),
+    caption: 'Declines in entry-level tech hiring, per SignalFire’s State of Talent research and Handshake internship data — juniors now make up about 7% of tech hiring, down from 15% three years ago.',
+  },
+  'pilot-to-production-gap': {
+    Component: () => (
+      <StepFlowDiagram
+        steps={[
+          { n: '1', title: 'Pilot tolerates mistakes', sub: 'Forgiving testers catch what goes wrong' },
+          { n: '2', title: 'Production can’t', sub: 'Needs logging, escalation, an owner' },
+          { n: '3', title: 'The gap goes unbuilt', sub: 'Unglamorous work gets skipped, project stalls' },
+        ]}
+      />
+    ),
+    caption: 'The model is rarely the bottleneck — the infrastructure and ownership needed to operate reliably at scale usually is, and it’s rarely built during the pilot phase.',
+  },
+  'platform-engineering-evolution': {
+    Component: () => (
+      <TimelineDiagram
+        milestones={[
+          { label: '"You build it, you run it"', sub: 'DevOps breaks the dev/ops wall' },
+          { label: 'Every engineer becomes part-time ops', sub: 'The quiet, uncounted cost' },
+          { label: 'Platform teams build golden paths', sub: 'Self-service, not a gatekeeper' },
+          { label: 'Autonomy without the overload', sub: 'DevOps’s promise, minus the tax' },
+        ]}
+      />
+    ),
+    caption: 'Platform engineering isn’t a return to siloed ops — it’s the fix for the infrastructure overload DevOps quietly loaded onto every product engineer.',
+  },
+  'doc-quality-chatbot-matrix': {
+    Component: () => (
+      <Matrix2x2Diagram
+        xLabel="Documentation currency →"
+        yLabel="Consistency across sources →"
+        xLowHigh={['Stale', 'Current']}
+        yLowHigh={['Contradictory', 'Consistent']}
+        bottomLeft={{ label: 'Confidently wrong', sub: 'stale and contradictory — worst case', fill: '#FEE2E2', textColor: '#991B1B' }}
+        bottomRight={{ label: 'Consistently stale', sub: 'agrees with itself, but outdated', fill: '#FEF3C7', textColor: '#92400E' }}
+        topLeft={{ label: 'Current, but conflicting', sub: 'no single source of truth', fill: SECONDARY_LIGHT, textColor: '#0E7490' }}
+        topRight={{ label: 'Trustworthy chatbot', sub: 'current and consistent', fill: PRIMARY_LIGHT, textColor: PRIMARY }}
+      />
+    ),
+    caption: 'A retrieval system can’t tell which source is authoritative — it just retrieves whatever’s closest to the question and answers with the same confident tone either way.',
+  },
+  'vendor-ai-claim-questions': {
+    Component: () => (
+      <StepFlowDiagram
+        steps={[
+          { n: '1', title: 'Which parts use AI?', sub: 'Specific, not "AI throughout"' },
+          { n: '2', title: 'What review sits on top?', sub: 'Before anything ships' },
+          { n: '3', title: 'How are wrong outputs handled?', sub: 'A real answer, not "rarely happens"' },
+        ]}
+      />
+    ),
+    caption: 'A vendor who can answer these specifically has probably integrated the tools thoughtfully. One who can’t is likely using the phrase as a differentiator without much behind it.',
+  },
+  'boring-stack-tradeoff': {
+    Component: () => (
+      <BarCompareDiagram
+        yMax={100}
+        unit=""
+        legend={[
+          { label: 'Mature, boring stack', color: PRIMARY },
+          { label: 'Newest framework', color: SECONDARY },
+        ]}
+        groups={[
+          {
+            label: 'Hiring pool depth',
+            bars: [
+              { value: 90, label: 'index', color: PRIMARY },
+              { value: 25, label: 'index', color: SECONDARY },
+            ],
+          },
+          {
+            label: 'Production battle-testing',
+            bars: [
+              { value: 95, label: 'index', color: PRIMARY },
+              { value: 20, label: 'index', color: SECONDARY },
+            ],
+          },
+        ]}
+      />
+    ),
+    caption: 'Illustrative, not a specific study — but the direction is consistent across every mature-versus-new stack comparison: the gap in hiring pool and battle-testing is real and compounds over a project’s life.',
+  },
+  'ai-roi-reality-numbers': {
+    Component: () => (
+      <RankedBarListDiagram
+        unit="%"
+        maxValue={88}
+        items={[
+          { label: 'Use AI in at least one function', value: 88, color: SECONDARY },
+          { label: 'Report any EBIT contribution', value: 39, color: SECONDARY },
+          { label: '"AI high performers" (>5% EBIT)', value: 6, color: PRIMARY },
+        ]}
+      />
+    ),
+    caption: 'McKinsey’s 2025 State of AI survey — near-universal adoption, paired with rare, measurable financial return, is exactly the gap forcing a more honest ROI conversation.',
+  },
+  'automation-with-review-pipeline': {
+    Component: () => (
+      <StepFlowDiagram
+        steps={[
+          { n: '1', title: 'AI drafts', sub: 'Low-risk code, tests, doc drafts' },
+          { n: '2', title: 'Human reviews everything', sub: 'No exception for AI-originated work' },
+          { n: '3', title: 'Ships, owned by the reviewer', sub: 'Never straight to production unsupervised' },
+        ]}
+      />
+    ),
+    caption: 'Every item on the automated list shares one trait: a fast, reliable way to verify the output before it ships — which is exactly why architecture and data-handling decisions stay off it.',
+  },
+  'junior-onramp-response-matrix': {
+    Component: () => (
+      <Matrix2x2Diagram
+        xLabel="Redesigns the ramp-up process →"
+        yLabel="Keeps investing in junior hiring →"
+        xLowHigh={['No', 'Yes']}
+        yLowHigh={['Cuts back', 'Keeps hiring']}
+        bottomLeft={{ label: 'Optimizing for this quarter', sub: 'cuts juniors, no redesign either', fill: '#FEE2E2', textColor: '#991B1B' }}
+        bottomRight={{ label: 'Redesigns, but hires fewer', sub: 'better onramp, thinner pipeline', fill: '#FEF3C7', textColor: '#92400E' }}
+        topLeft={{ label: 'Hires, but onramp unchanged', sub: 'juniors get the old, slower path', fill: SECONDARY_LIGHT, textColor: '#0E7490' }}
+        topRight={{ label: 'Building a stronger bench', sub: 'earlier judgment work, sustained hiring', fill: PRIMARY_LIGHT, textColor: PRIMARY }}
+      />
+    ),
+    caption: 'The companies likely to have the deepest mid-level bench in a few years are doing both — not just hiring juniors, but redesigning what they spend their first year actually doing.',
+  },
+  'agent-task-judgment-matrix': {
+    Component: () => (
+      <Matrix2x2Diagram
+        xLabel="How well-specified the task is →"
+        yLabel="How much unstated context it requires →"
+        xLowHigh={['Vague', 'Clear acceptance criteria']}
+        yLowHigh={['Explicit, all in the ticket', 'Reads between the lines']}
+        bottomLeft={{ label: 'Needs a human first', sub: 'vague, and little to go on', fill: '#FEE2E2', textColor: '#991B1B' }}
+        bottomRight={{ label: 'Agent delivers directly', sub: 'clear, bounded, easy to verify', fill: PRIMARY_LIGHT, textColor: PRIMARY }}
+        topLeft={{ label: 'Human required', sub: 'vague and full of unstated context', fill: '#FEE2E2', textColor: '#991B1B' }}
+        topRight={{ label: 'Human resolves ambiguity first', sub: 'clear on paper, judgment-heavy underneath', fill: SECONDARY_LIGHT, textColor: '#0E7490' }}
+      />
+    ),
+    caption: 'The value of writing a genuinely clear, unambiguous ticket just went up — it’s the input that determines whether a task can go straight to an agent.',
+  },
+  'agent-threat-model-steps': {
+    Component: () => (
+      <StepFlowDiagram
+        accent={SECONDARY}
+        steps={[
+          { n: '1', title: 'Assume it will be manipulated', sub: 'Not if — when' },
+          { n: '2', title: 'Scope permissions minimally', sub: 'No broad access for convenience' },
+          { n: '3', title: 'Log everything, gate the irreversible', sub: 'Human approval on high-stakes actions' },
+        ]}
+      />
+    ),
+    caption: 'Documented 2025 incidents — Replit’s deleted production database, the Amazon Q pull-request compromise — both involved an agent acting on legitimate credentials it should never have had unscoped.',
+  },
+  'ai-pr-issue-rate': {
+    Component: () => (
+      <BarCompareDiagram
+        yMax={300}
+        unit="%"
+        groups={[
+          { label: 'Human-only PRs (baseline)', bars: [{ value: 100, label: 'baseline', color: PRIMARY_LIGHT }] },
+          {
+            label: 'AI-co-authored PRs',
+            bars: [
+              { value: 170, label: '1.7x issues', color: SECONDARY },
+              { value: 274, label: '2.74x security issues', color: '#991B1B' },
+            ],
+          },
+        ]}
+      />
+    ),
+    caption: 'CodeRabbit’s December 2025 study comparing 320 AI-co-authored PRs against 150 human-only PRs — exactly the gap a real review step is meant to catch before it ships.',
+  },
+  'agent-pr-cicd-changes': {
+    Component: () => (
+      <StepFlowDiagram
+        accent={SECONDARY}
+        steps={[
+          { n: '1', title: 'Volume spikes', sub: 'Far more PRs than human-scale review assumed' },
+          { n: '2', title: 'Failure modes shift', sub: 'Plausible-but-nonexistent APIs, not typos' },
+          { n: '3', title: 'Checks & gates get redesigned', sub: 'Verify claims, not just that tests pass' },
+        ]}
+      />
+    ),
+    caption: 'A pipeline built around a human submitting in good faith makes assumptions that stop holding once an agent is the one opening the pull request.',
+  },
+  'ai-usage-team-split-matrix': {
+    Component: () => (
+      <Matrix2x2Diagram
+        xLabel="How heavily they lean on AI assistance →"
+        yLabel="Depth of understanding behind what ships →"
+        xLowHigh={['Light use', 'Heavy use']}
+        yLowHigh={['Shallow', 'Deep']}
+        bottomLeft={{ label: 'Working at a disadvantage', sub: 'slower, without better output to show for it', fill: '#FEF3C7', textColor: '#92400E' }}
+        bottomRight={{ label: 'The real risk', sub: 'confident output, not fully understood', fill: '#FEE2E2', textColor: '#991B1B' }}
+        topLeft={{ label: 'Reliable, if slower', sub: 'genuine understanding, less speed', fill: SECONDARY_LIGHT, textColor: '#0E7490' }}
+        topRight={{ label: 'The actual goal', sub: 'fast, and genuinely understood', fill: PRIMARY_LIGHT, textColor: PRIMARY }}
+      />
+    ),
+    caption: 'The outcome that matters is depth of understanding behind what ships — not usage level on its own, which is why mandating a fixed usage level misses the point.',
+  },
+  'seniority-ai-fluency-matrix': {
+    Component: () => (
+      <Matrix2x2Diagram
+        xLabel="AI tool fluency →"
+        yLabel="Seniority & systems judgment →"
+        xLowHigh={['Limited', 'Strong']}
+        yLowHigh={['Junior', 'Senior']}
+        bottomLeft={{ label: 'Neither dimension yet', sub: 'earlier in both journeys', fill: '#F3F4F6', textColor: MUTED }}
+        bottomRight={{ label: 'Fast, but a real risk', sub: 'fluent output, less judgment to catch mistakes', fill: '#FEE2E2', textColor: '#991B1B' }}
+        topLeft={{ label: 'Capable, but slower', sub: 'below the current productivity baseline', fill: SECONDARY_LIGHT, textColor: '#0E7490' }}
+        topRight={{ label: 'What clients want now', sub: 'both fluency and the judgment to use it well', fill: PRIMARY_LIGHT, textColor: PRIMARY }}
+      />
+    ),
+    caption: '"Senior" quietly absorbed a second dimension — clients increasingly screen for both fluency and the judgment to use it well, since either alone leaves a real gap.',
+  },
+  'eval-set-build-steps': {
+    Component: () => (
+      <StepFlowDiagram
+        steps={[
+          { n: '1', title: 'Collect representative inputs', sub: 'Real usage, not just easy cases' },
+          { n: '2', title: 'Define good-enough scoring', sub: 'Deterministic checks plus judged rubrics' },
+          { n: '3', title: 'Re-run on every real change', sub: 'Prompt, model, or pipeline update' },
+        ]}
+      />
+    ),
+    caption: 'An AI feature shipped without an evaluation set behind it is running without a regression test suite — the gap stays invisible until a "small" change quietly makes it worse.',
+  },
+  'junior-pipeline-consequence-timeline': {
+    Component: () => (
+      <TimelineDiagram
+        milestones={[
+          { label: '2023–24: junior hiring cut', sub: 'Industry-wide, not one company' },
+          { label: '2025: pipeline thins', sub: 'Fewer engineers reach mid-level' },
+          { label: 'Now: the gap becomes visible', sub: 'Mid-level talent genuinely scarce' },
+          { label: 'Ahead: a structural, durable gap', sub: 'For whoever doesn’t restart investment' },
+        ]}
+      />
+    ),
+    caption: 'A multi-year cut in junior hiring produces a thinner mid-level pool on a predictable delay — the companies that kept investing now hold an advantage competitors can’t simply buy back.',
+  },
+  'ai-code-vulnerability-rates': {
+    Component: () => (
+      <RankedBarListDiagram
+        unit="%"
+        maxValue={45}
+        items={[
+          { label: 'AI code w/ a vulnerability (Veracode)', value: 45, color: SECONDARY },
+          { label: 'Python snippets w/ a security weakness', value: 29.5, color: PRIMARY },
+          { label: 'JavaScript snippets w/ a security weakness', value: 24.2, color: PRIMARY },
+        ]}
+      />
+    ),
+    caption: 'Veracode’s 2025 GenAI Code Security Report and a companion academic study of real-world Copilot and CodeWhisperer output — base rates high enough to justify calibrating review specifically around this failure mode.',
+  },
+  'agent-vs-human-traffic-share': {
+    Component: () => (
+      <BarCompareDiagram
+        yMax={60}
+        unit="%"
+        groups={[
+          { label: 'Human traffic', bars: [{ value: 49, label: '49%', color: PRIMARY }] },
+          { label: 'Automated & agent traffic', bars: [{ value: 51, label: '51%', color: SECONDARY }] },
+        ]}
+      />
+    ),
+    caption: 'Share of all web interactions, per Imperva’s 2025 Bad Bot Report — automated traffic, including legitimate AI agents and crawlers, crossed 51% in 2024, surpassing human traffic for the first time on record.',
+  },
+  'ai-summary-click-through-gap': {
+    Component: () => (
+      <BarCompareDiagram
+        yMax={20}
+        unit="%"
+        groups={[
+          { label: 'No AI summary shown', bars: [{ value: 15, label: '15%', color: PRIMARY }] },
+          { label: 'AI summary shown', bars: [{ value: 8, label: '8%', color: SECONDARY }] },
+        ]}
+      />
+    ),
+    caption: 'Share of search visits that include a click-through to a traditional result, per Pew Research — the click-through rate is cut roughly in half when an AI summary appears.',
+  },
+  'small-team-leverage-steps': {
+    Component: () => (
+      <StepFlowDiagram
+        steps={[
+          { n: '1', title: 'Extremely clear ownership', sub: 'No ambiguity about who owns what' },
+          { n: '2', title: 'Extremely tight scope', sub: 'Bounded enough to hold in a few heads' },
+          { n: '3', title: 'Heavy agentic leverage', sub: 'Tools perform best exactly here' },
+        ]}
+      />
+    ),
+    caption: 'The trait that makes this work has nothing to do with AI directly — tight scope and clear ownership are what put the work squarely in the category these tools handle best.',
+  },
+  'annual-ai-retro-timeline': {
+    Component: () => (
+      <TimelineDiagram
+        milestones={[
+          { label: 'Cautious on production agents', sub: 'Held up — validated by 2025 incidents' },
+          { label: 'Too slow on internal tooling', sub: 'Overcaution where risk didn’t justify it' },
+          { label: 'The real signal: skepticism + adoption', sub: 'Not fastest adopters — most rigorous ones' },
+          { label: 'Next year: same combination, more precisely', sub: 'Recalibrated, not reversed' },
+        ]}
+      />
+    ),
+    caption: 'The year’s clearest lesson wasn’t about the technology — it was that skepticism and heavy adoption turned out to be complementary, not opposed.',
+  },
+  'ai-code-ownership-chain': {
+    Component: () => (
+      <StepFlowDiagram
+        steps={[
+          { n: '1', title: 'AI drafts the first version', sub: 'A suggestion, not a decision' },
+          { n: '2', title: 'A human reviews and merges it', sub: 'The moment real accountability attaches' },
+          { n: '3', title: 'That human owns it, fully', sub: '"The AI wrote it" isn’t an explanation' },
+        ]}
+      />
+    ),
+    caption: 'Ownership never actually lived in who typed the first draft — it lives in who decided the result was good enough to ship, exactly as it did before AI tools existed.',
+  },
+  'agent-access-security-matrix': {
+    Component: () => (
+      <Matrix2x2Diagram
+        xLabel="How narrowly access is scoped →"
+        yLabel="How rigorously it’s logged and reviewed →"
+        xLowHigh={['Broad, for convenience', 'Minimal, task-specific']}
+        yLowHigh={['Ad hoc', 'Scheduled & rigorous']}
+        bottomLeft={{ label: 'The real blind spot', sub: 'broad access, no review — most common gap', fill: '#FEE2E2', textColor: '#991B1B' }}
+        bottomRight={{ label: 'Scoped, but unreviewed', sub: 'good start, can still drift stale', fill: '#FEF3C7', textColor: '#92400E' }}
+        topLeft={{ label: 'Watched, but over-privileged', sub: 'logging doesn’t fix excess access', fill: SECONDARY_LIGHT, textColor: '#0E7490' }}
+        topRight={{ label: 'Same discipline as human access', sub: 'minimal, owned, reviewed on schedule', fill: PRIMARY_LIGHT, textColor: PRIMARY }}
+      />
+    ),
+    caption: 'The 2025 Amazon Q and Replit incidents both trace back to exactly the bottom-left quadrant — an agent with standing, broadly scoped access nobody was reviewing.',
+  },
+  'interview-time-allocation-shift': {
+    Component: () => (
+      <BarCompareDiagram
+        yMax={100}
+        unit="%"
+        legend={[
+          { label: 'Verifying AI tool fluency', color: SECONDARY },
+          { label: 'Ambiguous, judgment-heavy problems', color: PRIMARY },
+        ]}
+        groups={[
+          {
+            label: 'A couple of years ago',
+            bars: [
+              { value: 60, label: '60%', color: SECONDARY },
+              { value: 40, label: '40%', color: PRIMARY },
+            ],
+          },
+          {
+            label: 'Now',
+            bars: [
+              { value: 15, label: '15%', color: SECONDARY },
+              { value: 85, label: '85%', color: PRIMARY },
+            ],
+          },
+        ]}
+      />
+    ),
+    caption: 'Illustrative of our own shift, not a formal study — AI tool fluency stopped being diagnostic once it became close to universal across the candidate pool.',
+  },
+  'platform-dual-interface-matrix': {
+    Component: () => (
+      <Matrix2x2Diagram
+        xLabel="Human interface quality →"
+        yLabel="Agent interface quality →"
+        xLowHigh={['Weak', 'Strong']}
+        yLowHigh={['Weak', 'Strong']}
+        bottomLeft={{ label: 'Serves neither well', sub: 'the platform nobody wants to use', fill: '#FEE2E2', textColor: '#991B1B' }}
+        bottomRight={{ label: 'Human-first, agent afterthought', sub: 'agents scrape a UI built for people', fill: '#FEF3C7', textColor: '#92400E' }}
+        topLeft={{ label: 'Agent-first, human afterthought', sub: 'rare, but equally lopsided', fill: SECONDARY_LIGHT, textColor: '#0E7490' }}
+        topRight={{ label: 'Genuine dual interface', sub: 'same capability, two deliberate contracts', fill: PRIMARY_LIGHT, textColor: PRIMARY }}
+      />
+    ),
+    caption: 'A good agent interface isn’t a byproduct of a good human one — it’s a distinct design exercise, which is exactly why most platforms haven’t built it yet.',
+  },
+  'ai-adoption-ownership-gap-steps': {
+    Component: () => (
+      <StepFlowDiagram
+        accent={SECONDARY}
+        steps={[
+          { n: '1', title: 'Pilots multiply', sub: 'Spread across many teams' },
+          { n: '2', title: 'Nobody owns the outcome', sub: 'Everyone has a stake, no one is accountable' },
+          { n: '3', title: 'Nothing consolidates', sub: 'Promising pilots quietly stall' },
+        ]}
+      />
+    ),
+    caption: 'The fix McKinsey’s own data points to — workflow redesign — is exactly the kind of decision that requires a real, named owner with actual authority, not a diffuse working group.',
+  },
+  'trust-value-matrix': {
+    Component: () => (
+      <Matrix2x2Diagram
+        xLabel="Psychological safety to surface mistakes →"
+        yLabel="Trust in engineer judgment over mandates →"
+        xLowHigh={['Low', 'High']}
+        yLowHigh={['Managed by mandate', 'Trusted judgment']}
+        bottomLeft={{ label: 'Mistakes hidden, usage mandated', sub: 'the same tools, the weakest results', fill: '#FEE2E2', textColor: '#991B1B' }}
+        bottomRight={{ label: 'Safe to admit, still over-controlled', sub: 'good instincts, blunt policy', fill: '#FEF3C7', textColor: '#92400E' }}
+        topLeft={{ label: 'Trusted, but mistakes stay hidden', sub: 'judgment respected, safety missing', fill: SECONDARY_LIGHT, textColor: '#0E7490' }}
+        topRight={{ label: 'What high-performing teams share', sub: 'same tools, far better results', fill: PRIMARY_LIGHT, textColor: PRIMARY }}
+      />
+    ),
+    caption: 'Two teams on identical tooling can land in opposite corners of this matrix — which is why trust, not the tool stack, is now the better predictor of results.',
+  },
+  'agent-audit-trail-steps': {
+    Component: () => (
+      <StepFlowDiagram
+        steps={[
+          { n: '1', title: 'Log the full reasoning trail', sub: 'Not just the final action taken' },
+          { n: '2', title: 'Build it in from day one', sub: 'Retrofitting after an incident is far harder' },
+          { n: '3', title: 'Trace exactly why, after the fact', sub: 'A real answer, not "the model decided that"' },
+        ]}
+      />
+    ),
+    caption: 'By the time an incident happens, it’s too late to add the logging that would have explained it — auditability has to be a design requirement, not a reaction.',
+  },
+  'staffaug-role-shift': {
+    Component: () => (
+      <BarCompareDiagram
+        yMax={100}
+        unit="%"
+        legend={[
+          { label: 'Writing code directly', color: SECONDARY },
+          { label: 'Directing & reviewing agentic output', color: PRIMARY },
+        ]}
+        groups={[
+          {
+            label: 'A few years ago',
+            bars: [
+              { value: 70, label: '70%', color: SECONDARY },
+              { value: 30, label: '30%', color: PRIMARY },
+            ],
+          },
+          {
+            label: 'Today',
+            bars: [
+              { value: 30, label: '30%', color: SECONDARY },
+              { value: 70, label: '70%', color: PRIMARY },
+            ],
+          },
+        ]}
+      />
+    ),
+    caption: 'Illustrative of the shift we describe to clients — the engagement model hasn’t changed, but what a placed engineer actually spends their day doing has.',
+  },
+  'async-decision-speed': {
+    Component: () => (
+      <BarCompareDiagram
+        yMax={8}
+        unit=" days"
+        groups={[
+          { label: 'Meeting-dependent teams', bars: [{ value: 7, label: '7 days', color: SECONDARY }] },
+          { label: 'Async-first teams', bars: [{ value: 3, label: '2-3 days', color: PRIMARY }] },
+        ]}
+      />
+    ),
+    caption: 'Time to resolve a typical decision, per research on async versus meeting-centric distributed teams — the gap is mostly scheduling friction, not thinking time.',
+  },
+  'engineer-time-allocation': {
+    Component: () => (
+      <BarCompareDiagram
+        yMax={100}
+        unit="%"
+        groups={[
+          { label: 'Building new features', bars: [{ value: 16, label: '16%', color: PRIMARY }] },
+          { label: 'Maintenance, fixes & firefighting', bars: [{ value: 84, label: '84%', color: '#991B1B' }] },
+        ]}
+      />
+    ),
+    caption: 'A 2025 survey of 1,200+ engineers found they spend only about 16% of a typical week on the feature-building work they were hired for — the rest goes to unplanned maintenance and firefighting.',
+  },
 }

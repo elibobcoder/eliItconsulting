@@ -63,15 +63,73 @@ const handwrittenBlogPosts: IBlogPost[] = [
       'It rarely shows up as a single dramatic moment. It shows up as a slow accumulation of small signals that are easy to explain away individually.',
     category: 'Team Strategy',
     date: '2026-07-18',
-    readTime: '5 min read',
+    readTime: '4 min read',
     coverImage: stockPhotos.burnoutHeadInHands,
     content: [
-      'Nobody schedules a meeting titled "we are now understaffed." The signals show up gradually, and each one has a reasonable-sounding explanation on its own. Here are five worth paying attention to together, not just individually.',
-      'The roadmap keeps sliding, and the reason changes each time. One quarter it’s a hiring delay, the next it’s a dependency, the next it’s scope creep. When the excuse rotates but the outcome doesn’t, the real constraint is usually capacity, not any one of those specific reasons.',
-      'Your best engineers are doing the least interesting version of their job. Senior people end up firefighting, reviewing, and unblocking instead of building, because there’s nobody else to absorb the load. That’s an expensive way to run a team — you’re paying senior rates for junior-shaped work.',
-      'A single person has become a single point of failure. If one engineer leaving would meaningfully set back a project, that’s not a resourcing question you can put off — it’s a risk you’re already carrying.',
-      'New initiatives keep losing to maintenance. If "keeping the lights on" consistently wins against the roadmap, the team doesn’t have room to grow the product, only to keep it running.',
-      'Hiring is underway, but it’s slow, and the gap is now. In-house hiring is usually the right long-term answer, but it can take months. If the work is needed now and the hire is needed later, that’s exactly the gap staff augmentation or a dedicated team is built to close in the meantime.',
+      'Nobody schedules a meeting titled "we are now understaffed." The signals show up gradually, and each one has a reasonable-sounding explanation on its own.',
+      'The roadmap keeps sliding, and the reason changes each time.',
+      'Your best engineers are doing the least interesting version of their job.',
+      'A single person has become a single point of failure.',
+      'New initiatives keep losing to maintenance.',
+      'Hiring is underway, but it’s slow, and the gap is now.',
+    ],
+    sections: [
+      {
+        id: 'not-one-dramatic-moment',
+        heading: 'It’s rarely one dramatic moment',
+        paragraphs: [
+          'Nobody schedules a meeting titled "we are now understaffed." The signals show up gradually, and each one has a reasonable-sounding explanation on its own — a rough quarter, a key person out sick, a project that turned out bigger than scoped. Taken individually, none of them look like a capacity problem. Taken together, over two or three quarters, they usually are one.',
+          'The five signals below are worth tracking as a set, not evaluating one at a time. A team can explain away any single one of them and still be right about that specific explanation — the pattern is what actually tells you something, and the pattern is easy to miss when you\'re inside it, reacting to whichever fire is loudest this week.',
+        ],
+      },
+      {
+        id: 'sign-one-roadmap-slides',
+        heading: 'Sign 1: The roadmap keeps sliding, for a different reason each time',
+        paragraphs: [
+          'One quarter it\'s a hiring delay. The next it\'s a dependency on another team. The one after that it\'s scope creep on a project that "turned out to be bigger than we thought." Each explanation is plausible in isolation, and each one is probably even true. The tell isn\'t any single slip — it\'s that the excuse rotates while the outcome stays the same.',
+          'When the underlying constraint is genuinely one-off — a bad quarter, a specific dependency — the next quarter looks different. When it\'s capacity, the specific story changes but the shape doesn\'t: commitments made with good intentions, missed by roughly the same margin, for a reason that always sounds sufficient on its own. That consistency, more than any individual miss, is the actual signal.',
+        ],
+      },
+      {
+        id: 'sign-two-best-engineers-firefighting',
+        heading: 'Sign 2: Your best engineers are doing the least interesting version of their job',
+        paragraphs: [
+          'Senior people end up firefighting, reviewing, and unblocking instead of building, because there\'s nobody else on the team with the context to absorb that load. It happens gradually — one urgent fix here, one blocked junior engineer there — until the people you\'re paying the most to build things spend most of their week keeping things from breaking instead.',
+          'This is an expensive way to run a team even before you account for morale. You\'re paying senior rates for junior-shaped work, and the actual senior-shaped work — architecture decisions, mentoring, the things only they can do — happens in whatever time is left over, which is usually not much. A 2025 industry survey of over a thousand engineers found they spend only around 16% of a typical week on the rewarding, feature-building work they were hired for; the rest goes to exactly this kind of unplanned maintenance and firefighting.',
+        ],
+        diagramId: 'engineer-time-allocation',
+      },
+      {
+        id: 'sign-three-single-point-of-failure',
+        heading: 'Sign 3: A single person has become a single point of failure',
+        paragraphs: [
+          'If one engineer leaving would meaningfully set back a project — not just slow it down, but actually put a deadline or a feature at real risk — that\'s not a resourcing question you can put off until it becomes urgent. It\'s a risk you\'re already carrying today, whether or not anything has gone wrong yet.',
+          'This usually happens quietly, through good intentions: one person picks up a hard problem because they\'re available, becomes the de facto expert because nobody else has the bandwidth to build the same context, and six months later is the only person who can safely touch that part of the system. Nobody decided to create that dependency. It accumulated the same way the other four signs do.',
+        ],
+      },
+      {
+        id: 'sign-four-maintenance-wins',
+        heading: 'Sign 4: New initiatives keep losing to maintenance',
+        paragraphs: [
+          'If "keeping the lights on" consistently wins against the roadmap — bug fixes and small requests always jump the queue ahead of the feature that was supposed to ship this quarter — the team doesn\'t have room to grow the product. It only has room to keep it running, which is a very different job than the one most engineering teams are actually there to do.',
+          'This is the sign leadership notices last, because it doesn\'t look like a failure. Nothing is broken. The team is busy, velocity metrics look reasonable, standups are full of real updates. It just quietly stops being about growth, one deprioritized initiative at a time, until someone asks why the roadmap from a year ago looks almost identical to the roadmap now.',
+        ],
+      },
+      {
+        id: 'sign-five-hiring-is-too-slow',
+        heading: 'Sign 5: Hiring is underway, but it\'s slow, and the gap is now',
+        paragraphs: [
+          'In-house hiring is usually the right long-term answer, and nothing here is an argument against building your own team. But hiring well takes months — sourcing, interviewing, an offer, notice periods, ramp-up — and the gap it\'s meant to close is often needed well before any of that finishes.',
+          'That timing mismatch is exactly the gap staff augmentation or a dedicated team is built to close: bridge capacity while permanent hiring runs its normal, unrushed course, rather than compressing the hiring process to fill the gap faster and living with a worse hire because of it.',
+        ],
+      },
+      {
+        id: 'what-to-actually-do',
+        heading: 'What to actually do once you\'ve spotted the pattern',
+        paragraphs: [
+          'None of these five signs is a crisis on its own, which is exactly why they\'re easy to individually explain away. The useful exercise is a blunt one: pull up the last two quarters and check how many of the five actually apply right now, not how many applied once. Two or three, consistently, is the pattern worth acting on — not waiting for a sixth, more dramatic signal that may not come until something has already broken.',
+        ],
+      },
     ],
   },
   {
@@ -198,14 +256,57 @@ const handwrittenBlogPosts: IBlogPost[] = [
       'Timezone overlap gets all the attention. The teams that actually work well together are usually solving a different problem.',
     category: 'Team Strategy',
     date: '2026-05-30',
-    readTime: '5 min read',
+    readTime: '4 min read',
     coverImage: stockPhotos.remoteWork,
     content: [
-      'Timezone alignment matters, but it’s table stakes, not the differentiator. Plenty of teams share working hours and still struggle to collaborate well. What separates the teams that genuinely work well together comes down to a few less obvious habits.',
-      'Decisions live in writing, not in someone’s head. When a decision is only ever discussed verbally, it becomes invisible to anyone who wasn’t in the room, remote or not. Teams that collaborate well default to writing decisions down, even briefly, so context doesn’t depend on who happened to be online at the time.',
-      'Async is the default; meetings are the exception. If every question requires a live conversation to resolve, distributed collaboration will always feel slow. The smoother teams reserve meetings for things that genuinely need real-time discussion, and handle everything else through clear, well-documented async updates.',
-      'Onboarding is treated as a real process, not an afterthought. Engineers who ramp up quickly usually aren’t smarter — they joined a team with a clear, documented path to productivity: what the codebase looks like, how decisions get made, who owns what. Teams that skip this step pay for it in slow ramp-up, every time.',
-      'Ownership is explicit. Distributed teams that struggle often have quietly ambiguous ownership: everyone assumes someone else is responsible for a given piece. The teams that avoid this make ownership explicit, even for small things, so nothing falls through the cracks between people who don’t share a hallway.',
+      'Timezone alignment matters, but it’s table stakes, not the differentiator.',
+      'Decisions live in writing, not in someone’s head.',
+      'Async is the default; meetings are the exception.',
+      'Onboarding is treated as a real process, not an afterthought.',
+      'Ownership is explicit.',
+    ],
+    sections: [
+      {
+        id: 'table-stakes-not-differentiator',
+        heading: 'Timezone overlap is table stakes, not the differentiator',
+        paragraphs: [
+          'Timezone alignment matters, but it\'s table stakes, not the differentiator. Plenty of teams share working hours and still struggle to collaborate well, while some of the smoothest-running distributed teams we\'ve worked with have almost no overlap at all. What separates the teams that genuinely work well together comes down to a few less obvious habits — none of which have anything to do with what time zone anyone is in.',
+          'That matters because most companies solve for the wrong variable first. They optimize the hiring search for overlap hours, assume the collaboration problem is solved once the calendars line up, and then are surprised when a fully-overlapping team still struggles to ship. The habits below are what actually predict whether a distributed team works, timezone overlap or not.',
+        ],
+      },
+      {
+        id: 'decisions-live-in-writing',
+        heading: 'Decisions live in writing, not in someone\'s head',
+        paragraphs: [
+          'When a decision is only ever discussed verbally, it becomes invisible to anyone who wasn\'t in the room — remote or not. Teams that collaborate well default to writing decisions down, even briefly: what was decided, why, and who made the call. That habit costs a few extra minutes at decision time and saves far more than that the first time someone asks "wait, why did we do it this way" three months later.',
+          'This compounds in ways that aren\'t obvious until you\'ve felt the absence of it. A written decision trail reduces duplicate questions, because the answer already exists somewhere searchable instead of living only in whoever happened to be in the meeting. It also means a new hire can reconstruct the reasoning behind a decision without having to interrupt someone\'s day to ask — the context survives the people who made it.',
+        ],
+      },
+      {
+        id: 'async-is-the-default',
+        heading: 'Async is the default; meetings are the exception',
+        paragraphs: [
+          'If every question requires a live conversation to resolve, distributed collaboration will always feel slow, because you\'re stacking timezone friction on top of the normal delay of scheduling a meeting. The smoother teams reserve meetings for things that genuinely need real-time discussion — a genuinely ambiguous tradeoff, a disagreement that\'s not resolving in writing — and handle everything else through clear, well-documented async updates.',
+          'The gap this closes is bigger than it sounds. Teams that default to async regularly resolve decisions in a couple of days that a meeting-dependent team would have taken the better part of a week to get to, simply because async doesn\'t wait for six calendars to align on a free half-hour. The slowest part of most decisions isn\'t the thinking — it\'s the scheduling.',
+        ],
+        diagramId: 'async-decision-speed',
+      },
+      {
+        id: 'onboarding-is-a-real-process',
+        heading: 'Onboarding is treated as a real process, not an afterthought',
+        paragraphs: [
+          'Engineers who ramp up quickly usually aren\'t smarter — they joined a team with a clear, documented path to productivity: what the codebase looks like, how decisions get made, who owns what, and where to find the answer before resorting to interrupting someone. Teams that skip this step pay for it in slow ramp-up, every single time, and usually blame the individual hire rather than the missing process.',
+          'A real onboarding process isn\'t a slide deck someone half-reads in the first hour. It\'s the same living decision record and ownership map the rest of the team already relies on day to day, handed to a new person on day one instead of being reconstructed by them, piecemeal, over their first two frustrating months.',
+        ],
+      },
+      {
+        id: 'ownership-is-explicit',
+        heading: 'Ownership is explicit',
+        paragraphs: [
+          'Distributed teams that struggle often have quietly ambiguous ownership: everyone assumes someone else is responsible for a given piece, and nobody notices the gap until something falls through it. This is a distributed-team problem specifically because in person, ambiguous ownership tends to get resolved informally — someone walks over and just asks, or overhears the right conversation. Remote, that informal resolution mechanism doesn\'t exist by default.',
+          'The teams that avoid this make ownership explicit, even for small, unglamorous pieces of the system that nobody would think to claim credit for. It feels like unnecessary overhead until the first time it prevents something from sitting unowned for three weeks because everyone assumed it was someone else\'s job.',
+        ],
+      },
     ],
   },
   {
