@@ -21,7 +21,7 @@ import { calculateReadTime } from '@/utils/read-time'
 
 const POSTS_PER_PAGE = 9
 const TRENDING_COUNT = 6
-const SHORTLIST_COUNT = 5
+const SHORTLIST_COUNT = 3
 
 const formatDate = (iso: string) =>
   new Date(iso).toLocaleDateString('en-US', {
