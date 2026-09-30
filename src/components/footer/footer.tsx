@@ -12,13 +12,10 @@ import {
 } from '@/components/footer'
 import { SocialLinks } from '@/components'
 import Logo from '@/assets/logo.svg'
-import HeartIcon from '@/assets/icons/ion--heart-sharp.svg'
 import { AppConfig } from '@/configs'
 
 const Footer: FC = () => {
   const { palette } = useTheme()
-
-  const year = new Date().getFullYear()
 
   return (
     <Box
@@ -109,24 +106,6 @@ const Footer: FC = () => {
                 <Box sx={{ mb: 0.8 }}>
                   <SocialLinks />
                 </Box>
-
-                <Stack
-                  direction='row'
-                  sx={{ display: 'flex', alignItems: 'center' }}
-                >
-                  <Typography variant='subtitle1' sx={{ fontWeight: '500' }}>
-                    © {year} | Made with
-                  </Typography>
-                  <Box
-                    component={HeartIcon}
-                    sx={{
-                      width: 18,
-                      height: 'auto',
-                      color: '#ff0808',
-                      mx: 0.2,
-                    }}
-                  />
-                </Stack>
               </Box>
             </Grid>
           </Grid>
