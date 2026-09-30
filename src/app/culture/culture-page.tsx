@@ -25,6 +25,8 @@ import {
 } from '@/app/_components/engagement/icons'
 import { stockPhotos } from '@/constants/stock-photos'
 
+const AVATAR_COLORS = ['#1E3FC4', '#0891B2', '#D85A30', '#639922', '#993C1D', '#0E7490']
+
 const PILLARS = [
   {
     icon: <GlobeIcon />,
@@ -153,27 +155,64 @@ const CulturePage = () => {
         </Container>
       </Box>
 
-      <Box
-        sx={{
-          py: { xs: 8, md: 10 },
-          backgroundColor: 'background.paper',
-          textAlign: 'center',
-        }}
-      >
-        <Container maxWidth='sm'>
-          <Reveal>
-            <Typography variant='h2' sx={{ mb: 2, fontSize: { xs: 22, md: 30 }, fontWeight: 800 }}>
-              Want to be part of it?
-            </Typography>
-            <Typography sx={{ mb: 4, color: 'text.secondary', fontSize: { xs: 15, md: 17 } }}>
-              We&apos;re always open to hearing from people who&apos;d be a good fit.
-            </Typography>
-            <NextLink href='/career' passHref>
-              <StyledButton variant='contained' size='large' color='primary'>
-                See Open Roles
-              </StyledButton>
-            </NextLink>
-          </Reveal>
+      <Box sx={{ py: { xs: 8, md: 12 }, backgroundColor: '#0a0b1c' }}>
+        <Container maxWidth='lg'>
+          <Grid container spacing={{ xs: 6, md: 4 }} alignItems='center'>
+            <Grid size={{ xs: 12, md: 7 }}>
+              <Reveal>
+                <Box sx={{ display: 'flex', mb: 3 }}>
+                  {AVATAR_COLORS.map((color, index) => (
+                    <Box
+                      key={color}
+                      sx={{
+                        width: 44,
+                        height: 44,
+                        borderRadius: '50%',
+                        backgroundColor: color,
+                        border: '2px solid #0a0b1c',
+                        ml: index === 0 ? 0 : -1.5,
+                      }}
+                    />
+                  ))}
+                </Box>
+                <Typography variant='h2' sx={{ mb: 2, fontSize: { xs: 26, md: 36 }, fontWeight: 800, color: '#fbfbfb' }}>
+                  It all comes together in what we do
+                </Typography>
+                <Typography sx={{ color: 'rgba(255,255,255,0.7)', fontSize: { xs: 15, md: 17 }, maxWidth: 480 }}>
+                  Our beliefs are our compass. Our values are our action plan. Together, they create a workplace
+                  where we&apos;re challenged, supported, and inspired to do our best work.
+                </Typography>
+              </Reveal>
+            </Grid>
+            <Grid size={{ xs: 12, md: 5 }}>
+              <Reveal index={1}>
+                <Box
+                  sx={{
+                    backgroundColor: '#fbfbfb',
+                    border: (t) => `1px solid ${t.palette.primary.main}`,
+                    p: { xs: 3.5, md: 4.5 },
+                  }}
+                >
+                  <Typography variant='h3' sx={{ mb: 2, fontSize: { xs: 20, md: 24 }, fontWeight: 800 }}>
+                    See yourself here?
+                  </Typography>
+                  <Typography sx={{ mb: 3, color: 'text.secondary', fontSize: 15, lineHeight: 1.7 }}>
+                    If this feels like a fit, don&apos;t wait.{' '}
+                    <Box component='span' sx={{ fontWeight: 800, color: 'text.primary' }}>
+                      Let&apos;s find you your next career opportunity today!
+                    </Box>
+                  </Typography>
+                  <Box sx={{ '& > a': { display: 'block' }, '& button': { width: '100%' } }}>
+                    <NextLink href='/career' passHref>
+                      <StyledButton variant='contained' size='large' color='primary'>
+                        Apply Now
+                      </StyledButton>
+                    </NextLink>
+                  </Box>
+                </Box>
+              </Reveal>
+            </Grid>
+          </Grid>
         </Container>
       </Box>
     </Box>
