@@ -7,7 +7,8 @@ import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import { useTheme } from '@mui/material/styles'
-import { StyledButton, Reveal, PageHero } from '@/components/core'
+import { Reveal, PageHero } from '@/components/core'
+import { articleDiagrams } from './article-diagrams'
 
 const formatDate = (iso: string) =>
   new Date(iso).toLocaleDateString('en-US', {
@@ -191,7 +192,7 @@ const TableOfContents = ({ sections }: { sections: IBlogSection[] }) => (
       Article contents
     </Typography>
     <Box component='ol' sx={{ m: 0, pl: 2.5, display: 'flex', flexDirection: 'column', gap: 0.75 }}>
-      {sections.map((section, index) => (
+      {sections.map((section) => (
         <Box component='li' key={section.id} sx={{ fontSize: 14.5 }}>
           <Box
             component='a'
@@ -202,7 +203,7 @@ const TableOfContents = ({ sections }: { sections: IBlogSection[] }) => (
               '&:hover': { color: 'primary.main', textDecoration: 'underline' },
             }}
           >
-            {index + 1}. {section.heading}
+            {section.heading}
           </Box>
         </Box>
       ))}
@@ -247,6 +248,14 @@ const ArticleSections = ({ sections }: { sections: IBlogSection[] }) => (
                 {section.image.caption}
               </Typography>
             )}
+          </Box>
+        )}
+        {section.diagramId && articleDiagrams[section.diagramId] && (
+          <Box sx={{ my: { xs: 4, md: 5 }, p: { xs: 2.5, md: 3.5 }, border: (t) => `1px solid ${t.palette.divider}`, backgroundColor: 'background.default' }}>
+            {React.createElement(articleDiagrams[section.diagramId].Component)}
+            <Typography sx={{ mt: 2, fontSize: 13, color: 'text.secondary', fontStyle: 'italic' }}>
+              {articleDiagrams[section.diagramId].caption}
+            </Typography>
           </Box>
         )}
       </Box>
@@ -447,7 +456,7 @@ const BlogPostPage = ({ post, readTime, trendingPosts, relatedPosts, previousPos
                   />
                 </Box>
               </Reveal>
-              <Reveal index={1}>
+              <Reveal index={1} amount={0}>
                 {post.sections && <TableOfContents sections={post.sections} />}
                 {post.sections ? (
                   <ArticleSections sections={post.sections} />
@@ -490,39 +499,26 @@ const BlogPostPage = ({ post, readTime, trendingPosts, relatedPosts, previousPos
             <Box
               sx={{
                 display: 'grid',
-                gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
-                gap: 3,
+                gridTemplateColumns: { xs: '1fr', md: '5fr 70fr 25fr' },
+                columnGap: { md: '5%' },
               }}
             >
-              {previousPost ? <PrevNextCard post={previousPost} direction='previous' /> : <Box />}
-              {nextPost ? <PrevNextCard post={nextPost} direction='next' /> : <Box />}
+              <Box sx={{ display: { xs: 'none', md: 'block' } }} />
+              <Box
+                sx={{
+                  display: 'grid',
+                  gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
+                  gap: 3,
+                }}
+              >
+                {previousPost ? <PrevNextCard post={previousPost} direction='previous' /> : <Box />}
+                {nextPost ? <PrevNextCard post={nextPost} direction='next' /> : <Box />}
+              </Box>
+              <Box sx={{ display: { xs: 'none', md: 'block' } }} />
             </Box>
           </Container>
         </Box>
       )}
-
-      <Box
-        sx={{
-          py: { xs: 8, md: 10 },
-          backgroundColor: theme.palette.mode === 'dark' ? '#101014' : '#f7f8fb',
-        }}
-      >
-        <Container maxWidth='sm' sx={{ textAlign: 'center' }}>
-          <Reveal>
-            <Typography variant='h2' sx={{ mb: 2, fontSize: { xs: 22, md: 30 }, fontWeight: 800 }}>
-              Want help with this?
-            </Typography>
-            <Typography sx={{ mb: 4, color: 'text.secondary', fontSize: { xs: 15, md: 17 } }}>
-              Tell us what you&apos;re working on and we&apos;ll point you to the right next step.
-            </Typography>
-            <NextLink href='/contact' passHref>
-              <StyledButton variant='contained' size='large' color='primary'>
-                Schedule a Call
-              </StyledButton>
-            </NextLink>
-          </Reveal>
-        </Container>
-      </Box>
     </Box>
   )
 }

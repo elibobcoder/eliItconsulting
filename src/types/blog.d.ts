@@ -8,6 +8,7 @@ declare global {
       alt: string
       caption?: string
     }
+    diagramId?: string
   }
 
   interface IBlogPost {

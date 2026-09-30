@@ -35,12 +35,7 @@ const handwrittenBlogPosts: IBlogPost[] = [
           'Dedicated teams fit when the gap is a whole workstream, not a skill. If you have a product area or initiative that needs to move but nobody on your team has the bandwidth to own it, a dedicated team gives you a self-managing squad with its own lead. You set the priorities; the team runs day-to-day execution. This trades a bit of management control for a lot less management overhead, which is the right trade when your leads are already stretched.',
           'Software outsourcing fits when the gap is a defined project with a clear endpoint. You know what needs to get built, you don’t need it to become a permanent part of your org chart, and you’d rather hand off execution entirely than staff it. This model works best with a well-scoped project: fuzzy requirements tend to produce fuzzy outsourced results.',
         ],
-        image: {
-          src: stockPhotos.contractSigningPen,
-          alt: 'A signed statement of work on a desk',
-          caption:
-            'A clearly scoped statement of work is what makes outsourcing predictable — fuzzy requirements produce fuzzy results regardless of the vendor.',
-        },
+        diagramId: 'engagement-models-comparison',
       },
       {
         id: 'getting-it-wrong',
@@ -115,11 +110,6 @@ const handwrittenBlogPosts: IBlogPost[] = [
           'This is the opposite of how most teams start. The usual approach is "what can this new model do," which leads to interesting demos and forgettable pilots. The better question is "where does my team lose the most hours to repetitive, low-judgment work," because that’s where a modest accuracy improvement translates directly into hours back, regardless of which underlying model is doing the work.',
           'A useful exercise: for one week, have each person on the team log any task that took more than ten minutes and felt mechanical rather than judgment-heavy. Patterns show up fast — usually two or three tasks account for a disproportionate share of the logged time, and those are your candidates, not whatever the loudest AI headline that week happened to be about.',
         ],
-        image: {
-          src: stockPhotos.analyticsDashboard,
-          alt: 'A dashboard showing team activity and time metrics',
-          caption: 'Time-tracking your team’s repetitive tasks for even a week usually surfaces the same two or three bottlenecks worth automating first.',
-        },
       },
       {
         id: 'automate-vs-assist',
@@ -129,6 +119,7 @@ const handwrittenBlogPosts: IBlogPost[] = [
           'Deciding this up front prevents both failure modes teams run into. Over-trusting a system means an error propagates before anyone notices — a miscategorized support ticket that never gets escalated, a summary that drops a crucial caveat. Under-using one means a perfectly capable assistant gets treated like it needs sign-off on everything, which erases most of the time savings that justified building it in the first place.',
           'A simple test: ask what the actual cost of a wrong output is, and how quickly a wrong output would get noticed. Low cost and fast to notice — automate it. High cost or slow to notice — keep a human reviewing the output before it goes anywhere. This single question resolves most of the automate-versus-assist debates that otherwise turn into open-ended arguments about how much to "trust the AI."',
         ],
+        diagramId: 'automate-assist-matrix',
       },
       {
         id: 'prototype-against-real-data',
@@ -138,11 +129,6 @@ const handwrittenBlogPosts: IBlogPost[] = [
           'Test early with real inputs from your business, not the examples in a sales deck. Pull twenty to thirty real cases — actual tickets, actual documents, actual records — including a few you already know are messy or ambiguous, and run the prototype against those specifically. If it handles the hard cases reasonably, the easy cases will take care of themselves. If it only handles the easy cases, you’ve learned that before committing budget and rollout time to it, not after.',
           'This step is also where you calibrate expectations for the team. Showing people a prototype working against their actual data — including its actual mistakes — builds more trust than a polished demo ever will, because it’s honest about where the tool needs a human to catch something.',
         ],
-        image: {
-          src: stockPhotos.dataOnScreen,
-          alt: 'Rows of real, unformatted data displayed on a screen',
-          caption: 'Testing against messy, real records — not curated demo data — is what actually predicts how a tool performs in production.',
-        },
       },
       {
         id: 'monitoring-before-scale',
@@ -190,11 +176,6 @@ const handwrittenBlogPosts: IBlogPost[] = [
           'Document what worked: how you identified the workflow, how you tested against real data, what the review cadence looked like, what actually moved the needle on adoption once it was live. This becomes the internal playbook for every project after it, and it’s usually more valuable than the first project’s direct output, because it compounds.',
           'It’s also worth documenting what didn’t work. The failure modes — a use case that seemed promising but turned out to be too ambiguous, a monitoring gap that let an error run longer than it should have — are exactly the mistakes a documented playbook lets the second and third project skip entirely.',
         ],
-        image: {
-          src: stockPhotos.teamPlanning,
-          alt: 'A team planning a project roadmap together',
-          caption: 'Treating the rollout process itself as a reusable playbook is often worth more long-term than any single AI feature.',
-        },
       },
       {
         id: 'ninety-day-rollout',
@@ -262,11 +243,7 @@ const handwrittenBlogPosts: IBlogPost[] = [
           'Second, communication: can they explain their thinking clearly enough that a remote teammate can follow it without extra back-and-forth. This gets tested throughout the process, not in a single dedicated question — how they describe their approach, how they respond when we push back on a decision, how they write up a summary afterward.',
           'Third, fit: do they collaborate in a way that matches how the team actually works, not just how they say they work. This is the hardest of the three to evaluate honestly, because almost everyone describes themselves as a good collaborator. We look for specifics instead of self-description — concrete examples of a disagreement they navigated, a handoff they managed, a time they were wrong and changed course.',
         ],
-        image: {
-          src: stockPhotos.handshakeInterview,
-          alt: 'Two people shaking hands after an interview',
-          caption: 'The interview format should mirror the actual job as closely as possible — not test for a different skill and hope it correlates.',
-        },
+        diagramId: 'vetting-order',
       },
       {
         id: 'communication-underweighted',
@@ -311,11 +288,6 @@ const handwrittenBlogPosts: IBlogPost[] = [
           'It also means we say no more often than a faster process would. Not every technically strong candidate is a good fit for every team’s specific mix of pace, structure, and communication style — and placing someone who’s strong on paper but wrong for the team creates more disruption than leaving the seat open a little longer.',
           'None of this makes the process slower for its own sake. Every extra step exists to answer a specific question we’ve learned actually predicts outcome, and we cut anything that doesn’t. The goal was never a longer interview — it was a shorter list of placements that don’t work out.',
         ],
-        image: {
-          src: stockPhotos.codeReview,
-          alt: 'Two engineers reviewing code together on a monitor',
-          caption: 'Code review sessions during vetting reveal more about working style than a solo coding exercise ever does.',
-        },
       },
     ],
   },
