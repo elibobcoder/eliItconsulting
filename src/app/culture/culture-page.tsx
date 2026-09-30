@@ -27,6 +27,19 @@ import { stockPhotos } from '@/constants/stock-photos'
 
 const AVATAR_COLORS = ['#1E3FC4', '#0891B2', '#D85A30', '#639922', '#993C1D', '#0E7490']
 
+const AvatarGlyph = () => (
+  <svg viewBox='0 0 24 24' width='60%' height='60%' fill='none'>
+    <circle cx='12' cy='8' r='4' fill='#fbfbfb' fillOpacity={0.9} />
+    <path d='M4 20c0-4.4 3.6-8 8-8s8 3.6 8 8' fill='#fbfbfb' fillOpacity={0.9} />
+  </svg>
+)
+
+const DEI_PHOTOS = [
+  { src: stockPhotos.teamAroundTable, alt: 'The team gathered around a table' },
+  { src: stockPhotos.teamWorkshop, alt: 'A team workshop session' },
+  { src: stockPhotos.diverseTeamVideoCall, alt: 'A distributed team on a video call' },
+]
+
 const PILLARS = [
   {
     icon: <GlobeIcon />,
@@ -155,6 +168,83 @@ const CulturePage = () => {
         </Container>
       </Box>
 
+      <Box sx={{ py: { xs: 8, md: 12 }, backgroundColor: 'background.paper' }}>
+        <Container maxWidth='lg'>
+          <Grid container spacing={{ xs: 6, md: 8 }} alignItems='center'>
+            <Grid size={{ xs: 12, md: 6 }}>
+              <Reveal>
+                <Typography variant='h2' sx={{ mb: 3, fontSize: { xs: 28, md: 38 }, fontWeight: 800, lineHeight: 1.2 }}>
+                  All voices.
+                  <br />
+                  All backgrounds.
+                  <br />
+                  <Box component='span' sx={{ color: 'primary.main' }}>
+                    One team.
+                  </Box>
+                </Typography>
+                <Typography sx={{ mb: 3, color: 'text.secondary', fontSize: { xs: 15, md: 17 }, lineHeight: 1.8 }}>
+                  At Eli IT Consulting, we build teams by bringing together talent from every background, time
+                  zone, and career path — not by filtering for a single mold.
+                </Typography>
+                <Typography sx={{ mb: 3, color: 'text.secondary', fontSize: { xs: 15, md: 17 }, lineHeight: 1.8 }}>
+                  Our distributed team spans multiple countries and disciplines. We invest in remote-first
+                  tooling, flexible schedules, and hiring practices that judge people on their work, not on where
+                  they went to school or what they look like.
+                </Typography>
+                <Typography sx={{ mb: 4, color: 'text.secondary', fontSize: { xs: 15, md: 17 }, lineHeight: 1.8 }}>
+                  We&apos;re still early in this work, and we don&apos;t think it&apos;s ever really finished. What
+                  we can commit to is staying honest about where we are, and continuing to build a place where
+                  different perspectives make the work better, not just the roster look better.
+                </Typography>
+                <NextLink
+                  href='/about'
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 8,
+                    fontSize: 15,
+                    fontWeight: 700,
+                    color: 'inherit',
+                    textDecoration: 'none',
+                    borderBottom: '2px solid currentColor',
+                    paddingBottom: 2,
+                  }}
+                >
+                  Learn more &rarr;
+                </NextLink>
+              </Reveal>
+            </Grid>
+            <Grid size={{ xs: 12, md: 6 }}>
+              <Reveal index={1}>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, maxWidth: 420, ml: 'auto' }}>
+                  {DEI_PHOTOS.map((photo, index) => (
+                    <Box
+                      key={photo.alt}
+                      sx={{
+                        position: 'relative',
+                        height: { xs: 140, md: 160 },
+                        width: index === 1 ? '100%' : '80%',
+                        ml: index === 1 ? 0 : 'auto',
+                        overflow: 'hidden',
+                        border: (t) => `1px solid ${t.palette.divider}`,
+                      }}
+                    >
+                      <Image
+                        src={photo.src}
+                        alt={photo.alt}
+                        fill
+                        sizes='(max-width: 900px) 100vw, 420px'
+                        style={{ objectFit: 'cover' }}
+                      />
+                    </Box>
+                  ))}
+                </Box>
+              </Reveal>
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
+
       <Box sx={{ py: { xs: 8, md: 12 }, backgroundColor: '#0a0b1c' }}>
         <Container maxWidth='lg'>
           <Grid container spacing={{ xs: 6, md: 4 }} alignItems='center'>
@@ -171,8 +261,13 @@ const CulturePage = () => {
                         backgroundColor: color,
                         border: '2px solid #0a0b1c',
                         ml: index === 0 ? 0 : -1.5,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
                       }}
-                    />
+                    >
+                      <AvatarGlyph />
+                    </Box>
                   ))}
                 </Box>
                 <Typography variant='h2' sx={{ mb: 2, fontSize: { xs: 26, md: 36 }, fontWeight: 800, color: '#fbfbfb' }}>
