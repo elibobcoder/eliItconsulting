@@ -31,7 +31,8 @@ export default async function Page({ params }: Params) {
     slug: p.slug,
     title: p.title,
     category: p.category,
-    readTime: calculateReadTime(p.content),
+    readTime: calculateReadTime(p),
+    coverImage: p.coverImage,
   })
 
   const trendingPosts = [...blogPosts]
@@ -46,12 +47,18 @@ export default async function Page({ params }: Params) {
     .slice(0, RELATED_COUNT)
     .map(toSummary)
 
+  const currentIndex = blogPosts.findIndex((p) => p.slug === post.slug)
+  const previousPost = currentIndex > 0 ? toSummary(blogPosts[currentIndex - 1]) : null
+  const nextPost = currentIndex < blogPosts.length - 1 ? toSummary(blogPosts[currentIndex + 1]) : null
+
   return (
     <BlogPostPage
       post={post}
-      readTime={calculateReadTime(post.content)}
+      readTime={calculateReadTime(post)}
       trendingPosts={trendingPosts}
       relatedPosts={relatedPosts}
+      previousPost={previousPost}
+      nextPost={nextPost}
     />
   )
 }

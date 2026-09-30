@@ -109,7 +109,7 @@ const PageBreadcrumbs: FC = () => {
       sx={{
         width: '100%',
         mt: { xs: '61px', md: '69px' },
-        backgroundColor: 'background.paper',
+        backgroundColor: 'background.default',
         borderBottom: (t) => `1px solid ${t.palette.divider}`,
       }}
     >

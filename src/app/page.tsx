@@ -52,7 +52,6 @@ const HomePage = (): JSX.Element => {
   return (
     <Stack direction='column'>
       <HomeHero />
-      <HomeDotText />
       <HomeTrust />
       <HomeServices />
       <HomeTechStack />
@@ -62,6 +61,7 @@ const HomePage = (): JSX.Element => {
       <HomeTestimonials />
       <HomeHiring />
       <HomeContact />
+      <HomeDotText />
     </Stack>
   )
 }

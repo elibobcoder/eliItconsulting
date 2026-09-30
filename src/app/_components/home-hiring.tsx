@@ -9,7 +9,7 @@ import { stockPhotos } from '@/constants/stock-photos'
 
 const HomeHiring = () => {
   return (
-    <Box id='home-hiring' component='section' sx={{ width: '100%', pt: 0, pb: { xs: 6, md: 8, lg: 12 }, backgroundColor: 'background.paper' }}>
+    <Box id='home-hiring' component='section' sx={{ width: '100%', py: 0, backgroundColor: 'background.paper' }}>
       <Box
         sx={{
           position: 'relative',

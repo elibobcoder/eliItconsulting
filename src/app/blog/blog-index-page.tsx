@@ -337,7 +337,7 @@ const BlogIndexPage = () => {
                           >
                             <span>{formatDate(post.date)}</span>
                             <span>&middot;</span>
-                            <span>{calculateReadTime(post.content)}</span>
+                            <span>{calculateReadTime(post)}</span>
                           </Box>
                           <Typography
                             sx={{
