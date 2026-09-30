@@ -471,6 +471,19 @@ const BlogPostPage = ({ post, readTime, trendingPosts, relatedPosts, previousPos
                   ))
                 )}
               </Reveal>
+              {(previousPost || nextPost) && (
+                <Box
+                  sx={{
+                    display: 'grid',
+                    gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
+                    gap: 3,
+                    mt: { xs: 5, md: 6 },
+                  }}
+                >
+                  {previousPost ? <PrevNextCard post={previousPost} direction='previous' /> : <Box />}
+                  {nextPost ? <PrevNextCard post={nextPost} direction='next' /> : <Box />}
+                </Box>
+              )}
             </Box>
 
             {/* Trending / Related — right column */}
@@ -492,33 +505,6 @@ const BlogPostPage = ({ post, readTime, trendingPosts, relatedPosts, previousPos
           </Box>
         </Container>
       </Box>
-
-      {(previousPost || nextPost) && (
-        <Box sx={{ backgroundColor: 'background.paper', pb: { xs: 6, md: 8 } }}>
-          <Container maxWidth='lg'>
-            <Box
-              sx={{
-                display: 'grid',
-                gridTemplateColumns: { xs: '1fr', md: '5fr 70fr 25fr' },
-                columnGap: { md: '5%' },
-              }}
-            >
-              <Box sx={{ display: { xs: 'none', md: 'block' } }} />
-              <Box
-                sx={{
-                  display: 'grid',
-                  gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
-                  gap: 3,
-                }}
-              >
-                {previousPost ? <PrevNextCard post={previousPost} direction='previous' /> : <Box />}
-                {nextPost ? <PrevNextCard post={nextPost} direction='next' /> : <Box />}
-              </Box>
-              <Box sx={{ display: { xs: 'none', md: 'block' } }} />
-            </Box>
-          </Container>
-        </Box>
-      )}
     </Box>
   )
 }
