@@ -626,7 +626,789 @@ const wrapText = (text: string, maxChars: number): string[] => {
   return lines
 }
 
+/* ---------- Generic, reusable diagram primitives ----------
+   These take data as props so a single component can serve many
+   articles. All layout math below keeps every coordinate within
+   the declared viewBox — verified by hand, not just eyeballed. */
+
+interface BarGroup {
+  label: string
+  bars: { value: number; label: string; color: string }[]
+}
+
+export const BarCompareDiagram: FC<{
+  groups: BarGroup[]
+  yMax?: number
+  unit?: string
+  legend?: { label: string; color: string }[]
+}> = ({ groups, yMax = 100, unit = '%', legend }) => {
+  const width = 640
+  const height = 380
+  const top = 56
+  const baseline = 300
+  const leftPad = 66
+  const rightPad = 30
+  const plotWidth = width - leftPad - rightPad
+  const groupWidth = plotWidth / groups.length
+  const barGap = 8
+  const maxBarWidth = 40
+
+  return (
+    <Box component='svg' viewBox={`0 0 ${width} ${height}`} sx={{ width: '100%', height: 'auto', display: 'block' }}>
+      {[0, 0.25, 0.5, 0.75, 1].map((f) => {
+        const y = baseline - f * (baseline - top)
+        return (
+          <React.Fragment key={f}>
+            <line x1={leftPad} y1={y} x2={width - rightPad} y2={y} stroke={GRID} strokeWidth={1} />
+            <text x={leftPad - 10} y={y + 4} fontSize={11} fill={MUTED} textAnchor='end'>
+              {Math.round(f * yMax)}
+              {unit}
+            </text>
+          </React.Fragment>
+        )
+      })}
+      {groups.map((g, gi) => {
+        const centerX = leftPad + gi * groupWidth + groupWidth / 2
+        const barWidth = Math.min(maxBarWidth, (groupWidth - 16) / g.bars.length - barGap)
+        const totalW = g.bars.length * barWidth + (g.bars.length - 1) * barGap
+        const startX = centerX - totalW / 2
+        return (
+          <React.Fragment key={g.label}>
+            {g.bars.map((b, bi) => {
+              const h = Math.max(2, (Math.min(b.value, yMax) / yMax) * (baseline - top))
+              const x = startX + bi * (barWidth + barGap)
+              return (
+                <React.Fragment key={bi}>
+                  <rect x={x} y={baseline - h} width={barWidth} height={h} fill={b.color} />
+                  <text x={x + barWidth / 2} y={baseline - h - 8} fontSize={11.5} fontWeight={700} fill={INK} textAnchor='middle'>
+                    {b.value}
+                    {unit}
+                  </text>
+                </React.Fragment>
+              )
+            })}
+            {wrapText(g.label, 18).map((line, li) => (
+              <text key={li} x={centerX} y={baseline + 22 + li * 15} fontSize={12.5} fontWeight={700} fill={INK} textAnchor='middle'>
+                {line}
+              </text>
+            ))}
+          </React.Fragment>
+        )
+      })}
+      <line x1={leftPad} y1={baseline} x2={width - rightPad} y2={baseline} stroke={INK} strokeWidth={1.5} />
+      {legend &&
+        legend.map((l, li) => (
+          <React.Fragment key={l.label}>
+            <rect x={leftPad + li * 210} y={16} width={12} height={12} fill={l.color} />
+            <text x={leftPad + li * 210 + 18} y={26} fontSize={12} fill={INK}>
+              {l.label}
+            </text>
+          </React.Fragment>
+        ))}
+    </Box>
+  )
+}
+
+interface FlowStep {
+  n: string
+  title: string
+  sub: string
+}
+
+export const StepFlowDiagram: FC<{ steps: FlowStep[]; accent?: string }> = ({ steps, accent = PRIMARY }) => {
+  const boxWidth = 150
+  const boxHeight = 150
+  const gapX = 26
+  const startX = 20
+  const y = 30
+  const width = startX * 2 + steps.length * boxWidth + (steps.length - 1) * gapX
+  const height = y + boxHeight + 20
+  const accentLight = accent === SECONDARY ? SECONDARY_LIGHT : PRIMARY_LIGHT
+
+  return (
+    <Box component='svg' viewBox={`0 0 ${width} ${height}`} sx={{ width: '100%', height: 'auto', display: 'block' }}>
+      {steps.map((step, i) => {
+        const x = startX + i * (boxWidth + gapX)
+        const titleLines = wrapText(step.title, 20)
+        const subLines = wrapText(step.sub, 22)
+        const titleStartY = y + 62
+        return (
+          <React.Fragment key={step.n}>
+            <rect x={x} y={y} width={boxWidth} height={boxHeight} fill='#fff' stroke={GRID} strokeWidth={1.5} />
+            <rect x={x} y={y} width={boxWidth} height={4} fill={accent} />
+            <circle cx={x + 26} cy={y + 32} r={15} fill={accentLight} />
+            <text x={x + 26} y={y + 37} fontSize={13} fontWeight={800} fill={accent} textAnchor='middle'>
+              {step.n}
+            </text>
+            {titleLines.map((line, li) => (
+              <text key={li} x={x + 14} y={titleStartY + li * 17} fontSize={14} fontWeight={800} fill={INK}>
+                {line}
+              </text>
+            ))}
+            {subLines.map((line, li) => (
+              <text
+                key={li}
+                x={x + 14}
+                y={titleStartY + titleLines.length * 17 + 8 + li * 15}
+                fontSize={11.5}
+                fill={MUTED}
+              >
+                {line}
+              </text>
+            ))}
+            {i < steps.length - 1 && (
+              <path
+                d={`M ${x + boxWidth + 8} ${y + boxHeight / 2} L ${x + boxWidth + gapX - 8} ${y + boxHeight / 2}`}
+                stroke={accent}
+                strokeWidth={2.5}
+                markerEnd='url(#arrowhead-generic)'
+              />
+            )}
+          </React.Fragment>
+        )
+      })}
+      <defs>
+        <marker id='arrowhead-generic' markerWidth={8} markerHeight={8} refX={6} refY={4} orient='auto'>
+          <path d='M0,0 L8,4 L0,8 Z' fill={accent} />
+        </marker>
+      </defs>
+    </Box>
+  )
+}
+
+interface MatrixQuadrant {
+  label: string
+  sub?: string
+  fill: string
+  textColor: string
+}
+
+export const Matrix2x2Diagram: FC<{
+  topLeft: MatrixQuadrant
+  topRight: MatrixQuadrant
+  bottomLeft: MatrixQuadrant
+  bottomRight: MatrixQuadrant
+  xLabel: string
+  yLabel: string
+  xLowHigh?: [string, string]
+  yLowHigh?: [string, string]
+}> = ({ topLeft, topRight, bottomLeft, bottomRight, xLabel, yLabel, xLowHigh = ['Low', 'High'], yLowHigh = ['Low', 'High'] }) => {
+  const size = 150
+  const originX = 150
+  const originY = 340
+  const top = originY - 2 * size
+  const width = 640
+  const height = 400
+
+  const renderQuadrant = (q: MatrixQuadrant, x: number, y: number) => (
+    <>
+      <rect x={x} y={y} width={size} height={size} fill={q.fill} />
+      <text x={x + size / 2} y={y + size / 2 - (q.sub ? 6 : 0)} fontSize={13} fontWeight={800} fill={q.textColor} textAnchor='middle'>
+        {q.label}
+      </text>
+      {q.sub && (
+        <text x={x + size / 2} y={y + size / 2 + 14} fontSize={11} fill={q.textColor} textAnchor='middle'>
+          {q.sub}
+        </text>
+      )}
+    </>
+  )
+
+  return (
+    <Box component='svg' viewBox={`0 0 ${width} ${height}`} sx={{ width: '100%', height: 'auto', display: 'block' }}>
+      {renderQuadrant(bottomLeft, originX, originY - size)}
+      {renderQuadrant(bottomRight, originX + size, originY - size)}
+      {renderQuadrant(topLeft, originX, top)}
+      {renderQuadrant(topRight, originX + size, top)}
+
+      <line x1={originX} y1={originY} x2={originX} y2={top} stroke={INK} strokeWidth={1.5} />
+      <line x1={originX} y1={originY} x2={originX + 2 * size} y2={originY} stroke={INK} strokeWidth={1.5} />
+
+      <text x={originX + size} y={originY + 28} fontSize={12.5} fontWeight={700} fill={INK} textAnchor='middle'>
+        {xLabel}
+      </text>
+      <text
+        x={originX - 12}
+        y={originY - size}
+        fontSize={12.5}
+        fontWeight={700}
+        fill={INK}
+        textAnchor='end'
+        transform={`rotate(-90 ${originX - 12} ${originY - size})`}
+      >
+        {yLabel}
+      </text>
+
+      <text x={originX} y={originY + 16} fontSize={11} fill={MUTED} textAnchor='start'>
+        {xLowHigh[0]}
+      </text>
+      <text x={originX + 2 * size} y={originY + 16} fontSize={11} fill={MUTED} textAnchor='end'>
+        {xLowHigh[1]}
+      </text>
+      <text x={originX - 8} y={originY - 4} fontSize={11} fill={MUTED} textAnchor='end'>
+        {yLowHigh[0]}
+      </text>
+      <text x={originX - 8} y={top + 10} fontSize={11} fill={MUTED} textAnchor='end'>
+        {yLowHigh[1]}
+      </text>
+    </Box>
+  )
+}
+
+interface Milestone {
+  label: string
+  sub?: string
+}
+
+export const TimelineDiagram: FC<{ milestones: Milestone[] }> = ({ milestones }) => {
+  const width = 640
+  const y = 140
+  const startX = 55
+  const endX = 585
+  const height = 280
+  const step = milestones.length > 1 ? (endX - startX) / (milestones.length - 1) : 0
+
+  return (
+    <Box component='svg' viewBox={`0 0 ${width} ${height}`} sx={{ width: '100%', height: 'auto', display: 'block' }}>
+      <line x1={startX} y1={y} x2={endX} y2={y} stroke={GRID} strokeWidth={2} />
+      {milestones.map((m, i) => {
+        const x = startX + i * step
+        const above = i % 2 === 0
+        const labelLines = wrapText(m.label, 17)
+        const subLines = m.sub ? wrapText(m.sub, 19) : []
+        return (
+          <React.Fragment key={i}>
+            <circle cx={x} cy={y} r={7} fill={PRIMARY} />
+            <circle cx={x} cy={y} r={7} fill='none' stroke='#fff' strokeWidth={2} />
+            {above ? (
+              <>
+                {labelLines.map((line, li) => (
+                  <text
+                    key={li}
+                    x={x}
+                    y={y - 34 + li * 15 - (labelLines.length - 1) * 15}
+                    fontSize={13}
+                    fontWeight={800}
+                    fill={INK}
+                    textAnchor='middle'
+                  >
+                    {line}
+                  </text>
+                ))}
+                {subLines.map((line, li) => (
+                  <text key={li} x={x} y={y - 16 + li * 14} fontSize={11} fill={MUTED} textAnchor='middle'>
+                    {line}
+                  </text>
+                ))}
+              </>
+            ) : (
+              <>
+                {labelLines.map((line, li) => (
+                  <text key={li} x={x} y={y + 30 + li * 15} fontSize={13} fontWeight={800} fill={INK} textAnchor='middle'>
+                    {line}
+                  </text>
+                ))}
+                {subLines.map((line, li) => (
+                  <text
+                    key={li}
+                    x={x}
+                    y={y + 30 + labelLines.length * 15 + 4 + li * 14}
+                    fontSize={11}
+                    fill={MUTED}
+                    textAnchor='middle'
+                  >
+                    {line}
+                  </text>
+                ))}
+              </>
+            )}
+          </React.Fragment>
+        )
+      })}
+    </Box>
+  )
+}
+
+interface RankedItem {
+  label: string
+  value: number
+  color?: string
+}
+
+export const RankedBarListDiagram: FC<{ items: RankedItem[]; unit?: string; maxValue?: number }> = ({
+  items,
+  unit = '%',
+  maxValue,
+}) => {
+  const width = 640
+  const rowHeight = 46
+  const top = 20
+  const leftPad = 190
+  const rightPad = 60
+  const max = maxValue ?? Math.max(...items.map((i) => i.value))
+  const barMaxWidth = width - leftPad - rightPad
+  const height = top + items.length * rowHeight + 20
+
+  return (
+    <Box component='svg' viewBox={`0 0 ${width} ${height}`} sx={{ width: '100%', height: 'auto', display: 'block' }}>
+      {items.map((it, i) => {
+        const y = top + i * rowHeight
+        const barW = Math.max(2, (it.value / max) * barMaxWidth)
+        return (
+          <React.Fragment key={it.label}>
+            <text x={leftPad - 12} y={y + rowHeight / 2 + 5} fontSize={12.5} fontWeight={700} fill={INK} textAnchor='end'>
+              {wrapText(it.label, 26)[0]}
+            </text>
+            <rect x={leftPad} y={y + 9} width={barW} height={rowHeight - 22} fill={it.color || PRIMARY} />
+            <text x={leftPad + barW + 8} y={y + rowHeight / 2 + 5} fontSize={12.5} fontWeight={800} fill={INK}>
+              {it.value}
+              {unit}
+            </text>
+          </React.Fragment>
+        )
+      })}
+    </Box>
+  )
+}
+
 export const articleDiagrams: Record<string, { Component: FC; caption: string }> = {
+  'final-round-question-themes': {
+    Component: () => (
+      <StepFlowDiagram
+        steps={[
+          { n: '1', title: 'How decisions get made', sub: 'Day to day, not in theory' },
+          { n: '2', title: 'What happens under conflict', sub: 'When priorities collide' },
+          { n: '3', title: 'Real autonomy vs. the posting', sub: 'What the job actually looks like' },
+        ]}
+      />
+    ),
+    caption: 'By the final round, a strong candidate has already accepted the technical bar. These three themes are what they’re actually still evaluating.',
+  },
+  'mid-sprint-change-process': {
+    Component: () => (
+      <StepFlowDiagram
+        accent={SECONDARY}
+        steps={[
+          { n: '1', title: 'Change requested', sub: 'Mid-sprint, for a real reason' },
+          { n: '2', title: 'Cost made visible', sub: 'What slips, what’s deprioritized' },
+          { n: '3', title: 'Client decides', sub: 'With the full trade-off in view' },
+        ]}
+      />
+    ),
+    caption: 'The goal isn’t preventing change — it’s making sure the cost of every change is a visible decision, not an invisible tax discovered later.',
+  },
+  'cwv-bounce-rate-gap': {
+    Component: () => (
+      <BarCompareDiagram
+        yMax={100}
+        unit=""
+        groups={[
+          { label: 'Fails Core Web Vitals', bars: [{ value: 100, label: 'index', color: SECONDARY }] },
+          { label: 'Passes all three', bars: [{ value: 76, label: 'index', color: PRIMARY }] },
+        ]}
+      />
+    ),
+    caption: 'Bounce rate, indexed — sites passing all three Core Web Vitals see roughly 24% lower bounce rates on average than sites that fail, a metric Google has used as a ranking signal since 2021.',
+  },
+  'chatgpt-adoption-speed': {
+    Component: () => (
+      <RankedBarListDiagram
+        unit=" mo"
+        maxValue={30}
+        items={[
+          { label: 'Instagram to 100M users', value: 30, color: SECONDARY },
+          { label: 'TikTok to 100M users', value: 9, color: SECONDARY },
+          { label: 'ChatGPT to 100M users', value: 2, color: PRIMARY },
+        ]}
+      />
+    ),
+    caption: 'Months to reach 100 million users, per UBS analysis — the fastest ramp in consumer internet history at the time, by a wide margin.',
+  },
+  'retro-carryforward-lessons': {
+    Component: () => (
+      <StepFlowDiagram
+        steps={[
+          { n: '1', title: 'Write before you talk', sub: 'Async beat live, even for big calls' },
+          { n: '2', title: 'Document hybrid decisions', sub: 'Same day, no exceptions' },
+          { n: '3', title: 'Small adjustments, written down', sub: 'Or they quietly evaporate' },
+        ]}
+      />
+    ),
+    caption: 'What actually got carried forward from this year’s operations retro — none of it dramatic, all of it written down on purpose.',
+  },
+  'supply-chain-attack-path': {
+    Component: () => (
+      <StepFlowDiagram
+        accent={SECONDARY}
+        steps={[
+          { n: '1', title: 'Software dependency', sub: 'A library, imported without a full audit' },
+          { n: '2', title: 'SaaS with broad access', sub: 'Trusted with more than it needs' },
+          { n: '3', title: 'Your systems', sub: 'Compromised without your defenses failing' },
+        ]}
+      />
+    ),
+    caption: 'Most supply chain attacks don’t breach your own defenses at all — they arrive through something you trusted, several layers upstream of anything your team directly controls.',
+  },
+  'burnout-prevalence': {
+    Component: () => (
+      <BarCompareDiagram
+        yMax={80}
+        unit="%"
+        groups={[
+          { label: 'Burned out at least sometimes', bars: [{ value: 76, label: '%', color: SECONDARY }] },
+          { label: 'Burned out very often or always', bars: [{ value: 28, label: '%', color: PRIMARY }] },
+        ]}
+      />
+    ),
+    caption: 'Gallup’s workplace research on burnout prevalence — on a high-performing team, this rarely shows up as missed output until it’s already well past the 28% figure.',
+  },
+  'scope-reassessment-steps': {
+    Component: () => (
+      <StepFlowDiagram
+        steps={[
+          { n: '1', title: 'Right size & skills?', sub: 'For what the team owns now' },
+          { n: '2', title: 'Structure still fits?', sub: 'Reporting lines, not just headcount' },
+          { n: '3', title: 'Formalize the informal', sub: 'Name an owner for what’s unofficial' },
+        ]}
+      />
+    ),
+    caption: 'A periodic reassessment, triggered by growth rather than a calendar date, is what keeps a dedicated team’s structure matched to what it actually owns.',
+  },
+  'capacity-flex-matrix': {
+    Component: () => (
+      <Matrix2x2Diagram
+        xLabel="How certain the budget is →"
+        yLabel="How certain the workload duration is →"
+        xLowHigh={['Uncertain', 'Certain']}
+        yLowHigh={['Short/unclear', 'Long-term']}
+        bottomLeft={{ label: 'Flexible capacity', sub: 'staff aug, short-term outsourcing', fill: PRIMARY_LIGHT, textColor: PRIMARY }}
+        bottomRight={{ label: 'Flexible capacity', sub: 'still avoid a long commitment', fill: PRIMARY_LIGHT, textColor: PRIMARY }}
+        topLeft={{ label: 'Flexible, but plan ahead', sub: 'workload’s real, budget isn’t sure', fill: SECONDARY_LIGHT, textColor: '#0E7490' }}
+        topRight={{ label: 'Full-time hire', sub: 'both certain enough to commit', fill: '#F3F4F6', textColor: MUTED }}
+      />
+    ),
+    caption: 'The less certain either the budget or the workload’s duration, the more a flexible engagement model outperforms a permanent hire that’s expensive to reverse.',
+  },
+  'cost-of-bad-data': {
+    Component: () => (
+      <RankedBarListDiagram
+        unit="%"
+        maxValue={27}
+        items={[
+          { label: 'Employee time wasted', value: 27, color: PRIMARY },
+          { label: 'Revenue lost on average', value: 15, color: SECONDARY },
+        ]}
+      />
+    ),
+    caption: 'Two costs of poor data quality, per Gartner and industry research — on top of an average $12.9–15M in direct annual cost per organization, which 60% of organizations don’t even measure.',
+  },
+  'nearshore-overlap-benefits': {
+    Component: () => (
+      <RankedBarListDiagram
+        unit="%"
+        maxValue={35}
+        items={[
+          { label: 'Higher team satisfaction', value: 35, color: PRIMARY },
+          { label: 'Faster issue resolution', value: 30, color: PRIMARY },
+          { label: 'Higher project efficiency', value: 25, color: SECONDARY },
+        ]}
+      />
+    ),
+    caption: 'Measured benefits of 4+ hours of daily timezone overlap on distributed teams, from published research on distributed-team collaboration and outsourcing efficiency.',
+  },
+  'blockchain-project-outcomes': {
+    Component: () => (
+      <BarCompareDiagram
+        yMax={100}
+        unit="%"
+        groups={[
+          { label: 'Reach production use', bars: [{ value: 5, label: '%', color: PRIMARY }] },
+          { label: 'Obsolete within 2 years', bars: [{ value: 90, label: '%', color: SECONDARY }] },
+        ]}
+      />
+    ),
+    caption: 'Gartner’s figures on enterprise blockchain platforms: roughly 5% of pilots reach production, and about 90% of platforms launched become obsolete or get replaced within two years.',
+  },
+  'distributed-local-story': {
+    Component: () => (
+      <StepFlowDiagram
+        steps={[
+          { n: '1', title: 'Clustered by use case', sub: 'Not by geography anymore' },
+          { n: '2', title: 'Talent brand, many cities', sub: 'Resonates everywhere at once' },
+          { n: '3', title: 'Site built for anyone', sub: 'No assumed regional visitor' },
+        ]}
+      />
+    ),
+    caption: 'What "local" actually means for a remote-first business — the old playbook optimized for a single service area that no longer describes the customer.',
+  },
+  'cross-platform-market-share': {
+    Component: () => (
+      <BarCompareDiagram
+        yMax={35}
+        unit="%"
+        groups={[
+          { label: 'Flutter', bars: [{ value: 32.8, label: '%', color: PRIMARY }] },
+          { label: 'React Native', bars: [{ value: 27.2, label: '%', color: SECONDARY }] },
+        ]}
+      />
+    ),
+    caption: 'Share of cross-platform mobile projects, 2024 Stack Overflow Developer Survey — together, these two frameworks account for roughly 60% of all cross-platform projects started.',
+  },
+  'why-candidates-withdraw': {
+    Component: () => (
+      <RankedBarListDiagram
+        unit="%"
+        maxValue={47}
+        items={[
+          { label: 'Poor communication', value: 47, color: PRIMARY },
+          { label: 'Interviewer attitude', value: 46, color: PRIMARY },
+          { label: 'Recruiter attitude', value: 43, color: SECONDARY },
+          { label: 'Too many hoops', value: 36, color: SECONDARY },
+        ]}
+      />
+    ),
+    caption: 'Reasons candidates give for voluntarily withdrawing from a hiring process — none of these four are fixed by simply moving the same steps faster.',
+  },
+  'cyber-monday-traffic-surge': {
+    Component: () => (
+      <BarCompareDiagram
+        yMax={12}
+        unit="B"
+        groups={[
+          { label: 'Cyber Monday 2019', bars: [{ value: 9.4, label: '$9.4B', color: SECONDARY }] },
+          { label: 'Cyber Monday 2020', bars: [{ value: 10.8, label: '$10.8B', color: PRIMARY }] },
+        ]}
+      />
+    ),
+    caption: 'U.S. Cyber Monday spending, per Adobe Analytics — a 15.1% year-over-year jump, concentrated into a single day, on infrastructure that mostly hadn’t been tested against a number that high.',
+  },
+  'hybrid-equity-matrix': {
+    Component: () => (
+      <Matrix2x2Diagram
+        xLabel="Mixed in-office & remote attendance →"
+        yLabel="Defaults actively protected →"
+        xLowHigh={['Single mode', 'Hybrid']}
+        yLowHigh={['Left to drift', 'Enforced']}
+        bottomLeft={{ label: 'Fully remote', sub: 'simple by construction', fill: SECONDARY_LIGHT, textColor: '#0E7490' }}
+        bottomRight={{ label: 'Hybrid, undisciplined', sub: 'defaults favor whoever’s in the room', fill: '#FEE2E2', textColor: '#991B1B' }}
+        topLeft={{ label: 'Fully in-office', sub: 'simple, but no flexibility', fill: '#F3F4F6', textColor: MUTED }}
+        topRight={{ label: 'Hybrid, done deliberately', sub: 'best of both, on purpose', fill: PRIMARY_LIGHT, textColor: PRIMARY }}
+      />
+    ),
+    caption: 'Hybrid only earns its promise in the top-right quadrant — everywhere else on this chart, one group quietly ends up with more visibility than the other.',
+  },
+  'rpa-failure-reasons': {
+    Component: () => (
+      <RankedBarListDiagram
+        unit="%"
+        maxValue={50}
+        items={[
+          { label: 'Process too variable', value: 50, color: PRIMARY },
+          { label: 'Poor process selection', value: 40, color: PRIMARY },
+          { label: 'Process too complex', value: 38, color: SECONDARY },
+          { label: 'Inadequate change mgmt', value: 37, color: SECONDARY },
+        ]}
+      />
+    ),
+    caption: 'Reasons cited for RPA programs underperforming expectations, from Forrester, McKinsey, and Deloitte research — none of them are about the automation technology itself.',
+  },
+  'why-people-quit-2021': {
+    Component: () => (
+      <RankedBarListDiagram
+        unit="%"
+        maxValue={63}
+        items={[
+          { label: 'Low pay', value: 63, color: PRIMARY },
+          { label: 'No advancement', value: 63, color: PRIMARY },
+          { label: 'Felt disrespected', value: 57, color: SECONDARY },
+          { label: 'Childcare issues', value: 48, color: SECONDARY },
+          { label: 'No flexibility', value: 45, color: SECONDARY },
+        ]}
+      />
+    ),
+    caption: 'Reasons workers who quit in 2021 gave for leaving, per Pew Research — a compensation-only retention response addresses at most one of these five.',
+  },
+  'data-skepticism-checklist': {
+    Component: () => (
+      <StepFlowDiagram
+        accent={SECONDARY}
+        steps={[
+          { n: '1', title: 'What does it measure?', sub: 'The proxy, or the actual outcome?' },
+          { n: '2', title: 'Is the sample real?', sub: 'Or noise dressed as a clean chart?' },
+          { n: '3', title: 'Would it survive removal?', sub: 'Does the decision still hold without it?' },
+        ]}
+      />
+    ),
+    caption: 'Three questions worth asking before a metric gets to drive a decision — being data-driven means being skeptical of the data, not deferential to it.',
+  },
+  'remote-talent-pool-size': {
+    Component: () => (
+      <BarCompareDiagram
+        yMax={350}
+        unit=""
+        groups={[
+          { label: 'Local-only posting', bars: [{ value: 100, label: 'index', color: SECONDARY }] },
+          { label: 'Location line removed', bars: [{ value: 340, label: 'index', color: PRIMARY }] },
+        ]}
+      />
+    ),
+    caption: 'Indexed to a local-only posting at 100. Removing the location requirement has been measured to produce candidate pools roughly 340% larger — with a proportionally wider quality range to screen through.',
+  },
+  'cloud-waste-breakdown': {
+    Component: () => (
+      <RankedBarListDiagram
+        unit="%"
+        maxValue={35}
+        items={[
+          { label: 'Idle compute', value: 35, color: PRIMARY },
+          { label: 'Oversized instances', value: 25, color: PRIMARY },
+          { label: 'Idle storage & resources', value: 13, color: SECONDARY },
+          { label: 'Unused commitments', value: 10, color: SECONDARY },
+        ]}
+      />
+    ),
+    caption: 'Directional shares of typical enterprise cloud waste, from FinOps industry research — averaging 21–29% of total spend before disciplined cost review, versus 8–15% after.',
+  },
+  'remote-shift-attack-surge': {
+    Component: () => (
+      <BarCompareDiagram
+        yMax={700}
+        unit="%"
+        legend={[
+          { label: 'Before the shift (index)', color: PRIMARY_LIGHT },
+          { label: 'Weeks after the shift', color: SECONDARY },
+        ]}
+        groups={[
+          {
+            label: 'Phishing email volume',
+            bars: [
+              { value: 100, label: 'baseline', color: PRIMARY_LIGHT },
+              { value: 600, label: '+600%', color: SECONDARY },
+            ],
+          },
+          {
+            label: 'VPN-targeted attacks',
+            bars: [
+              { value: 100, label: 'baseline', color: PRIMARY_LIGHT },
+              { value: 238, label: '+238%', color: SECONDARY },
+            ],
+          },
+        ]}
+      />
+    ),
+    caption: 'The attack surface grew faster than most security teams could rebuild defenses to match it — phishing volume and VPN-targeted attacks both spiked within weeks of the 2020 remote shift.',
+  },
+  'remote-work-share-shift': {
+    Component: () => (
+      <BarCompareDiagram
+        yMax={35}
+        unit="%"
+        groups={[
+          { label: 'Before the shift', bars: [{ value: 5, label: '%', color: SECONDARY }] },
+          { label: 'After the shift', bars: [{ value: 30, label: '%', color: PRIMARY }] },
+        ]}
+      />
+    ),
+    caption: 'Share of paid working days done remotely, per Stanford economist Nicholas Bloom’s research — a six-fold increase that has held steady rather than reverted.',
+  },
+  'dedicated-team-fit-matrix': {
+    Component: () => (
+      <Matrix2x2Diagram
+        xLabel="How much day-to-day direction the client can give →"
+        yLabel="How uncertain priorities are right now →"
+        xLowHigh={['Little bandwidth', 'Lots of bandwidth']}
+        yLowHigh={['Stable', 'Shifting']}
+        bottomLeft={{ label: 'Single contractor', sub: 'stable priorities, room to direct closely', fill: SECONDARY_LIGHT, textColor: '#0E7490' }}
+        bottomRight={{ label: 'Either works', sub: 'stable, and bandwidth to manage it', fill: '#F3F4F6', textColor: MUTED }}
+        topLeft={{ label: 'Dedicated team', sub: 'shifting priorities, little bandwidth to direct', fill: PRIMARY_LIGHT, textColor: PRIMARY }}
+        topRight={{ label: 'Dedicated team, lighter touch', sub: 'shifting, but bandwidth to steer it', fill: PRIMARY_LIGHT, textColor: PRIMARY }}
+      />
+    ),
+    caption: 'The less day-to-day direction a client can give, and the more priorities are shifting, the more a self-managing dedicated team outperforms a single, closely-directed contractor.',
+  },
+  'contractor-vs-staffaug-total-cost': {
+    Component: () => (
+      <BarCompareDiagram
+        yMax={180}
+        unit=""
+        legend={[
+          { label: 'Quoted rate (index)', color: PRIMARY_LIGHT },
+          { label: 'Total cost of the outcome', color: PRIMARY },
+        ]}
+        groups={[
+          {
+            label: 'Rotating hourly contractors',
+            bars: [
+              { value: 100, label: 'Quoted rate', color: PRIMARY_LIGHT },
+              { value: 158, label: 'Total cost', color: PRIMARY },
+            ],
+          },
+          {
+            label: 'Staff augmentation',
+            bars: [
+              { value: 118, label: 'Quoted rate', color: PRIMARY_LIGHT },
+              { value: 132, label: 'Total cost', color: PRIMARY },
+            ],
+          },
+        ]}
+      />
+    ),
+    caption:
+      'Illustrative, indexed to a quoted-rate baseline of 100 — built from published benchmarks on ramp-up time and knowledge-transfer cost (McKinsey estimates 25–50% of annual compensation to rebuild lost institutional knowledge). The visible rate is the smaller part of the bill.',
+  },
+  'pilot-trust-ladder': {
+    Component: () => (
+      <StepFlowDiagram
+        steps={[
+          { n: '1', title: 'Small, well-scoped pilot', sub: 'Real work, low stakes, a few weeks' },
+          { n: '2', title: 'Evaluate the signals', sub: 'Communication, ambiguity, code without oversight' },
+          { n: '3', title: 'Scale with confidence', sub: 'Same partner, now a known quantity' },
+        ]}
+      />
+    ),
+    caption: 'A first engagement is a trial of working relationship and process fit, not just technical capability — that’s cheap to test small and expensive to test big.',
+  },
+  'vendor-bench-timeline': {
+    Component: () => (
+      <TimelineDiagram
+        milestones={[
+          { label: 'Identify 1–2 candidates', sub: 'While nothing is urgent' },
+          { label: 'Run a no-pressure pilot', sub: 'Real, small, self-contained work' },
+          { label: 'Keep the relationship warm', sub: 'Occasional contact, no active project' },
+          { label: 'Crisis hits', sub: 'Start at "here’s the project," not zero' },
+        ]}
+      />
+    ),
+    caption: 'The relationship gets built on a timeline you control, so it’s already trusted by the time you’re making the decision under pressure.',
+  },
+  'pwa-vs-native-size': {
+    Component: () => (
+      <BarCompareDiagram
+        yMax={25}
+        unit="MB"
+        groups={[
+          { label: 'Native app install (Android)', bars: [{ value: 23.5, label: 'MB', color: SECONDARY }] },
+          { label: 'Twitter Lite PWA, first load', bars: [{ value: 0.6, label: 'MB', color: PRIMARY }] },
+        ]}
+      />
+    ),
+    caption: 'From Twitter’s 2017 Twitter Lite case study: a 23.5MB native install versus roughly 600KB to load the PWA — the gap that drove a 65% increase in pages per session.',
+  },
+  'warehouse-vs-swamp-matrix': {
+    Component: () => (
+      <Matrix2x2Diagram
+        xLabel="Documentation & naming discipline →"
+        yLabel="Clear ownership →"
+        xLowHigh={['Undocumented', 'Documented']}
+        yLowHigh={['No owner', 'Owned']}
+        bottomLeft={{ label: 'Data Swamp', sub: 'nobody can say what a field means', fill: '#FEE2E2', textColor: '#991B1B' }}
+        bottomRight={{ label: 'Documented, orphaned', sub: 'accurate today, drifts with no owner', fill: SECONDARY_LIGHT, textColor: '#0E7490' }}
+        topLeft={{ label: 'Owned, undocumented', sub: 'one person is the only reference', fill: '#FEF3C7', textColor: '#92400E' }}
+        topRight={{ label: 'Data Warehouse', sub: 'consistent, documented, owned', fill: PRIMARY_LIGHT, textColor: PRIMARY }}
+      />
+    ),
+    caption: 'The infrastructure looks identical from the outside. Naming discipline and clear ownership — not the tooling — are what separate a warehouse from a swamp.',
+  },
   'engagement-models-comparison': {
     Component: EngagementModelsDiagram,
     caption: 'The real difference between the three models isn’t cost or skill level — it’s how much day-to-day management you keep versus how much you hand off.',
