@@ -116,7 +116,7 @@ const CulturePage = () => {
   }
 
   return (
-    <Box component='main'>
+    <Box component='main' sx={{ overflowX: 'clip' }}>
       <PageHero>
         <Container maxWidth='md' sx={{ textAlign: 'center', position: 'relative' }}>
           <Reveal>
@@ -169,7 +169,7 @@ const CulturePage = () => {
                     sx={{
                       position: 'relative',
                       height: { xs: 200, md: 240 },
-                      borderRadius: 0,
+                      borderRadius: '10px',
                       overflow: 'hidden',
                       boxShadow: 2,
                     }}
@@ -219,46 +219,77 @@ const CulturePage = () => {
             <Box
               sx={{
                 position: 'relative',
-                backgroundColor: '#0a0b1c',
-                overflow: 'hidden',
-                minHeight: { xs: 420, md: 280 },
+                left: '50%',
+                right: '50%',
+                ml: '-50vw',
+                mr: '-50vw',
+                width: '100vw',
               }}
             >
-              <AnimatePresence mode='popLayout' initial={false}>
-                <Box
-                  key={testimonialIndex}
-                  component={motion.div}
-                  initial={{ opacity: 0, x: testimonialDirection * 40 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -testimonialDirection * 40 }}
-                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                  sx={{
-                    position: { xs: 'relative', md: 'absolute' },
-                    inset: 0,
-                    display: 'flex',
-                    flexDirection: { xs: 'column', md: 'row' },
-                    alignItems: 'stretch',
-                    textAlign: 'left',
-                  }}
-                >
+              <Box
+                sx={{
+                  position: { xs: 'relative', md: 'absolute' },
+                  top: { xs: 0, md: '50%' },
+                  left: { xs: 0, md: 0 },
+                  transform: { xs: 'none', md: 'translateY(-50%)' },
+                  width: { xs: '100%', md: 320 },
+                  height: { xs: 220, md: 'calc(100% + 56px)' },
+                  overflow: 'hidden',
+                  borderRadius: { xs: 0, md: '14px' },
+                  boxShadow: { md: '0 24px 48px rgba(0,0,0,0.45)' },
+                  zIndex: 1,
+                }}
+              >
+                <AnimatePresence mode='wait' initial={false}>
                   <Box
-                    sx={{
-                      position: 'relative',
-                      width: { xs: '100%', md: 280 },
-                      minHeight: { xs: 220, md: 'auto' },
-                      flexShrink: 0,
-                      overflow: 'hidden',
-                    }}
+                    key={testimonialIndex}
+                    component={motion.div}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.35 }}
+                    sx={{ position: 'absolute', inset: 0 }}
                   >
                     <Image
                       src={activeTestimonial.photo}
                       alt=''
                       fill
-                      sizes='(max-width: 900px) 100vw, 280px'
+                      sizes='(max-width: 900px) 100vw, 320px'
                       style={{ objectFit: 'cover' }}
                     />
                   </Box>
-                  <Box sx={{ p: { xs: 4, md: 6 }, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                </AnimatePresence>
+              </Box>
+
+              <Box
+                sx={{
+                  position: 'relative',
+                  backgroundColor: '#0a0b1c',
+                  overflow: 'hidden',
+                  minHeight: { xs: 'auto', md: 280 },
+                }}
+              >
+                <AnimatePresence mode='popLayout' initial={false}>
+                  <Box
+                    key={testimonialIndex}
+                    component={motion.div}
+                    initial={{ opacity: 0, x: testimonialDirection * 40 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -testimonialDirection * 40 }}
+                    transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                    sx={{
+                      position: { xs: 'relative', md: 'absolute' },
+                      top: 0,
+                      right: 0,
+                      bottom: 0,
+                      left: { xs: 0, md: '320px' },
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'center',
+                      textAlign: 'left',
+                      p: { xs: 4, md: 6 },
+                    }}
+                  >
                     <Typography sx={{ mb: 2, fontSize: 12, fontWeight: 700, letterSpacing: 1, textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)' }}>
                       Employee testimonial
                     </Typography>
@@ -269,8 +300,8 @@ const CulturePage = () => {
                       {activeTestimonial.role}
                     </Typography>
                   </Box>
-                </Box>
-              </AnimatePresence>
+                </AnimatePresence>
+              </Box>
             </Box>
             <Box sx={{ display: 'flex', gap: 1.5, mt: 3 }}>
               <Box
@@ -280,6 +311,7 @@ const CulturePage = () => {
                 sx={{
                   width: 44,
                   height: 44,
+                  borderRadius: '10px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -302,6 +334,7 @@ const CulturePage = () => {
                 sx={{
                   width: 44,
                   height: 44,
+                  borderRadius: '10px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -380,6 +413,7 @@ const CulturePage = () => {
                         width: index === 1 ? '100%' : '80%',
                         ml: index === 1 ? 0 : 'auto',
                         overflow: 'hidden',
+                        borderRadius: '10px',
                         border: (t) => `1px solid ${t.palette.divider}`,
                       }}
                     >
@@ -439,6 +473,7 @@ const CulturePage = () => {
                   sx={{
                     backgroundColor: '#fbfbfb',
                     border: (t) => `1px solid ${t.palette.primary.main}`,
+                    borderRadius: '10px',
                     p: { xs: 3.5, md: 4.5 },
                   }}
                 >
