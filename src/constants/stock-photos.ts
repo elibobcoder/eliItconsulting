@@ -166,4 +166,9 @@ export const stockPhotos = {
   movingBoxesHomeOffice: unsplash('1621745491698-86b18793ce6f'),
   managerCheckingInLaptop: unsplash('1758874383489-7be291a44415'),
   typingMessageLaptop: unsplash('1486312338219-ce68d2c6f44d'),
+
+  // Culture page — employee testimonial carousel
+  portraitProfessionalWomanOne: unsplash('1609371497456-3a55a205d5eb'),
+  portraitProfessionalManOne: unsplash('1705645930353-0e335311ef20'),
+  portraitProfessionalManTwo: unsplash('1507003211169-0a1dd7228f2d'),
 } as const

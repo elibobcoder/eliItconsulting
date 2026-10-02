@@ -39,16 +39,19 @@ const TEAM_TESTIMONIALS = [
     quote:
       'I’ve worked at places where every decision needed three approvals. Here, if I think something’s the right call, I make it — and that trust changes how you show up to work every day.',
     role: 'Senior Backend Engineer',
+    photo: stockPhotos.portraitProfessionalWomanOne,
   },
   {
     quote:
       'Being remote-first isn’t just a policy here — it’s how everything is actually built. Meetings are the exception, not the default, and that respect for focused time is rare.',
     role: 'Project Manager',
+    photo: stockPhotos.portraitProfessionalManOne,
   },
   {
     quote:
       'Feedback here is direct, not diplomatic-to-the-point-of-useless. It stung the first time, but it’s the fastest I’ve ever grown as an engineer.',
     role: 'QA Engineer',
+    photo: stockPhotos.portraitProfessionalManTwo,
   },
 ]
 
@@ -100,12 +103,17 @@ const GALLERY = [
 const CulturePage = () => {
   const theme = useTheme()
   const [testimonialIndex, setTestimonialIndex] = useState(0)
+  const [testimonialDirection, setTestimonialDirection] = useState(1)
   const activeTestimonial = TEAM_TESTIMONIALS[testimonialIndex]
 
-  const goToPrevTestimonial = () =>
+  const goToPrevTestimonial = () => {
+    setTestimonialDirection(-1)
     setTestimonialIndex((i) => (i === 0 ? TEAM_TESTIMONIALS.length - 1 : i - 1))
-  const goToNextTestimonial = () =>
+  }
+  const goToNextTestimonial = () => {
+    setTestimonialDirection(1)
     setTestimonialIndex((i) => (i === TEAM_TESTIMONIALS.length - 1 ? 0 : i + 1))
+  }
 
   return (
     <Box component='main'>
@@ -210,43 +218,50 @@ const CulturePage = () => {
           <Reveal index={1}>
             <Box
               sx={{
-                display: 'flex',
-                flexDirection: { xs: 'column', md: 'row' },
-                alignItems: 'stretch',
-                textAlign: 'left',
+                position: 'relative',
                 backgroundColor: '#0a0b1c',
                 overflow: 'hidden',
-                minHeight: { md: 280 },
+                minHeight: { xs: 420, md: 280 },
               }}
             >
-              <Box
-                sx={{
-                  width: { xs: '100%', md: 280 },
-                  minHeight: { xs: 160, md: 'auto' },
-                  flexShrink: 0,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  backgroundColor: AVATAR_COLORS[testimonialIndex % AVATAR_COLORS.length],
-                }}
-              >
-                <Box sx={{ width: 72, height: 72 }}>
-                  <AvatarGlyph />
-                </Box>
-              </Box>
-              <Box sx={{ p: { xs: 4, md: 6 }, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <Typography sx={{ mb: 2, fontSize: 12, fontWeight: 700, letterSpacing: 1, textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)' }}>
-                  Employee testimonial
-                </Typography>
-                <AnimatePresence mode='wait'>
+              <AnimatePresence mode='popLayout' initial={false}>
+                <Box
+                  key={testimonialIndex}
+                  component={motion.div}
+                  initial={{ opacity: 0, x: testimonialDirection * 40 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -testimonialDirection * 40 }}
+                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                  sx={{
+                    position: { xs: 'relative', md: 'absolute' },
+                    inset: 0,
+                    display: 'flex',
+                    flexDirection: { xs: 'column', md: 'row' },
+                    alignItems: 'stretch',
+                    textAlign: 'left',
+                  }}
+                >
                   <Box
-                    key={testimonialIndex}
-                    component={motion.div}
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -8 }}
-                    transition={{ duration: 0.3 }}
+                    sx={{
+                      position: 'relative',
+                      width: { xs: '100%', md: 280 },
+                      minHeight: { xs: 220, md: 'auto' },
+                      flexShrink: 0,
+                      overflow: 'hidden',
+                    }}
                   >
+                    <Image
+                      src={activeTestimonial.photo}
+                      alt=''
+                      fill
+                      sizes='(max-width: 900px) 100vw, 280px'
+                      style={{ objectFit: 'cover' }}
+                    />
+                  </Box>
+                  <Box sx={{ p: { xs: 4, md: 6 }, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Typography sx={{ mb: 2, fontSize: 12, fontWeight: 700, letterSpacing: 1, textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)' }}>
+                      Employee testimonial
+                    </Typography>
                     <Typography sx={{ mb: 3, fontSize: { xs: 17, md: 20 }, lineHeight: 1.6, fontWeight: 700, color: '#fbfbfb' }}>
                       &ldquo;{activeTestimonial.quote}&rdquo;
                     </Typography>
@@ -254,8 +269,8 @@ const CulturePage = () => {
                       {activeTestimonial.role}
                     </Typography>
                   </Box>
-                </AnimatePresence>
-              </Box>
+                </Box>
+              </AnimatePresence>
             </Box>
             <Box sx={{ display: 'flex', gap: 1.5, mt: 3 }}>
               <Box
