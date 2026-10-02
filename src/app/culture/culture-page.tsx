@@ -325,7 +325,7 @@ const CulturePage = () => {
       <Box sx={{ py: { xs: 8, md: 12 }, backgroundColor: 'background.paper' }}>
         <Container maxWidth='lg'>
           <Grid container spacing={{ xs: 6, md: 8 }} alignItems='center'>
-            <Grid size={{ xs: 12, md: 6 }}>
+            <Grid size={{ xs: 12, md: 7 }}>
               <Reveal>
                 <Typography variant='h2' sx={{ mb: 3, fontSize: { xs: 28, md: 38 }, fontWeight: 800, lineHeight: 1.2 }}>
                   All voices.
@@ -368,9 +368,9 @@ const CulturePage = () => {
                 </NextLink>
               </Reveal>
             </Grid>
-            <Grid size={{ xs: 12, md: 6 }}>
+            <Grid size={{ xs: 12, md: 5 }}>
               <Reveal index={1}>
-                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, maxWidth: 420, ml: 'auto' }}>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, maxWidth: 340, ml: 'auto' }}>
                   {DEI_PHOTOS.map((photo, index) => (
                     <Box
                       key={photo.alt}
